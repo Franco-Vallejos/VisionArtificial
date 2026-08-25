@@ -1,0 +1,5 @@
+# Este repositorio publica solamente los archivos de la entrega.
+*
+!.gitignore
+!detectorRostroConBlur.py
+!deteccion_objetos_mediapipe.ipynb
