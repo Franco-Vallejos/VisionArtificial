@@ -1,5 +1,16 @@
-# Este repositorio publica solamente los archivos de la entrega.
+# Ignorar todo excepto los archivos que forman parte de la entrega.
 *
+
 !.gitignore
-!detectorRostroConBlur.py
-!deteccion_objetos_mediapipe.ipynb
+!TP1/
+
+# Notebook de Google Colab.
+!TP1/deteccion_objetos_mediapipe.ipynb
+
+# Scripts de Python.
+!TP1/deteccion_objetos_mediapipe.py
+!TP1/detectorRostroConBlur.py
+
+# Imagenes utilizadas para probar la deteccion.
+!TP1/Imagenes/
+!TP1/Imagenes/**
