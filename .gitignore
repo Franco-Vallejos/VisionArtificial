@@ -14,3 +14,12 @@
 # Imagenes utilizadas para probar la deteccion.
 !TP1/Imagenes/
 !TP1/Imagenes/**
+
+# Material de la segunda entrega. Se versiona completo, salvo artefactos locales.
+!TP2/
+!TP2/**
+TP2/**/__pycache__/
+TP2/**/.cfg/
+TP2/**/video/*.mp4
+TP2/**/.DS_Store
+TP2/**/__MACOSX/
