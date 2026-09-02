@@ -11,9 +11,14 @@ CARPETA_PROYECTO = Path(__file__).resolve().parent
 CARPETA_IMAGENES = CARPETA_PROYECTO / "Imagenes"
 CARPETA_RESULTADOS = CARPETA_PROYECTO / "Resultados"
 RUTA_MODELO = CARPETA_PROYECTO / "modelo" / "efficientdet_lite0.tflite"
+RUTA_MODELO_V2 = CARPETA_PROYECTO / "modelo" / "efficientdet_lite2.tflite"
 THRESHOLD = 0.1
 MAX_RESULT = 15
 
+URL_MODELO_V2 = (
+    "https://storage.googleapis.com/mediapipe-models/object_detector/"
+    "efficientdet_lite2/float32/1/efficientdet_lite2.tflite"
+)
 URL_MODELO = (
     "https://storage.googleapis.com/mediapipe-models/object_detector/"
     "efficientdet_lite0/float32/1/efficientdet_lite0.tflite"
@@ -40,10 +45,9 @@ def crear_detector():
 
 
 def detectar_objetos(detector, imagen):
-    imagen_rgb = cv2.cvtColor(imagen, cv2.COLOR_BGR2RGB)
     imagen_mediapipe = mp.Image(
         image_format=mp.ImageFormat.SRGB,
-        data=imagen_rgb,
+        data=imagen,
     )
 
     resultado = detector.detect(imagen_mediapipe)
@@ -76,9 +80,9 @@ def detectar_objetos(detector, imagen):
             texto,
             (caja.origin_x, texto_y),
             cv2.FONT_HERSHEY_SIMPLEX,
-            0.4, # Tamaño de la fuente
+            0.7, # Tamaño de la fuente
             (40, 200, 40), # Color
-            2, # Grosor de la fuente
+            1, # Grosor de la fuente
         )
 
     return imagen_resultado
@@ -101,7 +105,7 @@ def main():
     descargar_modelo()
 
     detector = crear_detector()
-
+    
     for ruta_imagen in imagenes:
         imagen = cv2.imread(str(ruta_imagen))
         imagen_resultado = detectar_objetos(detector, imagen)
