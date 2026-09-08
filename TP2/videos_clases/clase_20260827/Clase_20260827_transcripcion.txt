@@ -1,0 +1,1108 @@
+[00:00:03] bueno si si si no lo escucharon me van a escuchar de ser siempre lo mismo esto
+[00:00:07] tiene un paso volesto que cuando grababa arranca la transcripción y entonces
+[00:00:13] yo tengo que esperar a que me parezca la opción de detener la transcripción
+[00:00:17] bueno está listo perfecto bueno lo que vamos a hacer ustedes hoy
+[00:00:23] presentan el primer tp de mía pipe también no esta ley así que después
+[00:00:28] lo van a mostrar o sea espero que se han tenido tiempo para hacerlo la verdad que
+[00:00:33] es un trabajo ejerado, es un trabajo divertido y uno sabe cómo se
+[00:00:36] invierte, no lo voy a, no voy a decir que todo el mundo se tiene que
+[00:00:40] divertir con eso, pero es bastante peor, ¿no?
+[00:00:42] Bueno, ¿qué haces? ¿Ares yo? ¿Cómo andas?
+[00:00:46] Ministro, yo pensé que te había saberido.
+[00:00:49] No, estaba justo con el trabajo del anterior grupo, de este grupo
+[00:00:54] de alumnos.
+[00:00:55] Ah, cierto, cierto, buenísimo, está espectacular, perfecto.
+[00:00:59] Perfecto.
+[00:00:59] Ah, bueno, les comentábamos, entonces hay un grupo de alumnos
+[00:01:02] que no se pudo notar en la materia y hizo una reloj con alesio que les va fuera
+[00:01:09] horario de clases les va a ir presentando lo mismo trabajo que ustedes, pero
+[00:01:13] antes o sea, un poquito más exigido, pero así que bueno, esa es la
+[00:01:19] manera. Usualmente, o sea, rendir libre la materia es un poco más exigente
+[00:01:25] que cursar la regular. Está bien, porque tiene que estar todo el
+[00:01:30] 4 metros entregando los trabajos y después te le venía al final a terminar a salar la materia de libre, pero bueno,
+[00:01:36] entonces hoy, hoy le voy a dar la clave para el segundo TP, que se llamamos detección de forma,
+[00:01:48] se lo voy revelando mientras lo hacemos, hoy no voy a terminar a dar todo el tema, le voy a dar
+[00:01:55] temas suficiente como para que empiece a trabajar y hagan una buena parte del
+[00:01:58] TP, pero el tema lo voy a terminar la clase que viene porque no me va, no me
+[00:02:04] alcance al tiempo, a mí no me alcance al tiempo, tampoco es necesario porque lo que
+[00:02:09] va a quedar es la última parte del TP, que necesita tener la primera parte
+[00:02:13] el 80% del TP hecho para poder llegar a esa. Entonces, lo que vamos a recorrer ahora es
+[00:02:21] un pipeline, el pipeline de la heurística, lo que llamamos heurística, que es programar
+[00:02:28] a diferencia de los modelos que son entrenables, heurísticas cuando vuelo resolvies, decidiendo
+[00:02:35] vos el agorimo, se acuerdan que el pipeline es el agorimo más fácil que ahí, instrucción,
+[00:02:39] instrucción, instrucción, instrucción, tempo, tiene que saber qué secuencia de instrucciones
+[00:02:44] de vision artificial tienen que poner, esto contrasta con mi API, mi API pues está sacarrando
+[00:02:48] algo que se ha hecho y lo usas. También hay tenerlo resultado. Acá vos vas a componer una
+[00:02:55] serie de gorismos en esta clase, te voy a decir cuáles son para poder detectar formas y poder
+[00:03:03] marcarlas en la imagen y ponerle el cartelito de qué forma es. Es un problema de detección y
+[00:03:10] clasificación. ¿Dónde está la imagen? ¿Le puedo poner el recuadrito o incluso no
+[00:03:15] seguramente lo van a poner contorno, van a hacer, van a hacer enrigo una segmentación y le
+[00:03:22] van a poner el nombre de la forma que sí, el pipeline es general, es muy potente, a ustedes
+[00:03:31] lo vamos a hacer por ser la segunda clase, usar hay bonín más bastantes básicos, entonces
+[00:03:38] no se dejen engañar la simplicidad del objetivo con la aplicación en el mundo real, porque
+[00:03:46] después cada uno de esos algoritmos, la cambias por otro más potente y tienes un
+[00:03:50] Pai Blan que es unísimo, está, así que eso se lo vamos a recordar cuando está
+[00:03:54] enteraminando el proyecto. La serie de presentaciones que tengo para hoy es
+[00:04:03] justamente siguiendo la secuencia de ese Pai Blan, de qué es lo que tiene que hacer
+[00:04:07] primera con imagen, qué es lo que tiene que hacer después, después hasta llegar al
+[00:04:10] final. Vos Alesio, tenés previsto presentar el TP2 ahora, cuando
+[00:04:16] empieza tu parte. Primero tengo que corregirlo. Claro, tengo que hacer las entregas y bueno,
+[00:04:24] pero si podríamos hacerlo antes de las entregas o no, no hay problema. Por ahí lo presentas
+[00:04:30] cosa que hay que entregar, bueno, no sé cómo lo quieres manejar, ¿no? Pero si el que
+[00:04:34] entrega ya se puede ir, no sé, ¿cómo quieras? Este depende si fíjate, si se lo merece o no.
+[00:04:40] así que voy a abrir la primera presentación y bueno vos alecio esto ya lo
+[00:04:52] viste un montón de veces estoy de comparte y pantallas pero hay positivas no me
+[00:04:58] pasamos unas cositas que por ahí te da, sí escucho, las entregas por donde
+[00:05:03] es la acción, las entregas no se hacen por mí ni por ningún lado ustedes tienen
+[00:05:08] que compartir pantalla, demostrar lo que hicieron, explicar lo que hicieron
+[00:05:12] y responder todo a mis preguntas, ok, ok, así que si los engañaron, eligieron esta
+[00:05:22] materia, eligieron engañadas, así que nada, pero confío que va a salir bien. Bueno,
+[00:05:27] gente están confiniendo en mí y cada insisto, insisto cada vez que vean una desconnección entre
+[00:05:33] lo que digo y lo que está en la imagen, yo por ahí me equivoqué de compartir la pestaña
+[00:05:39] taña y no me de cuenta que no estoy compartido. Ustedes ven un parritor, ¿no?
+[00:05:42] ¿Alguno que cheque, que me cheque, que me confirme?
+[00:05:46] Sí, sí, sí, sí, sí, sí, perfecto, perfecto. Bueno, imágenes binarias y umbrales, umbrales
+[00:05:52] en ingles 3-sold, que es el nombre del comando que vamos a usar, que van a usar ustedes.
+[00:05:58] Creo que con esto de perrito ya se dan cuenta lo que es una imagen binaria, hay imágenes
+[00:06:05] a color, hay imágenes que llamamos monocromáticas, son aquí uno y es en blanco y negro, pero
+[00:06:09] que incluye tonos de grises, y imagina binaria son tienen solo dos tonos, típicamente blanco
+[00:06:15] y negro, en realidad los algoritmos dicen cero o no cero, como lenguaje cero, como la
+[00:06:21] mayor idea de lenguaje de aprobación, cuando se es unif, lo converten a buliano, entonces
+[00:06:26] para que para nosotros, para su visualización, lo mejor es que el no cero, o sea lo que sería
+[00:06:32] de tru, lo que sería verdadero, y que sea un blanco, que sea un 255. Así es como lo se suele
+[00:06:40] hacer. Entonces, acá está definido todo lo que dije acá, está escrito acá, es definido,
+[00:06:47] esto es una geminaria, la interpretación que le debamos es cero, es el fondo y uno es lo
+[00:06:57] que nos interesa, el frente. Esto está metido muy adentro, lo saborismo para algunos, es exactamente
+[00:07:03] lo mismo, digamos, un dó valor e interpretarlo como quieras, otros ya sumen que la parte que
+[00:07:11] te interesa es la parte de blanca, no la parte negra. Entonces, comiene a adoptar eso,
+[00:07:18] o podías hacerlo en un de hecho en el trabajo práctico, queremos que sea así, que la parte que
+[00:07:26] interesa sea la blanca, voy a mostrar un ejemplo por qué digo esto, también. Esto es una segmentación.
+[00:07:34] Lo mismo, la primera clase, yo la de verdad que no les pregunté, estaría bueno preguntar,
+[00:07:41] le voy a decir recuerda, por la primera clase tiene un montón de definiciones, es una clase
+[00:07:45] playa, no tiene profundidad, lo pertene amplitud, tiene montanas definiciones, entonces
+[00:07:50] ustedes ahora deberían poder responder, que seguro no hay nadie sabe porque nadie se preocupó,
+[00:07:56] pero también porque que es una gratificación, que es una segmentación, que es una
+[00:08:00] detección, que eso debería ser automático. De hecho vamos a reponer a ver a alguien que me
+[00:08:04] responda click, voy a agarrar lo que quiere, preguntarle a Jack, que es una segmentación.
+[00:08:10] Vamos a hacer a tres preguntas, que es una clasificación, que es una detección y que es una
+[00:08:17] sementación, a ver cualquiera que me puede ir dando respuestas de algunas a tres cosas. Yo ahora yo
+[00:08:29] cambié de pestaña los estoy viendo. Nadie. De bien, yo no sería ubicar algo en una coordenada
+[00:08:37] buenísimo, buenísimo, buenísimo, pues se una cajita, pues es un punto un equipo perfecto,
+[00:08:43] o sea, deteciones coordenados en píxeles, en la imagen, también. ¿Qué clasificación a los
+[00:08:50] otro ¿no? ¿Qué es clasificación y qué es segmentación? De hecho lo más
+[00:08:57] probar es que lo que hicieron con mía Pai se ha detección, ¿no? Bueno, está
+[00:09:04] difícil, no estábamos más. La clasificación es cuando detectadas distintas
+[00:09:10] clases a dentro de la imagen, o si la imagen es de distintas clases, o ok, pero
+[00:09:16] a ver, bóficate que la manera que lo está diciendo.
+[00:09:18] Había dicho, pero desculpa que lo piste característica, creo que había dicho, no, no
+[00:09:23] una clasificación, como se llama, mencionó y dijo que se lo llama clasificación, pero
+[00:09:27] es y no más bueno que dijo, pero.
+[00:09:30] Ok, ok, bueno, gracias por el esfuerzo.
+[00:09:35] Dale, dale la tapita de seguir participando.
+[00:09:39] No, es mucho mejor que respondan a que se que hay callado,
+[00:09:44] o sea, yo sí tengo que aprobar gente a lo, lo aprobar a Gastón
+[00:09:48] y reprobo a todo lo que está en Calladito, a la boca.
+[00:09:51] pero lo que dijo Aucín, es correcto, pero me cuesta, digamos, porque digamos,
+[00:09:58] clasificar y si identificar la clase lo dice la propia palabra. Entonces, la pregunta
+[00:10:02] de pregón, ¿tendes lo que estás diciendo? A esta es una pregunta para Aucín, para los
+[00:10:05] otros. Cuando lo dijo, ¿sabe que está hablando o simplemente me está, a ver si alguno me
+[00:10:12] puede decir mejor que clasificación y que se aumentación? Pero lo de la característica,
+[00:10:18] no vamos a usar hoy, sí, a ver quién o lo. Lo de clasificación es con un cierto nivel de
+[00:10:23] certeza, a poder discernirse, es un objeto de un tipo u otro. Es un tipo, es exactamente
+[00:10:29] eso, que son clases, ¿no? clasificación son clases, pero como que estás usando la
+[00:10:33] misma palabra, sí, es saber qué es de una lista corta, o sea, una lista finita y predefinida
+[00:10:40] de categorías. Termino que usábamos era categoría, yo le dije que había unas muchas
+[00:10:45] jergas, superpuestas, la más actual que corrió a la más antigua es cuando
+[00:10:53] clasificamos a la moda de categoría, yo a mí no importa que lo recuerden esto de
+[00:10:57] memoria, además le va a salir, a lo largo de la materia le va a salir automáticamente
+[00:11:01] después que hagan todo esto, pero que me por lo menos que me entiendan lo que
+[00:11:04] estoy diciendo y el té y desigamos ahora a la más difícil segmentación porque
+[00:11:10] es la que estoy usando la presentación, dice segmentación, ¿qué es la segmentación?
+[00:11:14] a ver si ustedes recuerdan el ejemplo, se recuerdan el ejemplo de la persona cruzando una
+[00:11:19] calle que estaban rojo y los autos estaban en azules y los árboles de verde, más como una
+[00:11:25] mezcla, ¿no? de entre es identificar y... bueno, está bueno, está bueno lo que decís que
+[00:11:34] es una mezcla entre para identificar y clasificar en medio de lo mismo.
+[00:11:38] para no identificar, quise decir detectar y ahi está, ahi va, ahi va, si si si va por
+[00:11:48] eh, bueno, una manera elegante definirlo que una mera definición que invente yo, es
+[00:11:53] la segmentación es una clasificación por pixel, también, o sea, vos no vas a decir,
+[00:11:59] vos estás localizando, pero estás localizando con mucha más precisión, entonces, es mucho más
+[00:12:04] cuando usar la cementación tábuanísimo, lo pasa que más lento. Y a fin del día voy a
+[00:12:10] asesirche, pero lo necesito. También, muchas veces, con detectarte alcanza que mucho más rápido
+[00:12:15] te consume. A la hora de contratar a Google Cloud, vos vas a pagar mucho menos por
+[00:12:21] detección que por cementación. Entonces, académicamente, pues, es realista de la
+[00:12:27] cementación. Después, en la práctica, siempre que se puede detectar por un tema de costos.
+[00:12:33] Pero bueno, pues yo, entonces, si yo digo que es la clasificación de cada pixel en este caso,
+[00:12:39] una imagen binaria resultado de una segmentación binaria, o sea, verdadero y falso, para cada pixel.
+[00:12:46] Y acá tenés, ¿no? Píselo blanco, el caballo, píselo negro, el fondo, también,
+[00:12:51] ahí hay una clasificación. Claro, cementor semántico es porque entiende la naturaleza del objeto
+[00:13:00] que está mostrando, también. Cuando no es semántico, ese tema semántico lo vimos, lo
+[00:13:08] vimos que solo le presenté que significaba, pero lo voy a repetir en varias clases,
+[00:13:13] también. Cuando no es semántico que lo que vamos a ver ahora más fácil, más básico,
+[00:13:18] el tipo no está entendiendo las naturalezas del objeto, está mirando pixel, también.
+[00:13:23] Ahora vamos a dar, vamos a distinguir pixel esclaros y escuro y con eso ya nos vamos a
+[00:13:27] la verdad. Bueno, el primer uso genérico de las imágenes binarias son las máscaras y el
+[00:13:35] único motivo por el que lo menciono es porque es esta sola diapositiva y nunca más lo
+[00:13:40] vamos a usar. Un concepto que comienza a tener presente en algunos casos o hace falta o bien
+[00:13:48] hay alguien que está presentando una solución de vehículos autónomos y dice acá usó una
+[00:13:52] máscara comienes saber que es, también creo que tener la flor, tener la máscara que
+[00:13:58] es redonda y tener resultado de aplicar la máscara a la flor, también, o sea que vos
+[00:14:02] recordas, sirve para enfocar, también metafóricamente, bueno, no es que estás tocando el
+[00:14:09] foco de la cámara, decir que esta es la parte de la imagen que me interesa y lo otro no
+[00:14:14] me interesa, también, si vos tenes un sistema donde en el resto de cosas hay objetos
+[00:14:22] que te van a molestar a tu proceso y los recordás, lo hasta parte,
+[00:14:28] esto es una máscara, también, listo. Entonces, la máscara binaria en la
+[00:14:33] manera de expresar la forma totalmente arbitraria, la dibujas como querés,
+[00:14:37] de decir, ¿qué parte quiero preservar del imagen y cuál no?
+[00:14:41] Acá en el resultado del fondo está puesto en blanco, de hecho voy a decidir
+[00:14:46] de qué color que eres el fondo, del que vos quiera, digamos según para qué le
+[00:14:50] listo, no voy a hablar más de máscara vamos a lo que nos compete que son los
+[00:14:55] umbrales, también, a esto, segmentación binaria, a ver si alguno adivina como la
+[00:15:06] manera más fácil que se les ocurra el criterio, el criterio, no me van a
+[00:15:09] escribir una gorimora, para segmentar el arroz y que me dé lo debajo, la
+[00:15:16] imagen debajo no es exacta, esta con distintas calas y desplazadas, entonces
+[00:15:20] pero creo que se entiende a qué se busca. Tere su imagen monocromática del arroz con
+[00:15:24] tono grises y quieres hacer una sementación minalía que tía que regiones arroz y cual no.
+[00:15:30] Y lo mismo con la manzana que está a la derecha. Bueno, el resultado es una cosa no es blanco
+[00:15:36] de gripe, pero se entiende. A ver, a ver, que medían cuál sería la manera más básica que se
+[00:15:43] les ocurre, qué es lo que tiene que hacer la computadora para a partir de imagen general
+[00:15:47] la otra. Si no es blanco en el caso, bueno, en el caso de la rocería, si no es negro.
+[00:15:56] Exactamente, en costa de la manzán res.
+[00:16:00] Cierta oscuridad, o sea, de tal tono de gris oscuro, negro es un gris muy oscuro, de gris
+[00:16:08] oscuro para abajo, si es más oscuro, es fondo y si es más claro, es blanco. En el caso
+[00:16:14] de la manzana, es lo mismo, pero al revés, si es muy claro es fondo y si es muy oscuro
+[00:16:18] blanco. Bueno, ese es la emcementación que vamos a usar, se llama 3, con el estrés
+[00:16:23] o deshumbral, que significa justamente elegir un tono de gris, y lo convertimos en muliano,
+[00:16:28] para arriba o para abajo, es lo que se hace. Este es el ejemplo que quiero llegar,
+[00:16:33] acá hay una cara a tu intermedia, pero me viene bien para contar.
+[00:16:38] Tenen los lobos, tenen la cementación de los lobos, y la parte que importa,
+[00:16:45] que en la cementación está en blanco es la parte oscura, no la parte clara, también o sea que depende del
+[00:16:51] problema que vos tenemos, puede decir que yo quiero rescatar la parte oscura o la parte clara,
+[00:16:57] o sea el fondo puede ser oscuro, puede ser claro, están la dos casos que son exactamente
+[00:17:03] invertidos uno del otro, a mí me interesa que ustedes tengan esta imagen con los lobos blancos y
+[00:17:11] sino los lobos negros con el fondo blanco, que se parece más a la foto original,
+[00:17:16] pero está expresándolo contrario de lo que vos estás buscando, también.
+[00:17:19] Y posiblemente, te funciones porque vos después justas todos los agorimos que siguen para
+[00:17:24] interpretarlo así, pero de movida, académicamente, es como que no está entendiendo qué es
+[00:17:30] lo que querés destacar. Por eso, yo quiero que llegues, si tu caso es así, por ahí tu
+[00:17:35] caso no tiene conflicto, pues, tiene un fondo negro, una cosa blanca y ya está.
+[00:17:38] también. Pero lo más probable es que tenga una hoja en blanco y que escriba y dibuje
+[00:17:43] su una forma con una fibra negra. Entonces va a estar en este caso de que tenés que invertir
+[00:17:48] para lograr la imagen miradia. Bueno, acá les presento cómo se llama, no me acuerdo
+[00:17:55] como se llama, lena, creo que se llama. Resulta que en el año en Jaupati, carochenta, de
+[00:18:03] 70 se empezó con la visión artificial, no había cámaras digitales, o sea, existían, pero
+[00:18:09] la cosa de laboratorio también, existían escáneres, también, y los escáneres serán aparatos de
+[00:18:15] laboratorio o cosas que usaban en lugares muy raros, vos no procesados, a ver, no existían
+[00:18:24] computadoras que vos lo pudieras cargar la imagen de memoria, también la imagen estaba una
+[00:18:28] sinta magnética y vuelvas leyendo escán por escán no ser un espanto, no importa. Entonces
+[00:18:36] alguien logró para algún experimento digitalizar una imagen y esta imagen en la que se
+[00:18:42] empezó a usar, después con las computadoras ya empezó a facilitar, se convirtió un archivo
+[00:18:47] empezando por todo, por todos lados y se convirtió en la imagen también de referencia de la visión
+[00:18:54] artificial, esta como esta foto de la década de 70, te imaginas hoy, lo verdad que no sé si
+[00:19:00] vive o no, pero hace unos años, ya siendo una señora mayor, le digo un premio, se convirtió en
+[00:19:07] la dama de internet, así se la conoce, su imagen se usó en millones de papers de visual artificial,
+[00:19:16] no ella en general sino específicamente esta única foto, también, bueno acá lo que tenemos
+[00:19:23] son, me fía el sitio OpenCB que tiene algunos ejemplos en javascript que funcionan
+[00:19:31] directamente ahí en el naveador en las propias tutuariales y generé este le
+[00:19:39] apliqui un braal con tres niveles, entonces si vos decís mi un braal, obviamente si
+[00:19:47] es claro quiero que se ponga blanco y si es negro quiero que se ponga negro, podría
+[00:19:51] a ver si va a revés, pero en este caso es así. Cuando yo digo, el hijo un tono muy oscuro
+[00:19:57] para hacer un brael, la mayoría de los píxeles van a ser más claritos que se tono, o
+[00:20:03] que es un brael bajo. Entonces, el imagen tiende a salir más bien blanca. Y cuando yo
+[00:20:09] el hijo de un brael muy alto, el hijo de un tono de gris clarito, digo, este ser un brael,
+[00:20:14] la mayoría de los píxeles están por debajo de un brael. Entonces, las imágenes de
+[00:20:18] así oscura. La idea que en el proyecto que ustedes hagan, primero van a, es un pipeline. La
+[00:20:28] imagen se procesa con varios agorismos y después se convierte en información. Mientras
+[00:20:32] vos tenés imágenes intermedias generadas, la idea es visualizarla. Es normal que en un
+[00:20:38] proyecto esto vos tenga ocho ventanas. No te va a rater, quizás te gane menos porque estamos
+[00:20:44] cambiando sutilmente el proyecto, con lo que hacíamos antes, pero con lo que hacíamos
+[00:20:49] hasta el 4ª pasado, pero con empezar a tener la imagen original, la imagen convertida
+[00:20:53] a monochromático, la imagen binaria y en la imagen binaria le pones una barrita deslizante
+[00:21:00] también, donde manualmente justo aselumbral, entonces vamos a hacer esto de manera integrativa
+[00:21:09] y te vas a familiarizar mucho mejor en cómo se genera esta segmentación.
+[00:21:14] Bueno, obviamente estos, estos resultados que estén a dar esos son artísticos,
+[00:21:18] pero no tienen nada de semántico, o sea, lo que está viendo es que el pícele es claro o oscuro,
+[00:21:24] la interpretación es vos ves a una persona en esa imagen,
+[00:21:28] pero el algoritmo está viendo pícele suelto, está viendo el sombrero,
+[00:21:33] una parte clara, una parte oscura, no ve,
+[00:21:36] vos te das cuenta que el algoritmo no disciende objetos ahí en esa imagen.
+[00:21:41] bueno, perdón, y aclaro una cosa, el mismo página que vos usara, vos podés, en el futuro,
+[00:21:49] no lo vamos a hacer en la materia, pero para que vos sepas, vos podés cambiar el cementador
+[00:21:54] por un cementador semántico que te genere de imagen minería para continuar el
+[00:21:58] pipeline, también, o sea, vos podés dar mucha más potencia el mismo página cambiando
+[00:22:03] cada uno de sus componentes, bueno, nosotros vamos con un cementador el más básico que
+[00:22:07] es el threshold, por las dudas, un error muy común, no usan threshold a color, esta cosa
+[00:22:14] es, si la azuzas tiene que saber lo que está para que la estás usando y en general
+[00:22:20] es un error, nunca encontré a alguien que me explique por qué le va a usar, ni yo
+[00:22:28] conozco un caso de uso, ¿qué pasas si vos vinarizas con threshold un imagen a color?
+[00:22:35] por eso es un nivel, 127 que está en la emite entre 3 y 2 y 2 y 5, ese 3 se va a aplicar
+[00:22:42] a cada canal al rojo del verde azul y te va a quedar una cosa de 8 colores como esta
+[00:22:47] que está acá, en esta predominna el rojo por la imagen originada, ¿no? Y eso no es de
+[00:22:55] modo en vez de que pequea para que te va a servir eso, en nuestro proyecto no sirve, entonces
+[00:23:01] tenemos que primero pasar a monochromático para luego
+[00:23:05] vinarizar también.
+[00:23:08] acá hago un pequeño paréntesis, me voy un poquito
+[00:23:12] por tratar gente y vuelvo, hay otra función que genera
+[00:23:15] imágenes vinarias que hace segmentación vinarias, que se llama
+[00:23:18] InRange, acá no tengo el output de InRange exactamente,
+[00:23:24] pero ustedes serán cuentas,
+[00:23:28] a ver, pues le voy a explicar lo que, por ahí se hace la intuyeron, de alguna manera
+[00:23:33] el irrois que trabaja directamente sobre una imagen cororo, le dice sementame lo que
+[00:23:41] es rojo, también, y el resultado es una imagen minaria que no aparece acá, tenía un fondo
+[00:23:46] todo negro con la forma de la capita en blanco, entonces pues multiplica la máscara que
+[00:23:51] le dio, la sementación te sirve máscara, multiplica por la imagen original y te queda la capa.
+[00:23:57] si vos invertís la máscara, obtenes esto de acá, también, entonces lo que es este tipo
+[00:24:03] en a no puse el link, bueno pero igual es, este es un caso famoso, el tipo deja la cámara
+[00:24:11] quieta, saca una foto previa de la habitación y rellena la parte negra con la habitación,
+[00:24:17] entonces se convierte en una capa de invisibilidad de Harry Potter, también, bueno, no importa,
+[00:24:22] lo importante es que in range, si vos le das un rango de color, no lo voy a explicar, no me interesa que
+[00:24:28] lo usan, porque existan directamente la imagen de color, obtino una imagen vinayada. Bueno,
+[00:24:36] una aplicación que la quiero discutir verdaderamente, nunca más la vamos a volver a tocar, pero les
+[00:24:45] amplio un poco el horizonte de todo esto, ese resaltado de texto. O sea, vos puedes jugar con brillo y
+[00:24:50] contraste, yo en la materia no tengo pensado explicar el riesgo contraste, es algo que arrea contra
+[00:24:56] pavote el día que no tiene que hacer buscarlo que es una fórmula, pero la verdad que en el caso del
+[00:25:04] texto, vinylizas y te queda el máximo contraste, en este caso, creo que las letras que negra estarían,
+[00:25:11] entonces lo que es negro se pone el máximo negro y lo que blanco el máximo blanco y tenés el máximo
+[00:25:16] contraste, es buenísimo. Ahora, para aquí otra cosa sirve que no sea texto, bueno, el tema es
+[00:25:21] así. El texto es de los pocas imágenes que son totalmente artificiales, o sea, creadas por el
+[00:25:34] hombre para que sean leídas con contraste. El texto, el código QR, el código aruco y algunas
+[00:25:42] otras marcas, creas poder hombre, se beneficien de contraste. Las imágenes casuales, las fotos
+[00:25:50] de general no son así. Vos acá la foto a una persona y no es que un máximo contraste
+[00:25:55] la mejora, también, el máximo contraste tiene un imagen mineralo. Entonces, para el texto,
+[00:26:04] para un código QR, para un código Ebarra, para algunas cosas, te sirve aplicar 3J como
+[00:26:11] mucho mejor que tratar de corregir con contraste y brillo, también. Bueno, ahora sí, ahora vamos a
+[00:26:16] ver con los competes, el trensol, acá hay cinco tipos de operación, a mi mi trensón dos,
+[00:26:21] le voy a explicar que son estos tres imágenes. Estas son imágenes originales de referencia,
+[00:26:26] que tienen un degradero de negro aclaro de 0,25, que va a disquiro a derecha. La función trensol
+[00:26:34] tiene como cinco parámetros, uno de ellos es que función que eres usar a nosotros nos interesan
+[00:26:42] binary y binary in listo. No voy a explicar las otras. No hay mucha aplicación.
+[00:26:48] Binary significa que la imagen original con un trajual establecido a 127 que
+[00:26:55] queda justo en el gris intermedio, te genera esta imagen. Lo que es más oscuro te queda en
+[00:27:00] negro y lo que es más claro te queda en blanco. Y binary in inversa, obviamente, hace a revés.
+[00:27:07] Lo que es más oscuro te queda en blanco, lo que es más claro te queda en negro.
+[00:27:11] también que son para abarcar los únicos dos casos que los intereses y que me
+[00:27:15] me ocupé de explicarlos y que les quede bien claro que hay dos.
+[00:27:18] Bien, ahí se terminó. Funcion 3son es la que usted va a usar y es la que separa y genera
+[00:27:26] esa imagen, esa segmentación binaria. Tienen que elegir una o dos aborimos
+[00:27:30] segundo lo que necesiten. Bueno, umbrales automáticos e historamas,
+[00:27:38] esto se me quedó, esto no es de acá, se me, se me colegó, creo que se la dí la clase pasada
+[00:27:48] en descriutores, no sé por qué se me quedó, se me trajo a pelo, se me copió mal. Vamos
+[00:27:56] a un tema de este programa, o todos ustedes si se aprobaría, también, y ustedes se acuerdan
+[00:28:00] los histogramas y los los los los rangos, los bins, ¿no? La historia más de de de de
+[00:28:06] frecuencia, frecuencia acumulada, así que sé yo, bueno, ok, no se recuerda, ustedes
+[00:28:11] hicieron un esfuerzo deliberado por olvidarse todo eso, así que se lo voy a aplicar de vuelta,
+[00:28:17] botenés una imagen monopromática y los píxeles van de 0,25, entonces vamos marcas acá,
+[00:28:25] 256 intervalos, o sea, van de 0,25, este, pero como números entera, no, no, no, este,
+[00:28:33] y contás cuantos píxeles hay de cada intensidad y de genera esto, este es el histograma.
+[00:28:38] Chata, eso es el histograma bastante intuitiva, intuitivo para un estudiante de genería,
+[00:28:43] vamos a agarrar todo un agua, no entiendo nada.
+[00:28:45] Pero entonces que te dice, mira, acá está muy bajos, claro, no hay píxeles blancos bien brillantes.
+[00:28:53] Los blancos brillantes son lo del fondo de la diapositiva, acá en la imagen no.
+[00:28:57] De hecho, me interese este pico de acá, este pico justo,
+[00:29:01] todo justo que no se por qué coincidieron todo y estos pico bueno estos estos son oscuros porque están de la
+[00:29:06] mitad para abajo también son oscuros y esto es la parte del cielo desde lo digo yo o no o no lo va a
+[00:29:14] resolver a resolver rapísimo estas sonas más oscuras pero es menos cantidad de pícil o esta ventana
+[00:29:21] saca bueno ventana solo que sea este arcos esta ventana y de acá muy oscuras y son poco píciles
+[00:29:28] se están acumulados por acá. Este pico de acá es este frente claro, quizás las nubes.
+[00:29:35] Bueno, eso es lo que te dice una historia. A mí me interesa profundizar demasiado.
+[00:29:43] Histograma es una tecnología de calcetenta, es una tecnología matemática, está ampliamente
+[00:29:48] superada, o sea, para alguna cosita sirve, por eso no le voy a dar, por eso se los muestro,
+[00:29:54] No le voy a dar, digamos yo tenía una presentación completa y trabajos prácticos dedicado a esto, pero lo fui abandonando, ¿no?
+[00:30:05] Bueno, entonces, detección automática de un bral. A ver, esto quiero que ustedes me lo digan, lo voy a decir la pregunta, quiero que ustedes me dian.
+[00:30:14] que me dios en este imagen, evatando de hoy a la imagen ¿no? Pero vos no querés poner
+[00:30:19] el valor de cuál es el tono de gris que separa esta parte oscura y esta fíjense de acá
+[00:30:27] lo separa como negro y no como blanco, eso no importa, depende de qué función de
+[00:30:31] tres solusas. Voy a querer usar, a ver, aquí valor tiene que poner para distinguir
+[00:30:36] estas dos partes. Resulta que el histogramas así, también, por la duda acá dice 100,
+[00:30:43] dice 200 a que dice cero, también, este es el histograma de esta imagen de acá.
+[00:30:48] Pregunta con qué criterio eligen ustedes el umbral mirando el histograma,
+[00:30:53] qué valor el umbral tiene que poner para lograr la segmentación de abajo?
+[00:31:03] El que esté entre las dos montañitas, digamos, en dos días, sí, sí,
+[00:31:09] está esto es un un histograma bimodal también y vos vas a buscar el punto
+[00:31:16] intermedio entre los dos modos que son las dos montañitas también entonces acá el
+[00:31:20] cien viene barro pero cualquier lugar de acá intermedio te sirve también viene barro
+[00:31:26] entonces si vos tenés que hacer ya está hecho si vos tenés que ser un sistema
+[00:31:31] automático de atención numbral yo no lo recomiendo que usen yo prefiero que
+[00:31:36] lo uso manual porque es más idáctico, también, además, toda esta cosa automática, después
+[00:31:41] tiene que tener experiencia, usándolo para entender cuando te ande y cuando no, pero
+[00:31:45] entonces, cuando es mi modal, el tipo busca punto y del medio. ¿Qué pasa si aparecen
+[00:31:50] tres modos? No, perdón, vuelvo acá, acá, no, a tener un pico acá, otro pico acá, otro
+[00:31:57] pico acá, está bien. ¿Qué pasa si en mi modal aparece en tres modos? ¿Dónde tiene
+[00:32:02] que me dé el lumbral. Bueno, que ahí está y a ver, no lo puedes automatizar, lo vas a confundir
+[00:32:17] el abrimo sirve si no nos sirve, porque puede ser cualquier o dos puntos, cualquier
+[00:32:24] o dos valles. Si tiene tres modos, depende cuál valle que lejos y quizá ver el abrimo cual
+[00:32:30] de los dos crece. Está bien. Además, bueno, anticipas que el abrimo
+[00:32:33] al eso salio cuando le podes la imagen. Aparece y modal, aparece una cosa más plana que
+[00:32:37] se yo. Entonces, la dirección automática busca dos modos y busca del medio. Si tu
+[00:32:43] imagen no es definitiva y el hombre va a ser cualquier lado, ese es el problema de la
+[00:32:48] dirección automática. ¿Cómo vienen a entender qué es lo que le estás encarando al
+[00:32:53] algoritmo? Entonces, esto es un ejemplo, hay dos métodos, son flags que se usan en el
+[00:33:01] tres son cuando vos usas un flag de estos, ignora el valor que vos le pasaste como
+[00:33:06] hacer es como un brael, no voléjite 127, bueno, lo ignora, pasa que por la
+[00:33:12] sintaxis tenés que pasar el argumento, pero 8, Japones, 8 y Triangle, son
+[00:33:20] dos lodos metos, hay paper, digamos, que te dicen cómo hace para superiéndole que
+[00:33:25] modal encontrar el punto y acá la derecha hay un ejemplo muy porque sigue muy random
+[00:33:32] de decir chebo tiene ese tema gente arriba más o menos vos sabéis lo que queréis
+[00:33:36] pero tiene ruido, entonces cuando vos ponéis de 3 o 6 y es con ruido, si vos las
+[00:33:42] filtras y filtro no vimos, vamos a ver el pasado adelante, si vos las filtras el
+[00:33:48] efecto del filtro en el histograma es este y al convertirse en v modal obtener
+[00:33:54] la cementación perfecta, a través de ese cotito de nada, después la práctica no funciona tan fácil,
+[00:33:59] pero sí, el filtro te ayuda a mejorar la imagen antes de finalizar. Bueno, esto como para ampliar un
+[00:34:08] poquito, nada de esto lo van a usar a ustedes, porque estamos haciendo un trabajo práctico controlado
+[00:34:13] que no se devande, digamos, que le funcione, así que claramente ustedes van a generar las imágenes
+[00:34:22] que hay que después reconocer y la van a hacer que sea fondo blanco, fibra negra para
+[00:34:27] que no saluda de cuáles son las dos partes que hay que cementar, que separar. Me estoy
+[00:34:33] dando cuenta que a cada diciembre les automático, no sé si ustedes llegan a ver, me quedó blanco
+[00:34:37] el título. Estas son de apositivas nuevas entonces, este contenido existía, pero lo ordenó
+[00:34:42] un poquito, me quedó mal del color. Bueno, sí, a ver, automático y adaptativo son dos
+[00:34:52] palabra que empiezan con a yo le dije que esta materia de avengo dando de 2016 hace 10 años y
+[00:34:58] siempre hay alguien que se confunde automático con adaptación como que hay que pasar de la
+[00:35:06] prensa letra no pero esto es otra cosa esto no lo van a usar esto existe el lento
+[00:35:15] suele haber cosas mejores de hecho el propio deep learning está dando mejor pero esto existe
+[00:35:21] Esa es muy brata, te digo, ¿cuál es la idea?
+[00:35:24] A ver, boten esa imagen de acá que tiene una eliminación muy variable
+[00:35:29] y ¿qué pasa?
+[00:35:32] Bien, algunas partes oscuras de esta zona de la imagen que está más iluminada
+[00:35:41] son más claras que algunas partes claras de esta zona de la imagen.
+[00:35:45] Entonces, no hay un umbral que te lo semente como vos querés
+[00:35:49] para que te esté esto acá abajo de la derecha.
+[00:35:52] el donario en bravo homogéneo, así che, tendría que ser un un bravo que va a estar cambiando,
+[00:35:56] como no vas a ponerle un bravo de cada písel, dice, bueno, hace un aivicorismo que elija,
+[00:36:02] entonces que hace, voy a elegir su una ventana que, para que funciona, tiene que ser grande,
+[00:36:06] cuanto más grande la ventana analizante, mucho más lento es el proceso, pero notoriamente más lento,
+[00:36:12] promedía los píxeles de alrededor y ese promedio lo usa un bravo.
+[00:36:16] Entonces, con un, este es el thresholding,
+[00:36:21] el thresholding atativo del promedio te da esto
+[00:36:26] y de la gauciana que requiere una zona de infección más grande
+[00:36:32] te da mejor, pero es bastante más lento.
+[00:36:34] Entonces, existe el nombre de atativo para estos casos.
+[00:36:36] Ahora, cuál es la solución para el trajo para que ustedes
+[00:36:39] te van a usar lo que se llama ambiente controlado.
+[00:36:41] Esto es súper importante, el concepto es súper importante.
+[00:36:45] Ambiente controlado significa que vogas a iluminara y darle todas las condiciones
+[00:36:49] para que la donde estar a cámara salga bien.
+[00:36:54] Eso es como ir a sacarse fotos a un estudio fotografía.
+[00:36:58] No, no, no. Tener es la iluminación tanto preparado para que la foto salga bien.
+[00:37:03] Este, que es totalmente distinto a sacar una foto rándome o agarrar la foto de mi viaje,
+[00:37:09] mirada, estuve en Santa Teresa y ya está en la foto porque eso es lo contrario
+[00:37:13] de ambiente controlado.
+[00:37:14] ¿Qué pasa? Para Facebook seguramente o a Instagram, si es totalmente descontrolada, son las
+[00:37:21] fotos de los usuarios, vamos a ver que puedo procesar. Pero cuando vos vas a hacer un trabajo,
+[00:37:25] lo más probable es que te contraten, si vos creas una inspección de pieza, hacer una
+[00:37:31] línea de producción, realmente controlada, yo tuve enbolvagen hace unos años, en una línea
+[00:37:39] se me acabó a poner la infección visual y básicamente las partes se entrarán a una cabina y le
+[00:37:45] diría que dentro de la cabina está todo oscuro y solamente se prendía un flash en el momento
+[00:37:50] que saca la foto, es decir, el analizador de imágenes que irá medio antiguo, o sea no importa,
+[00:37:58] una analizadora de imágenes que quería ser iluminado exactamente por la iluminación que está
+[00:38:04] calculada y no quería ser interferido por la iluminación natural, o sea por más que
+[00:38:09] ese un tinglado botenés algunos lugares que entre la luz de afuera y si es de
+[00:38:14] noche o si se nubla o si sale el sol te cambia la iluminación bueno eso ahí adentro
+[00:38:19] no total eso es el extremo bueno a mí en el controlado significa que si esto os
+[00:38:24] cura ustedes van a aprender un velador también van a aprender la luz y van a
+[00:38:28] poner la iluminación para que la imagen se pueda binarizar correctamente por
+[00:38:34] por eso ustedes no necesitan un bril adaptativo, está bien, acá con esa visión pragmática del
+[00:38:41] informático, se lo digo, el informático trucho, es decir, si esto me lo arrasuelo automático,
+[00:38:46] dale, o sea, de tomar decisiones con agonismos que no probaron, que no saben, que no, que no son en
+[00:38:52] kick, y cuando funciona y cuando no, está bien, y o sea, se han atascado de la peor manera,
+[00:38:58] es decir, no poder sacarlo adelante, flaco, tirar todo. Empezar de vuelta usando los otros agorimos.
+[00:39:03] Pero bueno, no pasó acá en Matan, eso pasó hace años, también yo ahora no pasa por
+[00:39:09] mi ocupo de aclarar todo esto. Bueno, se termina esta presentación. Voy a pasar, vamos
+[00:39:17] a ver, me voy a saber de contornos, de favor, soy bonito, estoy hablando solo. Sí, está listo.
+[00:39:27] están viendo una que se llama BLOB, alguno que me confirme, bien, gracias.
+[00:39:35] BLOB, BLOB, yo busco el BLOB en internet y me pareció esta foto, el pescado de este
+[00:39:43] set es el pescado más fido del mundo. BLOB es, para los informáticos le llaman Binary
+[00:39:50] Large Object, también un objeto que es una cosa, muchos bytes. Habriste un archivo, lo
+[00:39:55] se me moría, es un blog, bueno nada que ver, también esto que vamos a ver ahora, la
+[00:40:01] parada blog también en inglés significa mancha, también es una mancha, blog, es eso, es una
+[00:40:06] mancha, puede visual, así que nosotros para nosotros blog es mancha, que es esto, es de hecho
+[00:40:16] lo que estamos buscando con esa binarización es identificar manchas, a que son, no
+[00:40:21] acá no sólo vemos un montón de cruces, pero la computadora ve píxeles, también.
+[00:40:26] Entonces pues y che, ¿qué te sugiere a vos la imagen de abajo? Este ejercicio es lo
+[00:40:33] decimos la que se pasa, ¿no? Si vos mirar a la arriba y mirar a abajo, ¿qué te sugiere?
+[00:40:37] ¿Qué es lo que la computadora sabe o qué relación le has con este concepto de visión artificial
+[00:40:45] de que maneje información? Si en parte de la arriba pudo generar la de abajo.
+[00:40:53] distinguía cada uno de las cruces. Ah, eso es la siguiente
+[00:40:56] dificultad, también. Mira, dice che, todo este conjunto de pixel es una
+[00:41:00] cruz y otros otros píxeles son otras cruz, también esa, entonces está,
+[00:41:05] está logrando un nivel superior, de fuera de un paso hacia la semántica, un nivel
+[00:41:11] superior de interpretación. En este caso estamos distinguiendo manchas, o sea,
+[00:41:15] de solamente ver píxeles, ahora veo conjunto de píxeles que formo una mancha.
+[00:41:21] el criterio es bueno ahora aparece componentes conectados también ahora ahora
+[00:41:26] viene ahora es un primero de nivel de interpretación estos son blocs cada una de
+[00:41:29] estas cruces es un blog porque porque tú los píxeles están pegaditos un al otro
+[00:41:34] componente conectados o componentes este es una jerga que viene de de las teorías
+[00:41:40] gráficas también entonces voy a definir son nodos y la cual es la idea que
+[00:41:45] nosotros definimos que un pixel está conectado con otro cuando los dos píxeles
+[00:41:51] blancos son vecinos y hay dos manejas y esto, a ver, esto es una pavada, pero es cierto
+[00:41:59] y está especificado y está bien, está escrito, está definido en Portola. La manera
+[00:42:06] que os existí, los laterales se conectan por los laterales, que son la conexión de cuatro
+[00:42:11] vías o se conectan incluso por los vértices, que son la conexión de ocho vías. Son los
+[00:42:16] todo tipo de conectividad que tienen los componentes conectados que se usan para formar blobs
+[00:42:23] o sea, hay un algoritmo que agarró un pixel y empieza a buscar todos los vecinos que
+[00:42:26] tienen y los recorre todos, para identificar los blobs, entonces si vuelve a decir, esto no
+[00:42:35] es así automático, hay un, me olvides decirle, esta presentación es miramente conceptual,
+[00:42:43] Bien, he dicho, mostro alguna función que es con el gig component, no la vamos a usar, porque vamos a usar algo mejor que hace lo mismo, pero mejor.
+[00:42:53] El concepto sí, concepto de blog lo vamos a usar. Fíjate lo que está pasando acá. A ver, pregunta, si son todos distintos color, ¿por qué estos dos arroses son del mismo color?
+[00:43:04] y no es el único caso que tiene algún pixel vecino porque están conectados ahí está entonces esto no
+[00:43:14] es del todo semántico no es que distingue grano de arroz sino que distingue manchas que para por
+[00:43:20] definición tienen que estar separadas también entonces también si vuelo la hora separar tenia
+[00:43:26] podés contarlas pero solo te sirve si la tienes todas fíjense por las separaditas
+[00:43:31] Pero despacito, nos vamos acercando algo que empieza a tener un poquito de significado de individualidad, también a través de esto. Bueno, se entendió.
+[00:43:43] Acá les, yo ya les hablé de color map, componentes conectados, te da una etiqueta, o sea que agarra, no es esto, pero el fondo lo pone todo en cero,
+[00:43:54] y a cada uno de estos arroses le pone todos los píxeles en uno, en dos, en tres, en cuatro,
+[00:44:00] en cinco, pero cuando lo vas a visualizar son, mirices muy oscuros. Entonces le aplicas color map,
+[00:44:05] la clase que viene de la pasada, le establece color map y generas esto que lo solo lo
+[00:44:11] visualiza mejor. Bueno, entonces yo acá no encontré dos imágenes que sean de los mismos
+[00:44:19] contornos, pero lo que quiero decir es, no puede tener los componentes conectados,
+[00:44:23] o puede tener solamente los contornos que definen la misma área,
+[00:44:30] desde el punto de vista información son equivalentes.
+[00:44:34] Entonces, ahora van a ver en la próxima presentación,
+[00:44:38] cuando no vamos a dedicar a contornos como una equivalente de un blog.
+[00:44:42] También, si yo agarro el perímetro,
+[00:44:44] ya ya tengo la información del área que necesito.
+[00:44:47] necesito, también no necesito tener todos los píxeles intermedios, bueno, esto termino es así
+[00:44:53] de fácil y sigue esta otra, que se llama contornos, confirmenme que está viendo una presentación
+[00:45:03] que se llama contornos, bueno, aclaro, esa foto que está ahí, a mí me gusta la ilustrativa
+[00:45:14] no son contornos. Está bien, más o menos, más o menos.
+[00:45:18] Ahora vamos a ver. Bueno, esto es un contorno.
+[00:45:22] Acá hay una imagen minaria, una función que la vamos a ver en Madrid,
+[00:45:28] pues, dentro de una idea positiva para hacer, extrajo el contorno de esa mano
+[00:45:32] y la anotó en la imagen original que todo estaba a la mano y la anotó de color a amarillo.
+[00:45:38] De paso te digo, analizó el contorno con una función que le dice,
+[00:45:43] Dame los puntos extremos que son cuatro, se llama norte sobre TV, este de arriba al debajo,
+[00:45:48] el del izquierdo de la derecha. Bús analizó el contorno amarillo y buscó este que es el píxel
+[00:45:56] que más al izquierdo está de todo ese contorno y así, también, fíjate que abajo hay muchos
+[00:46:02] que están igual de abajo, también abajo de todo para R1, el primero que controlamos. Bueno,
+[00:46:11] Entonces, ok, pero la mancha es un imagen con un montón de píxeles, y la devorismo tiene que
+[00:46:21] recorrer todos los píxeles para poder saber que están conectados, y lo así que haría
+[00:46:27] tiene, y el té hay que recorrer todos los píxeles para contarlos, está bien. El contorno
+[00:46:33] en lo que va el día de hoy es la primera función de visión artificial, porque
+[00:46:40] yo estoy estrayendo de la imagen una una estructura, una raí que ya no es una imagen
+[00:46:47] está bien, de hecho lo que yo estoy estrayendo es la coordenada de cada uno de los píxeles
+[00:46:55] que forma ese cortorno y ese conjunto de información es muchísimo menor que lo que
+[00:47:01] pesa la imagen entera, entonces cuando yo lo tengo que procesar voy a procesar menos
+[00:47:06] de bytes, también, puede estar trabajada con la estructura más liviana y contiene mucha más información
+[00:47:12] en el sentido de hacer, digamos, puedo dibujar el contorno, sí, si yo tengo una imagen minaria,
+[00:47:19] bueno, se complica y viendo cuáles son los píxeles que están blanco, que están al lado de un negro,
+[00:47:25] bueno, eso es lo que hace la función de contorno cuando lo estrae y yo te lo dejarí para anotar,
+[00:47:30] bueno, entonces lo que decía, los contornos son más compactos que las imágenes,
+[00:47:35] van a ver que cuando voces traes contorno de una imagen binaria, vienen naturalmente
+[00:47:42] etiquetados en el sentido de que lo tiene cada blog es un contorno. También es
+[00:47:48] una imagen binaria o tenemos un montón de píxeles. Cuando sacas contorno, te devuelve
+[00:47:56] 10 contornos. Ah bueno, porque ahí 7 blogs, también. Los contornos son de el punto de
+[00:48:01] esta información equivalentes a los blogs. Dejad de manejar un montón de píxeles, manejas
+[00:48:05] eso, esta entidad. No es un objeto porque es una RAID directamente. También ahora lo voy a explicar
+[00:48:11] que tiene el RAID, pero lo podría no usted lo pone a imaginar como objeto. Bueno, son jerarquicos,
+[00:48:19] enseguida, la voy a mostrar qué significa que sean jerarquicos. Si, si quiere, son jerarquicos.
+[00:48:24] Es una opción, un flag que vuelve bueno. Permiden análisis. Es una análisis que además es mucho
+[00:48:31] más eficiente, mucho más rápido, computacionalmente, que los blobs, los blobs en la cima en la imagen,
+[00:48:40] también, en los píxeles. Por eso son preferidos los contornos a los bloques que le dije antes,
+[00:48:46] también. Y son muy fáciles de denotar, muy rápido de dibujar arriba como vena la mano con el
+[00:48:52] contorno dibujado. Si vos tenés el bloco entero, es como que tapas toda la mano, sí. Vamos a ser
+[00:48:58] que significa jerarquico, esta es una imagen así abstracta, no tratan de ver un sí,
+[00:49:04] no tratan de ver nada porque son manchas, tienen doble, significa white, belarga, significa
+[00:49:12] black, también no es bastante hídote, uno, dos, tres, cuatro para identificarnos, ¿cuál
+[00:49:19] es la idea? Vos acá tenés doble, dos, es un contorno blanco, también doble, uno, es
+[00:49:27] contorno blanco que tiene dos agujeros, entonces los agujeros v2 y v3 son contornos
+[00:49:32] negros, que están adentro de contorno blanco, también, y acá lo mismo, tienes una mancha blanca
+[00:49:39] olo del 3, con un agujero v4, con 2 manchas adentro, w5, w6, y así al infinito, entonces acá
+[00:49:48] tienes una jerarquilla, el algoritmo, cuando le da la imagen binaria, el algoritmo recorre
+[00:49:53] todo y identifica todos los blocs y te devuelve todos los contornos. Si vos querés
+[00:50:00] te devuelve una estructura de gerarquía o unos índices a los contornos para que
+[00:50:05] vos sepas cuál está dentro de cuál si te interesa. En el plástico que vamos a
+[00:50:10] hacer no les va a interesar, pero esa información está disponible, en algún
+[00:50:14] ejemplo le pongo así para que puede servir, ya va a parecer uno este. Bueno,
+[00:50:20] no tienes imagen binaria a la izquierda, contornos ya relevados en el medio con dos colores
+[00:50:29] a ver qué son esos dos colores verde y rojo, no a cuáles son los colores, ¿qué significan?
+[00:50:34] Las dos gerarquías, externo y interno. Ah, ahí está, parece eso, eso también porque
+[00:50:42] ¿qué pasa? Para la velarga el contorno externo te hace el de este borde rojo, dice eh, pero
+[00:50:47] falta nos agujerito, bueno, ahí los tenés, pero es distinto, tenés que saber que son
+[00:50:53] distintos, no son, estos no son otras manchas blancas que van a entrar. Bueno, si tener
+[00:50:58] la jerarquía, lo puede dibujar así, si lo pedís sin ser la jerarquía te queda todo rojo
+[00:51:02] y si bien vuelo les, la computadora no sabe que uno es un hueco adentro del otro. Bueno,
+[00:51:09] y acá al lado, hay una aproximación, cuando vos relevalo con tornos, este es un,
+[00:51:15] es aerodótico, no necesitan usarlo, no le va a cambiar nada, pero vos podés decir,
+[00:51:21] yo no me des las coordenadas de cada punto del contorno, simplifica me lo con líneas
+[00:51:27] rectas, también, con cemento de rectas, entonces hay algoritmo que dice cuando una
+[00:51:32] secuencia de píxeles se aproxima una recta, aunque no sea perfecta, te la simplifica,
+[00:51:38] también hay varios, el poder hasta puede elegir que algoritmo es, pero como no sabemos
+[00:51:41] que hubiera exactamente que significa cada uno. Usted no sabe, yo sí, pero no lo voy a
+[00:51:48] complicar. Vos probas y se mira hacia el resultado que te da bien, ya, se lo va a probar
+[00:51:54] y que vos está aproximando de esto y si voy a ser anodici contornos, si lo así, hay
+[00:51:58] otros casos donde vos tenemos que ser muy meticuloso y se no, que yo quiero perfecto,
+[00:52:02] está bien. Con esto manejamos menos cantidad de bytes a memoria, la cantidad de bytes que
+[00:52:07] que ustedes están usando.
+[00:52:08] Más el hecho de que van a usar su computadora para procesar,
+[00:52:11] que lo van a meter en un NSP32 o en una raza berripa y vieja.
+[00:52:16] Estáis de saber que no te va a hacer problema para este trabajo
+[00:52:20] práctico.
+[00:52:21] Pero, si quieres ahorrar White, tenés maneras de que el algoritmo te
+[00:52:25] lo simplifique, te lo compacte.
+[00:52:26] Te pongan menos, menos, menos coordenadas para el final control.
+[00:52:32] Bueno, vamos a obtener, ahora sí, una función contornos de una imagen.
+[00:52:35] Otra vez, esta de mí me gusta mucho este imagen, no está hecho con contorno, esto es
+[00:52:39] a Makani, este es un momento por ahí lo vemos, es una función muy accesoria en lo que es
+[00:52:44] el tronco de la materia de esta, casi siempre aparecen las clases complementarias que vienen
+[00:52:51] más para el final. Bueno, adivinen que hace fine contours, bueno, es para que me responden,
+[00:52:57] pero encuentra contornos, hay que saber un poco inglés. Le das la imagen minaria y te
+[00:53:03] vuelve todos los contornos de una serable bono, no buscas un contorno. Pobuca todos los contornos
+[00:53:09] de una imagen. ¿Qué produce una raíz? Una raíz de contornos. Ajá, o sea que los elementos
+[00:53:15] decís cuál es la longitud de la raíz, si la raíz tiene la longitud 10, es porque el
+[00:53:20] contorno 10 contornos. Está bien. Y cada elemento que es un contorno, ajá, es una clase, no,
+[00:53:26] no es una clase, es un objeto, es una raíz. O sea, cada contorno de por sí es otro
+[00:53:32] raí, cada uno de los actos distinta, que formo una matriz. Y ese raí de que es de coordenadas
+[00:53:39] de puntos, o sea que si hubo decir cuánto elementos tiene ese contorno y es la cantidad de puntos
+[00:53:47] que tiene registrado, que obviamente si hubo pediste simplificarlo con cemento van a ser
+[00:53:53] mucho menos. También, o sea, de una raíz de apuntos, o sea, y esos apuntos que son, son
+[00:54:01] objeto puntos, no, son a raíz dos de, con x, ahí. O sea, que esto es de tres niveles,
+[00:54:09] también una raíz de contornos, cada contornos es una raíz de apuntos, cada apuntos es una
+[00:54:15] raíz de dos elementos de x, ahí. No necesitan meterse a manipulada en raíz. El único
+[00:54:21] lo único que lo único que tienen que saber es que de array de superior es el conjunto de contornos
+[00:54:26] y cuando vos, tiene que pasar un solo contorno a una función, tiene que agarrar un elemento de ese
+[00:54:31] conjunto y pasarse a esa función. Y ya está, está bien. La jerarquía es una estructura de
+[00:54:37] array separadas, no me, el día que le interesa usarla se fijan a ver cómo se usa, pero tiene índices
+[00:54:44] a los contornos del primer arrae. Bueno, a estas son las aproximaciones que le decían lo normal
+[00:54:52] que pongan, que venga como non, si le pone simple, te busca el cemento de recta, pertingue
+[00:54:58] ese perfectamente recto, y hay dos algoritmos, T-889, porque son de N-89, uno de ese
+[00:55:05] uno, el otro se llama cacoceno, del mismo autor de chin, no es de chin, es esto, es lo que está
+[00:55:16] escrito acá, listo, para que sepan, existe esto y es lo que se usa. La jerarquía representación
+[00:55:23] acá, acá por ahí necesitan usar algo, se le quiero mostrar, si le pedéis el tree, el árbol
+[00:55:33] el te genera la género de aquí de la revolta, no lo vamos a usar, list te da todos los contornos
+[00:55:42] y no te de genera la género de aquí, está en external, te agarras solo los contornos
+[00:55:51] exteriores, ¿qué pasa? cuando voy si quiero reconocer cuadrados, ¿cómo va a ser tu cuadrado?
+[00:55:57] vas a agarrar una hoja en blanco y vas a dibujar un cuadrado con una fibra negra, también.
+[00:56:03] Justamente le guías que no sea perfecto, que sea mano alzada, que veas como no es que
+[00:56:08] el tipo si se cambie un pixel no lo reconoce, no tiene que reconocer cuadrado, es hecho
+[00:56:13] a mano alzada que son todos distintos, de eso se trata el trajo práctico, claro, pero
+[00:56:22] bueno lo pintaste en ahí va adentro, entonces vas a tener un contorno exterior, un contorno
+[00:56:27] interior, entonces si dole decir red external te trae solo el contorno exterior,
+[00:56:34] ahí un teba más, muy posiblemente cuando vos pongas la hoja en blanco, que las
+[00:56:44] pones encima de tu escritorio, que paso oscuro y le pongas la cámara, la cámara va
+[00:56:49] a abordar más allá de la hoja y los bordes de la hoja van a ser contornos, entonces si
+[00:56:56] uso solamente external te va a detectar solo la hoja, pero no lo que está dentro, bueno fíjense
+[00:57:03] cómo se van a manejar para esas situaciones, también fíjense cuál usan o cómo después filtran
+[00:57:10] qué contornos les interesa. Le voy a mencionar unos usos, los contornos son recondro importantes,
+[00:57:20] De hecho, una vez que los incorporas son refáciles de usar, pero claro, tienen su aplicación,
+[00:57:28] no es propósito recontra general. O sea, de por sí, lo estraemos de una imagen binaria.
+[00:57:35] Entonces, ¿vo tuviste que poder haber vinylizado esa imagen? Si no, no tiene sentido usar
+[00:57:39] contornos. Bueno, metrología es la ciencia de las mediciones, también. Y acá voy a hacer algo,
+[00:57:48] luego lo voy a llevar al ejemplo de inspección de para edición de fallas,
+[00:57:54] se usualmente vas a medir la pieza.
+[00:57:56] Este se me ocurrió porque es idáctico, no porque se usa así,
+[00:58:00] pero es fácil de imaginar hacer.
+[00:58:02] Yo tengo esa chile, tengo el a foto, la chile no va a parecer exactamente
+[00:58:06] en la misma pixel con la misma inclinación,
+[00:58:09] está pasando en la cinta de transportadora, no sé dónde pasa y desagate la foto.
+[00:58:14] Entonces, en los contornos,
+[00:58:17] Fijate que está el contorno 1 y el contorno 2, lo puedes diguir por jerarquilla, también
+[00:58:22] vos sabes cuál es cuál, la flor y el adentro.
+[00:58:26] Entonces, primero, a vos te gustaría detectar exactamente dónde está, para empezar a ser
+[00:58:33] mediciones.
+[00:58:34] Hay una función que vuelve a aplicar el contorno 1 y te devuelve lo que se llama retángulo
+[00:58:39] rotado, el retángulo verde.
+[00:58:43] y eso ya es lo usas como localización de la sheet, la hoja feitar.
+[00:58:51] Entonces cualquier testeo de ir a un pixel, las coordenadas van a ser referidas a la caja verde.
+[00:58:57] Está bien, ahí localizaste y todo lo que hace es relativo a la caja verde.
+[00:59:01] Entonces, ahora después le voy a mostrar alguna función usando eso.
+[00:59:07] pero me harán un poquito bótenes, por ejemplo, una función para que acurara el área del contorno.
+[00:59:14] En el caso de la 1, te da el área del contorno todo.
+[00:59:18] Si quieres sacarle de esto, tendré que acurar de la 2 y restárselo.
+[00:59:22] Pero tenés el área.
+[00:59:23] Entonces, un paso no pasa muy fácil y yo necesito que el área tenga tantos píxeles,
+[00:59:28] que normalmente va a ser entre tanto y tanto.
+[00:59:31] no le va a saber un pequeño margen si se va de que usan exclusiva cortada si
+[00:59:36] tar rota no va a probar que sea más chica de área, si no supera ese testigo hay que descartarla
+[00:59:42] pues sería maldita, pensé que venía esta, no, esta, convexidades te cuenta la cantidad
+[00:59:54] de, bueno, de dientes en el engrenaje, también, la cantidad de convexidades es la misma que
+[01:00:00] cantidad de concavidades que tiene el contorno. Entonces se puede descontar, devuelve un número
+[01:00:08] entero, es un dato más que te puede servir. Esta es la que decía en metrología para hacer el test,
+[01:00:14] vos ponés fijas coordenadas de puntos amarillos que son relativas a la caja verde y hay una función
+[01:00:21] súper importante que se llama Point Polygon Test, que te da la distancia del punto que
+[01:00:27] bueno, le pasás un punto amarillo al contorno que le pasás, pero medir la
+[01:00:33] distancia a un punto un contorno no es algo trivial, porque tenéis que testear
+[01:00:39] contra todo el contorno, también lo el contorno es totalmente arbitrario, entonces
+[01:00:44] digamos bueno ahí voluimos que están optimizados que lo que sea y te
+[01:00:48] calculan esa distancia, también, entonces pero si estas sentiduras de la
+[01:00:55] es decir, este es mal hecho, si son más grandes,
+[01:00:57] voy acá a admitir una distancia de ponerle hasta cinco píxeres.
+[01:01:02] Y cuando atreve a 50 píxeles porque se cortó, se lo lo que sea,
+[01:01:07] entonces se mira, mi contorno tiene que pasar por estos puntos,
+[01:01:10] o sea que la distancia del contorno a esos puntos
+[01:01:13] no tiene que superar un ombral, si supera porque salió mal, también.
+[01:01:17] Bueno, así es como se hacen testeos de producción o de lo que
+[01:01:22] aquí irás de metrología con contouring. Esta depositiva le tengo a ahorrar, le tengo que ocultar
+[01:01:32] el azalteo. Bueno, ahora la parte más fácil de contouring son las anotaciones. Otra vez esto
+[01:01:38] es Cany, esto me gusta la foto, no lo voy a cambiar, pero no son contornos. Estos son contornos.
+[01:01:43] Acá si usó la función 2 veces, porque bueno le pone ese color a la función, así que les
+[01:01:48] los colores tienen que usarlo a veces, le pasaste un contorno, le pusiste dibujar, draw
+[01:01:53] contour se es dibujar contornos y te dibujo esto y entre otra cosa le decís qué tipo de
+[01:01:59] línea que color que eres, te debe pasar el contorno, también acá te dice, le pasaste
+[01:02:05] el imagen, le pasaste la raíz de contornos que detectaste y el índice de qué contorno
+[01:02:11] quieres dibujar, con la opción de dibujar todos los contornos, que es un caso de uso bastante
+[01:02:16] como. Bueno, esta dispositiva quedó un poquito vieja porque acaba de salir el me
+[01:02:27] ha pasado OpenCV5 que mejora todo esto. Bueno, yo les digo, estas funciones son de notación,
+[01:02:33] también. El ConvexHull te genera esta cosa azul, también, que es totalmente convexa,
+[01:02:44] como si tuviera su apirita alrededor y la se estirante. Después tenés el, bueno,
+[01:02:50] el bounding rack es el rectángulo tipo de tección, que es horizontal y que agarra el contorno
+[01:02:56] completamente. Y así tenés otros, también, un desecisito que yo se los cuento en este
+[01:03:03] momento fuera de contexto, le suele ir relevante, pero estas eran funciones estrictamente
+[01:03:08] de notación se convirtieron en funciones adiméticas. Podés obtener
+[01:03:16] el resultado. Puedes ser el bound inrect y te da las coordenadas antes
+[01:03:19] no lo hacía antes, solamente lo dibujaba en la pantalla. Ahora te da las
+[01:03:22] coordenadas y después si vos querés, las dibujas en pantalla.
+[01:03:26] También eso es un poquito más, más amplio. Bueno, se terminó contornos y
+[01:03:34] Yo ahora voy a agarrar, ahora voy a arrancar esta es la parte más pesada de la clase de hoy,
+[01:03:41] porque hasta ahora estuvimos procesando imágenes, generando imágenes con los contornos ya o tuvimos
+[01:03:47] información, todavía son contornos, lo podemos dibujar, ahora vamos a procesar información, mi input
+[01:03:53] van a ser contornos, van a ser arrays, está bien, y mi output al final de todo esto yo quiero
+[01:04:02] tener un descritor de forma. Yo quiero un descritor que ya dijimos que es arbitrario, que me permita
+[01:04:11] después clasificarlo. Y yo digo tengo un montón de números, con un montón de decimales,
+[01:04:17] y tengo que hacer ver si eso representan a un cuadrado, a una estrella, a un triángulo,
+[01:04:22] o no sé la forma que ustedes se lijan dibujar y clasificar, ¿no? Obviamente el listado
+[01:04:28] de clases de categorías, los va a tener ustedes en te mano, yo quiero reconocer 5 categorías
+[01:04:35] distintas que son estas, por la que va a descubrir, va a mirar y va a descubrir lo que dibujaste
+[01:04:41] y la clase que viene le voy a explicar para que entren en un clasificador sobre esos
+[01:04:48] descriptores, ustedes van a generar hoy vamos a llegar a cómo generar un descriptor, a partir
+[01:04:54] de las formas que voy a representar adelante de la pante de la cámara, de las de la cámara
+[01:05:00] genera un descriptor. Para crecer que viene vamos a hablar de hacer un data set de
+[01:05:05] descriptores donde vamos a decir que forma corresponde a cada uno y que un clasificor
+[01:05:11] se entrene de manera que no sucesivo, bocara que le tienes un descriptor te dice a que
+[01:05:16] forma corresponde, eso clasica viene. En este momento voy a hacer el descriptor y la
+[01:05:21] parte más abstracta del acrés de hoy. Y el motivo por el cual hacemos todo este pipeline
+[01:05:27] es para abrirles la cabeza. Todo lo que ustedes ven acá no es que primero que esto se
+[01:05:32] usa, así como está, así como se lo vea, se usa. Pero a más representa un montón de
+[01:05:39] otras formas. Por ejemplo, como reconocemos caras con Deep Learning. Va a tener algo que
+[01:05:47] que te genera un embedding, un descriptor, y va a tener que clasificar después los
+[01:05:53] descriptores para saber la identidad de cada uno. Eso se lo mencioné en la clase
+[01:05:57] pasada. Bueno, entonces, reconocimiento de formas 2D. Obviamente, estamos hablando de
+[01:06:07] agresificación, me parece ver que salte de alguna de las positivas estas, ¿no? Los
+[01:06:13] características o features, esto está todo en la parte de descripción.
+[01:06:17] Entonces, se recuerden que nosotros tuvimos viendo frutas, citrus, y Gimochet, ¿qué
+[01:06:23] características relevantes te permite hago distinguirlas? Y uno dijo color y otro
+[01:06:27] eco diámetro y eso funcionaba bien para la mayoría, así a falta todavía alguna otra característica
+[01:06:33] porque algunas esas dos no eran discriminantes para algunos casos. Bueno, entonces,
+[01:06:41] ¿Cómo puedes buscar estas cosas de geometría como el Centroid y la posición del Centroid y el Centroid más a la orientación?
+[01:06:48] Si es una circunferencia no, pero si es un edipso y de una cosa largada, en qué angulo de orientación tiene?
+[01:06:56] Acá te estoy leyendo tamaño, es necesidad con cavidad de perimetro, el perimetro de contorno de una idea del tamaño,
+[01:07:03] también, el área de otra idea del tamaño, incluso características abstractas, o puede
+[01:07:09] hacer cálculos matemáticos que, mientras sean discriminantes para el casificador sirven
+[01:07:14] y ese es el camino que van a tomar, hay varias positivas que yo dejo fórmulas, me las
+[01:07:20] voy a saltear porque no hacen el proyecto, pero son ilustrativas por si alguna vez lo necesitan
+[01:07:29] lo le pica en la curiosidad, ¿no? Bueno, ésta es de positivas, me parece que los
+[01:07:36] heteréquiles borrando porque está repitiendo lo que vimos en descriptores, esto es una
+[01:07:43] presentación, esto es una presentación más antigua que tengo, si bien actualice
+[01:07:47] algunas cosas, a la que se cambie un poquito respecto, está arrastrando de cuando no existía
+[01:07:52] la presentación de descriptores, pero bien, como recuerdo, un descriptor es un vector
+[01:07:57] en evalores y se comparan por parecido por igualdad nunca va a tener un igualdad perfecta
+[01:08:02] entonces vuelo que haces es la resta el módulo de la resta y lo comparas con un brazo y así
+[01:08:10] es más de 10 o si es más de cero como uno no es un brazo bota de que ver en qué escala
+[01:08:15] te está manejando y elegir que un brazo va a usar para decir si son parecidos o no.
+[01:08:21] Bueno, entonces acá está la parte escritorial. Invarianza es el tema que nos
+[01:08:30] compete en esta presentación, porque vos tenés un cuadrado, pero ese cuadrado
+[01:08:35] puede aparecer en distintos lugares del imagen, o sea que por lo pronto sigue siendo
+[01:08:41] un cuadrado independente de su posición, o sea que el descriptor que vos
+[01:08:45] traiga a ese cuadrado tiene que ser invariante a la posición, o sea, tiene que
+[01:08:51] tener los mismos valores no importa si está a la derecha o izquierda. Tiene que ser
+[01:08:55] invariante a la rotación si lo pones en forma de esta, es que la gente que no
+[01:09:00] estuvo ingeniería le dice rombo, se desfrajo es un cuadrado. No, no es un
+[01:09:04] rombo. Ok, listo. ¿Pas qué vamos a decotir?
+[01:09:07] Este, tiene que ser invariante a la rotación, e invariante a la escala porque el cuadrado
+[01:09:11] va más chiquito, más grande, sigue siendo un cuadrado. O sea entiende, nosotros
+[01:09:14] estamos tratando de extraer la forma, pero claro, no hemos definido matemáticamente
+[01:09:19] de forma. Sabernos lo que la posición, sabernos lo que puso una ventesión que es un ángulo
+[01:09:23] de la escala, que fue un factor de la mamá va a ver como expresamos estas cosas, pero
+[01:09:29] la forma en sí, no lo vamos a definir, vamos a buscar si logró la invariancia de estas
+[01:09:34] tres cosas, lo que me queda es la forma que de mí me interesa. Todo lo que afecte a
+[01:09:39] mí y el escritoro, un escritor que es invariante de estas tres cosas va a estar afectado por
+[01:09:45] la forma. Entonces eso es lo que estoy buscando y por eso nos vamos a meter en el mundo de los
+[01:09:52] momentos. Entonces yo cuando busque imágenes para momentos no encontré, pero encontré imágenes
+[01:09:58] negatitas. Así que esta presentación es la presentación de los atletas. Reconocimiento de forma,
+[01:10:04] esto spoiler. El descrutor que estaba buscando se llama invariante de ju. Se llama invariante de
+[01:10:10] ju, porque son invariantes a la posición, a la traslación y a la rotación, a la posición,
+[01:10:18] a la escala y a la rotación. Se usa un montón, lo que pasa es que el adevimiento del
+[01:10:24] Diplierning lo empezó a dejar del lado. Eso no quita que se sigue usando un montón,
+[01:10:30] pero ya no es la única herramienta. También antes se le martelló todo, se silla con
+[01:10:35] primero te ju, ahora también reconocimiento apatente, en
+[01:10:41] el momento si quieren lo podemos discutir, pero para nuestro
+[01:10:45] trabajo práctico van a usar este escritor, con este
+[01:10:50] escritor después van a alimentar el clasificador, es lo que
+[01:10:53] vamos a usar para reconocer la forma.
+[01:10:55] Quiero explicar por qué, como es de todo lo que sí, ahora
+[01:10:58] nos vamos a meter con fórmulas, porque yo quiero que
+[01:11:02] vean cómo se diseña un descriptor, también, después van a encontrarse con
+[01:11:08] otrascriptores y tienen su formuleo y ustedes siguen ok entiendo donde van, no
+[01:11:13] es que tienen que entender cada una de las fórmulas, pero acá le voy a explicar
+[01:11:17] de por qué cosa, otra vez más shapes, esto es la tuve gorra de la otra
+[01:11:20] presentación y de estas más shapes, si vos quisieras no lo vas a necesitar para
+[01:11:27] este trabajo práctico, pero si vos quisieras podría saber aumentar tu
+[01:11:34] de escritor con otra cosa más allá de los invariantes de julos y mente de
+[01:11:38] junso en siete valores pero o si podrías disponer otros valores que te
+[01:11:43] parecen reglevantes también justo acá también más acá no están diciendo
+[01:11:50] cual pero convexida la cantidad convexida es algo que es invariante a la
+[01:11:55] escala a la rotación y a la traslación también el perímetro no es
+[01:12:01] es invariante de la escala, si es más grande,
+[01:12:03] permite la mayor, también, pero es invariante de la rotación
+[01:12:07] e invariante de traslación.
+[01:12:08] Bueno, ahí vas teniendo, te vas haciendo una idea.
+[01:12:12] En este caso, perimetro y convexidades son cosas que vuelvan
+[01:12:15] a visualizas.
+[01:12:17] Los valores que vamos a hablar en este jugo, también,
+[01:12:22] a ver, yo sigo compartiendo, ¿no?
+[01:12:25] Porque escuché un ruito del Teams por la duda.
+[01:12:29] Sí, sí, gracias.
+[01:12:32] Bueno, entonces, esto me va a ir saltiando.
+[01:12:39] Vos sabimos que los contornos pueden sacar características.
+[01:12:42] Acá tenés fórmulas, son las que le dije,
+[01:12:44] la disciplina que iba a saltear, también.
+[01:12:47] Hay montones de cositas que voy a poner estrayendo
+[01:12:51] de la imagen de los contornos.
+[01:12:53] La presentación se va a momentos.
+[01:12:55] El término viene de momentos de dinero.
+[01:12:58] Si usted se enfísica uno o la única física que tuviera,
+[01:13:01] no sé este no tuvieron varias en física uno que es mecánica y en algún momento
+[01:13:06] en algún momento vieron momento también momentos pero la palabra es tinta
+[01:13:12] bueno en un momento en un momento de tiempo sino momentos de inercia bueno
+[01:13:16] momento en rigor es una forma matemática también que se usa momento de
+[01:13:22] inercia y la vamos a usar nosotros en estos momentos son evoraciones ponidómicas
+[01:13:27] y ahora te voy a decir de qué tipo, también. En la física, usted usaba un momento de inercian de orden 2.
+[01:13:35] Nosotros vamos a usar de orden 3. Bueno, tenemos cuatro tipos de momentos y vamos a recorrer cada uno,
+[01:13:43] los espaciales centrales, centrales normalizados para llegar finalmente a los invariantes de ju.
+[01:13:48] Los primeros 3 te da una función que llama Moments y después de otra función se llama Hue Moments,
+[01:13:57] le das lo anterior como argumento y te genera el cuarto que es el decritor que
+[01:14:02] nosotros estamos buscando, bueno todo está relacionado así que le vamos a la
+[01:14:08] fama moments y la función que te deras un contorno y te genera a pinte y
+[01:14:14] genera bueno ya va a aparecer lo que te genera todos los momentos los los
+[01:14:18] primeros tres tipos de momentos, lo aplicas a contorno se publica a un imagen
+[01:14:23] un imagen miraria, es más lento, lo mejor es que ya trajiste los contornos de la imagen
+[01:14:28] y cuando calcula los momentos lo hace con el algoritmo que está optimizado para hacerlo
+[01:14:35] super rápido. Esta es una objeto literal, es un objeto sin método, es un objeto que tiene
+[01:14:46] propiedades, las propiedades son estas, se llama así M00, M00, que representan M00,
+[01:14:53] sub 1, 0, bueno, se llama M, Mu y Nú, ¿no bien? Momentos espaciales, momentos centrales y
+[01:15:00] momentos centrales normalizados, vamos a empezar por los momentos espaciales, o sea, ¿cómo
+[01:15:06] se calcula momento? Bueno, de manera genética es esto, nosotros usamos en imagen binaria,
+[01:15:11] entonces lo reducimos así y le voy a explicar cómo se entiende esta presión. La sumatoria
+[01:15:18] de las coordenadas de los píxeres del blob, o sea, interiores al contornos, entonces para
+[01:15:27] cada coordenada, a la interior del contornos, cada coordenada aquí sí, la fórmula va
+[01:15:34] a su monómio esto, la coordenada x la voy a elevar a la constante y que es la de su índice y
+[01:15:43] si la coordenada y griegan la voy a elevar a la constante j,
+[01:15:47] o sea que el m1 1 significa x por y, el m2 2 significa x acuadrado y acuadrado.
+[01:15:54] Se entiende, o sea, entiende lo que estoy leyendo, no tiene la menor idea para que sirve
+[01:16:00] y no quieren poner el mayor esfuerzo, o sea, y no se preocupen porque eso se lo voy a decir.
+[01:16:05] y majota es el orden, o sea que si acadice 1 o 1 es de orden 2, si acadice 2 0 es de orden 2,
+[01:16:14] vamos a llegar hasta orden 3, o sea que el que 2 2, que yo le dije que 2 de 4 no es ese
+[01:16:20] no vamos a llegar, o sea que la suma de majota da en 3 0 y 3, ok, esa es la forma matemática,
+[01:16:28] todos se entienden la fórmula, no tienen la menor idea porque sirve,
+[01:16:33] vamos a empezar por lo más fácil momentos espaciales solo nos interesan orden 0 y 1
+[01:16:39] orden 0 hay uno solo cuando es 0 y 0 la pregunta es qué te da x a la 0 por y a la 0 a ver
+[01:16:50] quiero respuestas no podemos seguir si no me reponde en eso como un o uno y la somatoria
+[01:17:06] de uno que me da, ¿Uner? No, no es la subatoria de una, subatoria donde, el kilo, ah, y estoy escuchando
+[01:17:19] rebajito, hay alguien allá en el fondo, eso puede sentado muy atrás, no se te escucha bien.
+[01:17:31] ¿Te perdiste?
+[01:17:35] X1 y 1, ¿eh? ¿Vena? ¿Vena? ¿Vena? ¿Vena? ¿Vena? ¿Vena? ¿Vena? ¿Vena? ¿Vena?
+[01:17:39] Xa la 0, poría la 0 da 1, o sea que todo esto, creo que vea mi malo, ¿no? Todo esto da 1.
+[01:17:47] Entonces la sumatoria de un valor que dice 1, ¿qué me da? Yo sé que le pongo una potencia
+[01:17:58] y más cuando te lo multiplica por esta potencia ahí, ahí abandona, dice lo que esto
+[01:18:02] para mí, esta no es la carrera que se olegí, pero el problema es la sumatoria
+[01:18:10] donde que es lo que recorremos con esa sumatoria. Bueno, Alexio Tomano, es la primera vez,
+[01:18:23] la primera vez en 10 años que esta pregunta no tiene respuesta, no me pasó nunca, estamos
+[01:18:33] descubriendo nuevas fronteras. Uno segundo más le voy a dar a alguno, puede suponer, no porque ya se
+[01:18:41] que se reconegan. Rápido, muchos de ustedes están pagando cloud o Gemini ahí. Utilicenlo por
+[01:18:47] lo menos. Sí, pregúntenle a cloud, cheque y me da la soja. Se está escrito a qué la diamos
+[01:18:54] sintiva. Ok, ok. Bueno, sorry, yo te digo, mira, no, no, no, no, no, no, no, no, no, no, no,
+[01:19:14] porque como está aquí, yo, no puede ser, o sea, no puede ser, o sea, no puede ser, o sea,
+[01:19:17] Sí, ese área.
+[01:19:19] Ah, perdón, ¿por qué?
+[01:19:21] La pregunta, ¿por qué?
+[01:19:25] Porque si vos tu sumatoria dijimos que íbamos a poner
+[01:19:28] las coordenadas de cada písel dentro del contorno.
+[01:19:32] Entonces si vos te posicionase en cada písel dentro del contorno
+[01:19:36] y la cuenta que des uno en cada písel suma todos y te da el área.
+[01:19:40] También en medio obvio.
+[01:19:42] Pero bueno, hay que activar la neurona, ¿no?
+[01:19:45] si no. Esa parte desde acá no la puedo hacer, o sea, todavía no salió, estamos todos
+[01:19:51] esperando este aneo de Matrix que se enchufa el coso acá atrás de la cabeza y te ven
+[01:19:56] a los conocimientos, ¿no? Lamentablemente las neurociencias ya dijeron que eso es imposible
+[01:20:02] también. Yo, ahora, y un poco también para que no crean que, hasta bien sale la inteligencia
+[01:20:07] artificial y un montón de pibes que programaron en Basic y que quedaron los soletos, pero
+[01:20:13] y hicieron tomografías a alumnos universitarios antes y después de una clase de una clase de
+[01:20:22] danza y alumnos que empezaron a hacerse, digamos, que pusieron cabeza. Y se notaba una enorme
+[01:20:28] reconfiguración del cerebro, o sea, la neuronas y eso requiere esfuerzo, o sea, cuando
+[01:20:35] ustedes se cansan, tratando de entender, algo está pasando a la cabeza, están consumiendo
+[01:20:40] si dije no, están consumiendo, es más buena estar el gazar, de verdad le digo. Entonces se
+[01:20:48] requiere esfuerzo para aprender, ¿no? Eso de enchufarte acá hay que descare lamentablemente
+[01:20:53] no es viable, lástima, porque el esfuerzo no es un objetivo acá, después lamentablemente
+[01:21:01] le esfuerzo esa de los que hay que poner y digo lamentablemente, pero no queda otra.
+[01:21:06] bueno el voc, el momento 0, 0 es el área de la mancha. Esto de abajo ya se le perdí completa
+[01:21:16] fe a ustedes, así que se los voy a decidir directamente. Esta es la formulita, digamos, agarras
+[01:21:21] el momento de orden 1 y 2, el 1 0 y el 0 1, o sea, el 1 0 es si que acá queda x solamente
+[01:21:28] y el 0 1, o sea que acá queda solamente y, también, si voces eso y dividís por el área
+[01:21:34] te da el varicentro, el centro y el centro de masa.
+[01:21:39] Tu te tiene el concepto del centro de masa de física.
+[01:21:43] Y el tema es que el centro de masa es como se queda pegado a la figura.
+[01:21:48] O sea, si vos te la da la figura, el centro de masa va junto con la figura.
+[01:21:51] Si vos las rotas va junto, si vos las calas, mantiene su lugar relativo.
+[01:21:56] Esto es un excelente punto para elegir como posición de tu blog, de tu figura.
+[01:22:05] Por que hubo decir, no, voy a agarrar el pixel de más arriba.
+[01:22:08] Pero si yo tengo un cuadro y lo estoy girando, el pixel relativo,
+[01:22:13] que está más arriba, cambia según como lo giras.
+[01:22:16] En cambio, el Centroide mantiene su posición relativo.
+[01:22:19] o alísimo. Usamos, elegimos el centroide como el mejor, si yo quiero decir la localización
+[01:22:25] del blog, te voy a estar coordenada. Pues yo te digo check, decíme la localización
+[01:22:29] del blog, vamos a decir check, de cual de todos los píxeles, porque tiene muchas localizaciones,
+[01:22:33] cada píxeles tiene una localización centroide, usemos eso para decir, el centroide está
+[01:22:38] acá, listo buenísimo. Entonces, los momentos espaciales nos sirven para medir el área
+[01:22:47] y para identificar el centro y de que es la localización.
+[01:22:51] Disto, nos quedamos ahí.
+[01:22:52] Ahora vamos a ver qué pasa con el siguiente es orden.
+[01:22:54] Momentos centrales tienen sentido de orden 2 en adelante.
+[01:23:02] Ahora van a ver por qué.
+[01:23:03] ¿Qué es el momento central?
+[01:23:04] El la mismo forma anterior, aunque ustedes no lo crean, está bien.
+[01:23:08] Pero en vez de x, ponemos x menos x promedio,
+[01:23:11] que es el vari centro y menos y promedio.
+[01:23:14] Lo que estamos haciendo es convirtiendo
+[01:23:17] las coronadas de los píxeles relativas a su centroid. Entonces, si cuando vos
+[01:23:23] mover la figura el centroid también se mueve junto, entonces los píxeles relativos
+[01:23:28] estos valores van a ser invariantes a la traslación. Los momentos centrales es la
+[01:23:34] manera de darle invariancia a la traslación. O sea, es el mismo cálculo de
+[01:23:39] momentos, pero ahora el 0, 0 en vez del 0 sobre la imagen es el centroid.
+[01:23:44] si la mancha se mueve, el resultado es imerente de atracción y ahí donde empieza a tener relevancia,
+[01:23:49] también, por lo menos como de scripto, por lo menos imerente de atracción. Entonces, ¿qué pasa?
+[01:23:56] Los momentos de orden 1, como están referidos al propio barricentro, da cero. Ok, pues sí,
+[01:24:03] creanme, es así, no es tan difícil, pero es así. El momento de orden 0 que igual,
+[01:24:07] pero yo lo tenía de los momentos espaciales, así que los únicos que importan son los de orden 2
+[01:24:13] y de orden 3, que anda a saber qué significa, no importa. Lo que te dicega es que la fórmula calcula
+[01:24:23] los momentos espaciales sobre el contorno, pero después los momentos centrales se calculan a
+[01:24:29] partir de los momentos espaciales, no es que aplican la fórmula anterior al blog, sino que
+[01:24:36] lo va deduciendo tanto relacionado. Ahí acá está la fórmula, a nadie no importa, ya están hechas,
+[01:24:41] también, pero están todas relacionadas. Esto me lo voy a pasar, vos puedes usar los
+[01:24:47] momentos centrales para determinar un ángulo de orientación y excetricidad,
+[01:24:52] el camino implica formado una matriz, calcular el auto vetor, todo te lo hacen, las
+[01:24:57] formuladas, pueden, eigan, eigan baño, eigan vector, eigan, acá está la formula que dice
+[01:25:05] agarco a la gente, pero lo que hay cual es computadora o escribirse la formulizata. Si en
+[01:25:11] a un momento les interesan sacar características geometricas tienen que meterse con estas
+[01:25:15] fórmulas. Acá lambda unidos son los dos autobalbres. Lo pasé rápido, no explique nada,
+[01:25:22] no explique nada. Me digo, está ahí como referencia y un pedacito de código para que
+[01:25:27] que vean que no es tan difícil, también hay que imponer la matriz anterior y ya te da
+[01:25:36] los autoberes y los autobectores, bueno, momentos normales recién vimos los momentos centrales,
+[01:25:45] los momentos normales dividen por el área, curiosamente necesitan un exponente porque
+[01:25:52] si eres de, bueno, me importa, tiene que meterse con un poquito de matemática.
+[01:25:58] Esto te normaliza respecto del tamaño, también, y por lo tanto te da invarianza a la
+[01:26:05] escala. Si la forma es más grande o más chica, el momento normal va a dar el mismo valor,
+[01:26:12] esa es la idea, entonces al normalizar que es dividir por el área, estamos logrando
+[01:26:19] un invariante a la escala, ya conseguimos un invariante de traslación y ahora además tenemos
+[01:26:24] un invariante a la escala, las dos cosas con los momentos normales y eso es el último
+[01:26:29] momento, bueno esto me lo voy a saltar estratégicamente. Conceptualmente, esto está, si no
+[01:26:37] es algo, no se van a hacer expertos en momentos, pero el momento orden 0 interesa el espacial
+[01:26:46] que te da el área y el orden 1 te da el centro de idea, está bien. Los momentos de orden
+[01:26:52] 2, conseguís orientaciones de centricidad y el momento de orden 3, en casula más información
+[01:26:58] sobre las formas, sobre si tiene forma de banana, no mucho más, ¿eh? No te distingue
+[01:27:03] una circunferencia en la engranaje, no están todos los detalles de cualquier forma
+[01:27:08] literaria en casulado en 7 dimensiones, en 7 valores, sino que en casura forma que se
+[01:27:17] puede que te va a permitir a vos distinguir los que vos vas a hacer.
+[01:27:21] Bueno, entonces invariante de jugo en el año 48, mucho antes de la visión artificial
+[01:27:28] puteo matemático, y jugo que es un chino, ahora no me acuerdo, resolvido un problema
+[01:27:39] matemático, digo cómo uso momentos de orden 2, específicamente momentos normales,
+[01:27:46] para lograr la imparenza a la rotación. Y lo logro y tiene la fórmula, si tienes la
+[01:27:53] función para calcularlo a partir de los momentos normales y este es el ejemplo, acá están
+[01:27:59] los 7 valores h de j de 0, 6 y esto es así, en la primera columna tenemos un imagen y a la
+[01:28:09] derecha están los 7 valores del inmediato de j. La primera es una detraca, la segunda es
+[01:28:16] una letra s, y vos ves que los valores no son tan distintos, pero son distintos, acá
+[01:28:22] 22 a que dice 19, está bien, acá dice 5,7, que dice 6,5. Bueno, después fijate, el conjunto
+[01:28:31] de valores tiene que permitir distinguir una letra cada de una letra a ese. ¿Qué pasa
+[01:28:36] cuando vos trasladas la mancha? Los invariantes de juso en exactamente iguales, también, después
+[01:28:44] voy a explicar unos detalles. ¿Qué pasa cuando vos escalás? Los invariantes de juro
+[01:28:50] variando un poquitito, pero siguen siendo muy parecidos a la S y más diferente que la K,
+[01:29:00] o sea que todavía te sirve para clasificar 171S, no es una K, ¿qué pasa cuando borrotas? y todavía
+[01:29:09] variando un poquito, hay un poquito, ahora explica por qué, pero te siguen siendo discriminantes,
+[01:29:17] el conjunto de los 7 valores te permite distinguir una S de 1 acá y por último está el fenómeno
+[01:29:23] de reflexión que es una transformación de válida a nosotros no nos interesa, por
+[01:29:28] cómo estás buscando traslación y rotación, hay un solo los 6-6 invariantes de juz que son
+[01:29:36] invariantes a la reflexión y hay uno solo que lo único que le cambias el signo, ¿tobien?
+[01:29:43] si yo se da el paso, si tu figura es simétrica, entonces este valor da cero, de manera que
+[01:29:50] sí cambia el signo, es el mismo valor, también, bueno, más o menos se entendió entonces
+[01:29:58] cómo son los invariantes, no son números a los que vos quieras interpretarlos mirando
+[01:30:02] los, también, si son, sino que son vectores, son descriptores para alimentar un clasificador
+[01:30:10] y que separe los que son ese, de lo que son ca, porque vuelvo a enseñar,
+[01:30:14] es decir, un montón de, le vas a tirar un montón de decritores de una de
+[01:30:17] letra S en distintas posiciones y orientaciones y de las otras letras.
+[01:30:22] También, y yo puedo hacer clasificadores y che, separarse.
+[01:30:25] Este espacio de descripción, de siete, de siete dimensiones, separarlo,
+[01:30:30] no sé, clasificarlo.
+[01:30:32] Está bien, cosa de que en el futuro, ¿a cuándo aprendes?
+[01:30:35] En el futuro, eso te tiro lo simariente de ju, de otra letra S,
+[01:30:40] y el segtasifico de entrenado dice si se parece más una S que un acá. Bueno acá tienen la
+[01:30:47] fórmula, si quieren calcular los inmolentes de juego a partir de los momentos normales acá
+[01:30:53] tienen la fórmula, o sea jugo era un tipo muy aburrido, también en el año 48 la televisión
+[01:30:58] color no existía y me imagino que en China tampoco la gran cuina era así que no había
+[01:31:02] televisión, ahí se los chinos se entretenían haciendo estas cosas, por suerte, ahí el asiso.
+[01:31:08] Bueno, acá se terminó, creo que se terminó, que se entendió el objetivo de todo esto, después
+[01:31:17] se le va a explicar bien cómo es el trabajo práctico, pero vieron cómo es por adentro, es la única vez,
+[01:31:23] nunca más vamos a hacer lo mismo, vieron cómo se armó un decriptiono, también,
+[01:31:28] pues lo puedes armar como aquí era, no, le pone el color de la fruta, el diámetro,
+[01:31:32] pero en este caso específicamente se está buscando invariantes para detectar formas,
+[01:31:42] pero específicamente o tres invariantes. Y ahí ves cómo es la formulación para lograr
+[01:31:47] eso, la formación matemática. Quiero recordarles la definición veía superficial porque esto no
+[01:31:53] es algo estricto. Descriptor es cuando vos lo diseñan con fórmula en bedings, es lo mismo, pero
+[01:32:00] cuando un mecanismo a Deep Learning los generó a partido de entrenamiento, también. No vimos
+[01:32:06] de Deep Learning. Vamos a usar Machine Learning y acá vamos a separar las agajeras para
+[01:32:11] ser un clasificador, les voy adelantando. Cuando pasen a clase, le va a quedar reobio,
+[01:32:17] le va a ser reobio en la diferencia, pero en Machine Learning entre un escritor y sale,
+[01:32:22] por ejemplo, una categoría. En Deep Learning entre la imagen, también, el Deep Learning
+[01:32:29] se ocupa de la parte de descripción. Eso es lo súper importante. Cuando lleguemos al
+[01:32:36] deep learning, van a entender, van a ver, vamos a dar los mecanismos, vamos a dar todo.
+[01:32:42] Primero, vamos a ver cómo usarlo y más adelante, cuando ya usted tenga su trajo práctico
+[01:32:46] en uno de los sistemas de teoría, nos vamos a meter en las profundidades en cómo funciona
+[01:32:50] todo eso. Bueno, entonces yo ahora déjenme ordenar un poquito, voy a empezar a cerrar
+[01:32:56] positivas, y acá tengo esto. Yo creo que voy a hacerlo siguiente. Esta es una, vamos a dar un
+[01:33:10] poquito contexto. La visión artificial de manera clásica se da, viene del siglo 20, no de la
+[01:33:25] parte matemática. Hay una, sigue ven una tendencia académica, a dar los cosas clásicas,
+[01:33:31] depende la formación del profesor. Si el profesor viene de exactas o de ciencia básica,
+[01:33:35] te va a empezar todas las fórmulas. Si viene más como nosotros del ingeniería en informática,
+[01:33:41] va a buscar cosas aplicables, aunque no lo crean todos estos que estamos haciendo es aplicable.
+[01:33:47] Está bien, aplicable, soltóle en informática para ser algoritmo con los trajos prácticos,
+[01:33:53] son evidencias de ellos. Entonces, hay típicamente un matemático, te empieza a
+[01:34:01] filtros y en un momento te mete compresiones morfológicas así de prepos. Esta
+[01:34:08] presentación tenía un objetivo muy concreto que era quitarle ruidos a las
+[01:34:14] imágenes binarias. Ahora qué pasa? De hace tres o cuatro años para acá las
+[01:34:19] cámaras de los celulares, mejoraron muchísimo y todo el ruido que la parecían,
+[01:34:25] las imágenes binarias, ahora ya no aparecen. Por lo tanto, usted no lo necesita, está bien.
+[01:34:31] Operaciones morfológicas es algo que viene del siglo XX y se sabe un montón para lograr
+[01:34:37] cosas que hoy se logran de maneras mucho más avanzadas. Entonces, sigue siendo una técnica
+[01:34:43] a Valida, sigue teniendo su ámbito específico de aplicación, pero yo voy a saltir a Valida
+[01:34:51] depositiva a esta presentación para ir específicamente a eliminación de ruido, que es un tema
+[01:34:57] que quizás no lo están necesitando, pero por lo menos les queda el concepto, ¿de acuerdo?
+[01:35:02] Está bien, yo a propósito decidí no borrar las diapositivas, porque por lo menos queda
+[01:35:09] una presentación de referencia no no en la grabación de la clase de hoy, pero en la presentación,
+[01:35:15] no por si alguno quiere ir a alguna idea positiva a encontrar.
+[01:35:19] Este es el problema, creo que se entiende que hay ruido, esos puntitos blancos son indeseables.
+[01:35:25] A ver lo que te interesan son las manchas blanches, estos son monedas, las manchitas blancas,
+[01:35:31] también. Y acá hay algo raro, son mis introducidas jergas, estos son elementos estructurales,
+[01:35:37] Entonces, tenemos que partir de la primera imagen de la izquierda y lograr el apud de la derecha,
+[01:35:45] las superaciones morfológicas lo hacen, lo hacen muy fácil y son muy eficientes, sirven para
+[01:35:51] muchas otras cosas, pero no las voy a recorrer porque dejaron de tener relevancia en
+[01:35:57] misión artificial. Bueno, hay dos superaciones básicas que se llaman
+[01:36:00] diretación de erosión, que lo aplica, acá tienes una imagen que dice morfology, si vos la
+[01:36:06] erosionaste queda más finita y si la dilataste, la primera, la dilataste queda más gorda,
+[01:36:11] ese es el resultado. Los nombres lo dicen, la dilatación, la cinfla, la erosión, la
+[01:36:16] quita. Si ustedes, si, primero, entre ustedes, ustedes usan dilataciones y erosiones y saben lo que
+[01:36:23] espero bueno, la mayoría no lo hace así que bueno, acá van a aparecer muchos ejemplos, si vos
+[01:36:29] dilataste esto, las manchas se juntan, también, entonces claro, hay que ver si vos querías que se
+[01:36:35] juntos, más vale que sí, porque si no, no lo hagas, digamos. ¿Qué es? ¿Cómo funciona?
+[01:36:40] Bueno, esta es la imagen original, a la derecha está la imagen dilatada, esto que está
+[01:36:45] acá, esta matriz de 3x3, que en este caso tiene los nuevos píxeles blanco, esta matriz
+[01:36:50] de 3x3 se llama elemento estructural, específicamente en este caso es un cuadrado de 3x3. Podría
+[01:36:57] tener otra otra, los píxeles podrían ser blanco o sin héroe y tener otra forma. Entonces
+[01:37:03] yo voy a diletar la imagen del izquierda con el este elemento estructural de 3x3 y es como
+[01:37:09] si yo aplicara este cuadradito de 3x3, si era como un cejito blanco y lo aprieto en cada
+[01:37:16] pixel blanco, entonces este punto rojo es la misma coordenada a la izquierda de la derecha,
+[01:37:22] pero como yo le puse el cejito blanco de este elemento estructural lo apreté alrededor
+[01:37:26] de este punto rojo quedaron los ocho pixels en blanco, como este está en el borde se
+[01:37:33] pintaron todos estos acarredor, como esto lo aplico a todo lo pixel lo blanco que
+[01:37:37] llega acá se infla la imagen de la imagen, yo bueno espero que les haya entendido y si no
+[01:37:41] después lo piensan, también eso lo que hace la iratación, el efecto se nota en los bordes
+[01:37:47] porque si vos ponés el elemento de tu lugar en este pixel ya está en blanco en los
+[01:37:54] arredor, no va a cambiar nada, también si el elemento de estructura les más grande se infla
+[01:38:00] más, se entiende? Bueno, entonces acá hay varios ejemplos de con, estoy diretando con
+[01:38:10] este elemento de tutura de informar esto, con esto se queda como un poquito más gordo,
+[01:38:14] no puedes dibujarlo, esto es una circunferencia de, se me fue el nombre, es una circunferencia
+[01:38:25] pixelada, entonces si volvemos con un cuadrado, el vértice te queda bien puntiado, si lo
+[01:38:30] así con una circunferencia pixelada en los wordes, el vértice, perdón, te queda más redondeada.
+[01:38:36] Es un poco de los efectos que vos conseguís.
+[01:38:40] No es muy relevante para lo que nosotros queremos hacer. Es parte de la teoría profunda del asmento.
+[01:38:45] Más ejemplo de qué pase con dilatación y erosión usando distintos elementos estructurales en una imagen.
+[01:38:54] Bueno, erosión es lo mismo, pero al revés. O sea, hubo vas a aplicar a todos los puntos,
+[01:39:00] los píxeles negro, le vas a aplicar el secito y lo vas a amanchar todo en negro. Entonces,
+[01:39:06] en los bordes, vas a invadir la zona blanca y te vas a quedar más fino. Por eso se le
+[01:39:10] llama erosión, ¿de acuerdo? Al más ejemplos de que pasan con la erosión, acá hay una
+[01:39:18] aplicación media tirar los pelos. Esto era parte de un trabajo práctico que hacíamos
+[01:39:24] antiguamente. Bueno, acá con la decional, no me acuerdo, creo que no lo hicimos con
+[01:39:29] la decional, lo hacía yo en la otra no lo hacía. Si vos se emocionás, lo suficiente,
+[01:39:37] fíjate vos acá, el problema tiene es un montón de monedas, pero es una sola mancha.
+[01:39:42] Y si vos se emocionás lo suficiente, sabiendo que son monedas, sabiendo que se puede emocionar,
+[01:39:47] te pueden quedar estas manchitas separadas y ahora vos puedes aplicar contornos y renovarlas
+[01:39:54] y contar cuántas monedas tenías, también.
+[01:39:57] Es un ejemplo, en algunos casos sirve,
+[01:39:59] pero no es de uso tan general como parece, ¿no?
+[01:40:04] Bueno, entonces vamos a ir a restauración de imágenes
+[01:40:06] y ve que aquí está ruido.
+[01:40:08] Bueno, hay una función que hace lo de arriba,
+[01:40:10] que se llama Open y otra que se llama Close,
+[01:40:13] que hace lo de abajo, también.
+[01:40:15] Lo de Close es porque es como que te cierre
+[01:40:19] a los agujeritos negros.
+[01:40:21] Y Open es la acero contrario,
+[01:40:23] O sea, que te borra los puntitos blancos, está bien.
+[01:40:27] Y como se logra, es una erosión seguida una alegración.
+[01:40:30] O sea, cuando erosionas, esta imagen la jota queda
+[01:40:34] la jota adelgaza.
+[01:40:36] Ahora, ¿qué pasa con los puntitos negro?
+[01:40:39] Cuando vos erosionase esa imagen.
+[01:40:42] Con los puntitos blancos, perdón.
+[01:40:43] Con los puntitos blancos, ¿qué pasa cuando...
+[01:40:46] Si vos erosionas la jota no está dibujada acá,
+[01:40:48] te queda más finita.
+[01:40:50] ¿Y qué pasa con los puntitos blancos?
+[01:40:52] es una idea. Bueno, por ahí desaparece. Desaparece, gracias. Desaparece también. Entonces que
+[01:41:03] pero te quedas con la jota adelgazada. Entonces, puedo después hacer una dilatación y la jota
+[01:41:09] recupera su espesor original no hace exactamente igual, pero se parecía, pero los pícenes
+[01:41:14] que desaparecieron ya no se hidratan. Entonces, limpiaste los puntitos blancos. Si haces
+[01:41:19] arreves, primero de hidratas y después de erosionar la jota en gorda, los puntitos negro desaparecen
+[01:41:25] y después la vergasas y te queda esto, también.
+[01:41:28] Entonces, cuál de las dos usaría a vos si tenés que eliminar
+[01:41:32] ruido de tu imagen?
+[01:41:34] Esta es una pregunta, la primera.
+[01:41:38] La primera, ¿a esta?
+[01:41:39] A ver, boten.
+[01:41:41] La primera o la segunda?
+[01:41:43] Depende más del ruido también, ¿no?
+[01:41:45] O sea, la base de la ruido.
+[01:41:46] O sea, la dos.
+[01:41:48] O sea, la dos.
+[01:41:51] Y te saca todos los ruidos, también.
+[01:41:53] Obviamente, si solo tenés el ruido de arriba,
+[01:41:55] o sea, de arriba, si solo tenés el trabajo,
+[01:41:56] abajo, específicamente, aplicada una y depo aplicar la otra. Y con eso elimina el
+[01:42:01] ruido y digamos terminó lo que yo tenía para contarles de voy a pasar rápidamente las
+[01:42:06] dispositivas que quedan, también, esta reducción de ruido. Hay operaciones morfológicas
+[01:42:11] antiguamente en la manera de leer pasaporte, el texto de abajo, el pasaporte era con un
+[01:42:16] tipo de letra más grande y especial y solo tenía número, número, número si detras,
+[01:42:21] pero menos denso, quiero dar arriba para ser leído por computadora. Y las operaciones morfológicas
+[01:42:26] te permitían votir a hacer parte de cualquier posición en imagen y, bueno, vertical, pero te
+[01:42:31] detectaba en la zona y los reglones, no están todas las imágenes que ilustran, pero
+[01:42:37] aparecer unas barras blancas, exactamente en los reglones, donde está ese texto, también,
+[01:42:45] esto se lo llama gradiente, porque te detecta el borde, vamos a ver con filtros, formas
+[01:42:49] mucho mejores para detectar los borde y el interés que puede haber para hacer eso también,
+[01:42:55] hay aplicaciones muy específicas, estas manchas blancas te dicen dónde está rota el
+[01:43:02] enambrado, pero la trampa es que el enambrado tiene que ser perfecto, o sea, si vos sacar
+[01:43:06] la foto un enambrado no funciona, tiene que ser exactamente la misma distancia píxida
+[01:43:10] dentro del lado, entonces me dio una trampa esto, y voy rápido, bueno acá tenés para detectar
+[01:43:17] una letra E que puede ser una captura pantalla, donde todas las letras cuando he terminado
+[01:43:22] font y tamaños son exactamente iguales, entonces puedes usar elementos estructurales con
+[01:43:28] algoritmo y semá gitmys que te los resalta ahí donde los encontro. Esto se los quiero
+[01:43:36] mencionar porque esto sale de internet, estaban tutoriales, esto es cuando le decís un tipo
+[01:43:41] que no es, no es nada académico y te dicen que tiene que ser un tutorial, no saben
+[01:43:46] ni qué es lo que tiene que enseñar. Entonces el tipo agarra la funcione y se mira a poner
+[01:43:50] elementos estructurales de la barra de plazamiento y mirar los efectos que haces. Bueno, no es para esto.
+[01:43:56] Los elementos, como hay muchas funciones de OpenCV que la aplican a la imagen y generan
+[01:44:02] efectos. Pero si quieres este efecto, tenia aplicaciones para hacer efectos mucho mejores,
+[01:44:06] lo peor es que no son indicativos para que se usa. Yo les acabo de explicar cómo reducir
+[01:44:14] ruido, eso es bien concreto. Estos son tutuériles que confunden más de lo que te enseguen,
+[01:44:19] está bien, salvo que voy a conozcas del tema y quiera venir a ver qué efectos, efectos
+[01:44:25] produce, esto parecido, el libro, esta es la tapa con libro que se llama Digital Image Processing
+[01:44:34] y te pone una mariposa y le aplica operaciones morfológicas no sobre imágenes minarias
+[01:44:42] sino que es una imagen monocromática y te genera estos efectos.
+[01:44:47] Entonces digo, mira, es muy artístico, pero usted está engañando en cuanto a para
+[01:44:52] aquí puede servir esto, porque bueno, venís a buscar efectos.
+[01:44:56] Buah, listo, esto es medio irrelevante, hay un montón de funciones, te explican los distintos
+[01:45:02] algoritmos que tenés, así como el Cresuo, vos podies elegir el Baina, el Baina de
+[01:45:10] y había otros abrimos que no que los omitimos. Bueno, acabos puedes elegir qué tipo de
+[01:45:15] operación moroforógica queréis hacer, elegir mis, el top hat, bueno, el open clouds, etcétera.
+[01:45:21] Listo, esto se termino, pues estas de positiva están sobrando. ¿Qué hacemos, Alessio?
+[01:45:28] Yo la verdad que pensé que me sonado en 10 minutos porque fui rápido. Lo logré,
+[01:45:33] usualmente no, típicamente yo no llegaba, estuve quitando, aparte que hice rápido esa
+[01:45:39] presentación estuve mejorando las otras así que ahora está una pinturita en la
+[01:45:44] claseta, logra el objetivo en tiempo y forma, creo que no comienen empezar con
+[01:45:51] el machine learning de la clase que viene, para empezar le quedó por la mitad lo
+[01:45:55] voy a dejar acá, así que he listo, si tienen preguntas pregunten pero yo ya le
+[01:46:01] voy dando el micrófono a Lesio y voy a dejar de grabar, así pueden
+[01:46:06] preguntar tranquilos.

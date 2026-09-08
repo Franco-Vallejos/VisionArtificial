@@ -1,25 +1,14 @@
-# Ignorar todo excepto los archivos que forman parte de la entrega.
-*
+# Caches y entornos locales reconstruibles.
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.venv/
+**/venv/
+**/venv-*/
 
-!.gitignore
-!TP1/
-
-# Notebook de Google Colab.
-!TP1/deteccion_objetos_mediapipe.ipynb
-
-# Scripts de Python.
-!TP1/deteccion_objetos_mediapipe.py
-!TP1/detectorRostroConBlur.py
-
-# Imagenes utilizadas para probar la deteccion.
-!TP1/Imagenes/
-!TP1/Imagenes/**
-
-# Material de la segunda entrega. Se versiona completo, salvo artefactos locales.
-!TP2/
-!TP2/**
-TP2/**/__pycache__/
-TP2/**/.cfg/
-TP2/**/video/*.mp4
-TP2/**/.DS_Store
-TP2/**/__MACOSX/
+# Metadatos y archivos temporales generados.
+**/__MACOSX/
+**/.DS_Store
+tmp_*

@@ -1,0 +1,4431 @@
+1
+00:00:03,120 --> 00:00:07,440
+bueno si si si no lo escucharon me van a escuchar de ser siempre lo mismo esto
+
+2
+00:00:07,440 --> 00:00:13,250
+tiene un paso volesto que cuando grababa arranca la transcripción y entonces
+
+3
+00:00:13,250 --> 00:00:17,050
+yo tengo que esperar a que me parezca la opción de detener la transcripción
+
+4
+00:00:17,050 --> 00:00:23,380
+bueno está listo perfecto bueno lo que vamos a hacer ustedes hoy
+
+5
+00:00:23,380 --> 00:00:28,660
+presentan el primer tp de mía pipe también no esta ley así que después
+
+6
+00:00:28,660 --> 00:00:33,100
+lo van a mostrar o sea espero que se han tenido tiempo para hacerlo la verdad que
+
+7
+00:00:33,100 --> 00:00:36,840
+es un trabajo ejerado, es un trabajo divertido y uno sabe cómo se
+
+8
+00:00:36,840 --> 00:00:40,380
+invierte, no lo voy a, no voy a decir que todo el mundo se tiene que
+
+9
+00:00:40,380 --> 00:00:42,940
+divertir con eso, pero es bastante peor, ¿no?
+
+10
+00:00:42,940 --> 00:00:46,180
+Bueno, ¿qué haces? ¿Ares yo? ¿Cómo andas?
+
+11
+00:00:46,180 --> 00:00:49,780
+Ministro, yo pensé que te había saberido.
+
+12
+00:00:49,780 --> 00:00:54,580
+No, estaba justo con el trabajo del anterior grupo, de este grupo
+
+13
+00:00:54,580 --> 00:00:55,540
+de alumnos.
+
+14
+00:00:55,540 --> 00:00:59,020
+Ah, cierto, cierto, buenísimo, está espectacular, perfecto.
+
+15
+00:00:59,020 --> 00:00:59,780
+Perfecto.
+
+16
+00:00:59,780 --> 00:01:02,900
+Ah, bueno, les comentábamos, entonces hay un grupo de alumnos
+
+17
+00:01:02,900 --> 00:01:09,560
+que no se pudo notar en la materia y hizo una reloj con alesio que les va fuera
+
+18
+00:01:09,560 --> 00:01:13,880
+horario de clases les va a ir presentando lo mismo trabajo que ustedes, pero
+
+19
+00:01:13,880 --> 00:01:19,500
+antes o sea, un poquito más exigido, pero así que bueno, esa es la
+
+20
+00:01:19,500 --> 00:01:25,750
+manera. Usualmente, o sea, rendir libre la materia es un poco más exigente
+
+21
+00:01:25,750 --> 00:01:30,910
+que cursar la regular. Está bien, porque tiene que estar todo el
+
+22
+00:01:30,910 --> 00:01:36,470
+4 metros entregando los trabajos y después te le venía al final a terminar a salar la materia de libre, pero bueno,
+
+23
+00:01:36,470 --> 00:01:48,400
+entonces hoy, hoy le voy a dar la clave para el segundo TP, que se llamamos detección de forma,
+
+24
+00:01:48,400 --> 00:01:55,760
+se lo voy revelando mientras lo hacemos, hoy no voy a terminar a dar todo el tema, le voy a dar
+
+25
+00:01:55,760 --> 00:01:58,940
+temas suficiente como para que empiece a trabajar y hagan una buena parte del
+
+26
+00:01:58,940 --> 00:02:04,400
+TP, pero el tema lo voy a terminar la clase que viene porque no me va, no me
+
+27
+00:02:04,400 --> 00:02:09,480
+alcance al tiempo, a mí no me alcance al tiempo, tampoco es necesario porque lo que
+
+28
+00:02:09,480 --> 00:02:13,720
+va a quedar es la última parte del TP, que necesita tener la primera parte
+
+29
+00:02:13,720 --> 00:02:21,700
+el 80% del TP hecho para poder llegar a esa. Entonces, lo que vamos a recorrer ahora es
+
+30
+00:02:21,700 --> 00:02:28,860
+un pipeline, el pipeline de la heurística, lo que llamamos heurística, que es programar
+
+31
+00:02:28,860 --> 00:02:35,220
+a diferencia de los modelos que son entrenables, heurísticas cuando vuelo resolvies, decidiendo
+
+32
+00:02:35,220 --> 00:02:39,940
+vos el agorimo, se acuerdan que el pipeline es el agorimo más fácil que ahí, instrucción,
+
+33
+00:02:39,940 --> 00:02:44,420
+instrucción, instrucción, instrucción, tempo, tiene que saber qué secuencia de instrucciones
+
+34
+00:02:44,420 --> 00:02:48,740
+de vision artificial tienen que poner, esto contrasta con mi API, mi API pues está sacarrando
+
+35
+00:02:48,740 --> 00:02:55,080
+algo que se ha hecho y lo usas. También hay tenerlo resultado. Acá vos vas a componer una
+
+36
+00:02:55,080 --> 00:03:03,620
+serie de gorismos en esta clase, te voy a decir cuáles son para poder detectar formas y poder
+
+37
+00:03:03,620 --> 00:03:10,860
+marcarlas en la imagen y ponerle el cartelito de qué forma es. Es un problema de detección y
+
+38
+00:03:10,860 --> 00:03:15,980
+clasificación. ¿Dónde está la imagen? ¿Le puedo poner el recuadrito o incluso no
+
+39
+00:03:15,980 --> 00:03:22,270
+seguramente lo van a poner contorno, van a hacer, van a hacer enrigo una segmentación y le
+
+40
+00:03:22,270 --> 00:03:31,630
+van a poner el nombre de la forma que sí, el pipeline es general, es muy potente, a ustedes
+
+41
+00:03:31,630 --> 00:03:38,580
+lo vamos a hacer por ser la segunda clase, usar hay bonín más bastantes básicos, entonces
+
+42
+00:03:38,580 --> 00:03:46,700
+no se dejen engañar la simplicidad del objetivo con la aplicación en el mundo real, porque
+
+43
+00:03:46,700 --> 00:03:50,380
+después cada uno de esos algoritmos, la cambias por otro más potente y tienes un
+
+44
+00:03:50,380 --> 00:03:54,300
+Pai Blan que es unísimo, está, así que eso se lo vamos a recordar cuando está
+
+45
+00:03:54,300 --> 00:04:03,220
+enteraminando el proyecto. La serie de presentaciones que tengo para hoy es
+
+46
+00:04:03,220 --> 00:04:07,660
+justamente siguiendo la secuencia de ese Pai Blan, de qué es lo que tiene que hacer
+
+47
+00:04:07,660 --> 00:04:10,860
+primera con imagen, qué es lo que tiene que hacer después, después hasta llegar al
+
+48
+00:04:10,860 --> 00:04:16,520
+final. Vos Alesio, tenés previsto presentar el TP2 ahora, cuando
+
+49
+00:04:16,520 --> 00:04:24,750
+empieza tu parte. Primero tengo que corregirlo. Claro, tengo que hacer las entregas y bueno,
+
+50
+00:04:24,750 --> 00:04:30,820
+pero si podríamos hacerlo antes de las entregas o no, no hay problema. Por ahí lo presentas
+
+51
+00:04:30,820 --> 00:04:34,180
+cosa que hay que entregar, bueno, no sé cómo lo quieres manejar, ¿no? Pero si el que
+
+52
+00:04:34,180 --> 00:04:40,260
+entrega ya se puede ir, no sé, ¿cómo quieras? Este depende si fíjate, si se lo merece o no.
+
+53
+00:04:40,260 --> 00:04:52,710
+así que voy a abrir la primera presentación y bueno vos alecio esto ya lo
+
+54
+00:04:52,710 --> 00:04:58,030
+viste un montón de veces estoy de comparte y pantallas pero hay positivas no me
+
+55
+00:04:58,030 --> 00:05:03,450
+pasamos unas cositas que por ahí te da, sí escucho, las entregas por donde
+
+56
+00:05:03,450 --> 00:05:08,600
+es la acción, las entregas no se hacen por mí ni por ningún lado ustedes tienen
+
+57
+00:05:08,600 --> 00:05:12,500
+que compartir pantalla, demostrar lo que hicieron, explicar lo que hicieron
+
+58
+00:05:12,500 --> 00:05:22,320
+y responder todo a mis preguntas, ok, ok, así que si los engañaron, eligieron esta
+
+59
+00:05:22,320 --> 00:05:27,820
+materia, eligieron engañadas, así que nada, pero confío que va a salir bien. Bueno,
+
+60
+00:05:27,820 --> 00:05:33,960
+gente están confiniendo en mí y cada insisto, insisto cada vez que vean una desconnección entre
+
+61
+00:05:33,960 --> 00:05:39,300
+lo que digo y lo que está en la imagen, yo por ahí me equivoqué de compartir la pestaña
+
+62
+00:05:39,300 --> 00:05:42,860
+taña y no me de cuenta que no estoy compartido. Ustedes ven un parritor, ¿no?
+
+63
+00:05:42,860 --> 00:05:46,250
+¿Alguno que cheque, que me cheque, que me confirme?
+
+64
+00:05:46,250 --> 00:05:52,090
+Sí, sí, sí, sí, sí, sí, perfecto, perfecto. Bueno, imágenes binarias y umbrales, umbrales
+
+65
+00:05:52,090 --> 00:05:58,800
+en ingles 3-sold, que es el nombre del comando que vamos a usar, que van a usar ustedes.
+
+66
+00:05:58,800 --> 00:06:05,000
+Creo que con esto de perrito ya se dan cuenta lo que es una imagen binaria, hay imágenes
+
+67
+00:06:05,000 --> 00:06:09,240
+a color, hay imágenes que llamamos monocromáticas, son aquí uno y es en blanco y negro, pero
+
+68
+00:06:09,240 --> 00:06:15,040
+que incluye tonos de grises, y imagina binaria son tienen solo dos tonos, típicamente blanco
+
+69
+00:06:15,040 --> 00:06:21,200
+y negro, en realidad los algoritmos dicen cero o no cero, como lenguaje cero, como la
+
+70
+00:06:21,200 --> 00:06:26,480
+mayor idea de lenguaje de aprobación, cuando se es unif, lo converten a buliano, entonces
+
+71
+00:06:26,480 --> 00:06:32,880
+para que para nosotros, para su visualización, lo mejor es que el no cero, o sea lo que sería
+
+72
+00:06:32,880 --> 00:06:40,720
+de tru, lo que sería verdadero, y que sea un blanco, que sea un 255. Así es como lo se suele
+
+73
+00:06:40,720 --> 00:06:47,430
+hacer. Entonces, acá está definido todo lo que dije acá, está escrito acá, es definido,
+
+74
+00:06:47,430 --> 00:06:57,230
+esto es una geminaria, la interpretación que le debamos es cero, es el fondo y uno es lo
+
+75
+00:06:57,230 --> 00:07:03,730
+que nos interesa, el frente. Esto está metido muy adentro, lo saborismo para algunos, es exactamente
+
+76
+00:07:03,730 --> 00:07:11,730
+lo mismo, digamos, un dó valor e interpretarlo como quieras, otros ya sumen que la parte que
+
+77
+00:07:11,730 --> 00:07:18,690
+te interesa es la parte de blanca, no la parte negra. Entonces, comiene a adoptar eso,
+
+78
+00:07:18,690 --> 00:07:26,190
+o podías hacerlo en un de hecho en el trabajo práctico, queremos que sea así, que la parte que
+
+79
+00:07:26,190 --> 00:07:34,840
+interesa sea la blanca, voy a mostrar un ejemplo por qué digo esto, también. Esto es una segmentación.
+
+80
+00:07:34,840 --> 00:07:41,400
+Lo mismo, la primera clase, yo la de verdad que no les pregunté, estaría bueno preguntar,
+
+81
+00:07:41,400 --> 00:07:45,040
+le voy a decir recuerda, por la primera clase tiene un montón de definiciones, es una clase
+
+82
+00:07:45,040 --> 00:07:50,960
+playa, no tiene profundidad, lo pertene amplitud, tiene montanas definiciones, entonces
+
+83
+00:07:50,960 --> 00:07:56,480
+ustedes ahora deberían poder responder, que seguro no hay nadie sabe porque nadie se preocupó,
+
+84
+00:07:56,480 --> 00:08:00,240
+pero también porque que es una gratificación, que es una segmentación, que es una
+
+85
+00:08:00,240 --> 00:08:04,960
+detección, que eso debería ser automático. De hecho vamos a reponer a ver a alguien que me
+
+86
+00:08:04,960 --> 00:08:10,520
+responda click, voy a agarrar lo que quiere, preguntarle a Jack, que es una segmentación.
+
+87
+00:08:10,520 --> 00:08:17,480
+Vamos a hacer a tres preguntas, que es una clasificación, que es una detección y que es una
+
+88
+00:08:17,480 --> 00:08:29,040
+sementación, a ver cualquiera que me puede ir dando respuestas de algunas a tres cosas. Yo ahora yo
+
+89
+00:08:29,040 --> 00:08:37,850
+cambié de pestaña los estoy viendo. Nadie. De bien, yo no sería ubicar algo en una coordenada
+
+90
+00:08:37,850 --> 00:08:43,170
+buenísimo, buenísimo, buenísimo, pues se una cajita, pues es un punto un equipo perfecto,
+
+91
+00:08:43,170 --> 00:08:50,070
+o sea, deteciones coordenados en píxeles, en la imagen, también. ¿Qué clasificación a los
+
+92
+00:08:50,070 --> 00:08:57,980
+otro ¿no? ¿Qué es clasificación y qué es segmentación? De hecho lo más
+
+93
+00:08:57,980 --> 00:09:04,390
+probar es que lo que hicieron con mía Pai se ha detección, ¿no? Bueno, está
+
+94
+00:09:04,390 --> 00:09:10,150
+difícil, no estábamos más. La clasificación es cuando detectadas distintas
+
+95
+00:09:10,150 --> 00:09:16,450
+clases a dentro de la imagen, o si la imagen es de distintas clases, o ok, pero
+
+96
+00:09:16,450 --> 00:09:18,970
+a ver, bóficate que la manera que lo está diciendo.
+
+97
+00:09:18,970 --> 00:09:23,810
+Había dicho, pero desculpa que lo piste característica, creo que había dicho, no, no
+
+98
+00:09:23,810 --> 00:09:27,810
+una clasificación, como se llama, mencionó y dijo que se lo llama clasificación, pero
+
+99
+00:09:27,810 --> 00:09:29,810
+es y no más bueno que dijo, pero.
+
+100
+00:09:30,810 --> 00:09:33,810
+Ok, ok, bueno, gracias por el esfuerzo.
+
+101
+00:09:35,810 --> 00:09:38,810
+Dale, dale la tapita de seguir participando.
+
+102
+00:09:39,810 --> 00:09:44,810
+No, es mucho mejor que respondan a que se que hay callado,
+
+103
+00:09:44,810 --> 00:09:48,810
+o sea, yo sí tengo que aprobar gente a lo, lo aprobar a Gastón
+
+104
+00:09:48,810 --> 00:09:51,810
+y reprobo a todo lo que está en Calladito, a la boca.
+
+105
+00:09:51,810 --> 00:09:58,290
+pero lo que dijo Aucín, es correcto, pero me cuesta, digamos, porque digamos,
+
+106
+00:09:58,290 --> 00:10:02,850
+clasificar y si identificar la clase lo dice la propia palabra. Entonces, la pregunta
+
+107
+00:10:02,850 --> 00:10:05,930
+de pregón, ¿tendes lo que estás diciendo? A esta es una pregunta para Aucín, para los
+
+108
+00:10:05,930 --> 00:10:12,910
+otros. Cuando lo dijo, ¿sabe que está hablando o simplemente me está, a ver si alguno me
+
+109
+00:10:12,910 --> 00:10:18,940
+puede decir mejor que clasificación y que se aumentación? Pero lo de la característica,
+
+110
+00:10:18,940 --> 00:10:23,740
+no vamos a usar hoy, sí, a ver quién o lo. Lo de clasificación es con un cierto nivel de
+
+111
+00:10:23,740 --> 00:10:29,880
+certeza, a poder discernirse, es un objeto de un tipo u otro. Es un tipo, es exactamente
+
+112
+00:10:29,880 --> 00:10:33,060
+eso, que son clases, ¿no? clasificación son clases, pero como que estás usando la
+
+113
+00:10:33,060 --> 00:10:40,940
+misma palabra, sí, es saber qué es de una lista corta, o sea, una lista finita y predefinida
+
+114
+00:10:40,940 --> 00:10:45,420
+de categorías. Termino que usábamos era categoría, yo le dije que había unas muchas
+
+115
+00:10:45,420 --> 00:10:53,540
+jergas, superpuestas, la más actual que corrió a la más antigua es cuando
+
+116
+00:10:53,540 --> 00:10:57,740
+clasificamos a la moda de categoría, yo a mí no importa que lo recuerden esto de
+
+117
+00:10:57,740 --> 00:11:01,880
+memoria, además le va a salir, a lo largo de la materia le va a salir automáticamente
+
+118
+00:11:01,880 --> 00:11:04,980
+después que hagan todo esto, pero que me por lo menos que me entiendan lo que
+
+119
+00:11:04,980 --> 00:11:10,580
+estoy diciendo y el té y desigamos ahora a la más difícil segmentación porque
+
+120
+00:11:10,580 --> 00:11:14,180
+es la que estoy usando la presentación, dice segmentación, ¿qué es la segmentación?
+
+121
+00:11:14,180 --> 00:11:19,580
+a ver si ustedes recuerdan el ejemplo, se recuerdan el ejemplo de la persona cruzando una
+
+122
+00:11:19,580 --> 00:11:25,820
+calle que estaban rojo y los autos estaban en azules y los árboles de verde, más como una
+
+123
+00:11:25,820 --> 00:11:34,100
+mezcla, ¿no? de entre es identificar y... bueno, está bueno, está bueno lo que decís que
+
+124
+00:11:34,100 --> 00:11:38,380
+es una mezcla entre para identificar y clasificar en medio de lo mismo.
+
+125
+00:11:38,380 --> 00:11:48,180
+para no identificar, quise decir detectar y ahi está, ahi va, ahi va, si si si va por
+
+126
+00:11:48,180 --> 00:11:53,220
+eh, bueno, una manera elegante definirlo que una mera definición que invente yo, es
+
+127
+00:11:53,220 --> 00:11:59,060
+la segmentación es una clasificación por pixel, también, o sea, vos no vas a decir,
+
+128
+00:11:59,060 --> 00:12:04,110
+vos estás localizando, pero estás localizando con mucha más precisión, entonces, es mucho más
+
+129
+00:12:04,110 --> 00:12:10,070
+cuando usar la cementación tábuanísimo, lo pasa que más lento. Y a fin del día voy a
+
+130
+00:12:10,070 --> 00:12:15,610
+asesirche, pero lo necesito. También, muchas veces, con detectarte alcanza que mucho más rápido
+
+131
+00:12:15,610 --> 00:12:21,950
+te consume. A la hora de contratar a Google Cloud, vos vas a pagar mucho menos por
+
+132
+00:12:21,950 --> 00:12:27,710
+detección que por cementación. Entonces, académicamente, pues, es realista de la
+
+133
+00:12:27,710 --> 00:12:33,230
+cementación. Después, en la práctica, siempre que se puede detectar por un tema de costos.
+
+134
+00:12:33,230 --> 00:12:39,120
+Pero bueno, pues yo, entonces, si yo digo que es la clasificación de cada pixel en este caso,
+
+135
+00:12:39,120 --> 00:12:46,200
+una imagen binaria resultado de una segmentación binaria, o sea, verdadero y falso, para cada pixel.
+
+136
+00:12:46,200 --> 00:12:51,920
+Y acá tenés, ¿no? Píselo blanco, el caballo, píselo negro, el fondo, también,
+
+137
+00:12:51,920 --> 00:13:00,320
+ahí hay una clasificación. Claro, cementor semántico es porque entiende la naturaleza del objeto
+
+138
+00:13:00,320 --> 00:13:08,340
+que está mostrando, también. Cuando no es semántico, ese tema semántico lo vimos, lo
+
+139
+00:13:08,340 --> 00:13:13,520
+vimos que solo le presenté que significaba, pero lo voy a repetir en varias clases,
+
+140
+00:13:13,520 --> 00:13:18,560
+también. Cuando no es semántico que lo que vamos a ver ahora más fácil, más básico,
+
+141
+00:13:18,560 --> 00:13:23,500
+el tipo no está entendiendo las naturalezas del objeto, está mirando pixel, también.
+
+142
+00:13:23,500 --> 00:13:27,580
+Ahora vamos a dar, vamos a distinguir pixel esclaros y escuro y con eso ya nos vamos a
+
+143
+00:13:27,580 --> 00:13:35,180
+la verdad. Bueno, el primer uso genérico de las imágenes binarias son las máscaras y el
+
+144
+00:13:35,180 --> 00:13:40,780
+único motivo por el que lo menciono es porque es esta sola diapositiva y nunca más lo
+
+145
+00:13:40,780 --> 00:13:48,260
+vamos a usar. Un concepto que comienza a tener presente en algunos casos o hace falta o bien
+
+146
+00:13:48,260 --> 00:13:52,480
+hay alguien que está presentando una solución de vehículos autónomos y dice acá usó una
+
+147
+00:13:52,480 --> 00:13:58,440
+máscara comienes saber que es, también creo que tener la flor, tener la máscara que
+
+148
+00:13:58,440 --> 00:14:02,360
+es redonda y tener resultado de aplicar la máscara a la flor, también, o sea que vos
+
+149
+00:14:02,360 --> 00:14:09,240
+recordas, sirve para enfocar, también metafóricamente, bueno, no es que estás tocando el
+
+150
+00:14:09,240 --> 00:14:14,400
+foco de la cámara, decir que esta es la parte de la imagen que me interesa y lo otro no
+
+151
+00:14:14,400 --> 00:14:22,910
+me interesa, también, si vos tenes un sistema donde en el resto de cosas hay objetos
+
+152
+00:14:22,910 --> 00:14:28,350
+que te van a molestar a tu proceso y los recordás, lo hasta parte,
+
+153
+00:14:28,350 --> 00:14:33,050
+esto es una máscara, también, listo. Entonces, la máscara binaria en la
+
+154
+00:14:33,050 --> 00:14:37,050
+manera de expresar la forma totalmente arbitraria, la dibujas como querés,
+
+155
+00:14:37,050 --> 00:14:41,890
+de decir, ¿qué parte quiero preservar del imagen y cuál no?
+
+156
+00:14:41,890 --> 00:14:46,870
+Acá en el resultado del fondo está puesto en blanco, de hecho voy a decidir
+
+157
+00:14:46,870 --> 00:14:50,830
+de qué color que eres el fondo, del que vos quiera, digamos según para qué le
+
+158
+00:14:50,830 --> 00:14:55,450
+listo, no voy a hablar más de máscara vamos a lo que nos compete que son los
+
+159
+00:14:55,450 --> 00:15:06,120
+umbrales, también, a esto, segmentación binaria, a ver si alguno adivina como la
+
+160
+00:15:06,120 --> 00:15:09,880
+manera más fácil que se les ocurra el criterio, el criterio, no me van a
+
+161
+00:15:09,880 --> 00:15:16,380
+escribir una gorimora, para segmentar el arroz y que me dé lo debajo, la
+
+162
+00:15:16,380 --> 00:15:20,160
+imagen debajo no es exacta, esta con distintas calas y desplazadas, entonces
+
+163
+00:15:20,160 --> 00:15:24,640
+pero creo que se entiende a qué se busca. Tere su imagen monocromática del arroz con
+
+164
+00:15:24,640 --> 00:15:30,000
+tono grises y quieres hacer una sementación minalía que tía que regiones arroz y cual no.
+
+165
+00:15:30,000 --> 00:15:36,620
+Y lo mismo con la manzana que está a la derecha. Bueno, el resultado es una cosa no es blanco
+
+166
+00:15:36,620 --> 00:15:43,380
+de gripe, pero se entiende. A ver, a ver, que medían cuál sería la manera más básica que se
+
+167
+00:15:43,380 --> 00:15:47,580
+les ocurre, qué es lo que tiene que hacer la computadora para a partir de imagen general
+
+168
+00:15:47,580 --> 00:15:56,690
+la otra. Si no es blanco en el caso, bueno, en el caso de la rocería, si no es negro.
+
+169
+00:15:56,690 --> 00:16:00,770
+Exactamente, en costa de la manzán res.
+
+170
+00:16:00,770 --> 00:16:08,170
+Cierta oscuridad, o sea, de tal tono de gris oscuro, negro es un gris muy oscuro, de gris
+
+171
+00:16:08,170 --> 00:16:14,010
+oscuro para abajo, si es más oscuro, es fondo y si es más claro, es blanco. En el caso
+
+172
+00:16:14,010 --> 00:16:18,850
+de la manzana, es lo mismo, pero al revés, si es muy claro es fondo y si es muy oscuro
+
+173
+00:16:18,850 --> 00:16:23,850
+blanco. Bueno, ese es la emcementación que vamos a usar, se llama 3, con el estrés
+
+174
+00:16:23,850 --> 00:16:28,850
+o deshumbral, que significa justamente elegir un tono de gris, y lo convertimos en muliano,
+
+175
+00:16:28,850 --> 00:16:33,850
+para arriba o para abajo, es lo que se hace. Este es el ejemplo que quiero llegar,
+
+176
+00:16:33,850 --> 00:16:38,850
+acá hay una cara a tu intermedia, pero me viene bien para contar.
+
+177
+00:16:38,850 --> 00:16:45,270
+Tenen los lobos, tenen la cementación de los lobos, y la parte que importa,
+
+178
+00:16:45,270 --> 00:16:51,790
+que en la cementación está en blanco es la parte oscura, no la parte clara, también o sea que depende del
+
+179
+00:16:51,790 --> 00:16:57,870
+problema que vos tenemos, puede decir que yo quiero rescatar la parte oscura o la parte clara,
+
+180
+00:16:57,870 --> 00:17:03,710
+o sea el fondo puede ser oscuro, puede ser claro, están la dos casos que son exactamente
+
+181
+00:17:03,710 --> 00:17:11,270
+invertidos uno del otro, a mí me interesa que ustedes tengan esta imagen con los lobos blancos y
+
+182
+00:17:11,270 --> 00:17:16,310
+sino los lobos negros con el fondo blanco, que se parece más a la foto original,
+
+183
+00:17:16,310 --> 00:17:19,910
+pero está expresándolo contrario de lo que vos estás buscando, también.
+
+184
+00:17:19,910 --> 00:17:24,070
+Y posiblemente, te funciones porque vos después justas todos los agorimos que siguen para
+
+185
+00:17:24,070 --> 00:17:30,190
+interpretarlo así, pero de movida, académicamente, es como que no está entendiendo qué es
+
+186
+00:17:30,190 --> 00:17:35,150
+lo que querés destacar. Por eso, yo quiero que llegues, si tu caso es así, por ahí tu
+
+187
+00:17:35,150 --> 00:17:38,950
+caso no tiene conflicto, pues, tiene un fondo negro, una cosa blanca y ya está.
+
+188
+00:17:38,950 --> 00:17:43,050
+también. Pero lo más probable es que tenga una hoja en blanco y que escriba y dibuje
+
+189
+00:17:43,050 --> 00:17:48,530
+su una forma con una fibra negra. Entonces va a estar en este caso de que tenés que invertir
+
+190
+00:17:48,530 --> 00:17:55,940
+para lograr la imagen miradia. Bueno, acá les presento cómo se llama, no me acuerdo
+
+191
+00:17:55,940 --> 00:18:03,600
+como se llama, lena, creo que se llama. Resulta que en el año en Jaupati, carochenta, de
+
+192
+00:18:03,600 --> 00:18:09,080
+70 se empezó con la visión artificial, no había cámaras digitales, o sea, existían, pero
+
+193
+00:18:09,080 --> 00:18:15,480
+la cosa de laboratorio también, existían escáneres, también, y los escáneres serán aparatos de
+
+194
+00:18:15,480 --> 00:18:24,320
+laboratorio o cosas que usaban en lugares muy raros, vos no procesados, a ver, no existían
+
+195
+00:18:24,320 --> 00:18:28,520
+computadoras que vos lo pudieras cargar la imagen de memoria, también la imagen estaba una
+
+196
+00:18:28,520 --> 00:18:36,160
+sinta magnética y vuelvas leyendo escán por escán no ser un espanto, no importa. Entonces
+
+197
+00:18:36,160 --> 00:18:42,480
+alguien logró para algún experimento digitalizar una imagen y esta imagen en la que se
+
+198
+00:18:42,480 --> 00:18:47,880
+empezó a usar, después con las computadoras ya empezó a facilitar, se convirtió un archivo
+
+199
+00:18:47,880 --> 00:18:54,080
+empezando por todo, por todos lados y se convirtió en la imagen también de referencia de la visión
+
+200
+00:18:54,080 --> 00:19:00,240
+artificial, esta como esta foto de la década de 70, te imaginas hoy, lo verdad que no sé si
+
+201
+00:19:00,240 --> 00:19:07,560
+vive o no, pero hace unos años, ya siendo una señora mayor, le digo un premio, se convirtió en
+
+202
+00:19:07,560 --> 00:19:16,240
+la dama de internet, así se la conoce, su imagen se usó en millones de papers de visual artificial,
+
+203
+00:19:16,240 --> 00:19:23,930
+no ella en general sino específicamente esta única foto, también, bueno acá lo que tenemos
+
+204
+00:19:23,930 --> 00:19:31,870
+son, me fía el sitio OpenCB que tiene algunos ejemplos en javascript que funcionan
+
+205
+00:19:31,870 --> 00:19:39,090
+directamente ahí en el naveador en las propias tutuariales y generé este le
+
+206
+00:19:39,090 --> 00:19:47,160
+apliqui un braal con tres niveles, entonces si vos decís mi un braal, obviamente si
+
+207
+00:19:47,160 --> 00:19:51,360
+es claro quiero que se ponga blanco y si es negro quiero que se ponga negro, podría
+
+208
+00:19:51,360 --> 00:19:57,400
+a ver si va a revés, pero en este caso es así. Cuando yo digo, el hijo un tono muy oscuro
+
+209
+00:19:57,400 --> 00:20:03,680
+para hacer un brael, la mayoría de los píxeles van a ser más claritos que se tono, o
+
+210
+00:20:03,680 --> 00:20:09,320
+que es un brael bajo. Entonces, el imagen tiende a salir más bien blanca. Y cuando yo
+
+211
+00:20:09,320 --> 00:20:14,720
+el hijo de un brael muy alto, el hijo de un tono de gris clarito, digo, este ser un brael,
+
+212
+00:20:14,720 --> 00:20:18,000
+la mayoría de los píxeles están por debajo de un brael. Entonces, las imágenes de
+
+213
+00:20:18,000 --> 00:20:28,200
+así oscura. La idea que en el proyecto que ustedes hagan, primero van a, es un pipeline. La
+
+214
+00:20:28,200 --> 00:20:32,640
+imagen se procesa con varios agorismos y después se convierte en información. Mientras
+
+215
+00:20:32,640 --> 00:20:38,280
+vos tenés imágenes intermedias generadas, la idea es visualizarla. Es normal que en un
+
+216
+00:20:38,280 --> 00:20:44,200
+proyecto esto vos tenga ocho ventanas. No te va a rater, quizás te gane menos porque estamos
+
+217
+00:20:44,200 --> 00:20:49,600
+cambiando sutilmente el proyecto, con lo que hacíamos antes, pero con lo que hacíamos
+
+218
+00:20:49,600 --> 00:20:53,920
+hasta el 4ª pasado, pero con empezar a tener la imagen original, la imagen convertida
+
+219
+00:20:53,920 --> 00:21:00,600
+a monochromático, la imagen binaria y en la imagen binaria le pones una barrita deslizante
+
+220
+00:21:00,600 --> 00:21:09,400
+también, donde manualmente justo aselumbral, entonces vamos a hacer esto de manera integrativa
+
+221
+00:21:09,400 --> 00:21:14,120
+y te vas a familiarizar mucho mejor en cómo se genera esta segmentación.
+
+222
+00:21:14,120 --> 00:21:18,120
+Bueno, obviamente estos, estos resultados que estén a dar esos son artísticos,
+
+223
+00:21:18,120 --> 00:21:24,120
+pero no tienen nada de semántico, o sea, lo que está viendo es que el pícele es claro o oscuro,
+
+224
+00:21:24,120 --> 00:21:28,120
+la interpretación es vos ves a una persona en esa imagen,
+
+225
+00:21:28,120 --> 00:21:33,120
+pero el algoritmo está viendo pícele suelto, está viendo el sombrero,
+
+226
+00:21:33,120 --> 00:21:36,120
+una parte clara, una parte oscura, no ve,
+
+227
+00:21:36,120 --> 00:21:41,120
+vos te das cuenta que el algoritmo no disciende objetos ahí en esa imagen.
+
+228
+00:21:41,120 --> 00:21:49,340
+bueno, perdón, y aclaro una cosa, el mismo página que vos usara, vos podés, en el futuro,
+
+229
+00:21:49,340 --> 00:21:54,620
+no lo vamos a hacer en la materia, pero para que vos sepas, vos podés cambiar el cementador
+
+230
+00:21:54,620 --> 00:21:58,460
+por un cementador semántico que te genere de imagen minería para continuar el
+
+231
+00:21:58,460 --> 00:22:03,400
+pipeline, también, o sea, vos podés dar mucha más potencia el mismo página cambiando
+
+232
+00:22:03,400 --> 00:22:07,400
+cada uno de sus componentes, bueno, nosotros vamos con un cementador el más básico que
+
+233
+00:22:07,400 --> 00:22:14,160
+es el threshold, por las dudas, un error muy común, no usan threshold a color, esta cosa
+
+234
+00:22:14,160 --> 00:22:20,490
+es, si la azuzas tiene que saber lo que está para que la estás usando y en general
+
+235
+00:22:20,490 --> 00:22:28,090
+es un error, nunca encontré a alguien que me explique por qué le va a usar, ni yo
+
+236
+00:22:28,090 --> 00:22:35,410
+conozco un caso de uso, ¿qué pasas si vos vinarizas con threshold un imagen a color?
+
+237
+00:22:35,410 --> 00:22:42,730
+por eso es un nivel, 127 que está en la emite entre 3 y 2 y 2 y 5, ese 3 se va a aplicar
+
+238
+00:22:42,730 --> 00:22:47,770
+a cada canal al rojo del verde azul y te va a quedar una cosa de 8 colores como esta
+
+239
+00:22:47,770 --> 00:22:55,400
+que está acá, en esta predominna el rojo por la imagen originada, ¿no? Y eso no es de
+
+240
+00:22:55,400 --> 00:23:01,000
+modo en vez de que pequea para que te va a servir eso, en nuestro proyecto no sirve, entonces
+
+241
+00:23:01,000 --> 00:23:05,000
+tenemos que primero pasar a monochromático para luego
+
+242
+00:23:05,000 --> 00:23:08,000
+vinarizar también.
+
+243
+00:23:08,000 --> 00:23:12,000
+acá hago un pequeño paréntesis, me voy un poquito
+
+244
+00:23:12,000 --> 00:23:15,000
+por tratar gente y vuelvo, hay otra función que genera
+
+245
+00:23:15,000 --> 00:23:18,000
+imágenes vinarias que hace segmentación vinarias, que se llama
+
+246
+00:23:18,000 --> 00:23:24,000
+InRange, acá no tengo el output de InRange exactamente,
+
+247
+00:23:24,000 --> 00:23:28,180
+pero ustedes serán cuentas,
+
+248
+00:23:28,180 --> 00:23:33,440
+a ver, pues le voy a explicar lo que, por ahí se hace la intuyeron, de alguna manera
+
+249
+00:23:33,440 --> 00:23:41,580
+el irrois que trabaja directamente sobre una imagen cororo, le dice sementame lo que
+
+250
+00:23:41,580 --> 00:23:46,540
+es rojo, también, y el resultado es una imagen minaria que no aparece acá, tenía un fondo
+
+251
+00:23:46,540 --> 00:23:51,900
+todo negro con la forma de la capita en blanco, entonces pues multiplica la máscara que
+
+252
+00:23:51,900 --> 00:23:57,740
+le dio, la sementación te sirve máscara, multiplica por la imagen original y te queda la capa.
+
+253
+00:23:57,740 --> 00:24:03,700
+si vos invertís la máscara, obtenes esto de acá, también, entonces lo que es este tipo
+
+254
+00:24:03,700 --> 00:24:11,300
+en a no puse el link, bueno pero igual es, este es un caso famoso, el tipo deja la cámara
+
+255
+00:24:11,300 --> 00:24:17,340
+quieta, saca una foto previa de la habitación y rellena la parte negra con la habitación,
+
+256
+00:24:17,340 --> 00:24:22,820
+entonces se convierte en una capa de invisibilidad de Harry Potter, también, bueno, no importa,
+
+257
+00:24:22,820 --> 00:24:28,560
+lo importante es que in range, si vos le das un rango de color, no lo voy a explicar, no me interesa que
+
+258
+00:24:28,560 --> 00:24:36,800
+lo usan, porque existan directamente la imagen de color, obtino una imagen vinayada. Bueno,
+
+259
+00:24:36,800 --> 00:24:45,400
+una aplicación que la quiero discutir verdaderamente, nunca más la vamos a volver a tocar, pero les
+
+260
+00:24:45,400 --> 00:24:50,970
+amplio un poco el horizonte de todo esto, ese resaltado de texto. O sea, vos puedes jugar con brillo y
+
+261
+00:24:50,970 --> 00:24:56,010
+contraste, yo en la materia no tengo pensado explicar el riesgo contraste, es algo que arrea contra
+
+262
+00:24:56,010 --> 00:25:04,050
+pavote el día que no tiene que hacer buscarlo que es una fórmula, pero la verdad que en el caso del
+
+263
+00:25:04,050 --> 00:25:11,110
+texto, vinylizas y te queda el máximo contraste, en este caso, creo que las letras que negra estarían,
+
+264
+00:25:11,110 --> 00:25:16,630
+entonces lo que es negro se pone el máximo negro y lo que blanco el máximo blanco y tenés el máximo
+
+265
+00:25:16,630 --> 00:25:21,910
+contraste, es buenísimo. Ahora, para aquí otra cosa sirve que no sea texto, bueno, el tema es
+
+266
+00:25:21,910 --> 00:25:34,620
+así. El texto es de los pocas imágenes que son totalmente artificiales, o sea, creadas por el
+
+267
+00:25:34,620 --> 00:25:42,430
+hombre para que sean leídas con contraste. El texto, el código QR, el código aruco y algunas
+
+268
+00:25:42,430 --> 00:25:50,350
+otras marcas, creas poder hombre, se beneficien de contraste. Las imágenes casuales, las fotos
+
+269
+00:25:50,350 --> 00:25:55,870
+de general no son así. Vos acá la foto a una persona y no es que un máximo contraste
+
+270
+00:25:55,870 --> 00:26:04,370
+la mejora, también, el máximo contraste tiene un imagen mineralo. Entonces, para el texto,
+
+271
+00:26:04,370 --> 00:26:11,440
+para un código QR, para un código Ebarra, para algunas cosas, te sirve aplicar 3J como
+
+272
+00:26:11,440 --> 00:26:16,480
+mucho mejor que tratar de corregir con contraste y brillo, también. Bueno, ahora sí, ahora vamos a
+
+273
+00:26:16,480 --> 00:26:21,600
+ver con los competes, el trensol, acá hay cinco tipos de operación, a mi mi trensón dos,
+
+274
+00:26:21,600 --> 00:26:26,560
+le voy a explicar que son estos tres imágenes. Estas son imágenes originales de referencia,
+
+275
+00:26:26,560 --> 00:26:34,440
+que tienen un degradero de negro aclaro de 0,25, que va a disquiro a derecha. La función trensol
+
+276
+00:26:34,440 --> 00:26:42,680
+tiene como cinco parámetros, uno de ellos es que función que eres usar a nosotros nos interesan
+
+277
+00:26:42,680 --> 00:26:48,680
+binary y binary in listo. No voy a explicar las otras. No hay mucha aplicación.
+
+278
+00:26:48,680 --> 00:26:55,480
+Binary significa que la imagen original con un trajual establecido a 127 que
+
+279
+00:26:55,480 --> 00:27:00,160
+queda justo en el gris intermedio, te genera esta imagen. Lo que es más oscuro te queda en
+
+280
+00:27:00,160 --> 00:27:07,540
+negro y lo que es más claro te queda en blanco. Y binary in inversa, obviamente, hace a revés.
+
+281
+00:27:07,540 --> 00:27:11,140
+Lo que es más oscuro te queda en blanco, lo que es más claro te queda en negro.
+
+282
+00:27:11,140 --> 00:27:15,220
+también que son para abarcar los únicos dos casos que los intereses y que me
+
+283
+00:27:15,220 --> 00:27:18,700
+me ocupé de explicarlos y que les quede bien claro que hay dos.
+
+284
+00:27:18,700 --> 00:27:26,460
+Bien, ahí se terminó. Funcion 3son es la que usted va a usar y es la que separa y genera
+
+285
+00:27:26,460 --> 00:27:30,860
+esa imagen, esa segmentación binaria. Tienen que elegir una o dos aborimos
+
+286
+00:27:30,860 --> 00:27:38,730
+segundo lo que necesiten. Bueno, umbrales automáticos e historamas,
+
+287
+00:27:38,730 --> 00:27:48,100
+esto se me quedó, esto no es de acá, se me, se me colegó, creo que se la dí la clase pasada
+
+288
+00:27:48,100 --> 00:27:56,500
+en descriutores, no sé por qué se me quedó, se me trajo a pelo, se me copió mal. Vamos
+
+289
+00:27:56,500 --> 00:28:00,620
+a un tema de este programa, o todos ustedes si se aprobaría, también, y ustedes se acuerdan
+
+290
+00:28:00,620 --> 00:28:06,740
+los histogramas y los los los los rangos, los bins, ¿no? La historia más de de de de
+
+291
+00:28:06,740 --> 00:28:11,620
+frecuencia, frecuencia acumulada, así que sé yo, bueno, ok, no se recuerda, ustedes
+
+292
+00:28:11,620 --> 00:28:17,980
+hicieron un esfuerzo deliberado por olvidarse todo eso, así que se lo voy a aplicar de vuelta,
+
+293
+00:28:17,980 --> 00:28:25,220
+botenés una imagen monopromática y los píxeles van de 0,25, entonces vamos marcas acá,
+
+294
+00:28:25,220 --> 00:28:33,300
+256 intervalos, o sea, van de 0,25, este, pero como números entera, no, no, no, este,
+
+295
+00:28:33,300 --> 00:28:38,300
+y contás cuantos píxeles hay de cada intensidad y de genera esto, este es el histograma.
+
+296
+00:28:38,300 --> 00:28:43,300
+Chata, eso es el histograma bastante intuitiva, intuitivo para un estudiante de genería,
+
+297
+00:28:43,300 --> 00:28:45,300
+vamos a agarrar todo un agua, no entiendo nada.
+
+298
+00:28:45,300 --> 00:28:53,300
+Pero entonces que te dice, mira, acá está muy bajos, claro, no hay píxeles blancos bien brillantes.
+
+299
+00:28:53,300 --> 00:28:57,560
+Los blancos brillantes son lo del fondo de la diapositiva, acá en la imagen no.
+
+300
+00:28:57,560 --> 00:29:01,560
+De hecho, me interese este pico de acá, este pico justo,
+
+301
+00:29:01,560 --> 00:29:06,800
+todo justo que no se por qué coincidieron todo y estos pico bueno estos estos son oscuros porque están de la
+
+302
+00:29:06,800 --> 00:29:14,240
+mitad para abajo también son oscuros y esto es la parte del cielo desde lo digo yo o no o no lo va a
+
+303
+00:29:14,240 --> 00:29:21,080
+resolver a resolver rapísimo estas sonas más oscuras pero es menos cantidad de pícil o esta ventana
+
+304
+00:29:21,080 --> 00:29:28,440
+saca bueno ventana solo que sea este arcos esta ventana y de acá muy oscuras y son poco píciles
+
+305
+00:29:28,440 --> 00:29:35,950
+se están acumulados por acá. Este pico de acá es este frente claro, quizás las nubes.
+
+306
+00:29:35,950 --> 00:29:43,030
+Bueno, eso es lo que te dice una historia. A mí me interesa profundizar demasiado.
+
+307
+00:29:43,030 --> 00:29:48,030
+Histograma es una tecnología de calcetenta, es una tecnología matemática, está ampliamente
+
+308
+00:29:48,030 --> 00:29:54,980
+superada, o sea, para alguna cosita sirve, por eso no le voy a dar, por eso se los muestro,
+
+309
+00:29:54,980 --> 00:30:05,240
+No le voy a dar, digamos yo tenía una presentación completa y trabajos prácticos dedicado a esto, pero lo fui abandonando, ¿no?
+
+310
+00:30:05,240 --> 00:30:14,370
+Bueno, entonces, detección automática de un bral. A ver, esto quiero que ustedes me lo digan, lo voy a decir la pregunta, quiero que ustedes me dian.
+
+311
+00:30:14,370 --> 00:30:19,960
+que me dios en este imagen, evatando de hoy a la imagen ¿no? Pero vos no querés poner
+
+312
+00:30:19,960 --> 00:30:27,730
+el valor de cuál es el tono de gris que separa esta parte oscura y esta fíjense de acá
+
+313
+00:30:27,730 --> 00:30:31,590
+lo separa como negro y no como blanco, eso no importa, depende de qué función de
+
+314
+00:30:31,590 --> 00:30:36,730
+tres solusas. Voy a querer usar, a ver, aquí valor tiene que poner para distinguir
+
+315
+00:30:36,730 --> 00:30:43,570
+estas dos partes. Resulta que el histogramas así, también, por la duda acá dice 100,
+
+316
+00:30:43,570 --> 00:30:48,570
+dice 200 a que dice cero, también, este es el histograma de esta imagen de acá.
+
+317
+00:30:48,570 --> 00:30:53,950
+Pregunta con qué criterio eligen ustedes el umbral mirando el histograma,
+
+318
+00:30:53,950 --> 00:31:03,310
+qué valor el umbral tiene que poner para lograr la segmentación de abajo?
+
+319
+00:31:03,310 --> 00:31:09,310
+El que esté entre las dos montañitas, digamos, en dos días, sí, sí,
+
+320
+00:31:09,310 --> 00:31:16,350
+está esto es un un histograma bimodal también y vos vas a buscar el punto
+
+321
+00:31:16,350 --> 00:31:20,190
+intermedio entre los dos modos que son las dos montañitas también entonces acá el
+
+322
+00:31:20,190 --> 00:31:26,550
+cien viene barro pero cualquier lugar de acá intermedio te sirve también viene barro
+
+323
+00:31:26,550 --> 00:31:31,390
+entonces si vos tenés que hacer ya está hecho si vos tenés que ser un sistema
+
+324
+00:31:31,390 --> 00:31:36,310
+automático de atención numbral yo no lo recomiendo que usen yo prefiero que
+
+325
+00:31:36,310 --> 00:31:41,430
+lo uso manual porque es más idáctico, también, además, toda esta cosa automática, después
+
+326
+00:31:41,430 --> 00:31:45,790
+tiene que tener experiencia, usándolo para entender cuando te ande y cuando no, pero
+
+327
+00:31:45,790 --> 00:31:50,390
+entonces, cuando es mi modal, el tipo busca punto y del medio. ¿Qué pasa si aparecen
+
+328
+00:31:50,390 --> 00:31:57,100
+tres modos? No, perdón, vuelvo acá, acá, no, a tener un pico acá, otro pico acá, otro
+
+329
+00:31:57,100 --> 00:32:02,060
+pico acá, está bien. ¿Qué pasa si en mi modal aparece en tres modos? ¿Dónde tiene
+
+330
+00:32:02,060 --> 00:32:17,270
+que me dé el lumbral. Bueno, que ahí está y a ver, no lo puedes automatizar, lo vas a confundir
+
+331
+00:32:17,270 --> 00:32:24,790
+el abrimo sirve si no nos sirve, porque puede ser cualquier o dos puntos, cualquier
+
+332
+00:32:24,790 --> 00:32:30,030
+o dos valles. Si tiene tres modos, depende cuál valle que lejos y quizá ver el abrimo cual
+
+333
+00:32:30,030 --> 00:32:33,230
+de los dos crece. Está bien. Además, bueno, anticipas que el abrimo
+
+334
+00:32:33,230 --> 00:32:37,070
+al eso salio cuando le podes la imagen. Aparece y modal, aparece una cosa más plana que
+
+335
+00:32:37,070 --> 00:32:43,030
+se yo. Entonces, la dirección automática busca dos modos y busca del medio. Si tu
+
+336
+00:32:43,030 --> 00:32:48,030
+imagen no es definitiva y el hombre va a ser cualquier lado, ese es el problema de la
+
+337
+00:32:48,030 --> 00:32:53,610
+dirección automática. ¿Cómo vienen a entender qué es lo que le estás encarando al
+
+338
+00:32:53,610 --> 00:33:01,440
+algoritmo? Entonces, esto es un ejemplo, hay dos métodos, son flags que se usan en el
+
+339
+00:33:01,440 --> 00:33:06,560
+tres son cuando vos usas un flag de estos, ignora el valor que vos le pasaste como
+
+340
+00:33:06,560 --> 00:33:12,000
+hacer es como un brael, no voléjite 127, bueno, lo ignora, pasa que por la
+
+341
+00:33:12,000 --> 00:33:20,000
+sintaxis tenés que pasar el argumento, pero 8, Japones, 8 y Triangle, son
+
+342
+00:33:20,000 --> 00:33:25,440
+dos lodos metos, hay paper, digamos, que te dicen cómo hace para superiéndole que
+
+343
+00:33:25,440 --> 00:33:32,120
+modal encontrar el punto y acá la derecha hay un ejemplo muy porque sigue muy random
+
+344
+00:33:32,120 --> 00:33:36,440
+de decir chebo tiene ese tema gente arriba más o menos vos sabéis lo que queréis
+
+345
+00:33:36,440 --> 00:33:42,460
+pero tiene ruido, entonces cuando vos ponéis de 3 o 6 y es con ruido, si vos las
+
+346
+00:33:42,460 --> 00:33:48,260
+filtras y filtro no vimos, vamos a ver el pasado adelante, si vos las filtras el
+
+347
+00:33:48,260 --> 00:33:54,340
+efecto del filtro en el histograma es este y al convertirse en v modal obtener
+
+348
+00:33:54,340 --> 00:33:59,380
+la cementación perfecta, a través de ese cotito de nada, después la práctica no funciona tan fácil,
+
+349
+00:33:59,380 --> 00:34:08,370
+pero sí, el filtro te ayuda a mejorar la imagen antes de finalizar. Bueno, esto como para ampliar un
+
+350
+00:34:08,370 --> 00:34:13,490
+poquito, nada de esto lo van a usar a ustedes, porque estamos haciendo un trabajo práctico controlado
+
+351
+00:34:13,490 --> 00:34:22,370
+que no se devande, digamos, que le funcione, así que claramente ustedes van a generar las imágenes
+
+352
+00:34:22,370 --> 00:34:27,050
+que hay que después reconocer y la van a hacer que sea fondo blanco, fibra negra para
+
+353
+00:34:27,050 --> 00:34:33,030
+que no saluda de cuáles son las dos partes que hay que cementar, que separar. Me estoy
+
+354
+00:34:33,030 --> 00:34:37,610
+dando cuenta que a cada diciembre les automático, no sé si ustedes llegan a ver, me quedó blanco
+
+355
+00:34:37,610 --> 00:34:42,850
+el título. Estas son de apositivas nuevas entonces, este contenido existía, pero lo ordenó
+
+356
+00:34:42,850 --> 00:34:52,580
+un poquito, me quedó mal del color. Bueno, sí, a ver, automático y adaptativo son dos
+
+357
+00:34:52,580 --> 00:34:58,230
+palabra que empiezan con a yo le dije que esta materia de avengo dando de 2016 hace 10 años y
+
+358
+00:34:58,230 --> 00:35:06,920
+siempre hay alguien que se confunde automático con adaptación como que hay que pasar de la
+
+359
+00:35:06,920 --> 00:35:13,610
+prensa letra no pero esto es otra cosa esto no lo van a usar esto existe el lento
+
+360
+00:35:15,210 --> 00:35:21,690
+suele haber cosas mejores de hecho el propio deep learning está dando mejor pero esto existe
+
+361
+00:35:21,690 --> 00:35:24,510
+Esa es muy brata, te digo, ¿cuál es la idea?
+
+362
+00:35:24,510 --> 00:35:29,920
+A ver, boten esa imagen de acá que tiene una eliminación muy variable
+
+363
+00:35:29,920 --> 00:35:32,400
+y ¿qué pasa?
+
+364
+00:35:32,400 --> 00:35:41,270
+Bien, algunas partes oscuras de esta zona de la imagen que está más iluminada
+
+365
+00:35:41,270 --> 00:35:45,870
+son más claras que algunas partes claras de esta zona de la imagen.
+
+366
+00:35:45,870 --> 00:35:49,310
+Entonces, no hay un umbral que te lo semente como vos querés
+
+367
+00:35:49,310 --> 00:35:52,230
+para que te esté esto acá abajo de la derecha.
+
+368
+00:35:52,230 --> 00:35:56,790
+el donario en bravo homogéneo, así che, tendría que ser un un bravo que va a estar cambiando,
+
+369
+00:35:56,790 --> 00:36:02,630
+como no vas a ponerle un bravo de cada písel, dice, bueno, hace un aivicorismo que elija,
+
+370
+00:36:02,630 --> 00:36:06,030
+entonces que hace, voy a elegir su una ventana que, para que funciona, tiene que ser grande,
+
+371
+00:36:06,030 --> 00:36:12,110
+cuanto más grande la ventana analizante, mucho más lento es el proceso, pero notoriamente más lento,
+
+372
+00:36:12,110 --> 00:36:16,190
+promedía los píxeles de alrededor y ese promedio lo usa un bravo.
+
+373
+00:36:16,190 --> 00:36:21,590
+Entonces, con un, este es el thresholding,
+
+374
+00:36:21,590 --> 00:36:26,550
+el thresholding atativo del promedio te da esto
+
+375
+00:36:26,550 --> 00:36:32,070
+y de la gauciana que requiere una zona de infección más grande
+
+376
+00:36:32,070 --> 00:36:34,670
+te da mejor, pero es bastante más lento.
+
+377
+00:36:34,670 --> 00:36:36,870
+Entonces, existe el nombre de atativo para estos casos.
+
+378
+00:36:36,870 --> 00:36:39,670
+Ahora, cuál es la solución para el trajo para que ustedes
+
+379
+00:36:39,670 --> 00:36:41,870
+te van a usar lo que se llama ambiente controlado.
+
+380
+00:36:41,870 --> 00:36:45,270
+Esto es súper importante, el concepto es súper importante.
+
+381
+00:36:45,270 --> 00:36:49,870
+Ambiente controlado significa que vogas a iluminara y darle todas las condiciones
+
+382
+00:36:49,870 --> 00:36:54,070
+para que la donde estar a cámara salga bien.
+
+383
+00:36:54,070 --> 00:36:58,930
+Eso es como ir a sacarse fotos a un estudio fotografía.
+
+384
+00:36:58,930 --> 00:37:03,170
+No, no, no. Tener es la iluminación tanto preparado para que la foto salga bien.
+
+385
+00:37:03,170 --> 00:37:09,270
+Este, que es totalmente distinto a sacar una foto rándome o agarrar la foto de mi viaje,
+
+386
+00:37:09,270 --> 00:37:13,570
+mirada, estuve en Santa Teresa y ya está en la foto porque eso es lo contrario
+
+387
+00:37:13,570 --> 00:37:14,970
+de ambiente controlado.
+
+388
+00:37:14,970 --> 00:37:21,330
+¿Qué pasa? Para Facebook seguramente o a Instagram, si es totalmente descontrolada, son las
+
+389
+00:37:21,330 --> 00:37:25,730
+fotos de los usuarios, vamos a ver que puedo procesar. Pero cuando vos vas a hacer un trabajo,
+
+390
+00:37:25,730 --> 00:37:31,040
+lo más probable es que te contraten, si vos creas una inspección de pieza, hacer una
+
+391
+00:37:31,040 --> 00:37:39,880
+línea de producción, realmente controlada, yo tuve enbolvagen hace unos años, en una línea
+
+392
+00:37:39,880 --> 00:37:45,420
+se me acabó a poner la infección visual y básicamente las partes se entrarán a una cabina y le
+
+393
+00:37:45,420 --> 00:37:50,480
+diría que dentro de la cabina está todo oscuro y solamente se prendía un flash en el momento
+
+394
+00:37:50,480 --> 00:37:58,460
+que saca la foto, es decir, el analizador de imágenes que irá medio antiguo, o sea no importa,
+
+395
+00:37:58,460 --> 00:38:04,700
+una analizadora de imágenes que quería ser iluminado exactamente por la iluminación que está
+
+396
+00:38:04,700 --> 00:38:09,460
+calculada y no quería ser interferido por la iluminación natural, o sea por más que
+
+397
+00:38:09,460 --> 00:38:14,100
+ese un tinglado botenés algunos lugares que entre la luz de afuera y si es de
+
+398
+00:38:14,100 --> 00:38:19,500
+noche o si se nubla o si sale el sol te cambia la iluminación bueno eso ahí adentro
+
+399
+00:38:19,500 --> 00:38:24,460
+no total eso es el extremo bueno a mí en el controlado significa que si esto os
+
+400
+00:38:24,460 --> 00:38:28,720
+cura ustedes van a aprender un velador también van a aprender la luz y van a
+
+401
+00:38:28,720 --> 00:38:34,260
+poner la iluminación para que la imagen se pueda binarizar correctamente por
+
+402
+00:38:34,260 --> 00:38:41,420
+por eso ustedes no necesitan un bril adaptativo, está bien, acá con esa visión pragmática del
+
+403
+00:38:41,420 --> 00:38:46,540
+informático, se lo digo, el informático trucho, es decir, si esto me lo arrasuelo automático,
+
+404
+00:38:46,540 --> 00:38:52,380
+dale, o sea, de tomar decisiones con agonismos que no probaron, que no saben, que no, que no son en
+
+405
+00:38:52,380 --> 00:38:58,380
+kick, y cuando funciona y cuando no, está bien, y o sea, se han atascado de la peor manera,
+
+406
+00:38:58,380 --> 00:39:03,820
+es decir, no poder sacarlo adelante, flaco, tirar todo. Empezar de vuelta usando los otros agorimos.
+
+407
+00:39:03,820 --> 00:39:09,660
+Pero bueno, no pasó acá en Matan, eso pasó hace años, también yo ahora no pasa por
+
+408
+00:39:09,660 --> 00:39:17,340
+mi ocupo de aclarar todo esto. Bueno, se termina esta presentación. Voy a pasar, vamos
+
+409
+00:39:17,340 --> 00:39:27,900
+a ver, me voy a saber de contornos, de favor, soy bonito, estoy hablando solo. Sí, está listo.
+
+410
+00:39:27,900 --> 00:39:35,570
+están viendo una que se llama BLOB, alguno que me confirme, bien, gracias.
+
+411
+00:39:35,570 --> 00:39:43,010
+BLOB, BLOB, yo busco el BLOB en internet y me pareció esta foto, el pescado de este
+
+412
+00:39:43,010 --> 00:39:50,690
+set es el pescado más fido del mundo. BLOB es, para los informáticos le llaman Binary
+
+413
+00:39:50,690 --> 00:39:55,690
+Large Object, también un objeto que es una cosa, muchos bytes. Habriste un archivo, lo
+
+414
+00:39:55,690 --> 00:40:01,090
+se me moría, es un blog, bueno nada que ver, también esto que vamos a ver ahora, la
+
+415
+00:40:01,090 --> 00:40:06,370
+parada blog también en inglés significa mancha, también es una mancha, blog, es eso, es una
+
+416
+00:40:06,370 --> 00:40:16,100
+mancha, puede visual, así que nosotros para nosotros blog es mancha, que es esto, es de hecho
+
+417
+00:40:16,100 --> 00:40:21,300
+lo que estamos buscando con esa binarización es identificar manchas, a que son, no
+
+418
+00:40:21,300 --> 00:40:26,160
+acá no sólo vemos un montón de cruces, pero la computadora ve píxeles, también.
+
+419
+00:40:26,160 --> 00:40:33,620
+Entonces pues y che, ¿qué te sugiere a vos la imagen de abajo? Este ejercicio es lo
+
+420
+00:40:33,620 --> 00:40:37,780
+decimos la que se pasa, ¿no? Si vos mirar a la arriba y mirar a abajo, ¿qué te sugiere?
+
+421
+00:40:37,780 --> 00:40:45,130
+¿Qué es lo que la computadora sabe o qué relación le has con este concepto de visión artificial
+
+422
+00:40:45,130 --> 00:40:53,740
+de que maneje información? Si en parte de la arriba pudo generar la de abajo.
+
+423
+00:40:53,740 --> 00:40:56,620
+distinguía cada uno de las cruces. Ah, eso es la siguiente
+
+424
+00:40:56,620 --> 00:41:00,900
+dificultad, también. Mira, dice che, todo este conjunto de pixel es una
+
+425
+00:41:00,900 --> 00:41:05,140
+cruz y otros otros píxeles son otras cruz, también esa, entonces está,
+
+426
+00:41:05,140 --> 00:41:11,040
+está logrando un nivel superior, de fuera de un paso hacia la semántica, un nivel
+
+427
+00:41:11,040 --> 00:41:15,900
+superior de interpretación. En este caso estamos distinguiendo manchas, o sea,
+
+428
+00:41:15,900 --> 00:41:21,420
+de solamente ver píxeles, ahora veo conjunto de píxeles que formo una mancha.
+
+429
+00:41:21,420 --> 00:41:26,380
+el criterio es bueno ahora aparece componentes conectados también ahora ahora
+
+430
+00:41:26,380 --> 00:41:29,900
+viene ahora es un primero de nivel de interpretación estos son blocs cada una de
+
+431
+00:41:29,900 --> 00:41:34,740
+estas cruces es un blog porque porque tú los píxeles están pegaditos un al otro
+
+432
+00:41:34,740 --> 00:41:40,780
+componente conectados o componentes este es una jerga que viene de de las teorías
+
+433
+00:41:40,780 --> 00:41:45,540
+gráficas también entonces voy a definir son nodos y la cual es la idea que
+
+434
+00:41:45,540 --> 00:41:51,320
+nosotros definimos que un pixel está conectado con otro cuando los dos píxeles
+
+435
+00:41:51,320 --> 00:41:59,110
+blancos son vecinos y hay dos manejas y esto, a ver, esto es una pavada, pero es cierto
+
+436
+00:41:59,110 --> 00:42:06,630
+y está especificado y está bien, está escrito, está definido en Portola. La manera
+
+437
+00:42:06,630 --> 00:42:11,310
+que os existí, los laterales se conectan por los laterales, que son la conexión de cuatro
+
+438
+00:42:11,310 --> 00:42:16,750
+vías o se conectan incluso por los vértices, que son la conexión de ocho vías. Son los
+
+439
+00:42:16,750 --> 00:42:23,510
+todo tipo de conectividad que tienen los componentes conectados que se usan para formar blobs
+
+440
+00:42:23,510 --> 00:42:26,590
+o sea, hay un algoritmo que agarró un pixel y empieza a buscar todos los vecinos que
+
+441
+00:42:26,590 --> 00:42:35,760
+tienen y los recorre todos, para identificar los blobs, entonces si vuelve a decir, esto no
+
+442
+00:42:35,760 --> 00:42:43,440
+es así automático, hay un, me olvides decirle, esta presentación es miramente conceptual,
+
+443
+00:42:43,440 --> 00:42:52,440
+Bien, he dicho, mostro alguna función que es con el gig component, no la vamos a usar, porque vamos a usar algo mejor que hace lo mismo, pero mejor.
+
+444
+00:42:53,440 --> 00:43:04,540
+El concepto sí, concepto de blog lo vamos a usar. Fíjate lo que está pasando acá. A ver, pregunta, si son todos distintos color, ¿por qué estos dos arroses son del mismo color?
+
+445
+00:43:04,540 --> 00:43:14,770
+y no es el único caso que tiene algún pixel vecino porque están conectados ahí está entonces esto no
+
+446
+00:43:14,770 --> 00:43:20,450
+es del todo semántico no es que distingue grano de arroz sino que distingue manchas que para por
+
+447
+00:43:20,450 --> 00:43:26,210
+definición tienen que estar separadas también entonces también si vuelo la hora separar tenia
+
+448
+00:43:26,210 --> 00:43:31,610
+podés contarlas pero solo te sirve si la tienes todas fíjense por las separaditas
+
+449
+00:43:31,610 --> 00:43:43,610
+Pero despacito, nos vamos acercando algo que empieza a tener un poquito de significado de individualidad, también a través de esto. Bueno, se entendió.
+
+450
+00:43:43,610 --> 00:43:54,640
+Acá les, yo ya les hablé de color map, componentes conectados, te da una etiqueta, o sea que agarra, no es esto, pero el fondo lo pone todo en cero,
+
+451
+00:43:54,640 --> 00:44:00,360
+y a cada uno de estos arroses le pone todos los píxeles en uno, en dos, en tres, en cuatro,
+
+452
+00:44:00,360 --> 00:44:05,950
+en cinco, pero cuando lo vas a visualizar son, mirices muy oscuros. Entonces le aplicas color map,
+
+453
+00:44:05,950 --> 00:44:11,790
+la clase que viene de la pasada, le establece color map y generas esto que lo solo lo
+
+454
+00:44:11,790 --> 00:44:19,910
+visualiza mejor. Bueno, entonces yo acá no encontré dos imágenes que sean de los mismos
+
+455
+00:44:19,910 --> 00:44:23,910
+contornos, pero lo que quiero decir es, no puede tener los componentes conectados,
+
+456
+00:44:23,910 --> 00:44:30,070
+o puede tener solamente los contornos que definen la misma área,
+
+457
+00:44:30,070 --> 00:44:34,260
+desde el punto de vista información son equivalentes.
+
+458
+00:44:34,260 --> 00:44:38,260
+Entonces, ahora van a ver en la próxima presentación,
+
+459
+00:44:38,260 --> 00:44:42,260
+cuando no vamos a dedicar a contornos como una equivalente de un blog.
+
+460
+00:44:42,260 --> 00:44:44,260
+También, si yo agarro el perímetro,
+
+461
+00:44:44,260 --> 00:44:47,360
+ya ya tengo la información del área que necesito.
+
+462
+00:44:47,360 --> 00:44:53,450
+necesito, también no necesito tener todos los píxeles intermedios, bueno, esto termino es así
+
+463
+00:44:53,450 --> 00:45:03,800
+de fácil y sigue esta otra, que se llama contornos, confirmenme que está viendo una presentación
+
+464
+00:45:03,800 --> 00:45:14,060
+que se llama contornos, bueno, aclaro, esa foto que está ahí, a mí me gusta la ilustrativa
+
+465
+00:45:14,060 --> 00:45:18,380
+no son contornos. Está bien, más o menos, más o menos.
+
+466
+00:45:18,380 --> 00:45:22,060
+Ahora vamos a ver. Bueno, esto es un contorno.
+
+467
+00:45:22,060 --> 00:45:28,080
+Acá hay una imagen minaria, una función que la vamos a ver en Madrid,
+
+468
+00:45:28,080 --> 00:45:32,480
+pues, dentro de una idea positiva para hacer, extrajo el contorno de esa mano
+
+469
+00:45:32,480 --> 00:45:38,520
+y la anotó en la imagen original que todo estaba a la mano y la anotó de color a amarillo.
+
+470
+00:45:38,520 --> 00:45:43,360
+De paso te digo, analizó el contorno con una función que le dice,
+
+471
+00:45:43,360 --> 00:45:48,520
+Dame los puntos extremos que son cuatro, se llama norte sobre TV, este de arriba al debajo,
+
+472
+00:45:48,520 --> 00:45:56,680
+el del izquierdo de la derecha. Bús analizó el contorno amarillo y buscó este que es el píxel
+
+473
+00:45:56,680 --> 00:46:02,120
+que más al izquierdo está de todo ese contorno y así, también, fíjate que abajo hay muchos
+
+474
+00:46:02,120 --> 00:46:11,020
+que están igual de abajo, también abajo de todo para R1, el primero que controlamos. Bueno,
+
+475
+00:46:11,020 --> 00:46:21,260
+Entonces, ok, pero la mancha es un imagen con un montón de píxeles, y la devorismo tiene que
+
+476
+00:46:21,260 --> 00:46:27,180
+recorrer todos los píxeles para poder saber que están conectados, y lo así que haría
+
+477
+00:46:27,180 --> 00:46:33,260
+tiene, y el té hay que recorrer todos los píxeles para contarlos, está bien. El contorno
+
+478
+00:46:33,260 --> 00:46:40,860
+en lo que va el día de hoy es la primera función de visión artificial, porque
+
+479
+00:46:40,860 --> 00:46:47,890
+yo estoy estrayendo de la imagen una una estructura, una raí que ya no es una imagen
+
+480
+00:46:47,890 --> 00:46:55,370
+está bien, de hecho lo que yo estoy estrayendo es la coordenada de cada uno de los píxeles
+
+481
+00:46:55,370 --> 00:47:01,370
+que forma ese cortorno y ese conjunto de información es muchísimo menor que lo que
+
+482
+00:47:01,370 --> 00:47:06,370
+pesa la imagen entera, entonces cuando yo lo tengo que procesar voy a procesar menos
+
+483
+00:47:06,370 --> 00:47:12,250
+de bytes, también, puede estar trabajada con la estructura más liviana y contiene mucha más información
+
+484
+00:47:12,250 --> 00:47:19,660
+en el sentido de hacer, digamos, puedo dibujar el contorno, sí, si yo tengo una imagen minaria,
+
+485
+00:47:19,660 --> 00:47:25,220
+bueno, se complica y viendo cuáles son los píxeles que están blanco, que están al lado de un negro,
+
+486
+00:47:25,220 --> 00:47:30,300
+bueno, eso es lo que hace la función de contorno cuando lo estrae y yo te lo dejarí para anotar,
+
+487
+00:47:30,300 --> 00:47:35,750
+bueno, entonces lo que decía, los contornos son más compactos que las imágenes,
+
+488
+00:47:35,750 --> 00:47:42,530
+van a ver que cuando voces traes contorno de una imagen binaria, vienen naturalmente
+
+489
+00:47:42,530 --> 00:47:48,590
+etiquetados en el sentido de que lo tiene cada blog es un contorno. También es
+
+490
+00:47:48,590 --> 00:47:56,210
+una imagen binaria o tenemos un montón de píxeles. Cuando sacas contorno, te devuelve
+
+491
+00:47:56,210 --> 00:48:01,050
+10 contornos. Ah bueno, porque ahí 7 blogs, también. Los contornos son de el punto de
+
+492
+00:48:01,050 --> 00:48:05,570
+esta información equivalentes a los blogs. Dejad de manejar un montón de píxeles, manejas
+
+493
+00:48:05,570 --> 00:48:11,690
+eso, esta entidad. No es un objeto porque es una RAID directamente. También ahora lo voy a explicar
+
+494
+00:48:11,690 --> 00:48:19,950
+que tiene el RAID, pero lo podría no usted lo pone a imaginar como objeto. Bueno, son jerarquicos,
+
+495
+00:48:19,950 --> 00:48:24,230
+enseguida, la voy a mostrar qué significa que sean jerarquicos. Si, si quiere, son jerarquicos.
+
+496
+00:48:24,230 --> 00:48:31,230
+Es una opción, un flag que vuelve bueno. Permiden análisis. Es una análisis que además es mucho
+
+497
+00:48:31,230 --> 00:48:40,990
+más eficiente, mucho más rápido, computacionalmente, que los blobs, los blobs en la cima en la imagen,
+
+498
+00:48:40,990 --> 00:48:46,590
+también, en los píxeles. Por eso son preferidos los contornos a los bloques que le dije antes,
+
+499
+00:48:46,590 --> 00:48:52,150
+también. Y son muy fáciles de denotar, muy rápido de dibujar arriba como vena la mano con el
+
+500
+00:48:52,150 --> 00:48:58,950
+contorno dibujado. Si vos tenés el bloco entero, es como que tapas toda la mano, sí. Vamos a ser
+
+501
+00:48:58,950 --> 00:49:04,310
+que significa jerarquico, esta es una imagen así abstracta, no tratan de ver un sí,
+
+502
+00:49:04,310 --> 00:49:12,740
+no tratan de ver nada porque son manchas, tienen doble, significa white, belarga, significa
+
+503
+00:49:12,740 --> 00:49:19,020
+black, también no es bastante hídote, uno, dos, tres, cuatro para identificarnos, ¿cuál
+
+504
+00:49:19,020 --> 00:49:27,090
+es la idea? Vos acá tenés doble, dos, es un contorno blanco, también doble, uno, es
+
+505
+00:49:27,090 --> 00:49:32,880
+contorno blanco que tiene dos agujeros, entonces los agujeros v2 y v3 son contornos
+
+506
+00:49:32,880 --> 00:49:39,130
+negros, que están adentro de contorno blanco, también, y acá lo mismo, tienes una mancha blanca
+
+507
+00:49:39,130 --> 00:49:48,250
+olo del 3, con un agujero v4, con 2 manchas adentro, w5, w6, y así al infinito, entonces acá
+
+508
+00:49:48,250 --> 00:49:53,930
+tienes una jerarquilla, el algoritmo, cuando le da la imagen binaria, el algoritmo recorre
+
+509
+00:49:53,930 --> 00:50:00,110
+todo y identifica todos los blocs y te devuelve todos los contornos. Si vos querés
+
+510
+00:50:00,110 --> 00:50:05,270
+te devuelve una estructura de gerarquía o unos índices a los contornos para que
+
+511
+00:50:05,270 --> 00:50:10,320
+vos sepas cuál está dentro de cuál si te interesa. En el plástico que vamos a
+
+512
+00:50:10,320 --> 00:50:14,720
+hacer no les va a interesar, pero esa información está disponible, en algún
+
+513
+00:50:14,720 --> 00:50:20,000
+ejemplo le pongo así para que puede servir, ya va a parecer uno este. Bueno,
+
+514
+00:50:20,000 --> 00:50:29,330
+no tienes imagen binaria a la izquierda, contornos ya relevados en el medio con dos colores
+
+515
+00:50:29,330 --> 00:50:34,810
+a ver qué son esos dos colores verde y rojo, no a cuáles son los colores, ¿qué significan?
+
+516
+00:50:34,810 --> 00:50:42,280
+Las dos gerarquías, externo y interno. Ah, ahí está, parece eso, eso también porque
+
+517
+00:50:42,280 --> 00:50:47,960
+¿qué pasa? Para la velarga el contorno externo te hace el de este borde rojo, dice eh, pero
+
+518
+00:50:47,960 --> 00:50:53,400
+falta nos agujerito, bueno, ahí los tenés, pero es distinto, tenés que saber que son
+
+519
+00:50:53,400 --> 00:50:58,120
+distintos, no son, estos no son otras manchas blancas que van a entrar. Bueno, si tener
+
+520
+00:50:58,120 --> 00:51:02,800
+la jerarquía, lo puede dibujar así, si lo pedís sin ser la jerarquía te queda todo rojo
+
+521
+00:51:02,800 --> 00:51:09,360
+y si bien vuelo les, la computadora no sabe que uno es un hueco adentro del otro. Bueno,
+
+522
+00:51:09,360 --> 00:51:15,760
+y acá al lado, hay una aproximación, cuando vos relevalo con tornos, este es un,
+
+523
+00:51:15,760 --> 00:51:21,180
+es aerodótico, no necesitan usarlo, no le va a cambiar nada, pero vos podés decir,
+
+524
+00:51:21,180 --> 00:51:27,340
+yo no me des las coordenadas de cada punto del contorno, simplifica me lo con líneas
+
+525
+00:51:27,340 --> 00:51:32,620
+rectas, también, con cemento de rectas, entonces hay algoritmo que dice cuando una
+
+526
+00:51:32,620 --> 00:51:38,240
+secuencia de píxeles se aproxima una recta, aunque no sea perfecta, te la simplifica,
+
+527
+00:51:38,240 --> 00:51:41,700
+también hay varios, el poder hasta puede elegir que algoritmo es, pero como no sabemos
+
+528
+00:51:41,700 --> 00:51:48,220
+que hubiera exactamente que significa cada uno. Usted no sabe, yo sí, pero no lo voy a
+
+529
+00:51:48,220 --> 00:51:54,680
+complicar. Vos probas y se mira hacia el resultado que te da bien, ya, se lo va a probar
+
+530
+00:51:54,680 --> 00:51:58,360
+y que vos está aproximando de esto y si voy a ser anodici contornos, si lo así, hay
+
+531
+00:51:58,360 --> 00:52:02,160
+otros casos donde vos tenemos que ser muy meticuloso y se no, que yo quiero perfecto,
+
+532
+00:52:02,160 --> 00:52:07,320
+está bien. Con esto manejamos menos cantidad de bytes a memoria, la cantidad de bytes que
+
+533
+00:52:07,320 --> 00:52:08,560
+que ustedes están usando.
+
+534
+00:52:08,560 --> 00:52:11,240
+Más el hecho de que van a usar su computadora para procesar,
+
+535
+00:52:11,240 --> 00:52:16,200
+que lo van a meter en un NSP32 o en una raza berripa y vieja.
+
+536
+00:52:16,200 --> 00:52:20,200
+Estáis de saber que no te va a hacer problema para este trabajo
+
+537
+00:52:20,200 --> 00:52:21,080
+práctico.
+
+538
+00:52:21,080 --> 00:52:25,480
+Pero, si quieres ahorrar White, tenés maneras de que el algoritmo te
+
+539
+00:52:25,480 --> 00:52:26,880
+lo simplifique, te lo compacte.
+
+540
+00:52:26,880 --> 00:52:32,280
+Te pongan menos, menos, menos coordenadas para el final control.
+
+541
+00:52:32,280 --> 00:52:35,400
+Bueno, vamos a obtener, ahora sí, una función contornos de una imagen.
+
+542
+00:52:35,400 --> 00:52:39,400
+Otra vez, esta de mí me gusta mucho este imagen, no está hecho con contorno, esto es
+
+543
+00:52:39,400 --> 00:52:44,760
+a Makani, este es un momento por ahí lo vemos, es una función muy accesoria en lo que es
+
+544
+00:52:44,760 --> 00:52:51,260
+el tronco de la materia de esta, casi siempre aparecen las clases complementarias que vienen
+
+545
+00:52:51,260 --> 00:52:57,020
+más para el final. Bueno, adivinen que hace fine contours, bueno, es para que me responden,
+
+546
+00:52:57,020 --> 00:53:03,060
+pero encuentra contornos, hay que saber un poco inglés. Le das la imagen minaria y te
+
+547
+00:53:03,060 --> 00:53:09,820
+vuelve todos los contornos de una serable bono, no buscas un contorno. Pobuca todos los contornos
+
+548
+00:53:09,820 --> 00:53:15,980
+de una imagen. ¿Qué produce una raíz? Una raíz de contornos. Ajá, o sea que los elementos
+
+549
+00:53:15,980 --> 00:53:20,140
+decís cuál es la longitud de la raíz, si la raíz tiene la longitud 10, es porque el
+
+550
+00:53:20,140 --> 00:53:26,900
+contorno 10 contornos. Está bien. Y cada elemento que es un contorno, ajá, es una clase, no,
+
+551
+00:53:26,900 --> 00:53:32,520
+no es una clase, es un objeto, es una raíz. O sea, cada contorno de por sí es otro
+
+552
+00:53:32,520 --> 00:53:39,800
+raí, cada uno de los actos distinta, que formo una matriz. Y ese raí de que es de coordenadas
+
+553
+00:53:39,800 --> 00:53:47,440
+de puntos, o sea que si hubo decir cuánto elementos tiene ese contorno y es la cantidad de puntos
+
+554
+00:53:47,440 --> 00:53:53,980
+que tiene registrado, que obviamente si hubo pediste simplificarlo con cemento van a ser
+
+555
+00:53:53,980 --> 00:54:01,150
+mucho menos. También, o sea, de una raíz de apuntos, o sea, y esos apuntos que son, son
+
+556
+00:54:01,150 --> 00:54:09,170
+objeto puntos, no, son a raíz dos de, con x, ahí. O sea, que esto es de tres niveles,
+
+557
+00:54:09,170 --> 00:54:15,270
+también una raíz de contornos, cada contornos es una raíz de apuntos, cada apuntos es una
+
+558
+00:54:15,270 --> 00:54:21,720
+raíz de dos elementos de x, ahí. No necesitan meterse a manipulada en raíz. El único
+
+559
+00:54:21,720 --> 00:54:26,480
+lo único que lo único que tienen que saber es que de array de superior es el conjunto de contornos
+
+560
+00:54:26,480 --> 00:54:31,000
+y cuando vos, tiene que pasar un solo contorno a una función, tiene que agarrar un elemento de ese
+
+561
+00:54:31,000 --> 00:54:37,600
+conjunto y pasarse a esa función. Y ya está, está bien. La jerarquía es una estructura de
+
+562
+00:54:37,600 --> 00:54:44,960
+array separadas, no me, el día que le interesa usarla se fijan a ver cómo se usa, pero tiene índices
+
+563
+00:54:44,960 --> 00:54:52,270
+a los contornos del primer arrae. Bueno, a estas son las aproximaciones que le decían lo normal
+
+564
+00:54:52,270 --> 00:54:58,830
+que pongan, que venga como non, si le pone simple, te busca el cemento de recta, pertingue
+
+565
+00:54:58,830 --> 00:55:05,230
+ese perfectamente recto, y hay dos algoritmos, T-889, porque son de N-89, uno de ese
+
+566
+00:55:05,230 --> 00:55:16,030
+uno, el otro se llama cacoceno, del mismo autor de chin, no es de chin, es esto, es lo que está
+
+567
+00:55:16,030 --> 00:55:23,350
+escrito acá, listo, para que sepan, existe esto y es lo que se usa. La jerarquía representación
+
+568
+00:55:23,350 --> 00:55:33,420
+acá, acá por ahí necesitan usar algo, se le quiero mostrar, si le pedéis el tree, el árbol
+
+569
+00:55:33,420 --> 00:55:42,060
+el te genera la género de aquí de la revolta, no lo vamos a usar, list te da todos los contornos
+
+570
+00:55:42,060 --> 00:55:51,210
+y no te de genera la género de aquí, está en external, te agarras solo los contornos
+
+571
+00:55:51,210 --> 00:55:57,330
+exteriores, ¿qué pasa? cuando voy si quiero reconocer cuadrados, ¿cómo va a ser tu cuadrado?
+
+572
+00:55:57,330 --> 00:56:03,770
+vas a agarrar una hoja en blanco y vas a dibujar un cuadrado con una fibra negra, también.
+
+573
+00:56:03,770 --> 00:56:08,570
+Justamente le guías que no sea perfecto, que sea mano alzada, que veas como no es que
+
+574
+00:56:08,570 --> 00:56:13,950
+el tipo si se cambie un pixel no lo reconoce, no tiene que reconocer cuadrado, es hecho
+
+575
+00:56:13,950 --> 00:56:22,130
+a mano alzada que son todos distintos, de eso se trata el trajo práctico, claro, pero
+
+576
+00:56:22,130 --> 00:56:27,740
+bueno lo pintaste en ahí va adentro, entonces vas a tener un contorno exterior, un contorno
+
+577
+00:56:27,740 --> 00:56:34,870
+interior, entonces si dole decir red external te trae solo el contorno exterior,
+
+578
+00:56:34,870 --> 00:56:44,050
+ahí un teba más, muy posiblemente cuando vos pongas la hoja en blanco, que las
+
+579
+00:56:44,050 --> 00:56:49,010
+pones encima de tu escritorio, que paso oscuro y le pongas la cámara, la cámara va
+
+580
+00:56:49,010 --> 00:56:56,390
+a abordar más allá de la hoja y los bordes de la hoja van a ser contornos, entonces si
+
+581
+00:56:56,390 --> 00:57:03,150
+uso solamente external te va a detectar solo la hoja, pero no lo que está dentro, bueno fíjense
+
+582
+00:57:03,150 --> 00:57:10,470
+cómo se van a manejar para esas situaciones, también fíjense cuál usan o cómo después filtran
+
+583
+00:57:10,470 --> 00:57:20,480
+qué contornos les interesa. Le voy a mencionar unos usos, los contornos son recondro importantes,
+
+584
+00:57:20,480 --> 00:57:28,630
+De hecho, una vez que los incorporas son refáciles de usar, pero claro, tienen su aplicación,
+
+585
+00:57:28,630 --> 00:57:35,000
+no es propósito recontra general. O sea, de por sí, lo estraemos de una imagen binaria.
+
+586
+00:57:35,000 --> 00:57:39,760
+Entonces, ¿vo tuviste que poder haber vinylizado esa imagen? Si no, no tiene sentido usar
+
+587
+00:57:39,760 --> 00:57:48,440
+contornos. Bueno, metrología es la ciencia de las mediciones, también. Y acá voy a hacer algo,
+
+588
+00:57:48,440 --> 00:57:54,560
+luego lo voy a llevar al ejemplo de inspección de para edición de fallas,
+
+589
+00:57:54,960 --> 00:57:56,880
+se usualmente vas a medir la pieza.
+
+590
+00:57:56,880 --> 00:58:00,280
+Este se me ocurrió porque es idáctico, no porque se usa así,
+
+591
+00:58:00,520 --> 00:58:02,320
+pero es fácil de imaginar hacer.
+
+592
+00:58:02,760 --> 00:58:06,440
+Yo tengo esa chile, tengo el a foto, la chile no va a parecer exactamente
+
+593
+00:58:06,440 --> 00:58:08,320
+en la misma pixel con la misma inclinación,
+
+594
+00:58:09,680 --> 00:58:13,240
+está pasando en la cinta de transportadora, no sé dónde pasa y desagate la foto.
+
+595
+00:58:14,280 --> 00:58:17,400
+Entonces, en los contornos,
+
+596
+00:58:17,400 --> 00:58:22,940
+Fijate que está el contorno 1 y el contorno 2, lo puedes diguir por jerarquilla, también
+
+597
+00:58:22,940 --> 00:58:26,760
+vos sabes cuál es cuál, la flor y el adentro.
+
+598
+00:58:26,760 --> 00:58:33,880
+Entonces, primero, a vos te gustaría detectar exactamente dónde está, para empezar a ser
+
+599
+00:58:33,880 --> 00:58:34,880
+mediciones.
+
+600
+00:58:34,880 --> 00:58:39,880
+Hay una función que vuelve a aplicar el contorno 1 y te devuelve lo que se llama retángulo
+
+601
+00:58:39,880 --> 00:58:43,030
+rotado, el retángulo verde.
+
+602
+00:58:43,030 --> 00:58:51,440
+y eso ya es lo usas como localización de la sheet, la hoja feitar.
+
+603
+00:58:51,440 --> 00:58:57,560
+Entonces cualquier testeo de ir a un pixel, las coordenadas van a ser referidas a la caja verde.
+
+604
+00:58:57,560 --> 00:59:01,120
+Está bien, ahí localizaste y todo lo que hace es relativo a la caja verde.
+
+605
+00:59:01,120 --> 00:59:07,440
+Entonces, ahora después le voy a mostrar alguna función usando eso.
+
+606
+00:59:07,440 --> 00:59:14,440
+pero me harán un poquito bótenes, por ejemplo, una función para que acurara el área del contorno.
+
+607
+00:59:14,440 --> 00:59:18,540
+En el caso de la 1, te da el área del contorno todo.
+
+608
+00:59:18,540 --> 00:59:22,540
+Si quieres sacarle de esto, tendré que acurar de la 2 y restárselo.
+
+609
+00:59:22,540 --> 00:59:23,540
+Pero tenés el área.
+
+610
+00:59:23,540 --> 00:59:28,540
+Entonces, un paso no pasa muy fácil y yo necesito que el área tenga tantos píxeles,
+
+611
+00:59:28,540 --> 00:59:31,540
+que normalmente va a ser entre tanto y tanto.
+
+612
+00:59:31,540 --> 00:59:36,620
+no le va a saber un pequeño margen si se va de que usan exclusiva cortada si
+
+613
+00:59:36,620 --> 00:59:42,280
+tar rota no va a probar que sea más chica de área, si no supera ese testigo hay que descartarla
+
+614
+00:59:42,280 --> 00:59:54,660
+pues sería maldita, pensé que venía esta, no, esta, convexidades te cuenta la cantidad
+
+615
+00:59:54,660 --> 01:00:00,680
+de, bueno, de dientes en el engrenaje, también, la cantidad de convexidades es la misma que
+
+616
+01:00:00,680 --> 01:00:08,680
+cantidad de concavidades que tiene el contorno. Entonces se puede descontar, devuelve un número
+
+617
+01:00:08,680 --> 01:00:14,320
+entero, es un dato más que te puede servir. Esta es la que decía en metrología para hacer el test,
+
+618
+01:00:14,320 --> 01:00:21,080
+vos ponés fijas coordenadas de puntos amarillos que son relativas a la caja verde y hay una función
+
+619
+01:00:21,080 --> 01:00:27,720
+súper importante que se llama Point Polygon Test, que te da la distancia del punto que
+
+620
+01:00:27,720 --> 01:00:33,360
+bueno, le pasás un punto amarillo al contorno que le pasás, pero medir la
+
+621
+01:00:33,360 --> 01:00:39,970
+distancia a un punto un contorno no es algo trivial, porque tenéis que testear
+
+622
+01:00:39,970 --> 01:00:44,780
+contra todo el contorno, también lo el contorno es totalmente arbitrario, entonces
+
+623
+01:00:44,780 --> 01:00:48,880
+digamos bueno ahí voluimos que están optimizados que lo que sea y te
+
+624
+01:00:48,880 --> 01:00:55,320
+calculan esa distancia, también, entonces pero si estas sentiduras de la
+
+625
+01:00:55,320 --> 01:00:57,840
+es decir, este es mal hecho, si son más grandes,
+
+626
+01:00:57,840 --> 01:01:02,280
+voy acá a admitir una distancia de ponerle hasta cinco píxeres.
+
+627
+01:01:02,280 --> 01:01:07,080
+Y cuando atreve a 50 píxeles porque se cortó, se lo lo que sea,
+
+628
+01:01:07,080 --> 01:01:10,720
+entonces se mira, mi contorno tiene que pasar por estos puntos,
+
+629
+01:01:10,720 --> 01:01:13,120
+o sea que la distancia del contorno a esos puntos
+
+630
+01:01:13,120 --> 01:01:17,640
+no tiene que superar un ombral, si supera porque salió mal, también.
+
+631
+01:01:17,640 --> 01:01:22,420
+Bueno, así es como se hacen testeos de producción o de lo que
+
+632
+01:01:22,420 --> 01:01:30,540
+aquí irás de metrología con contouring. Esta depositiva le tengo a ahorrar, le tengo que ocultar
+
+633
+01:01:32,540 --> 01:01:38,140
+el azalteo. Bueno, ahora la parte más fácil de contouring son las anotaciones. Otra vez esto
+
+634
+01:01:38,140 --> 01:01:43,950
+es Cany, esto me gusta la foto, no lo voy a cambiar, pero no son contornos. Estos son contornos.
+
+635
+01:01:43,950 --> 01:01:48,990
+Acá si usó la función 2 veces, porque bueno le pone ese color a la función, así que les
+
+636
+01:01:48,990 --> 01:01:53,830
+los colores tienen que usarlo a veces, le pasaste un contorno, le pusiste dibujar, draw
+
+637
+01:01:53,830 --> 01:01:59,010
+contour se es dibujar contornos y te dibujo esto y entre otra cosa le decís qué tipo de
+
+638
+01:01:59,010 --> 01:02:05,630
+línea que color que eres, te debe pasar el contorno, también acá te dice, le pasaste
+
+639
+01:02:05,630 --> 01:02:11,710
+el imagen, le pasaste la raíz de contornos que detectaste y el índice de qué contorno
+
+640
+01:02:11,710 --> 01:02:16,630
+quieres dibujar, con la opción de dibujar todos los contornos, que es un caso de uso bastante
+
+641
+01:02:16,630 --> 01:02:27,020
+como. Bueno, esta dispositiva quedó un poquito vieja porque acaba de salir el me
+
+642
+01:02:27,020 --> 01:02:33,820
+ha pasado OpenCV5 que mejora todo esto. Bueno, yo les digo, estas funciones son de notación,
+
+643
+01:02:33,820 --> 01:02:44,160
+también. El ConvexHull te genera esta cosa azul, también, que es totalmente convexa,
+
+644
+01:02:44,160 --> 01:02:50,320
+como si tuviera su apirita alrededor y la se estirante. Después tenés el, bueno,
+
+645
+01:02:50,320 --> 01:02:56,280
+el bounding rack es el rectángulo tipo de tección, que es horizontal y que agarra el contorno
+
+646
+01:02:56,280 --> 01:03:03,040
+completamente. Y así tenés otros, también, un desecisito que yo se los cuento en este
+
+647
+01:03:03,040 --> 01:03:08,960
+momento fuera de contexto, le suele ir relevante, pero estas eran funciones estrictamente
+
+648
+01:03:08,960 --> 01:03:16,290
+de notación se convirtieron en funciones adiméticas. Podés obtener
+
+649
+01:03:16,290 --> 01:03:19,610
+el resultado. Puedes ser el bound inrect y te da las coordenadas antes
+
+650
+01:03:19,610 --> 01:03:22,790
+no lo hacía antes, solamente lo dibujaba en la pantalla. Ahora te da las
+
+651
+01:03:22,790 --> 01:03:26,330
+coordenadas y después si vos querés, las dibujas en pantalla.
+
+652
+01:03:26,330 --> 01:03:34,770
+También eso es un poquito más, más amplio. Bueno, se terminó contornos y
+
+653
+01:03:34,770 --> 01:03:41,050
+Yo ahora voy a agarrar, ahora voy a arrancar esta es la parte más pesada de la clase de hoy,
+
+654
+01:03:41,050 --> 01:03:47,610
+porque hasta ahora estuvimos procesando imágenes, generando imágenes con los contornos ya o tuvimos
+
+655
+01:03:47,610 --> 01:03:53,890
+información, todavía son contornos, lo podemos dibujar, ahora vamos a procesar información, mi input
+
+656
+01:03:53,890 --> 01:04:02,070
+van a ser contornos, van a ser arrays, está bien, y mi output al final de todo esto yo quiero
+
+657
+01:04:02,070 --> 01:04:11,900
+tener un descritor de forma. Yo quiero un descritor que ya dijimos que es arbitrario, que me permita
+
+658
+01:04:11,900 --> 01:04:17,020
+después clasificarlo. Y yo digo tengo un montón de números, con un montón de decimales,
+
+659
+01:04:17,020 --> 01:04:22,420
+y tengo que hacer ver si eso representan a un cuadrado, a una estrella, a un triángulo,
+
+660
+01:04:22,420 --> 01:04:28,740
+o no sé la forma que ustedes se lijan dibujar y clasificar, ¿no? Obviamente el listado
+
+661
+01:04:28,740 --> 01:04:35,140
+de clases de categorías, los va a tener ustedes en te mano, yo quiero reconocer 5 categorías
+
+662
+01:04:35,140 --> 01:04:41,500
+distintas que son estas, por la que va a descubrir, va a mirar y va a descubrir lo que dibujaste
+
+663
+01:04:41,500 --> 01:04:48,420
+y la clase que viene le voy a explicar para que entren en un clasificador sobre esos
+
+664
+01:04:48,420 --> 01:04:54,580
+descriptores, ustedes van a generar hoy vamos a llegar a cómo generar un descriptor, a partir
+
+665
+01:04:54,580 --> 01:05:00,620
+de las formas que voy a representar adelante de la pante de la cámara, de las de la cámara
+
+666
+01:05:00,620 --> 01:05:05,330
+genera un descriptor. Para crecer que viene vamos a hablar de hacer un data set de
+
+667
+01:05:05,330 --> 01:05:11,730
+descriptores donde vamos a decir que forma corresponde a cada uno y que un clasificor
+
+668
+01:05:11,730 --> 01:05:16,780
+se entrene de manera que no sucesivo, bocara que le tienes un descriptor te dice a que
+
+669
+01:05:16,780 --> 01:05:21,060
+forma corresponde, eso clasica viene. En este momento voy a hacer el descriptor y la
+
+670
+01:05:21,060 --> 01:05:27,880
+parte más abstracta del acrés de hoy. Y el motivo por el cual hacemos todo este pipeline
+
+671
+01:05:27,880 --> 01:05:32,160
+es para abrirles la cabeza. Todo lo que ustedes ven acá no es que primero que esto se
+
+672
+01:05:32,160 --> 01:05:39,880
+usa, así como está, así como se lo vea, se usa. Pero a más representa un montón de
+
+673
+01:05:39,880 --> 01:05:47,520
+otras formas. Por ejemplo, como reconocemos caras con Deep Learning. Va a tener algo que
+
+674
+01:05:47,520 --> 01:05:53,240
+que te genera un embedding, un descriptor, y va a tener que clasificar después los
+
+675
+01:05:53,240 --> 01:05:57,420
+descriptores para saber la identidad de cada uno. Eso se lo mencioné en la clase
+
+676
+01:05:57,420 --> 01:06:07,130
+pasada. Bueno, entonces, reconocimiento de formas 2D. Obviamente, estamos hablando de
+
+677
+01:06:07,130 --> 01:06:13,670
+agresificación, me parece ver que salte de alguna de las positivas estas, ¿no? Los
+
+678
+01:06:13,670 --> 01:06:17,470
+características o features, esto está todo en la parte de descripción.
+
+679
+01:06:17,470 --> 01:06:23,760
+Entonces, se recuerden que nosotros tuvimos viendo frutas, citrus, y Gimochet, ¿qué
+
+680
+01:06:23,760 --> 01:06:27,720
+características relevantes te permite hago distinguirlas? Y uno dijo color y otro
+
+681
+01:06:27,720 --> 01:06:33,720
+eco diámetro y eso funcionaba bien para la mayoría, así a falta todavía alguna otra característica
+
+682
+01:06:33,720 --> 01:06:41,000
+porque algunas esas dos no eran discriminantes para algunos casos. Bueno, entonces,
+
+683
+01:06:41,000 --> 01:06:48,000
+¿Cómo puedes buscar estas cosas de geometría como el Centroid y la posición del Centroid y el Centroid más a la orientación?
+
+684
+01:06:48,000 --> 01:06:56,000
+Si es una circunferencia no, pero si es un edipso y de una cosa largada, en qué angulo de orientación tiene?
+
+685
+01:06:56,000 --> 01:07:03,000
+Acá te estoy leyendo tamaño, es necesidad con cavidad de perimetro, el perimetro de contorno de una idea del tamaño,
+
+686
+01:07:03,000 --> 01:07:09,040
+también, el área de otra idea del tamaño, incluso características abstractas, o puede
+
+687
+01:07:09,040 --> 01:07:14,400
+hacer cálculos matemáticos que, mientras sean discriminantes para el casificador sirven
+
+688
+01:07:14,400 --> 01:07:20,880
+y ese es el camino que van a tomar, hay varias positivas que yo dejo fórmulas, me las
+
+689
+01:07:20,880 --> 01:07:29,220
+voy a saltear porque no hacen el proyecto, pero son ilustrativas por si alguna vez lo necesitan
+
+690
+01:07:29,220 --> 01:07:36,380
+lo le pica en la curiosidad, ¿no? Bueno, ésta es de positivas, me parece que los
+
+691
+01:07:36,380 --> 01:07:43,790
+heteréquiles borrando porque está repitiendo lo que vimos en descriptores, esto es una
+
+692
+01:07:43,790 --> 01:07:47,110
+presentación, esto es una presentación más antigua que tengo, si bien actualice
+
+693
+01:07:47,110 --> 01:07:52,310
+algunas cosas, a la que se cambie un poquito respecto, está arrastrando de cuando no existía
+
+694
+01:07:52,310 --> 01:07:57,390
+la presentación de descriptores, pero bien, como recuerdo, un descriptor es un vector
+
+695
+01:07:57,390 --> 01:08:02,630
+en evalores y se comparan por parecido por igualdad nunca va a tener un igualdad perfecta
+
+696
+01:08:02,630 --> 01:08:10,670
+entonces vuelo que haces es la resta el módulo de la resta y lo comparas con un brazo y así
+
+697
+01:08:10,670 --> 01:08:15,270
+es más de 10 o si es más de cero como uno no es un brazo bota de que ver en qué escala
+
+698
+01:08:15,270 --> 01:08:21,670
+te está manejando y elegir que un brazo va a usar para decir si son parecidos o no.
+
+699
+01:08:21,670 --> 01:08:30,580
+Bueno, entonces acá está la parte escritorial. Invarianza es el tema que nos
+
+700
+01:08:30,580 --> 01:08:35,980
+compete en esta presentación, porque vos tenés un cuadrado, pero ese cuadrado
+
+701
+01:08:35,980 --> 01:08:41,140
+puede aparecer en distintos lugares del imagen, o sea que por lo pronto sigue siendo
+
+702
+01:08:41,140 --> 01:08:45,160
+un cuadrado independente de su posición, o sea que el descriptor que vos
+
+703
+01:08:45,160 --> 01:08:51,180
+traiga a ese cuadrado tiene que ser invariante a la posición, o sea, tiene que
+
+704
+01:08:51,180 --> 01:08:55,980
+tener los mismos valores no importa si está a la derecha o izquierda. Tiene que ser
+
+705
+01:08:55,980 --> 01:09:00,140
+invariante a la rotación si lo pones en forma de esta, es que la gente que no
+
+706
+01:09:00,140 --> 01:09:04,020
+estuvo ingeniería le dice rombo, se desfrajo es un cuadrado. No, no es un
+
+707
+01:09:04,020 --> 01:09:07,500
+rombo. Ok, listo. ¿Pas qué vamos a decotir?
+
+708
+01:09:07,500 --> 01:09:11,640
+Este, tiene que ser invariante a la rotación, e invariante a la escala porque el cuadrado
+
+709
+01:09:11,640 --> 01:09:14,200
+va más chiquito, más grande, sigue siendo un cuadrado. O sea entiende, nosotros
+
+710
+01:09:14,200 --> 01:09:19,360
+estamos tratando de extraer la forma, pero claro, no hemos definido matemáticamente
+
+711
+01:09:19,360 --> 01:09:23,860
+de forma. Sabernos lo que la posición, sabernos lo que puso una ventesión que es un ángulo
+
+712
+01:09:23,860 --> 01:09:29,020
+de la escala, que fue un factor de la mamá va a ver como expresamos estas cosas, pero
+
+713
+01:09:29,020 --> 01:09:34,810
+la forma en sí, no lo vamos a definir, vamos a buscar si logró la invariancia de estas
+
+714
+01:09:34,810 --> 01:09:39,050
+tres cosas, lo que me queda es la forma que de mí me interesa. Todo lo que afecte a
+
+715
+01:09:39,050 --> 01:09:45,010
+mí y el escritoro, un escritor que es invariante de estas tres cosas va a estar afectado por
+
+716
+01:09:45,010 --> 01:09:52,080
+la forma. Entonces eso es lo que estoy buscando y por eso nos vamos a meter en el mundo de los
+
+717
+01:09:52,080 --> 01:09:58,640
+momentos. Entonces yo cuando busque imágenes para momentos no encontré, pero encontré imágenes
+
+718
+01:09:58,640 --> 01:10:04,920
+negatitas. Así que esta presentación es la presentación de los atletas. Reconocimiento de forma,
+
+719
+01:10:04,920 --> 01:10:10,620
+esto spoiler. El descrutor que estaba buscando se llama invariante de ju. Se llama invariante de
+
+720
+01:10:10,620 --> 01:10:18,420
+ju, porque son invariantes a la posición, a la traslación y a la rotación, a la posición,
+
+721
+01:10:18,420 --> 01:10:24,380
+a la escala y a la rotación. Se usa un montón, lo que pasa es que el adevimiento del
+
+722
+01:10:24,380 --> 01:10:30,760
+Diplierning lo empezó a dejar del lado. Eso no quita que se sigue usando un montón,
+
+723
+01:10:30,760 --> 01:10:35,800
+pero ya no es la única herramienta. También antes se le martelló todo, se silla con
+
+724
+01:10:35,800 --> 01:10:41,440
+primero te ju, ahora también reconocimiento apatente, en
+
+725
+01:10:41,440 --> 01:10:45,640
+el momento si quieren lo podemos discutir, pero para nuestro
+
+726
+01:10:45,640 --> 01:10:50,840
+trabajo práctico van a usar este escritor, con este
+
+727
+01:10:50,840 --> 01:10:53,160
+escritor después van a alimentar el clasificador, es lo que
+
+728
+01:10:53,160 --> 01:10:55,440
+vamos a usar para reconocer la forma.
+
+729
+01:10:55,440 --> 01:10:58,240
+Quiero explicar por qué, como es de todo lo que sí, ahora
+
+730
+01:10:58,240 --> 01:11:02,880
+nos vamos a meter con fórmulas, porque yo quiero que
+
+731
+01:11:02,880 --> 01:11:08,660
+vean cómo se diseña un descriptor, también, después van a encontrarse con
+
+732
+01:11:08,660 --> 01:11:13,420
+otrascriptores y tienen su formuleo y ustedes siguen ok entiendo donde van, no
+
+733
+01:11:13,420 --> 01:11:17,060
+es que tienen que entender cada una de las fórmulas, pero acá le voy a explicar
+
+734
+01:11:17,060 --> 01:11:20,340
+de por qué cosa, otra vez más shapes, esto es la tuve gorra de la otra
+
+735
+01:11:20,340 --> 01:11:27,660
+presentación y de estas más shapes, si vos quisieras no lo vas a necesitar para
+
+736
+01:11:27,660 --> 01:11:34,100
+este trabajo práctico, pero si vos quisieras podría saber aumentar tu
+
+737
+01:11:34,100 --> 01:11:38,300
+de escritor con otra cosa más allá de los invariantes de julos y mente de
+
+738
+01:11:38,300 --> 01:11:43,690
+junso en siete valores pero o si podrías disponer otros valores que te
+
+739
+01:11:43,690 --> 01:11:50,260
+parecen reglevantes también justo acá también más acá no están diciendo
+
+740
+01:11:50,260 --> 01:11:55,980
+cual pero convexida la cantidad convexida es algo que es invariante a la
+
+741
+01:11:55,980 --> 01:12:01,800
+escala a la rotación y a la traslación también el perímetro no es
+
+742
+01:12:01,800 --> 01:12:03,580
+es invariante de la escala, si es más grande,
+
+743
+01:12:03,580 --> 01:12:07,640
+permite la mayor, también, pero es invariante de la rotación
+
+744
+01:12:07,640 --> 01:12:08,940
+e invariante de traslación.
+
+745
+01:12:08,940 --> 01:12:12,180
+Bueno, ahí vas teniendo, te vas haciendo una idea.
+
+746
+01:12:12,180 --> 01:12:15,680
+En este caso, perimetro y convexidades son cosas que vuelvan
+
+747
+01:12:15,680 --> 01:12:17,080
+a visualizas.
+
+748
+01:12:17,080 --> 01:12:22,760
+Los valores que vamos a hablar en este jugo, también,
+
+749
+01:12:22,760 --> 01:12:25,700
+a ver, yo sigo compartiendo, ¿no?
+
+750
+01:12:25,700 --> 01:12:29,300
+Porque escuché un ruito del Teams por la duda.
+
+751
+01:12:29,300 --> 01:12:32,320
+Sí, sí, gracias.
+
+752
+01:12:32,320 --> 01:12:39,280
+Bueno, entonces, esto me va a ir saltiando.
+
+753
+01:12:39,280 --> 01:12:42,560
+Vos sabimos que los contornos pueden sacar características.
+
+754
+01:12:42,560 --> 01:12:44,420
+Acá tenés fórmulas, son las que le dije,
+
+755
+01:12:44,420 --> 01:12:47,080
+la disciplina que iba a saltear, también.
+
+756
+01:12:47,080 --> 01:12:51,160
+Hay montones de cositas que voy a poner estrayendo
+
+757
+01:12:51,160 --> 01:12:53,360
+de la imagen de los contornos.
+
+758
+01:12:53,360 --> 01:12:55,400
+La presentación se va a momentos.
+
+759
+01:12:55,400 --> 01:12:58,280
+El término viene de momentos de dinero.
+
+760
+01:12:58,280 --> 01:13:01,560
+Si usted se enfísica uno o la única física que tuviera,
+
+761
+01:13:01,560 --> 01:13:06,780
+no sé este no tuvieron varias en física uno que es mecánica y en algún momento
+
+762
+01:13:06,780 --> 01:13:12,040
+en algún momento vieron momento también momentos pero la palabra es tinta
+
+763
+01:13:12,040 --> 01:13:16,400
+bueno en un momento en un momento de tiempo sino momentos de inercia bueno
+
+764
+01:13:16,400 --> 01:13:22,720
+momento en rigor es una forma matemática también que se usa momento de
+
+765
+01:13:22,720 --> 01:13:27,140
+inercia y la vamos a usar nosotros en estos momentos son evoraciones ponidómicas
+
+766
+01:13:27,140 --> 01:13:35,060
+y ahora te voy a decir de qué tipo, también. En la física, usted usaba un momento de inercian de orden 2.
+
+767
+01:13:35,060 --> 01:13:43,130
+Nosotros vamos a usar de orden 3. Bueno, tenemos cuatro tipos de momentos y vamos a recorrer cada uno,
+
+768
+01:13:43,130 --> 01:13:48,130
+los espaciales centrales, centrales normalizados para llegar finalmente a los invariantes de ju.
+
+769
+01:13:48,130 --> 01:13:57,220
+Los primeros 3 te da una función que llama Moments y después de otra función se llama Hue Moments,
+
+770
+01:13:57,220 --> 01:14:02,700
+le das lo anterior como argumento y te genera el cuarto que es el decritor que
+
+771
+01:14:02,700 --> 01:14:08,260
+nosotros estamos buscando, bueno todo está relacionado así que le vamos a la
+
+772
+01:14:08,260 --> 01:14:14,310
+fama moments y la función que te deras un contorno y te genera a pinte y
+
+773
+01:14:14,310 --> 01:14:18,710
+genera bueno ya va a aparecer lo que te genera todos los momentos los los
+
+774
+01:14:18,710 --> 01:14:23,230
+primeros tres tipos de momentos, lo aplicas a contorno se publica a un imagen
+
+775
+01:14:23,230 --> 01:14:28,870
+un imagen miraria, es más lento, lo mejor es que ya trajiste los contornos de la imagen
+
+776
+01:14:28,870 --> 01:14:35,730
+y cuando calcula los momentos lo hace con el algoritmo que está optimizado para hacerlo
+
+777
+01:14:35,730 --> 01:14:46,120
+super rápido. Esta es una objeto literal, es un objeto sin método, es un objeto que tiene
+
+778
+01:14:46,120 --> 01:14:53,200
+propiedades, las propiedades son estas, se llama así M00, M00, que representan M00,
+
+779
+01:14:53,200 --> 01:15:00,540
+sub 1, 0, bueno, se llama M, Mu y Nú, ¿no bien? Momentos espaciales, momentos centrales y
+
+780
+01:15:00,540 --> 01:15:06,300
+momentos centrales normalizados, vamos a empezar por los momentos espaciales, o sea, ¿cómo
+
+781
+01:15:06,300 --> 01:15:11,660
+se calcula momento? Bueno, de manera genética es esto, nosotros usamos en imagen binaria,
+
+782
+01:15:11,660 --> 01:15:18,300
+entonces lo reducimos así y le voy a explicar cómo se entiende esta presión. La sumatoria
+
+783
+01:15:18,300 --> 01:15:27,730
+de las coordenadas de los píxeres del blob, o sea, interiores al contornos, entonces para
+
+784
+01:15:27,730 --> 01:15:34,870
+cada coordenada, a la interior del contornos, cada coordenada aquí sí, la fórmula va
+
+785
+01:15:34,870 --> 01:15:43,220
+a su monómio esto, la coordenada x la voy a elevar a la constante y que es la de su índice y
+
+786
+01:15:43,220 --> 01:15:47,220
+si la coordenada y griegan la voy a elevar a la constante j,
+
+787
+01:15:47,220 --> 01:15:54,220
+o sea que el m1 1 significa x por y, el m2 2 significa x acuadrado y acuadrado.
+
+788
+01:15:54,220 --> 01:16:00,540
+Se entiende, o sea, entiende lo que estoy leyendo, no tiene la menor idea para que sirve
+
+789
+01:16:00,540 --> 01:16:05,540
+y no quieren poner el mayor esfuerzo, o sea, y no se preocupen porque eso se lo voy a decir.
+
+790
+01:16:05,540 --> 01:16:14,920
+y majota es el orden, o sea que si acadice 1 o 1 es de orden 2, si acadice 2 0 es de orden 2,
+
+791
+01:16:14,920 --> 01:16:20,420
+vamos a llegar hasta orden 3, o sea que el que 2 2, que yo le dije que 2 de 4 no es ese
+
+792
+01:16:20,420 --> 01:16:28,720
+no vamos a llegar, o sea que la suma de majota da en 3 0 y 3, ok, esa es la forma matemática,
+
+793
+01:16:28,720 --> 01:16:33,080
+todos se entienden la fórmula, no tienen la menor idea porque sirve,
+
+794
+01:16:33,080 --> 01:16:39,900
+vamos a empezar por lo más fácil momentos espaciales solo nos interesan orden 0 y 1
+
+795
+01:16:39,900 --> 01:16:50,980
+orden 0 hay uno solo cuando es 0 y 0 la pregunta es qué te da x a la 0 por y a la 0 a ver
+
+796
+01:16:50,980 --> 01:17:06,440
+quiero respuestas no podemos seguir si no me reponde en eso como un o uno y la somatoria
+
+797
+01:17:06,440 --> 01:17:19,050
+de uno que me da, ¿Uner? No, no es la subatoria de una, subatoria donde, el kilo, ah, y estoy escuchando
+
+798
+01:17:19,050 --> 01:17:25,410
+rebajito, hay alguien allá en el fondo, eso puede sentado muy atrás, no se te escucha bien.
+
+799
+01:17:31,850 --> 01:17:35,390
+¿Te perdiste?
+
+800
+01:17:35,390 --> 01:17:39,870
+X1 y 1, ¿eh? ¿Vena? ¿Vena? ¿Vena? ¿Vena? ¿Vena? ¿Vena? ¿Vena? ¿Vena? ¿Vena?
+
+801
+01:17:39,870 --> 01:17:47,150
+Xa la 0, poría la 0 da 1, o sea que todo esto, creo que vea mi malo, ¿no? Todo esto da 1.
+
+802
+01:17:47,150 --> 01:17:58,570
+Entonces la sumatoria de un valor que dice 1, ¿qué me da? Yo sé que le pongo una potencia
+
+803
+01:17:58,570 --> 01:18:02,410
+y más cuando te lo multiplica por esta potencia ahí, ahí abandona, dice lo que esto
+
+804
+01:18:02,410 --> 01:18:10,210
+para mí, esta no es la carrera que se olegí, pero el problema es la sumatoria
+
+805
+01:18:10,210 --> 01:18:23,110
+donde que es lo que recorremos con esa sumatoria. Bueno, Alexio Tomano, es la primera vez,
+
+806
+01:18:23,110 --> 01:18:33,270
+la primera vez en 10 años que esta pregunta no tiene respuesta, no me pasó nunca, estamos
+
+807
+01:18:33,270 --> 01:18:41,950
+descubriendo nuevas fronteras. Uno segundo más le voy a dar a alguno, puede suponer, no porque ya se
+
+808
+01:18:41,950 --> 01:18:47,270
+que se reconegan. Rápido, muchos de ustedes están pagando cloud o Gemini ahí. Utilicenlo por
+
+809
+01:18:47,270 --> 01:18:54,780
+lo menos. Sí, pregúntenle a cloud, cheque y me da la soja. Se está escrito a qué la diamos
+
+810
+01:18:54,780 --> 01:19:14,260
+sintiva. Ok, ok. Bueno, sorry, yo te digo, mira, no, no, no, no, no, no, no, no, no, no, no,
+
+811
+01:19:14,260 --> 01:19:17,660
+porque como está aquí, yo, no puede ser, o sea, no puede ser, o sea, no puede ser, o sea,
+
+812
+01:19:17,660 --> 01:19:19,660
+Sí, ese área.
+
+813
+01:19:19,660 --> 01:19:21,660
+Ah, perdón, ¿por qué?
+
+814
+01:19:21,660 --> 01:19:25,160
+La pregunta, ¿por qué?
+
+815
+01:19:25,160 --> 01:19:28,260
+Porque si vos tu sumatoria dijimos que íbamos a poner
+
+816
+01:19:28,260 --> 01:19:32,840
+las coordenadas de cada písel dentro del contorno.
+
+817
+01:19:32,840 --> 01:19:36,180
+Entonces si vos te posicionase en cada písel dentro del contorno
+
+818
+01:19:36,180 --> 01:19:40,740
+y la cuenta que des uno en cada písel suma todos y te da el área.
+
+819
+01:19:40,740 --> 01:19:42,740
+También en medio obvio.
+
+820
+01:19:42,740 --> 01:19:45,540
+Pero bueno, hay que activar la neurona, ¿no?
+
+821
+01:19:45,540 --> 01:19:51,620
+si no. Esa parte desde acá no la puedo hacer, o sea, todavía no salió, estamos todos
+
+822
+01:19:51,620 --> 01:19:56,020
+esperando este aneo de Matrix que se enchufa el coso acá atrás de la cabeza y te ven
+
+823
+01:19:56,020 --> 01:20:02,260
+a los conocimientos, ¿no? Lamentablemente las neurociencias ya dijeron que eso es imposible
+
+824
+01:20:02,260 --> 01:20:07,460
+también. Yo, ahora, y un poco también para que no crean que, hasta bien sale la inteligencia
+
+825
+01:20:07,460 --> 01:20:13,020
+artificial y un montón de pibes que programaron en Basic y que quedaron los soletos, pero
+
+826
+01:20:13,020 --> 01:20:22,860
+y hicieron tomografías a alumnos universitarios antes y después de una clase de una clase de
+
+827
+01:20:22,860 --> 01:20:28,880
+danza y alumnos que empezaron a hacerse, digamos, que pusieron cabeza. Y se notaba una enorme
+
+828
+01:20:28,880 --> 01:20:35,120
+reconfiguración del cerebro, o sea, la neuronas y eso requiere esfuerzo, o sea, cuando
+
+829
+01:20:35,120 --> 01:20:40,060
+ustedes se cansan, tratando de entender, algo está pasando a la cabeza, están consumiendo
+
+830
+01:20:40,060 --> 01:20:48,380
+si dije no, están consumiendo, es más buena estar el gazar, de verdad le digo. Entonces se
+
+831
+01:20:48,380 --> 01:20:53,860
+requiere esfuerzo para aprender, ¿no? Eso de enchufarte acá hay que descare lamentablemente
+
+832
+01:20:53,860 --> 01:21:01,840
+no es viable, lástima, porque el esfuerzo no es un objetivo acá, después lamentablemente
+
+833
+01:21:01,840 --> 01:21:06,080
+le esfuerzo esa de los que hay que poner y digo lamentablemente, pero no queda otra.
+
+834
+01:21:06,080 --> 01:21:16,220
+bueno el voc, el momento 0, 0 es el área de la mancha. Esto de abajo ya se le perdí completa
+
+835
+01:21:16,220 --> 01:21:21,100
+fe a ustedes, así que se los voy a decidir directamente. Esta es la formulita, digamos, agarras
+
+836
+01:21:21,100 --> 01:21:28,740
+el momento de orden 1 y 2, el 1 0 y el 0 1, o sea, el 1 0 es si que acá queda x solamente
+
+837
+01:21:28,740 --> 01:21:34,220
+y el 0 1, o sea que acá queda solamente y, también, si voces eso y dividís por el área
+
+838
+01:21:34,220 --> 01:21:39,220
+te da el varicentro, el centro y el centro de masa.
+
+839
+01:21:39,220 --> 01:21:43,280
+Tu te tiene el concepto del centro de masa de física.
+
+840
+01:21:43,280 --> 01:21:48,380
+Y el tema es que el centro de masa es como se queda pegado a la figura.
+
+841
+01:21:48,380 --> 01:21:51,380
+O sea, si vos te la da la figura, el centro de masa va junto con la figura.
+
+842
+01:21:51,380 --> 01:21:56,380
+Si vos las rotas va junto, si vos las calas, mantiene su lugar relativo.
+
+843
+01:21:56,380 --> 01:22:05,700
+Esto es un excelente punto para elegir como posición de tu blog, de tu figura.
+
+844
+01:22:05,700 --> 01:22:08,700
+Por que hubo decir, no, voy a agarrar el pixel de más arriba.
+
+845
+01:22:08,700 --> 01:22:13,700
+Pero si yo tengo un cuadro y lo estoy girando, el pixel relativo,
+
+846
+01:22:13,700 --> 01:22:16,700
+que está más arriba, cambia según como lo giras.
+
+847
+01:22:16,700 --> 01:22:19,700
+En cambio, el Centroide mantiene su posición relativo.
+
+848
+01:22:19,700 --> 01:22:25,220
+o alísimo. Usamos, elegimos el centroide como el mejor, si yo quiero decir la localización
+
+849
+01:22:25,220 --> 01:22:29,700
+del blog, te voy a estar coordenada. Pues yo te digo check, decíme la localización
+
+850
+01:22:29,700 --> 01:22:33,700
+del blog, vamos a decir check, de cual de todos los píxeles, porque tiene muchas localizaciones,
+
+851
+01:22:33,700 --> 01:22:38,260
+cada píxeles tiene una localización centroide, usemos eso para decir, el centroide está
+
+852
+01:22:38,260 --> 01:22:47,520
+acá, listo buenísimo. Entonces, los momentos espaciales nos sirven para medir el área
+
+853
+01:22:47,520 --> 01:22:51,240
+y para identificar el centro y de que es la localización.
+
+854
+01:22:51,240 --> 01:22:52,080
+Disto, nos quedamos ahí.
+
+855
+01:22:52,080 --> 01:22:54,120
+Ahora vamos a ver qué pasa con el siguiente es orden.
+
+856
+01:22:54,120 --> 01:23:02,260
+Momentos centrales tienen sentido de orden 2 en adelante.
+
+857
+01:23:02,260 --> 01:23:03,740
+Ahora van a ver por qué.
+
+858
+01:23:03,740 --> 01:23:04,900
+¿Qué es el momento central?
+
+859
+01:23:04,900 --> 01:23:08,500
+El la mismo forma anterior, aunque ustedes no lo crean, está bien.
+
+860
+01:23:08,500 --> 01:23:11,260
+Pero en vez de x, ponemos x menos x promedio,
+
+861
+01:23:11,260 --> 01:23:14,950
+que es el vari centro y menos y promedio.
+
+862
+01:23:14,950 --> 01:23:17,700
+Lo que estamos haciendo es convirtiendo
+
+863
+01:23:17,700 --> 01:23:23,820
+las coronadas de los píxeles relativas a su centroid. Entonces, si cuando vos
+
+864
+01:23:23,820 --> 01:23:28,500
+mover la figura el centroid también se mueve junto, entonces los píxeles relativos
+
+865
+01:23:28,500 --> 01:23:34,060
+estos valores van a ser invariantes a la traslación. Los momentos centrales es la
+
+866
+01:23:34,060 --> 01:23:39,650
+manera de darle invariancia a la traslación. O sea, es el mismo cálculo de
+
+867
+01:23:39,650 --> 01:23:44,170
+momentos, pero ahora el 0, 0 en vez del 0 sobre la imagen es el centroid.
+
+868
+01:23:44,170 --> 01:23:49,870
+si la mancha se mueve, el resultado es imerente de atracción y ahí donde empieza a tener relevancia,
+
+869
+01:23:49,870 --> 01:23:56,490
+también, por lo menos como de scripto, por lo menos imerente de atracción. Entonces, ¿qué pasa?
+
+870
+01:23:56,490 --> 01:24:03,490
+Los momentos de orden 1, como están referidos al propio barricentro, da cero. Ok, pues sí,
+
+871
+01:24:03,490 --> 01:24:07,970
+creanme, es así, no es tan difícil, pero es así. El momento de orden 0 que igual,
+
+872
+01:24:07,970 --> 01:24:13,290
+pero yo lo tenía de los momentos espaciales, así que los únicos que importan son los de orden 2
+
+873
+01:24:13,290 --> 01:24:23,900
+y de orden 3, que anda a saber qué significa, no importa. Lo que te dicega es que la fórmula calcula
+
+874
+01:24:23,900 --> 01:24:29,970
+los momentos espaciales sobre el contorno, pero después los momentos centrales se calculan a
+
+875
+01:24:29,970 --> 01:24:36,460
+partir de los momentos espaciales, no es que aplican la fórmula anterior al blog, sino que
+
+876
+01:24:36,460 --> 01:24:41,780
+lo va deduciendo tanto relacionado. Ahí acá está la fórmula, a nadie no importa, ya están hechas,
+
+877
+01:24:41,780 --> 01:24:47,060
+también, pero están todas relacionadas. Esto me lo voy a pasar, vos puedes usar los
+
+878
+01:24:47,060 --> 01:24:52,500
+momentos centrales para determinar un ángulo de orientación y excetricidad,
+
+879
+01:24:52,500 --> 01:24:57,400
+el camino implica formado una matriz, calcular el auto vetor, todo te lo hacen, las
+
+880
+01:24:57,400 --> 01:25:05,660
+formuladas, pueden, eigan, eigan baño, eigan vector, eigan, acá está la formula que dice
+
+881
+01:25:05,660 --> 01:25:11,780
+agarco a la gente, pero lo que hay cual es computadora o escribirse la formulizata. Si en
+
+882
+01:25:11,780 --> 01:25:15,780
+a un momento les interesan sacar características geometricas tienen que meterse con estas
+
+883
+01:25:15,780 --> 01:25:22,660
+fórmulas. Acá lambda unidos son los dos autobalbres. Lo pasé rápido, no explique nada,
+
+884
+01:25:22,660 --> 01:25:27,500
+no explique nada. Me digo, está ahí como referencia y un pedacito de código para que
+
+885
+01:25:27,500 --> 01:25:36,020
+que vean que no es tan difícil, también hay que imponer la matriz anterior y ya te da
+
+886
+01:25:36,020 --> 01:25:45,720
+los autoberes y los autobectores, bueno, momentos normales recién vimos los momentos centrales,
+
+887
+01:25:45,720 --> 01:25:52,000
+los momentos normales dividen por el área, curiosamente necesitan un exponente porque
+
+888
+01:25:52,000 --> 01:25:58,460
+si eres de, bueno, me importa, tiene que meterse con un poquito de matemática.
+
+889
+01:25:58,460 --> 01:26:05,650
+Esto te normaliza respecto del tamaño, también, y por lo tanto te da invarianza a la
+
+890
+01:26:05,650 --> 01:26:12,140
+escala. Si la forma es más grande o más chica, el momento normal va a dar el mismo valor,
+
+891
+01:26:12,140 --> 01:26:19,220
+esa es la idea, entonces al normalizar que es dividir por el área, estamos logrando
+
+892
+01:26:19,220 --> 01:26:24,620
+un invariante a la escala, ya conseguimos un invariante de traslación y ahora además tenemos
+
+893
+01:26:24,620 --> 01:26:29,600
+un invariante a la escala, las dos cosas con los momentos normales y eso es el último
+
+894
+01:26:29,600 --> 01:26:37,770
+momento, bueno esto me lo voy a saltar estratégicamente. Conceptualmente, esto está, si no
+
+895
+01:26:37,770 --> 01:26:46,280
+es algo, no se van a hacer expertos en momentos, pero el momento orden 0 interesa el espacial
+
+896
+01:26:46,280 --> 01:26:52,460
+que te da el área y el orden 1 te da el centro de idea, está bien. Los momentos de orden
+
+897
+01:26:52,460 --> 01:26:58,960
+2, conseguís orientaciones de centricidad y el momento de orden 3, en casula más información
+
+898
+01:26:58,960 --> 01:27:03,600
+sobre las formas, sobre si tiene forma de banana, no mucho más, ¿eh? No te distingue
+
+899
+01:27:03,600 --> 01:27:08,760
+una circunferencia en la engranaje, no están todos los detalles de cualquier forma
+
+900
+01:27:08,760 --> 01:27:17,080
+literaria en casulado en 7 dimensiones, en 7 valores, sino que en casura forma que se
+
+901
+01:27:17,080 --> 01:27:21,720
+puede que te va a permitir a vos distinguir los que vos vas a hacer.
+
+902
+01:27:21,720 --> 01:27:28,030
+Bueno, entonces invariante de jugo en el año 48, mucho antes de la visión artificial
+
+903
+01:27:28,030 --> 01:27:39,910
+puteo matemático, y jugo que es un chino, ahora no me acuerdo, resolvido un problema
+
+904
+01:27:39,910 --> 01:27:46,270
+matemático, digo cómo uso momentos de orden 2, específicamente momentos normales,
+
+905
+01:27:46,270 --> 01:27:53,710
+para lograr la imparenza a la rotación. Y lo logro y tiene la fórmula, si tienes la
+
+906
+01:27:53,710 --> 01:27:59,340
+función para calcularlo a partir de los momentos normales y este es el ejemplo, acá están
+
+907
+01:27:59,340 --> 01:28:09,450
+los 7 valores h de j de 0, 6 y esto es así, en la primera columna tenemos un imagen y a la
+
+908
+01:28:09,450 --> 01:28:16,170
+derecha están los 7 valores del inmediato de j. La primera es una detraca, la segunda es
+
+909
+01:28:16,170 --> 01:28:22,570
+una letra s, y vos ves que los valores no son tan distintos, pero son distintos, acá
+
+910
+01:28:22,570 --> 01:28:31,210
+22 a que dice 19, está bien, acá dice 5,7, que dice 6,5. Bueno, después fijate, el conjunto
+
+911
+01:28:31,210 --> 01:28:36,090
+de valores tiene que permitir distinguir una letra cada de una letra a ese. ¿Qué pasa
+
+912
+01:28:36,090 --> 01:28:44,890
+cuando vos trasladas la mancha? Los invariantes de juso en exactamente iguales, también, después
+
+913
+01:28:44,890 --> 01:28:50,140
+voy a explicar unos detalles. ¿Qué pasa cuando vos escalás? Los invariantes de juro
+
+914
+01:28:50,140 --> 01:29:00,400
+variando un poquitito, pero siguen siendo muy parecidos a la S y más diferente que la K,
+
+915
+01:29:00,400 --> 01:29:09,400
+o sea que todavía te sirve para clasificar 171S, no es una K, ¿qué pasa cuando borrotas? y todavía
+
+916
+01:29:09,400 --> 01:29:17,000
+variando un poquito, hay un poquito, ahora explica por qué, pero te siguen siendo discriminantes,
+
+917
+01:29:17,000 --> 01:29:23,360
+el conjunto de los 7 valores te permite distinguir una S de 1 acá y por último está el fenómeno
+
+918
+01:29:23,360 --> 01:29:28,960
+de reflexión que es una transformación de válida a nosotros no nos interesa, por
+
+919
+01:29:28,960 --> 01:29:36,040
+cómo estás buscando traslación y rotación, hay un solo los 6-6 invariantes de juz que son
+
+920
+01:29:36,040 --> 01:29:43,460
+invariantes a la reflexión y hay uno solo que lo único que le cambias el signo, ¿tobien?
+
+921
+01:29:43,460 --> 01:29:50,110
+si yo se da el paso, si tu figura es simétrica, entonces este valor da cero, de manera que
+
+922
+01:29:50,110 --> 01:29:58,760
+sí cambia el signo, es el mismo valor, también, bueno, más o menos se entendió entonces
+
+923
+01:29:58,760 --> 01:30:02,700
+cómo son los invariantes, no son números a los que vos quieras interpretarlos mirando
+
+924
+01:30:02,700 --> 01:30:10,160
+los, también, si son, sino que son vectores, son descriptores para alimentar un clasificador
+
+925
+01:30:10,160 --> 01:30:14,260
+y que separe los que son ese, de lo que son ca, porque vuelvo a enseñar,
+
+926
+01:30:14,260 --> 01:30:17,960
+es decir, un montón de, le vas a tirar un montón de decritores de una de
+
+927
+01:30:17,960 --> 01:30:22,160
+letra S en distintas posiciones y orientaciones y de las otras letras.
+
+928
+01:30:22,560 --> 01:30:25,360
+También, y yo puedo hacer clasificadores y che, separarse.
+
+929
+01:30:25,660 --> 01:30:30,260
+Este espacio de descripción, de siete, de siete dimensiones, separarlo,
+
+930
+01:30:30,760 --> 01:30:31,860
+no sé, clasificarlo.
+
+931
+01:30:32,260 --> 01:30:34,860
+Está bien, cosa de que en el futuro, ¿a cuándo aprendes?
+
+932
+01:30:35,360 --> 01:30:39,660
+En el futuro, eso te tiro lo simariente de ju, de otra letra S,
+
+933
+01:30:40,160 --> 01:30:47,180
+y el segtasifico de entrenado dice si se parece más una S que un acá. Bueno acá tienen la
+
+934
+01:30:47,180 --> 01:30:53,250
+fórmula, si quieren calcular los inmolentes de juego a partir de los momentos normales acá
+
+935
+01:30:53,250 --> 01:30:58,850
+tienen la fórmula, o sea jugo era un tipo muy aburrido, también en el año 48 la televisión
+
+936
+01:30:58,850 --> 01:31:02,970
+color no existía y me imagino que en China tampoco la gran cuina era así que no había
+
+937
+01:31:02,970 --> 01:31:08,930
+televisión, ahí se los chinos se entretenían haciendo estas cosas, por suerte, ahí el asiso.
+
+938
+01:31:08,930 --> 01:31:17,280
+Bueno, acá se terminó, creo que se terminó, que se entendió el objetivo de todo esto, después
+
+939
+01:31:17,280 --> 01:31:23,280
+se le va a explicar bien cómo es el trabajo práctico, pero vieron cómo es por adentro, es la única vez,
+
+940
+01:31:23,280 --> 01:31:28,280
+nunca más vamos a hacer lo mismo, vieron cómo se armó un decriptiono, también,
+
+941
+01:31:28,280 --> 01:31:32,280
+pues lo puedes armar como aquí era, no, le pone el color de la fruta, el diámetro,
+
+942
+01:31:32,280 --> 01:31:42,270
+pero en este caso específicamente se está buscando invariantes para detectar formas,
+
+943
+01:31:42,270 --> 01:31:47,510
+pero específicamente o tres invariantes. Y ahí ves cómo es la formulación para lograr
+
+944
+01:31:47,510 --> 01:31:53,870
+eso, la formación matemática. Quiero recordarles la definición veía superficial porque esto no
+
+945
+01:31:53,870 --> 01:32:00,390
+es algo estricto. Descriptor es cuando vos lo diseñan con fórmula en bedings, es lo mismo, pero
+
+946
+01:32:00,390 --> 01:32:06,830
+cuando un mecanismo a Deep Learning los generó a partido de entrenamiento, también. No vimos
+
+947
+01:32:06,830 --> 01:32:11,810
+de Deep Learning. Vamos a usar Machine Learning y acá vamos a separar las agajeras para
+
+948
+01:32:11,810 --> 01:32:17,710
+ser un clasificador, les voy adelantando. Cuando pasen a clase, le va a quedar reobio,
+
+949
+01:32:17,710 --> 01:32:22,350
+le va a ser reobio en la diferencia, pero en Machine Learning entre un escritor y sale,
+
+950
+01:32:22,350 --> 01:32:29,650
+por ejemplo, una categoría. En Deep Learning entre la imagen, también, el Deep Learning
+
+951
+01:32:29,650 --> 01:32:36,290
+se ocupa de la parte de descripción. Eso es lo súper importante. Cuando lleguemos al
+
+952
+01:32:36,290 --> 01:32:42,210
+deep learning, van a entender, van a ver, vamos a dar los mecanismos, vamos a dar todo.
+
+953
+01:32:42,210 --> 01:32:46,410
+Primero, vamos a ver cómo usarlo y más adelante, cuando ya usted tenga su trajo práctico
+
+954
+01:32:46,410 --> 01:32:50,810
+en uno de los sistemas de teoría, nos vamos a meter en las profundidades en cómo funciona
+
+955
+01:32:50,810 --> 01:32:56,610
+todo eso. Bueno, entonces yo ahora déjenme ordenar un poquito, voy a empezar a cerrar
+
+956
+01:32:56,610 --> 01:33:10,370
+positivas, y acá tengo esto. Yo creo que voy a hacerlo siguiente. Esta es una, vamos a dar un
+
+957
+01:33:10,370 --> 01:33:25,100
+poquito contexto. La visión artificial de manera clásica se da, viene del siglo 20, no de la
+
+958
+01:33:25,100 --> 01:33:31,260
+parte matemática. Hay una, sigue ven una tendencia académica, a dar los cosas clásicas,
+
+959
+01:33:31,260 --> 01:33:35,260
+depende la formación del profesor. Si el profesor viene de exactas o de ciencia básica,
+
+960
+01:33:35,260 --> 01:33:41,260
+te va a empezar todas las fórmulas. Si viene más como nosotros del ingeniería en informática,
+
+961
+01:33:41,260 --> 01:33:47,260
+va a buscar cosas aplicables, aunque no lo crean todos estos que estamos haciendo es aplicable.
+
+962
+01:33:47,260 --> 01:33:53,260
+Está bien, aplicable, soltóle en informática para ser algoritmo con los trajos prácticos,
+
+963
+01:33:53,260 --> 01:34:01,260
+son evidencias de ellos. Entonces, hay típicamente un matemático, te empieza a
+
+964
+01:34:01,260 --> 01:34:08,860
+filtros y en un momento te mete compresiones morfológicas así de prepos. Esta
+
+965
+01:34:08,860 --> 01:34:14,160
+presentación tenía un objetivo muy concreto que era quitarle ruidos a las
+
+966
+01:34:14,160 --> 01:34:19,860
+imágenes binarias. Ahora qué pasa? De hace tres o cuatro años para acá las
+
+967
+01:34:19,860 --> 01:34:25,020
+cámaras de los celulares, mejoraron muchísimo y todo el ruido que la parecían,
+
+968
+01:34:25,020 --> 01:34:31,000
+las imágenes binarias, ahora ya no aparecen. Por lo tanto, usted no lo necesita, está bien.
+
+969
+01:34:31,000 --> 01:34:37,830
+Operaciones morfológicas es algo que viene del siglo XX y se sabe un montón para lograr
+
+970
+01:34:37,830 --> 01:34:43,150
+cosas que hoy se logran de maneras mucho más avanzadas. Entonces, sigue siendo una técnica
+
+971
+01:34:43,150 --> 01:34:51,510
+a Valida, sigue teniendo su ámbito específico de aplicación, pero yo voy a saltir a Valida
+
+972
+01:34:51,510 --> 01:34:57,910
+depositiva a esta presentación para ir específicamente a eliminación de ruido, que es un tema
+
+973
+01:34:57,910 --> 01:35:02,710
+que quizás no lo están necesitando, pero por lo menos les queda el concepto, ¿de acuerdo?
+
+974
+01:35:02,710 --> 01:35:09,590
+Está bien, yo a propósito decidí no borrar las diapositivas, porque por lo menos queda
+
+975
+01:35:09,590 --> 01:35:15,510
+una presentación de referencia no no en la grabación de la clase de hoy, pero en la presentación,
+
+976
+01:35:15,510 --> 01:35:19,430
+no por si alguno quiere ir a alguna idea positiva a encontrar.
+
+977
+01:35:19,430 --> 01:35:25,550
+Este es el problema, creo que se entiende que hay ruido, esos puntitos blancos son indeseables.
+
+978
+01:35:25,550 --> 01:35:31,510
+A ver lo que te interesan son las manchas blanches, estos son monedas, las manchitas blancas,
+
+979
+01:35:31,510 --> 01:35:37,470
+también. Y acá hay algo raro, son mis introducidas jergas, estos son elementos estructurales,
+
+980
+01:35:37,470 --> 01:35:45,030
+Entonces, tenemos que partir de la primera imagen de la izquierda y lograr el apud de la derecha,
+
+981
+01:35:45,030 --> 01:35:51,930
+las superaciones morfológicas lo hacen, lo hacen muy fácil y son muy eficientes, sirven para
+
+982
+01:35:51,930 --> 01:35:57,170
+muchas otras cosas, pero no las voy a recorrer porque dejaron de tener relevancia en
+
+983
+01:35:57,170 --> 01:36:00,810
+misión artificial. Bueno, hay dos superaciones básicas que se llaman
+
+984
+01:36:00,810 --> 01:36:06,080
+diretación de erosión, que lo aplica, acá tienes una imagen que dice morfology, si vos la
+
+985
+01:36:06,080 --> 01:36:11,280
+erosionaste queda más finita y si la dilataste, la primera, la dilataste queda más gorda,
+
+986
+01:36:11,280 --> 01:36:16,720
+ese es el resultado. Los nombres lo dicen, la dilatación, la cinfla, la erosión, la
+
+987
+01:36:16,720 --> 01:36:23,040
+quita. Si ustedes, si, primero, entre ustedes, ustedes usan dilataciones y erosiones y saben lo que
+
+988
+01:36:23,040 --> 01:36:29,600
+espero bueno, la mayoría no lo hace así que bueno, acá van a aparecer muchos ejemplos, si vos
+
+989
+01:36:29,600 --> 01:36:35,000
+dilataste esto, las manchas se juntan, también, entonces claro, hay que ver si vos querías que se
+
+990
+01:36:35,000 --> 01:36:40,280
+juntos, más vale que sí, porque si no, no lo hagas, digamos. ¿Qué es? ¿Cómo funciona?
+
+991
+01:36:40,280 --> 01:36:45,240
+Bueno, esta es la imagen original, a la derecha está la imagen dilatada, esto que está
+
+992
+01:36:45,240 --> 01:36:50,400
+acá, esta matriz de 3x3, que en este caso tiene los nuevos píxeles blanco, esta matriz
+
+993
+01:36:50,400 --> 01:36:57,560
+de 3x3 se llama elemento estructural, específicamente en este caso es un cuadrado de 3x3. Podría
+
+994
+01:36:57,560 --> 01:37:03,780
+tener otra otra, los píxeles podrían ser blanco o sin héroe y tener otra forma. Entonces
+
+995
+01:37:03,780 --> 01:37:09,180
+yo voy a diletar la imagen del izquierda con el este elemento estructural de 3x3 y es como
+
+996
+01:37:09,180 --> 01:37:16,100
+si yo aplicara este cuadradito de 3x3, si era como un cejito blanco y lo aprieto en cada
+
+997
+01:37:16,100 --> 01:37:22,040
+pixel blanco, entonces este punto rojo es la misma coordenada a la izquierda de la derecha,
+
+998
+01:37:22,040 --> 01:37:26,720
+pero como yo le puse el cejito blanco de este elemento estructural lo apreté alrededor
+
+999
+01:37:26,720 --> 01:37:33,120
+de este punto rojo quedaron los ocho pixels en blanco, como este está en el borde se
+
+1000
+01:37:33,120 --> 01:37:37,540
+pintaron todos estos acarredor, como esto lo aplico a todo lo pixel lo blanco que
+
+1001
+01:37:37,540 --> 01:37:41,320
+llega acá se infla la imagen de la imagen, yo bueno espero que les haya entendido y si no
+
+1002
+01:37:41,320 --> 01:37:47,520
+después lo piensan, también eso lo que hace la iratación, el efecto se nota en los bordes
+
+1003
+01:37:47,520 --> 01:37:54,080
+porque si vos ponés el elemento de tu lugar en este pixel ya está en blanco en los
+
+1004
+01:37:54,080 --> 01:38:00,400
+arredor, no va a cambiar nada, también si el elemento de estructura les más grande se infla
+
+1005
+01:38:00,400 --> 01:38:10,120
+más, se entiende? Bueno, entonces acá hay varios ejemplos de con, estoy diretando con
+
+1006
+01:38:10,120 --> 01:38:14,440
+este elemento de tutura de informar esto, con esto se queda como un poquito más gordo,
+
+1007
+01:38:14,440 --> 01:38:25,330
+no puedes dibujarlo, esto es una circunferencia de, se me fue el nombre, es una circunferencia
+
+1008
+01:38:25,330 --> 01:38:30,750
+pixelada, entonces si volvemos con un cuadrado, el vértice te queda bien puntiado, si lo
+
+1009
+01:38:30,750 --> 01:38:36,750
+así con una circunferencia pixelada en los wordes, el vértice, perdón, te queda más redondeada.
+
+1010
+01:38:36,750 --> 01:38:40,750
+Es un poco de los efectos que vos conseguís.
+
+1011
+01:38:40,750 --> 01:38:45,750
+No es muy relevante para lo que nosotros queremos hacer. Es parte de la teoría profunda del asmento.
+
+1012
+01:38:45,750 --> 01:38:54,750
+Más ejemplo de qué pase con dilatación y erosión usando distintos elementos estructurales en una imagen.
+
+1013
+01:38:54,750 --> 01:39:00,970
+Bueno, erosión es lo mismo, pero al revés. O sea, hubo vas a aplicar a todos los puntos,
+
+1014
+01:39:00,970 --> 01:39:06,030
+los píxeles negro, le vas a aplicar el secito y lo vas a amanchar todo en negro. Entonces,
+
+1015
+01:39:06,030 --> 01:39:10,270
+en los bordes, vas a invadir la zona blanca y te vas a quedar más fino. Por eso se le
+
+1016
+01:39:10,270 --> 01:39:18,380
+llama erosión, ¿de acuerdo? Al más ejemplos de que pasan con la erosión, acá hay una
+
+1017
+01:39:18,380 --> 01:39:24,980
+aplicación media tirar los pelos. Esto era parte de un trabajo práctico que hacíamos
+
+1018
+01:39:24,980 --> 01:39:29,240
+antiguamente. Bueno, acá con la decional, no me acuerdo, creo que no lo hicimos con
+
+1019
+01:39:29,240 --> 01:39:37,380
+la decional, lo hacía yo en la otra no lo hacía. Si vos se emocionás, lo suficiente,
+
+1020
+01:39:37,380 --> 01:39:42,280
+fíjate vos acá, el problema tiene es un montón de monedas, pero es una sola mancha.
+
+1021
+01:39:42,280 --> 01:39:47,520
+Y si vos se emocionás lo suficiente, sabiendo que son monedas, sabiendo que se puede emocionar,
+
+1022
+01:39:47,520 --> 01:39:54,160
+te pueden quedar estas manchitas separadas y ahora vos puedes aplicar contornos y renovarlas
+
+1023
+01:39:54,160 --> 01:39:57,480
+y contar cuántas monedas tenías, también.
+
+1024
+01:39:57,480 --> 01:39:59,360
+Es un ejemplo, en algunos casos sirve,
+
+1025
+01:39:59,360 --> 01:40:04,720
+pero no es de uso tan general como parece, ¿no?
+
+1026
+01:40:04,720 --> 01:40:06,520
+Bueno, entonces vamos a ir a restauración de imágenes
+
+1027
+01:40:06,520 --> 01:40:08,780
+y ve que aquí está ruido.
+
+1028
+01:40:08,780 --> 01:40:10,980
+Bueno, hay una función que hace lo de arriba,
+
+1029
+01:40:10,980 --> 01:40:13,940
+que se llama Open y otra que se llama Close,
+
+1030
+01:40:13,940 --> 01:40:15,820
+que hace lo de abajo, también.
+
+1031
+01:40:15,820 --> 01:40:19,180
+Lo de Close es porque es como que te cierre
+
+1032
+01:40:19,180 --> 01:40:21,140
+a los agujeritos negros.
+
+1033
+01:40:21,140 --> 01:40:23,060
+Y Open es la acero contrario,
+
+1034
+01:40:23,060 --> 01:40:27,320
+O sea, que te borra los puntitos blancos, está bien.
+
+1035
+01:40:27,320 --> 01:40:30,400
+Y como se logra, es una erosión seguida una alegración.
+
+1036
+01:40:30,400 --> 01:40:34,200
+O sea, cuando erosionas, esta imagen la jota queda
+
+1037
+01:40:34,200 --> 01:40:36,000
+la jota adelgaza.
+
+1038
+01:40:36,000 --> 01:40:39,320
+Ahora, ¿qué pasa con los puntitos negro?
+
+1039
+01:40:39,320 --> 01:40:42,090
+Cuando vos erosionase esa imagen.
+
+1040
+01:40:42,090 --> 01:40:43,210
+Con los puntitos blancos, perdón.
+
+1041
+01:40:43,210 --> 01:40:46,090
+Con los puntitos blancos, ¿qué pasa cuando...
+
+1042
+01:40:46,090 --> 01:40:48,530
+Si vos erosionas la jota no está dibujada acá,
+
+1043
+01:40:48,530 --> 01:40:50,250
+te queda más finita.
+
+1044
+01:40:50,250 --> 01:40:52,410
+¿Y qué pasa con los puntitos blancos?
+
+1045
+01:40:52,410 --> 01:41:03,490
+es una idea. Bueno, por ahí desaparece. Desaparece, gracias. Desaparece también. Entonces que
+
+1046
+01:41:03,490 --> 01:41:09,130
+pero te quedas con la jota adelgazada. Entonces, puedo después hacer una dilatación y la jota
+
+1047
+01:41:09,130 --> 01:41:14,970
+recupera su espesor original no hace exactamente igual, pero se parecía, pero los pícenes
+
+1048
+01:41:14,970 --> 01:41:19,900
+que desaparecieron ya no se hidratan. Entonces, limpiaste los puntitos blancos. Si haces
+
+1049
+01:41:19,900 --> 01:41:25,940
+arreves, primero de hidratas y después de erosionar la jota en gorda, los puntitos negro desaparecen
+
+1050
+01:41:25,940 --> 01:41:28,940
+y después la vergasas y te queda esto, también.
+
+1051
+01:41:28,940 --> 01:41:32,540
+Entonces, cuál de las dos usaría a vos si tenés que eliminar
+
+1052
+01:41:32,540 --> 01:41:34,940
+ruido de tu imagen?
+
+1053
+01:41:34,940 --> 01:41:38,940
+Esta es una pregunta, la primera.
+
+1054
+01:41:38,940 --> 01:41:39,740
+La primera, ¿a esta?
+
+1055
+01:41:39,740 --> 01:41:41,370
+A ver, boten.
+
+1056
+01:41:41,370 --> 01:41:43,800
+La primera o la segunda?
+
+1057
+01:41:43,800 --> 01:41:45,300
+Depende más del ruido también, ¿no?
+
+1058
+01:41:45,300 --> 01:41:46,800
+O sea, la base de la ruido.
+
+1059
+01:41:46,800 --> 01:41:48,800
+O sea, la dos.
+
+1060
+01:41:48,800 --> 01:41:51,400
+O sea, la dos.
+
+1061
+01:41:51,400 --> 01:41:53,600
+Y te saca todos los ruidos, también.
+
+1062
+01:41:53,600 --> 01:41:55,280
+Obviamente, si solo tenés el ruido de arriba,
+
+1063
+01:41:55,280 --> 01:41:56,800
+o sea, de arriba, si solo tenés el trabajo,
+
+1064
+01:41:56,800 --> 01:42:01,440
+abajo, específicamente, aplicada una y depo aplicar la otra. Y con eso elimina el
+
+1065
+01:42:01,440 --> 01:42:06,240
+ruido y digamos terminó lo que yo tenía para contarles de voy a pasar rápidamente las
+
+1066
+01:42:06,240 --> 01:42:11,740
+dispositivas que quedan, también, esta reducción de ruido. Hay operaciones morfológicas
+
+1067
+01:42:11,740 --> 01:42:16,880
+antiguamente en la manera de leer pasaporte, el texto de abajo, el pasaporte era con un
+
+1068
+01:42:16,880 --> 01:42:21,680
+tipo de letra más grande y especial y solo tenía número, número, número si detras,
+
+1069
+01:42:21,680 --> 01:42:26,560
+pero menos denso, quiero dar arriba para ser leído por computadora. Y las operaciones morfológicas
+
+1070
+01:42:26,560 --> 01:42:31,920
+te permitían votir a hacer parte de cualquier posición en imagen y, bueno, vertical, pero te
+
+1071
+01:42:31,920 --> 01:42:37,560
+detectaba en la zona y los reglones, no están todas las imágenes que ilustran, pero
+
+1072
+01:42:37,560 --> 01:42:45,080
+aparecer unas barras blancas, exactamente en los reglones, donde está ese texto, también,
+
+1073
+01:42:45,080 --> 01:42:49,520
+esto se lo llama gradiente, porque te detecta el borde, vamos a ver con filtros, formas
+
+1074
+01:42:49,520 --> 01:42:55,680
+mucho mejores para detectar los borde y el interés que puede haber para hacer eso también,
+
+1075
+01:42:55,680 --> 01:43:02,160
+hay aplicaciones muy específicas, estas manchas blancas te dicen dónde está rota el
+
+1076
+01:43:02,160 --> 01:43:06,960
+enambrado, pero la trampa es que el enambrado tiene que ser perfecto, o sea, si vos sacar
+
+1077
+01:43:06,960 --> 01:43:10,760
+la foto un enambrado no funciona, tiene que ser exactamente la misma distancia píxida
+
+1078
+01:43:10,760 --> 01:43:17,890
+dentro del lado, entonces me dio una trampa esto, y voy rápido, bueno acá tenés para detectar
+
+1079
+01:43:17,890 --> 01:43:22,850
+una letra E que puede ser una captura pantalla, donde todas las letras cuando he terminado
+
+1080
+01:43:22,850 --> 01:43:28,010
+font y tamaños son exactamente iguales, entonces puedes usar elementos estructurales con
+
+1081
+01:43:28,010 --> 01:43:36,950
+algoritmo y semá gitmys que te los resalta ahí donde los encontro. Esto se los quiero
+
+1082
+01:43:36,950 --> 01:43:41,290
+mencionar porque esto sale de internet, estaban tutoriales, esto es cuando le decís un tipo
+
+1083
+01:43:41,290 --> 01:43:46,010
+que no es, no es nada académico y te dicen que tiene que ser un tutorial, no saben
+
+1084
+01:43:46,010 --> 01:43:50,890
+ni qué es lo que tiene que enseñar. Entonces el tipo agarra la funcione y se mira a poner
+
+1085
+01:43:50,890 --> 01:43:56,730
+elementos estructurales de la barra de plazamiento y mirar los efectos que haces. Bueno, no es para esto.
+
+1086
+01:43:56,730 --> 01:44:02,920
+Los elementos, como hay muchas funciones de OpenCV que la aplican a la imagen y generan
+
+1087
+01:44:02,920 --> 01:44:06,940
+efectos. Pero si quieres este efecto, tenia aplicaciones para hacer efectos mucho mejores,
+
+1088
+01:44:06,940 --> 01:44:14,180
+lo peor es que no son indicativos para que se usa. Yo les acabo de explicar cómo reducir
+
+1089
+01:44:14,180 --> 01:44:19,140
+ruido, eso es bien concreto. Estos son tutuériles que confunden más de lo que te enseguen,
+
+1090
+01:44:19,140 --> 01:44:25,340
+está bien, salvo que voy a conozcas del tema y quiera venir a ver qué efectos, efectos
+
+1091
+01:44:25,340 --> 01:44:34,500
+produce, esto parecido, el libro, esta es la tapa con libro que se llama Digital Image Processing
+
+1092
+01:44:34,500 --> 01:44:42,780
+y te pone una mariposa y le aplica operaciones morfológicas no sobre imágenes minarias
+
+1093
+01:44:42,780 --> 01:44:47,080
+sino que es una imagen monocromática y te genera estos efectos.
+
+1094
+01:44:47,080 --> 01:44:52,500
+Entonces digo, mira, es muy artístico, pero usted está engañando en cuanto a para
+
+1095
+01:44:52,500 --> 01:44:56,300
+aquí puede servir esto, porque bueno, venís a buscar efectos.
+
+1096
+01:44:56,300 --> 01:45:02,260
+Buah, listo, esto es medio irrelevante, hay un montón de funciones, te explican los distintos
+
+1097
+01:45:02,260 --> 01:45:10,020
+algoritmos que tenés, así como el Cresuo, vos podies elegir el Baina, el Baina de
+
+1098
+01:45:10,020 --> 01:45:15,340
+y había otros abrimos que no que los omitimos. Bueno, acabos puedes elegir qué tipo de
+
+1099
+01:45:15,340 --> 01:45:21,640
+operación moroforógica queréis hacer, elegir mis, el top hat, bueno, el open clouds, etcétera.
+
+1100
+01:45:21,640 --> 01:45:28,560
+Listo, esto se termino, pues estas de positiva están sobrando. ¿Qué hacemos, Alessio?
+
+1101
+01:45:28,560 --> 01:45:33,260
+Yo la verdad que pensé que me sonado en 10 minutos porque fui rápido. Lo logré,
+
+1102
+01:45:33,260 --> 01:45:39,380
+usualmente no, típicamente yo no llegaba, estuve quitando, aparte que hice rápido esa
+
+1103
+01:45:39,380 --> 01:45:44,940
+presentación estuve mejorando las otras así que ahora está una pinturita en la
+
+1104
+01:45:44,940 --> 01:45:51,220
+claseta, logra el objetivo en tiempo y forma, creo que no comienen empezar con
+
+1105
+01:45:51,220 --> 01:45:55,580
+el machine learning de la clase que viene, para empezar le quedó por la mitad lo
+
+1106
+01:45:55,580 --> 01:46:01,420
+voy a dejar acá, así que he listo, si tienen preguntas pregunten pero yo ya le
+
+1107
+01:46:01,420 --> 01:46:06,660
+voy dando el micrófono a Lesio y voy a dejar de grabar, así pueden
+
+1108
+01:46:06,660 --> 01:46:12,760
+preguntar tranquilos.

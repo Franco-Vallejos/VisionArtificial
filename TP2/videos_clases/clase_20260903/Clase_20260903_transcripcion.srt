@@ -1,0 +1,4871 @@
+1
+00:00:05,260 --> 00:00:16,310
+bien ahora de tener transcripción. Ahí estamos. Bueno buenísimo. Ustedes están viendo, ¿no?
+
+2
+00:00:16,310 --> 00:00:30,590
+Pantaya compreta, dice Machine Learning. Dale, gracias buenísimo. Bueno, así como
+
+3
+00:00:30,590 --> 00:00:36,010
+inteligencia artificial, está bien, es un, lo que se llama nombre para aguas, está bien.
+
+4
+00:00:36,010 --> 00:00:42,930
+en origen del fiel, es un nombre general expresa un deseo, del término viene de no sé si la
+
+5
+00:00:42,930 --> 00:00:49,770
+década de 60 más o menos o antes, expresa un deseo, entonces no es que si haya alcanzado
+
+6
+00:00:49,770 --> 00:00:55,930
+la inteligencia artificial de un debate para otro momento, bueno, dentro de lo que se llamaba
+
+7
+00:00:55,930 --> 00:01:02,090
+que no es lo que hoy se usa, por bueno lo aclaro en este momento, dentro de este paragua
+
+8
+00:01:02,090 --> 00:01:06,990
+conjunto disciplina de inteligencia artificial había una disciplina que era la
+
+9
+00:01:06,990 --> 00:01:10,730
+más seria de todas las que daba resulta había mucha sanata también pero había
+
+10
+00:01:10,730 --> 00:01:18,410
+una disciplina que era machine learning que esa daba resultados machine learning el
+
+11
+00:01:18,410 --> 00:01:25,010
+su uso explotó en la década de 80 y no dejo de crecer también tiene como como
+
+12
+00:01:25,010 --> 00:01:29,470
+épocas épocas donde de repente todo lo que se conoce machine learning
+
+13
+00:01:29,470 --> 00:01:36,040
+encuentro a otra aplicación, otro ámbito de uso y entonces se adopta acá,
+
+14
+00:01:36,040 --> 00:01:43,840
+hoy, hoy está por todos. Ahora nos vamos a recorrer esta disciplina.
+
+15
+00:01:43,840 --> 00:01:52,480
+Machine Learning se traduce como aprendizaje de máquina o aprendizaje automático.
+
+16
+00:01:52,480 --> 00:02:03,980
+es como el término software, no comiene traducirlo, más para ustedes, estudiantes y generías que
+
+17
+00:02:03,980 --> 00:02:13,880
+cuando leen estas cosas por ahí van directamente a religión en inglés, entonces se el nombre que
+
+18
+00:02:13,880 --> 00:02:21,820
+seriedad a un conjunto de disciplinas que aprenden a partir de muestras o datos que
+
+19
+00:02:21,820 --> 00:02:29,340
+voledas. Está bien. Ahora vamos a recorrer exactamente, hay un montón de problemas que encajan
+
+20
+00:02:29,340 --> 00:02:35,820
+en esta definición. Muchísimas problemas, yo voy a presentar los tres más importantes,
+
+21
+00:02:35,820 --> 00:02:42,140
+más relevantes, digamos. Hay muchas variantes, estos muchos más específicas, hay materias
+
+22
+00:02:42,140 --> 00:02:48,460
+centeras y hay carreras, esto corresponde a ciencia datos, hay carreras centeras dedicadas a estas
+
+23
+00:02:48,460 --> 00:02:53,820
+cosas, por grados, etcétera. Yo les voy a dar, bueno no, no, no voy a quedar como una clase,
+
+24
+00:02:53,820 --> 00:03:00,260
+un poco más, terminando de contar el cuantito, dentro de lo que se llamaba Inteligencia Artificial,
+
+25
+00:03:00,260 --> 00:03:07,660
+había, había una frase, una frase conocida que cambió completamente con el movimiento de
+
+26
+00:03:07,660 --> 00:03:12,240
+el chat GPT, porque le cambió el significado al término de inteligencia artificial.
+
+27
+00:03:12,240 --> 00:03:14,400
+Ya se usa para otra cosa y no la que usaba antes.
+
+28
+00:03:14,400 --> 00:03:24,420
+Entonces, hasta ese momento se decía que si era Machine Learning estaba escrito en Python
+
+29
+00:03:24,420 --> 00:03:29,300
+y si era inteligencia artificial estaba escrito en PowerPoint, porque básicamente Machine
+
+30
+00:03:29,300 --> 00:03:33,500
+Learning era la disciplina seria y todo lo demás era sanata, también, en muchos.
+
+31
+00:03:33,500 --> 00:03:38,970
+¿Qué pasó dentro de Machine Learning hace varios años?
+
+32
+00:03:38,970 --> 00:03:44,050
+En 2012 es elito y eso es una historia que se lo voy a contar con más detalles dentro
+
+33
+00:03:44,050 --> 00:03:45,770
+de un mes y medio.
+
+34
+00:03:45,770 --> 00:03:54,230
+El surgió el Diplarning, dentro de Machine Learning surgió una arquitectura para abordar
+
+35
+00:03:54,230 --> 00:04:00,190
+un problema nuevo, un mejor dicho un problema que no tenía solución y resolverlo con Machine
+
+36
+00:04:00,190 --> 00:04:03,190
+con una arquitectura específica,
+
+37
+00:04:03,190 --> 00:04:06,190
+necesitaba una capacidad de computación enorme
+
+38
+00:04:06,190 --> 00:04:09,190
+que no estaba disponible y con cierta arquitectura
+
+39
+00:04:09,190 --> 00:04:12,190
+se logró, ahí surgió el Deep Learning.
+
+40
+00:04:12,190 --> 00:04:17,290
+Y eso se fue especializando
+
+41
+00:04:17,290 --> 00:04:23,290
+y hoy lo que es los modelos de lenguaje grande,
+
+42
+00:04:23,290 --> 00:04:27,290
+los que usa chatGPT, Gemina y todos estos,
+
+43
+00:04:27,290 --> 00:04:31,750
+estos, están hechos en Deep Learning, están metidos ahí dentro.
+
+44
+00:04:31,750 --> 00:04:39,350
+Sé que todos los modelos del lenguaje grandes son como una disciplina super especializada dentro
+
+45
+00:04:39,350 --> 00:04:44,990
+de lo que es Machine Learning, pero a esa disciplina especializada hoy se la llama Inteligen
+
+46
+00:04:44,990 --> 00:04:51,150
+Certificial. Cuando el nombre está prestado de algo que era mucho más amplio, también
+
+47
+00:04:51,150 --> 00:04:53,070
+y poco específico.
+
+48
+00:04:53,070 --> 00:04:59,310
+Entonces, nos alejamos de términos técnicos,
+
+49
+00:04:59,310 --> 00:05:02,750
+o mejor dicho, hay términos que cambiaron su definición.
+
+50
+00:05:02,750 --> 00:05:07,310
+Y a veces, es difícil entender de qué está hablado.
+
+51
+00:05:07,310 --> 00:05:09,750
+El problema de las palabras, esto lo voy a repetir,
+
+52
+00:05:09,750 --> 00:05:12,510
+porque ustedes saben que hay varias jergas mezcladas
+
+53
+00:05:12,510 --> 00:05:13,390
+en misión artificial.
+
+54
+00:05:13,390 --> 00:05:15,790
+Y mismo problemas tienen distintos términos.
+
+55
+00:05:15,790 --> 00:05:18,030
+Tendré todo está bien, porque son términos que se refieren
+
+56
+00:05:18,030 --> 00:05:18,870
+a lo mismo.
+
+57
+00:05:18,870 --> 00:05:20,710
+El problema va luego, tenés un término que se refiró
+
+58
+00:05:20,710 --> 00:05:24,750
+de dos cosas distintas. El problema de la comunicación es que en tu interlocutor
+
+59
+00:05:24,750 --> 00:05:30,430
+esté usando la misma definición que usas vos, porque si no, no se van a entender. Hay
+
+60
+00:05:30,430 --> 00:05:35,190
+muchísimos discusiones y debates que no tratan sobre la cuestión que quieren estar
+
+61
+00:05:35,190 --> 00:05:40,030
+discutiendo, sino por cuál es la definición de la palabra que están usando, cada
+
+62
+00:05:40,030 --> 00:05:48,430
+de una manera. Y bueno, por eso que la mayoría de que lo que se habla de la IA es
+
+63
+00:05:48,430 --> 00:05:58,230
+sanata, ¿no? Gente de psicología hablando sobre el futuro de la IA está complicado, especialmente
+
+64
+00:05:58,230 --> 00:06:04,270
+porque en esta batería para los electronicos, incluso algunas informáticos me dijeron que
+
+65
+00:06:04,270 --> 00:06:09,870
+lo que vemos nosotros de Deep Learning imaginé es complementario, no es lo mismo, es complementario
+
+66
+00:06:09,870 --> 00:06:16,070
+lo que ven en inteligencia artificial, así que todo esto le va a sumar y entender el fondo
+
+67
+00:06:16,070 --> 00:06:22,800
+de la cuestión te da una claridad que la mayoría de los debates viste pierden, pierden sentido
+
+68
+00:06:22,800 --> 00:06:30,220
+porque son cuestiones no debatibles, también ya son de una manera. Bueno, entonces yo voy
+
+69
+00:06:30,220 --> 00:06:38,450
+a meterme Machine Learning con tres problemas representativos, uno de los principales se
+
+70
+00:06:38,450 --> 00:06:45,170
+llaman clasificación, regreso en declastering, no pierdan de vista nuestro interés, o sea
+
+71
+00:06:45,170 --> 00:06:51,450
+o interés de ustedes y que lo van a usar en el tp2 que se que lanzamos la clase pasada y faltadar
+
+72
+00:06:51,450 --> 00:06:57,690
+esto, el tp está en clasificar. Específicamente, ustedes tienen que clasificar los invariantes de
+
+73
+00:06:57,690 --> 00:07:02,250
+juz que vienen de los contornos para poder decir si es un cuadrado, unas tres o tres o tres o
+
+74
+00:07:02,250 --> 00:07:07,490
+tres de aquella categoría de las que ustedes se inventen, pertenecen. Ese es el problema,
+
+75
+00:07:07,490 --> 00:07:17,010
+Regresión, tiene un interés académico relevante como un paso previo a la
+
+76
+00:07:17,010 --> 00:07:21,410
+clasificación en esta presentación, pero me voy a apoyar en eso también para
+
+77
+00:07:21,410 --> 00:07:26,390
+explicar Diplérne, para explicar varias cosas de futuro. No es que vayamos a
+
+78
+00:07:26,390 --> 00:07:33,380
+entrenar un regreso, de hecho el cuatro y mestre pasado en otra universidad, yo le
+
+79
+00:07:33,380 --> 00:07:37,300
+dije que hace diez años que de automateria, es la primera vez que un grupo eligió
+
+80
+00:07:37,300 --> 00:07:45,140
+entrenar a un regresor, también la verdad, fue interesante porque no lo hacíamos
+
+81
+00:07:45,140 --> 00:07:50,860
+justamente porque no es de lo más relevante el mundo de la ingeniería y la aplicación
+
+82
+00:07:50,860 --> 00:07:58,420
+práctica. Obviamente se puede, lo nuestro va a quedar como un concepto. Y finalmente clustering,
+
+83
+00:07:58,420 --> 00:08:05,220
+clustering es más tirado de los pelos porque lo pongo solamente como un ejemplo de otro tipo
+
+84
+00:08:05,220 --> 00:08:10,830
+de Machine Learning, que es de otro tipo que pretende ser una categoría diferente a la regresión y
+
+85
+00:08:10,830 --> 00:08:21,310
+clasificación, digamos para que vean que Machine Learning es un tema mucho más amplio y que también
+
+86
+00:08:21,310 --> 00:08:28,750
+no tanto como regresión, pero lo voy a mencionar con ejemplos en presentaciones en el futuro,
+
+87
+00:08:28,750 --> 00:08:35,790
+está bien, pero sí es simplemente es casi un idodotico clásterin, eso es, tené una idea,
+
+88
+00:08:35,790 --> 00:08:48,070
+una de los principios que uno tiene que llevar cuando quiere conocer a fondo un tema es conocer
+
+89
+00:08:48,070 --> 00:08:53,370
+los límites, o sea, vamos a recorrer un terreno, bueno, donde terminan, donde está el
+
+90
+00:08:53,370 --> 00:08:58,510
+ambrado que te dice que termina ahí, es entender hasta dónde va para tener una idea de dimensión
+
+91
+00:08:58,510 --> 00:09:07,510
+de alcance todo esto. Bueno clásterin te marca, te marca ese límite, es otro tipo de Machine Learning,
+
+92
+00:09:07,510 --> 00:09:15,510
+no es algo que pasa por esa con clacificación, por eso me interesa mostrarles en esta única clase
+
+93
+00:09:15,510 --> 00:09:23,230
+de Machine Learning, tratar de que entiendan hasta dónde se llegan con estos problemas. Cuando lo vimos
+
+94
+00:09:23,230 --> 00:09:29,150
+sea la primera clase en el pipeline lo mencioné mejor dicho más que verlo en el pipeline lo más
+
+95
+00:09:29,150 --> 00:09:36,230
+importante para encarar un problema de visión artificial es categorizarlo correctamente, o sea
+
+96
+00:09:36,230 --> 00:09:41,590
+si es un problema de machine learning, por ahí si es un problema de uristica a base por otro lado,
+
+97
+00:09:41,590 --> 00:09:46,990
+si es el problema de clasificación y vos decís que es un problema de regresión ya arranca
+
+98
+00:09:46,990 --> 00:09:52,590
+este mal, también, si tu problema es de detección y vos lo pensaste que era un problema de
+
+99
+00:09:52,590 --> 00:09:59,150
+gratificación arrancaste mal, entonces está bueno conocer los límites clásteristas como del
+
+100
+00:09:59,150 --> 00:10:03,750
+otro lado de la valla, para que vos veas aquello, ya te fuiste de la de la clacificación.
+
+101
+00:10:03,750 --> 00:10:12,330
+Bueno, esto es un glossario, son términos, yo no me olvido de que tenemos el electrónico
+
+102
+00:10:12,330 --> 00:10:17,330
+O sea, el público es variado, siempre es variado, pero ahora un poquito más variado.
+
+103
+00:10:17,330 --> 00:10:22,330
+Entonces, un electrónico tranquilamente me puede decirme a un lado, pero no es que lo haya
+
+104
+00:10:22,330 --> 00:10:27,330
+visto formalmente, los informáticos quizás lo vieron formalmente, pero está bueno repasarlo.
+
+105
+00:10:27,330 --> 00:10:36,330
+Y sobre todo entender estos conceptos y que se van a aplicar, qué rol juega en esta materia.
+
+106
+00:10:36,330 --> 00:10:46,770
+entonces muestra, ahí dice una colección de características, también muestra es en la
+
+107
+00:10:46,770 --> 00:10:55,320
+gérga de Machine Learning, lo que para visual artificiales de escritores, también, y lo que en
+
+108
+00:10:55,320 --> 00:11:01,900
+deep learning es embeddings, eso lo vimos la primera clase, vimos de escritores, bueno, una muestra
+
+109
+00:11:01,900 --> 00:11:08,500
+en Machine Learning y limitado al proyecto que nosotros hacemos, cuando hablamos de
+
+110
+00:11:08,500 --> 00:11:15,880
+criptores desde la jerga de Machine Learning, está dando una muestra, también. Entonces, recordamos
+
+111
+00:11:15,880 --> 00:11:20,920
+un decriptores, un conjunto de valores, un conjunto de valores, todos los decriptores que
+
+112
+00:11:20,920 --> 00:11:25,160
+vas a usar tienen el mismo formato, o sea, si son invariantes de jugo, están ordenados del
+
+113
+00:11:25,160 --> 00:11:29,760
+0 al 6 y siempre van a estar ordenado así, no hay que va a tirar los valores, lo va a
+
+114
+00:11:29,760 --> 00:11:37,940
+forma un vector y un espacio de descripción. Bueno, acá parece modelo entreamiento y predicción,
+
+115
+00:11:37,940 --> 00:11:45,060
+está bien. El modelo lo acá lo define como una función matemática. El modelo es un algoritmo,
+
+116
+00:11:45,060 --> 00:11:55,370
+es un algoritmo que vuelve a ganar de una biblioteca y lo vas a usar así como está. Y es un modelo
+
+117
+00:11:55,370 --> 00:12:00,890
+para alguno de los problemas particulares, de repente va a tener un modelo para clasificación,
+
+118
+00:12:00,890 --> 00:12:06,770
+o un modelo para regresión, hay muchos modelos para regresión, muchos modelos para clasificación,
+
+119
+00:12:06,770 --> 00:12:18,610
+entonces entrenamiento consiste en hacer que ese modelo, a partir de un montón de ejemplos
+
+120
+00:12:18,610 --> 00:12:30,040
+que vos le das género, una regla general, la produzca una regla general y pueden entender
+
+121
+00:12:30,040 --> 00:12:36,120
+a partir de los ejemplos qué es lo que vos querés que discrimine, ahora eso lo vamos a
+
+122
+00:12:36,120 --> 00:12:48,860
+detalle. Entonces, si vos crees que te reconozca contornos de cuadrados triángulos y estrellas,
+
+123
+00:12:48,860 --> 00:12:50,860
+se llevas a dar un montón de ejemplos de cuadrados,
+
+124
+00:12:50,860 --> 00:12:52,860
+traían muros estrellas y le vas a decir,
+
+125
+00:12:52,860 --> 00:12:54,860
+estos son cuadrados, estos son traían muros,
+
+126
+00:12:54,860 --> 00:12:55,960
+estos son estrellas.
+
+127
+00:12:55,960 --> 00:12:57,960
+Pero en esa es la idea,
+
+128
+00:12:57,960 --> 00:12:59,990
+ese es el proceso de entrenamiento.
+
+129
+00:12:59,990 --> 00:13:01,990
+Entonces, la idea es que,
+
+130
+00:13:01,990 --> 00:13:04,990
+una vez que esté entrenado el modelo,
+
+131
+00:13:04,990 --> 00:13:06,990
+o sea, fíjate que hay el modelo,
+
+132
+00:13:06,990 --> 00:13:08,990
+que la sacadera de biblioteque lo vas a usar,
+
+133
+00:13:08,990 --> 00:13:10,090
+es sin entrenar.
+
+134
+00:13:10,090 --> 00:13:12,090
+Entrenados significa que tiene,
+
+135
+00:13:12,090 --> 00:13:14,410
+no sé, datos.
+
+136
+00:13:14,410 --> 00:13:16,410
+Así que ese entrenamiento lo vas a guardar
+
+137
+00:13:16,410 --> 00:13:17,410
+en algún archivo,
+
+138
+00:13:17,410 --> 00:13:22,450
+lo tiene permite guardar eso como archivo para que cuando lo vas a usar se ha
+
+139
+00:13:22,450 --> 00:13:27,170
+entrenado, vuelve pongas un cuadrado y el tipo de diga esto es lo que te lo
+
+140
+00:13:27,170 --> 00:13:32,570
+categorice como cuadrado y no como cualquier otra cosa. Bueno ese uso se lo
+
+141
+00:13:32,570 --> 00:13:39,460
+se llama predicción. Entonces el entrenamiento es un trabajo de laboratorio,
+
+142
+00:13:39,460 --> 00:13:44,220
+si se le aparece, usa la palabra laboratorio. Es entrenamiento es parte del
+
+143
+00:13:44,220 --> 00:13:51,560
+desarrollo, predicción es cuando lo pones a ejecutar, también en producción, no no confundir
+
+144
+00:13:51,560 --> 00:13:59,460
+las palabras son detrás parecidas. Entonces, vamos a entrenar hasta que el modelo se comporta
+
+145
+00:13:59,460 --> 00:14:04,560
+como vos querés y luego lo pones a funcionar. O sea, si ustedes quieren hacer algo que recorrosca,
+
+146
+00:14:04,560 --> 00:14:10,500
+un cuadrado, un triángulo, una estrella, primero lo van a entrenar y cuando esté ese modelo
+
+147
+00:14:10,500 --> 00:14:18,500
+entrenado se que van a poner en el su programa final trajo práctico ya funcionando que
+
+148
+00:14:18,500 --> 00:14:22,740
+va a decir exactamente las formas de Google, lo va a predecir correctamente.
+
+149
+00:14:22,740 --> 00:14:32,080
+Ejérga, predicción o inferencia, ahí recuerden, hay conflictos sonos. Es algo que
+
+150
+00:14:32,080 --> 00:14:40,980
+es bastante común en tecnologías más o menos nuevas, suelo ver, no sé por qué,
+
+151
+00:14:40,980 --> 00:14:50,220
+pero se suele tender a dos jergas, quizás a la larga queda una sola, pero hay como dos escuelas,
+
+152
+00:14:50,220 --> 00:14:55,700
+también quizás hay más, pero después se van concentrando en dos antagonistas y están
+
+153
+00:14:55,700 --> 00:14:58,500
+los que definen uno de los que definen la otra.
+
+154
+00:14:58,500 --> 00:15:02,740
+Prevision o inferencia son los, se refiran a lo mismo.
+
+155
+00:15:02,740 --> 00:15:05,300
+Y es la respuesta de tu modelo.
+
+156
+00:15:05,300 --> 00:15:08,740
+Si tu modelo es una función matemática, está bien.
+
+157
+00:15:08,740 --> 00:15:11,220
+Y es una función, bueno, no sé si el ejemplo
+
+158
+00:15:11,220 --> 00:15:13,060
+va a hacer una función paramétrica.
+
+159
+00:15:13,060 --> 00:15:16,420
+En el entrevinte consiste en ajustar esos parámetros
+
+160
+00:15:16,420 --> 00:15:19,230
+y una que están ajustados.
+
+161
+00:15:19,230 --> 00:15:21,670
+El modelo se desempeña como vos querés.
+
+162
+00:15:21,670 --> 00:15:24,710
+Le metes un descriptor y te tira un resultado.
+
+163
+00:15:24,710 --> 00:15:31,020
+A ese resultado se lo llama predicción, pero no hay que confundir, no es un término futuro.
+
+164
+00:15:31,020 --> 00:15:36,570
+También, es el término más predicción, porque ahí no se lo ocurrió. Esto pasa mucho en
+
+165
+00:15:36,570 --> 00:15:43,840
+matemática. Predicciones, el resultado que te va a dar, sería mejor llamarlo opinión,
+
+166
+00:15:43,840 --> 00:15:50,780
+o sea, el modelo cree que es eso. Inferencia tiene que ver con, es como si te dijera interpolación,
+
+167
+00:15:50,780 --> 00:15:56,220
+¿no? Es un término más matemático que describe qué es lo que pasa por adentro, pero bueno, los
+
+168
+00:15:56,220 --> 00:16:03,680
+dos términos sirven para mí, se refieren al resultado de tu modelo. Entonces estamos frente
+
+169
+00:16:03,680 --> 00:16:12,840
+un bicho de naturaleza diferente, vos no programás, vos no vas a programar, vos lo vas a entrenar
+
+170
+00:16:12,840 --> 00:16:19,380
+tu modelo. Obviamente el modelo está programado, pero la parte que idea valor, vos no lo vas a
+
+171
+00:16:19,380 --> 00:16:24,530
+seguir programando, sino que lo vas a entrenar con datos. También no en vez de escribir código
+
+172
+00:16:24,530 --> 00:16:28,360
+o Python, bueno, obviamente escribís un código para que se produzca el
+
+173
+00:16:28,360 --> 00:16:35,340
+entrenamiento, pero la información importante está en esos datos que
+
+174
+00:16:35,340 --> 00:16:40,440
+vos vas a preparar para el entrenamiento, también, así que eso es más
+
+175
+00:16:40,440 --> 00:16:46,410
+interno. Por eso se dice el mismo al interés inicial, no se programa, se
+
+176
+00:16:46,410 --> 00:16:52,130
+entrena. Y una de las cosas que sucede es que como se entrenó, nadie lo
+
+177
+00:16:52,130 --> 00:16:58,370
+programa o es como una caja negra, no puedes anticipar las respuestas que te va a dar un modelo
+
+178
+00:16:58,370 --> 00:17:02,690
+de lenguaje, acá me estoy llanto modelo de lenguaje como un ejemplo, me estoy recontraciendo
+
+179
+00:17:02,690 --> 00:17:09,930
+de lo que es esta presentación. Bueno, entonces yo ya perdí bastante tiempo en la
+
+180
+00:17:09,930 --> 00:17:16,090
+siempre abor mismo, en la diapositiva anterior, esto queda, me está cayendo la ficha que
+
+181
+00:17:16,090 --> 00:17:24,330
+nunca se lo dije no no abunda pero yo tengo diapositivas que tienen bastante texto
+
+182
+00:17:24,330 --> 00:17:28,690
+como para que si ustedes en un momento lo van a agarrar a agarrar y la van a mirar de vuelta
+
+183
+00:17:28,690 --> 00:17:35,110
+este la pueden leer y tengan bastante contenido también pero cuando llevo eso eso me los
+
+184
+00:17:35,110 --> 00:17:40,790
+pose al teano y igual eso es algo que yo hacía de toda la vida pero ahora con las
+
+185
+00:17:40,790 --> 00:17:46,830
+se creaba la capa que ni siquiera necesitan agarrar la presentación. Bueno, lo que dice acá
+
+186
+00:17:46,830 --> 00:17:53,910
+muestra descritor, también tiene características o features, está, y es lo que le decida, los
+
+187
+00:17:53,910 --> 00:17:58,570
+invariantes de juego que ustedes van a sacar el control, contornos, son unas muestras
+
+188
+00:17:58,570 --> 00:18:03,570
+dentro del destremundo de Machine Learning, está bien, no, no hay mucho más. Este está
+
+189
+00:18:03,570 --> 00:18:09,920
+sencillo, hay dos tipos de datos, los escritores tienen datos numericos, a lo de reales, en
+
+190
+00:18:09,920 --> 00:18:13,440
+pueden tener decimales, pueden estar entre sergiú, no pueden, no sé ni por nada, son
+
+191
+00:18:13,440 --> 00:18:19,910
+números en general, también reales, se llaman escalares, también, cuando deciste
+
+192
+00:18:19,910 --> 00:18:25,310
+escalara, de esta diciendo 100, no es un número complejo, no es un vector, es un valor,
+
+193
+00:18:25,310 --> 00:18:37,080
+número real, eso se ve más calada, pero hay otro tipo de dato en una muestra que son
+
+194
+00:18:37,080 --> 00:18:42,720
+categoricos, también, no van a formar parte de la muestra de entrada de nuestro modelo,
+
+195
+00:18:42,720 --> 00:18:48,400
+pero sí lo vamos a usar por qué es la salida que vamos a tener en el caso de la clasificación.
+
+196
+00:18:48,400 --> 00:18:56,610
+El categorico es, o este se lo podría preguntar, pero la verdad, pero no se lo voy a decir directo,
+
+197
+00:18:56,610 --> 00:19:02,930
+porque la pregunta hace más larga que otra cosa, el categorico son valores que representan
+
+198
+00:19:02,930 --> 00:19:11,410
+categorías, también. Entonces uno, incidentivamente podría decir, bueno, que la categoría sea el texto,
+
+199
+00:19:11,410 --> 00:19:18,000
+que está bien cuadrado, triángulo estrellas, también no, si estás clasificando perro, gato,
+
+200
+00:19:18,000 --> 00:19:23,880
+elefante, que diga eso, no, es más eficiente, si vos entregas un número entero,
+
+201
+00:19:23,880 --> 00:19:29,760
+también, esto es por un tipo de dato, un tipo de dato entero, y cada número corresponde
+
+202
+00:19:29,760 --> 00:19:37,320
+una categoría. Así es como funcionan estas máquinas de las. Escúpenos números.
+
+203
+00:19:37,320 --> 00:19:44,780
+Podemos tener que ver de qué se trata de ser números. Hay una cuestión con estos números
+
+204
+00:19:44,780 --> 00:19:52,420
+y conviene tenerlo bien claro. Esto es para evitar posibles confusiones si alguno
+
+205
+00:19:52,420 --> 00:19:59,780
+alémate cabeza el tema y quieren donarlo mejor. Le estoy haciendo un favor, ya ves de ahora.
+
+206
+00:19:59,780 --> 00:20:08,120
+los números enteros que representan categorías, también se llama netiquete, bueno, labels es
+
+207
+00:20:08,120 --> 00:20:16,750
+el etiqueta se dice más al texto que representa la categoría, se comparan solamente por
+
+208
+00:20:16,750 --> 00:20:26,620
+igualdad, la única operación que voces con valores categoricos son de comparación, si
+
+209
+00:20:26,620 --> 00:20:34,170
+son iguales o distintos. Es el único tipo de resultado que te puede dar. Que dos categorías sean
+
+210
+00:20:34,170 --> 00:20:41,070
+consecutivas, una de las 10 y la otra es la 11. No tienen ningún significado de nada. Está bien.
+
+211
+00:20:41,070 --> 00:20:50,970
+Bo puede tener 9 gastos, 10 perro, 11 se maforo. No, que estén cerca o lejos, no existe el sentido
+
+212
+00:20:50,970 --> 00:20:56,190
+de cercanía, no hay distancias, nada que ver con los decritores, todo lo contrario que los
+
+213
+00:20:56,190 --> 00:21:08,060
+escritores, este y un número, un número con decimales, no tiene sentido, porque si yo te digo,
+
+214
+00:21:08,060 --> 00:21:18,960
+mira, 10,5 y está entre perro y semáforo, a ver, no, no, no, no, no, no, si vos vas a atermir una
+
+215
+00:21:18,960 --> 00:21:24,640
+categoría, tiene que ser un número entero, o sea, es una función que solo admite un número entero y
+
+216
+00:21:24,640 --> 00:21:30,560
+no puedo san dar aproximando estas cosas, también porque no es que me estoy entre
+
+217
+00:21:30,560 --> 00:21:35,810
+perro y se me aforó, no existe eso. Bien, creo que se entendió, es el único dato sepan que en el
+
+218
+00:21:35,810 --> 00:21:43,690
+momento van a aparecer números categoricos se representan como números enteros. Para para cada
+
+219
+00:21:43,690 --> 00:21:50,230
+sistema, en nuestro caso clasificadores, voy a tener un lista de etiquetas que también nos
+
+220
+00:21:50,230 --> 00:21:57,910
+vamos a diccionario y es para nosotros, lo procesa tu abrimo pero es la que te relaciona la
+
+221
+00:21:57,910 --> 00:22:03,910
+categoría número de la categoría con el texto que lo representa, entonces voy a decir no se
+
+222
+00:22:03,910 --> 00:22:11,880
+dice uno persona, para la máquina es uno, también vos decís que es una persona, la máquina aprende
+
+223
+00:22:11,880 --> 00:22:17,240
+a reconocer persona y dice esto es un uno, ya está, también, bueno así como funciona,
+
+224
+00:22:17,240 --> 00:22:22,360
+a veces el conocimiento que tiene la máquina respecto a las categorías que vos le da,
+
+225
+00:22:22,360 --> 00:22:26,480
+le he visto un montón de ejemplos y he visto este 17, pues son todos datos, el tipo
+
+226
+00:22:26,480 --> 00:22:33,280
+asocia, la foto que vos le he visto con el número 17 y nada más, no es que dice a, es
+
+227
+00:22:33,280 --> 00:22:41,480
+un animal, a, nada, nada, esas imágenes con esa categoría, bueno, también ese identificador
+
+228
+00:22:41,480 --> 00:22:52,300
+de categoría. Tu pasa que vos te conseguís, no sé, te bajas su modelo y se han
+
+229
+00:22:52,300 --> 00:23:00,860
+trenado y te conseguís un diccionario de etiquetas equivocado, también. Díamos, no importa
+
+230
+00:23:00,860 --> 00:23:07,260
+los motivos, pero es muy común, había como una especie de discusión, si la etiqueta
+
+231
+00:23:07,260 --> 00:23:12,460
+la empezamos con uno, la empezamos con cero y vos tenés este diccionario que ves acá,
+
+232
+00:23:12,460 --> 00:23:18,340
+esto no me puse, escribirlo yo, agarrar un diccionario que existe y lo pegue acá, sigue para abajo.
+
+233
+00:23:20,140 --> 00:23:24,340
+Y está el mismo que empieza con cero, cero es persona, entonces está lo que dice no,
+
+234
+00:23:24,340 --> 00:23:29,260
+el cero dejemos lo para cuando no puede identificar el cero, bueno, pero el modelo no sabe
+
+235
+00:23:29,260 --> 00:23:33,540
+listo, esta es la discusión, si empieza con cero, pero están vas a encontrar las 2 versiones,
+
+236
+00:23:33,540 --> 00:23:39,440
+lo que va a pasar es que vuelo vas a poner a funcionar y te va a decir caballo,
+
+237
+00:23:39,440 --> 00:23:42,940
+es si pelaflaco es un perro porque me deshica vallo, no hay que estar
+
+238
+00:23:42,940 --> 00:23:46,990
+clasificando mal, estás usando el higienario equivocado, o sea el número
+
+239
+00:23:46,990 --> 00:23:50,870
+te lo da bien, pero bueno estás interpretando mal por que estás agarrando la
+
+240
+00:23:50,870 --> 00:23:58,820
+tiqueta corrida, también, bueno, este tengan en cuenta eso de queamos, bueno
+
+241
+00:23:58,820 --> 00:24:07,460
+entrenamiento, este es un detalle, como a mí me interesan los clasificadores y
+
+242
+00:24:07,460 --> 00:24:13,340
+eventualmente los regresores son todos de entrenamiento supervisado, yo podría saltearme
+
+243
+00:24:13,340 --> 00:24:19,940
+y ni mencionar esto, pero yo quise poner clasterin porque es un caso de entrenamiento
+
+244
+00:24:19,940 --> 00:24:25,140
+no supervisado. La jerga es muy estricta, es muy clara, también, todo lo que se mete en
+
+245
+00:24:25,140 --> 00:24:29,100
+Machine Learning sabe lo que es un entrenamiento supervisado, lo que es no supervisado, yo
+
+246
+00:24:29,100 --> 00:24:34,940
+si los quiero contar es bastante fácil de entender, también, y como les digo, les abre
+
+247
+00:24:34,940 --> 00:24:44,740
+la cabeza y les permite establecer los límites, por ejemplo, de una clasificación. Entonces,
+
+248
+00:24:44,740 --> 00:24:53,100
+se le dije, el entrenamiento es cuando vos tenes tus descriptores y le decís que qué
+
+249
+00:24:53,100 --> 00:24:57,780
+resultado esperado de cada uno de estos. Es como la idea ejercicio con su resultado. Si
+
+250
+00:24:57,780 --> 00:25:05,320
+de ejercicio, este resultado que tiene que dar para que vaya aprendiendo. Entonces, en
+
+251
+00:25:05,320 --> 00:25:10,180
+caso de entrenamiento supervisado, que es el que nos interesa, ustedes van a poner los
+
+252
+00:25:10,180 --> 00:25:16,560
+imanentes de juz, que son sus muestras, son dos números escalares, y el resultado, cuando
+
+253
+00:25:16,560 --> 00:25:22,290
+voy a existir cuadrado, voy a tener tu adicional, y si cuadrado es el número 1 está, que vas
+
+254
+00:25:22,290 --> 00:25:30,400
+poner que resultado sea uno, ese dato va a ser el único dato categórico que vas a manejar,
+
+255
+00:25:30,400 --> 00:25:35,400
+no va a formar parte de la muestra, sino de resultado esperado y lo necesita para de
+
+256
+00:25:35,400 --> 00:25:40,430
+entrenamiento. Bueno, hay un tipo de entrenamiento donde vuelve a dar los descriptores, pero
+
+257
+00:25:40,430 --> 00:25:48,680
+no le decís que es, digamos, erraros. ¿Qué es un tipo de aprenda? Si, no, si bueno
+
+258
+00:25:48,680 --> 00:25:52,080
+la está diciendo, si el tipo no sabe qué es lo que esperas veros ahí, bueno, entonces
+
+259
+00:25:52,080 --> 00:26:02,080
+y explicarle con un caso del de claspeding les va a quedar un poco más claro hacia donde va ese tipo de algoritmos de machine learning.
+
+260
+00:26:02,080 --> 00:26:11,140
+Bueno, Datacet, tengo una presentación entera de Datacet que vamos a dar más adelante cuando nos metemos con Deep Learning.
+
+261
+00:26:11,140 --> 00:26:20,460
+Por ahora Datacet no confundir va a ser dato yo, a ver, a veces alguien usa un término equivocado y a mí me llama la atención,
+
+262
+00:26:20,460 --> 00:26:30,430
+es la Razet también y de repente alguno aparece y dice base datos, digo para base datos son
+
+263
+00:26:30,430 --> 00:26:37,030
+mayesecueles, es otra cosa una base datos, obviamente son escasellano, puede tener distintas
+
+264
+00:26:37,030 --> 00:26:47,960
+aseptiones y de repente aparece otro que también usa mismo término, otro día, otra materia,
+
+265
+00:26:47,960 --> 00:26:52,320
+otro lugar y digo acá hay algo en como una, hay alguien que está traduciendo data
+
+266
+00:26:52,320 --> 00:26:57,320
+sé cómo va a ser datos y eso es un problema conceptual también si no lo aclarás,
+
+267
+00:26:57,320 --> 00:27:04,080
+pues no son las bases datos o su otra excepción, entonces como igual que les decía antes yo prefiero,
+
+268
+00:27:04,080 --> 00:27:11,160
+así como ayer no prefiero mantener el término en inglés, yo soy más bien fanático de traducirlo
+
+269
+00:27:11,160 --> 00:27:16,360
+el castellano, pero hay casos que me de cuenta que no conviene, a la larga cuando se vuelve
+
+270
+00:27:16,360 --> 00:27:20,000
+mainstream, cuando todo el mundo ya usa la versión traducida, entonces me
+
+271
+00:27:20,000 --> 00:27:24,080
+adapto. Datacete es el término de quiero usar, es el conjunto de
+
+272
+00:27:24,080 --> 00:27:26,280
+muestras. Ustedes van a ser un datacete en este
+
+273
+00:27:26,280 --> 00:27:32,040
+trabajo práctico, ustedes van a elaborar un montón de
+
+274
+00:27:32,040 --> 00:27:36,160
+descriptores de conjuntos de invariante de ju, obtenidos de
+
+275
+00:27:36,160 --> 00:27:39,400
+procesar imágenes con distintas formas. Entonces,
+
+276
+00:27:39,400 --> 00:27:41,680
+va a construir ese datacete, vamos a suponer que hacen
+
+277
+00:27:41,680 --> 00:27:52,960
+50 procesaron 50 fotos y tienen 5 categorías, cuadrado, triángulo, estrés y domas. Entonces, en
+
+278
+00:27:52,960 --> 00:27:57,400
+una hoja de cálculo, voy a satenar las 7 columnas de los simperentes de jú, en fila,
+
+279
+00:27:57,400 --> 00:28:05,320
+un descriptor para la fila, y en la octava columna, vas a poner números de uno del 5, o
+
+280
+00:28:05,320 --> 00:28:10,550
+decirle el 4, o el número que os quiera, números enteros, que corresponden a cada una de
+
+281
+00:28:10,550 --> 00:28:14,350
+las categorías que la cuaca a una de las formas que
+
+282
+00:28:14,350 --> 00:28:16,250
+vostra estás enseñando.
+
+283
+00:28:16,250 --> 00:28:22,050
+Ese esa tablita es un dataset, también es el conjunto de datos.
+
+284
+00:28:22,050 --> 00:28:26,950
+Y es lo que vas a usar para entrenar tu modelo, también.
+
+285
+00:28:26,950 --> 00:28:33,230
+Es una, hay una división recomendada que se está acá.
+
+286
+00:28:33,230 --> 00:28:40,470
+Usted no van a necesitar hacerlo hoy, pero como este es el trabajo
+
+287
+00:28:40,470 --> 00:28:47,350
+2, que es medio de la BC, de la clasificación y vamos a ir a cosas más sofisticadas, en general
+
+288
+00:28:47,350 --> 00:28:53,830
+una guerra de un dataset y usa solamente el 90% y estos números son debatibles, pero
+
+289
+00:28:53,830 --> 00:29:01,440
+se debate, es como una receta voz, si no sabe cocinar, seguir la receta al pie de letra.
+
+290
+00:29:01,440 --> 00:29:06,240
+Cuando sos chef, andas siendo las variaciones libres que vos quira, entonces cuando vos
+
+291
+00:29:06,240 --> 00:29:14,880
+saber este tema, puedes empezar a opinar si, en vez de 90% usas 80 o usas 95% de pantramiento.
+
+292
+00:29:14,880 --> 00:29:29,160
+Voy a arrastrar un 90% del dataset, cómo dataset de entregamiento y te dejas el 10% para
+
+293
+00:29:29,160 --> 00:29:36,160
+pruebas, acá dice validación y test, son dos tipos de pruebas también, es como si fueran
+
+294
+00:29:36,160 --> 00:29:42,680
+parciales y finales. Masin Dernin, aprendizaje automático, tiene mucha
+
+295
+00:29:42,680 --> 00:29:48,080
+jerga inspirada en el aprendizaje del ser humano. Entonces hay muchos
+
+296
+00:29:48,080 --> 00:29:53,110
+ejemplos y paralelos entre el estudio, el estudio de ustedes, un
+
+297
+00:29:53,110 --> 00:29:57,230
+universitario y lo que hace la máquida. Eso no significa que sí
+
+298
+00:29:57,230 --> 00:30:01,230
+inteligente, eso no significa que realmente esté estudiando, está
+
+299
+00:30:01,230 --> 00:30:07,970
+aprendiendo, son metáforas, ¿está? lo que está haciendo es ajustando parámetro, guarda,
+
+300
+00:30:07,970 --> 00:30:16,850
+no enredarse en las palabras, también, entonces es como si yo te dijiera 90% es una guía
+
+301
+00:30:16,850 --> 00:30:23,190
+de ejercicios con los resultados y de esto cuando te tomo te voy a tomar otros ejercicios,
+
+302
+00:30:23,190 --> 00:30:29,510
+del mismo estilo pero que no estaban en la guía y no te doy el resultado, también pa' ir calcula
+
+303
+00:30:29,510 --> 00:30:36,790
+me ojo, se ha resultado y yo chequeo a ver qué puntaje te sacas. Esa le da, así se trabaja
+
+304
+00:30:36,790 --> 00:30:49,080
+con el entreamiento. Entonces, modelo, es un algoritmo. A veces una función matemática
+
+305
+00:30:49,080 --> 00:30:53,380
+muy sofisticada, o sea, cuando vamos a deployar, ni hay una función muy sofisticada, pero
+
+306
+00:30:53,380 --> 00:31:00,700
+a la larga está implementada como algoritmos. De hecho es una algoritmo o más que funcione
+
+307
+00:31:00,700 --> 00:31:05,460
+matemática, pues es la como una función de software, pues la invocas con un argumento
+
+308
+00:31:05,460 --> 00:31:12,420
+y te da un resultado. Entonces, vuelvo invocadas del argumento, es un descriptor, por ejemplo
+
+309
+00:31:12,420 --> 00:31:19,220
+los 7 y 8 de ju, y el resultado es la categoría y te dice si es cuadrado los 3 a 3, no lo
+
+310
+00:31:19,220 --> 00:31:27,140
+así puedes huergos el modelo una vez que está entregado. Entonces se llaman
+
+311
+00:31:27,140 --> 00:31:32,280
+ponderaciones también traució como pesos porque en inglés es el amigo palabra
+
+312
+00:31:34,520 --> 00:31:41,790
+al aprendizaje. ¿Por qué? Porque las variables que se tocan ahí adentro suelen ser, se las
+
+313
+00:31:41,790 --> 00:31:51,410
+llaman ponderaciones de una función de lo que sea y le quedó en nombre. Entonces el aprendizaje
+
+314
+00:31:51,410 --> 00:31:55,810
+ajusta un montón de variables que estamos llamando ponderaciones y entonces
+
+315
+00:31:55,810 --> 00:32:01,570
+se va a usar variables las guardas en un archivo y ahí tenés el resultado de la
+
+316
+00:32:01,570 --> 00:32:07,290
+aprendizaje, el conocimiento del modelo, entonces luego predicción o infe... ahí dice
+
+317
+00:32:07,290 --> 00:32:14,150
+es o inferencia, es cuando voy a tener tu modelo entrenado, si usas el modelo
+
+318
+00:32:14,150 --> 00:32:18,230
+biblioteca, carga, le cargasera archivo con tu entrenamiento, también se lo
+
+319
+00:32:18,230 --> 00:32:24,870
+para que lo puse ahora y le das un descriptor y le da como resultado una categoría. Eso es
+
+320
+00:32:24,870 --> 00:32:33,020
+inferencia o predicción también cuando lo estás usando está por las dudas todo el
+
+321
+00:32:33,020 --> 00:32:37,340
+entrenamiento que vos hagas el archivito que guarda sirve solamente para ese modelo con
+
+322
+00:32:37,340 --> 00:32:44,390
+esa configuración no lo puedes toquetear y mandar a otro modelo también si vos lo siche
+
+323
+00:32:44,390 --> 00:32:52,350
+¿Sabes qué? En vez de los 7 imarientes de juky, usar los 7 imarientes más 3
+
+324
+00:32:52,350 --> 00:32:56,630
+características nueva, el color y el no sé qué más, que se me ocurre agregarle.
+
+325
+00:32:56,630 --> 00:33:01,760
+Bueno, empezad a vuelta, no lo vas a aprovechar de entrenamiento que ya tuviste.
+
+326
+00:33:01,760 --> 00:33:14,900
+Bueno, esto no tiene que ver con el TP2, sí tiene que ver con el concepto general y esto lo
+
+327
+00:33:14,900 --> 00:33:21,750
+aplicar a Deep Learning. Este terminado Liner va más allá de Machine Learning y yo lo
+
+328
+00:33:21,750 --> 00:33:30,320
+voy a usar en varias otras cosas de misión artificial. Se llama o Liner, específicamente, a un
+
+329
+00:33:30,320 --> 00:33:36,000
+dato en un dataset. Está bien. O en un conjunto de datos que voy a decir, esto tendría que estar
+
+330
+00:33:36,000 --> 00:33:40,920
+bien, porque querés que el sistema, los análisis aprenda a eso y resulta que se lo
+
+331
+00:33:40,920 --> 00:33:51,780
+distemal. Nuevamente, en la metáfora de la máquina que aprende, esto se asocia a un resultado
+
+332
+00:33:51,780 --> 00:33:56,700
+equivocado en un aire ejercicio. Entonces, ustedes están familiarizadas, tuvo que haber
+
+333
+00:33:56,700 --> 00:34:03,580
+pasado conozco en aire, anegos y todo, ¿no? Está el tipo que dice che, este resultado
+
+334
+00:34:03,580 --> 00:34:09,960
+tiene que estar mal, pero porque voy a aprendiste y ya te das cuenta que no cierra,
+
+335
+00:34:09,960 --> 00:34:16,740
+y nunca falta el flaco que te dice, no, no, no, ahí descubrí cómo hacerlo y el tipo no es que
+
+336
+00:34:16,740 --> 00:34:25,250
+descubrió cómo hacerlo. Desaprendió, o sea, aprendió mal para hacer un método equivocado, para
+
+337
+00:34:25,250 --> 00:34:30,490
+quién es el resultado que él no sabía pero que estaba mal, ¿no? Entonces, ¿qué pasa?
+
+338
+00:34:30,490 --> 00:34:36,650
+Y cuando vos tenés un dataset de 50 muestra como algo que tiene a ustedes, no debería
+
+339
+00:34:36,650 --> 00:34:42,950
+tener resulta, digamos, líneas en el dataset equivocadas, pero cuando a tu
+
+340
+00:34:42,950 --> 00:34:47,330
+dataset es de un millón de imágenes, o bueno, de un millón de entradas, o 10
+
+341
+00:34:47,330 --> 00:34:56,500
+millones de entradas, hay y hay demás también, asumir o tener la seguridad de que
+
+342
+00:34:56,500 --> 00:35:04,080
+alguno va a estar equivocado, pero no es probable que nadie se ha puesto a revisar
+
+343
+00:35:04,080 --> 00:35:10,820
+exactamente todo para ver si está bien o está mal. Obviamente se toma mucho cuidado,
+
+344
+00:35:10,820 --> 00:35:16,820
+pues ya es un tema de probabilidades, alguna máquina vas a tener en el medio. Entonces,
+
+345
+00:35:16,820 --> 00:35:31,580
+se llaman algoritmos robustos aquellos que están preparados para reconocer los datos equivocados,
+
+346
+00:35:31,580 --> 00:35:37,900
+equivocados, que esta estimatemente tienen que ser pocos, es cuando vos mismos te das cuenta
+
+347
+00:35:37,900 --> 00:35:42,860
+que la respuesta de ahí está equivocada, gracias a los otros ejercicios, pudiste aprender
+
+348
+00:35:42,860 --> 00:35:51,540
+y te das cuenta que está tamal, pero los agorimos, robustos están diseñados para hacer robusto,
+
+349
+00:35:51,540 --> 00:35:59,020
+una característica que venga de yapa, muchos agorimos, no son robustos y los alaires les
+
+350
+00:35:59,020 --> 00:36:04,700
+ruina de entrenamiento, o sea, lo fuerza a aprender algo que no es lo que vos querías, le
+
+351
+00:36:04,700 --> 00:36:10,120
+pone la foto de un perro y le haciéndose un cebáforo y el tipo va a forzar a decir
+
+352
+00:36:10,120 --> 00:36:16,340
+cebáforo cuando un perro y se le van a mezclar la cena a cruzar los cables, bueno, eso
+
+353
+00:36:16,340 --> 00:36:22,900
+entonces eso lo llamamos Outliers y el término asociado es robusto, hay una presentación
+
+354
+00:36:22,900 --> 00:36:27,460
+que no tiene que ir con Machine Learning, que viene, falta varias clases donde vamos a
+
+355
+00:36:27,460 --> 00:36:34,060
+volver a ver aula irse en otro contexto y los algoritmos robustos y como los rechazan,
+
+356
+00:36:34,060 --> 00:36:37,370
+como rechazan de reconocen y rechazan los algoritmos.
+
+357
+00:36:37,370 --> 00:36:45,850
+Bueno, Overfitting es un término muy común en el mundo de Machine Learning y Diplarning
+
+358
+00:36:45,850 --> 00:36:58,270
+hasta el mundo de entrenamiento de Overfitting, es un tipo de aprendizaje indeseado,
+
+359
+00:36:58,270 --> 00:37:06,120
+también, porque se aprende tus datos de entrenamiento, se los aprende de memoria, pero no
+
+360
+00:37:06,120 --> 00:37:12,950
+logras generalizar. Entonces, es el ejemplo que está en todos lados y que para mí es insuperable,
+
+361
+00:37:12,950 --> 00:37:19,030
+por eso lo repito, ese el alumno que se aprende la guía de analísima temático de memoria,
+
+362
+00:37:19,030 --> 00:37:27,140
+también, entonces si le toman ejercicio de la guía se sacó 10 y si le toman otros ejercicios
+
+363
+00:37:27,140 --> 00:37:34,490
+se saca cero, porque el flato escó no aprendió a razonar el ejercicio, sino que se
+
+364
+00:37:34,490 --> 00:37:43,300
+acuerda el resultado, se entiende, bueno, ese es el problema, bueno, a capa hay un fenómeno
+
+365
+00:37:43,300 --> 00:37:51,100
+similar, es un área de investigación recontractiva, no es trivial de fenómeno, se conoce un montón,
+
+366
+00:37:51,100 --> 00:38:02,450
+no es esta la materia para meternos en esto, pero en general, cuando vos sobren trena
+
+367
+00:38:02,450 --> 00:38:12,150
+a su modelo, el tipo forzasa el modelo a aprender el dataset de memoria y no a generalizar
+
+368
+00:38:12,150 --> 00:38:17,110
+qué es lo que vos crees, vos querés que mostrarte, ustedes les quiero mostrar varias fotos
+
+369
+00:38:17,110 --> 00:38:21,300
+de perros, pero después te voy a mostrar otras fotos de perros, que no hay ninguna de la
+
+370
+00:38:21,300 --> 00:38:26,940
+que estamos acá. Tiene que aprender cuáles son las características generales. No exactos
+
+371
+00:38:26,940 --> 00:38:33,420
+píxeles exactos de la foto que te estoy mostrando. Bueno, les adierto que eso estoy lleno y
+
+372
+00:38:33,420 --> 00:38:40,700
+viniendo con ejemplos de Machine Learning cuyo input es un descriptor e intercalando
+
+373
+00:38:40,700 --> 00:38:46,580
+ejemplo de Deep Learning cuyo input es una imagen. Esa es la parte que vamos a abordar más
+
+374
+00:38:46,580 --> 00:38:53,550
+adelante. Bien, regresión, yo busque en Google una imagen para regresión, resulta que hay una película
+
+375
+00:38:53,550 --> 00:38:59,550
+que además tienen mal puntaje así que no pienso por más que los actores son de primera niña,
+
+376
+00:38:59,550 --> 00:39:07,260
+parece que va a estar de bala en la película. Bueno, regresión es el primero de los tres
+
+377
+00:39:07,260 --> 00:39:12,080
+problemas de Machine Learning, el que le más le voy a dedicar es clasificación, el clasterismo
+
+378
+00:39:12,080 --> 00:39:26,260
+rápido al final. Regresión es una función, siempre en los tres casos el input es un descriptor,
+
+379
+00:39:26,260 --> 00:39:35,740
+no sea una muestra. El output de regresión es un número real, entonces vos crees que te
+
+380
+00:39:35,740 --> 00:39:47,580
+aproxima a una función, tanto se puede decir, estoy pensando que el texto que está en esta
+
+381
+00:39:47,580 --> 00:39:55,860
+diapositiva no es adecuado para este vetor, si no, no puedo meter no ver, fiquen, vos tenéis
+
+382
+00:39:55,860 --> 00:40:02,440
+que hacer una función, entonces yo te digo che te doy el color RGB en medio por el ejemplo,
+
+383
+00:40:02,440 --> 00:40:06,560
+pero en un ejemplo de baja dimensión de audio, ustedes saben que los problemas de Machine
+
+384
+00:40:06,560 --> 00:40:14,110
+del eminzo de alta y mesioradía, te doy el color RGB de una llama, de un allá de fuego,
+
+385
+00:40:14,110 --> 00:40:20,460
+¿no? Y vos me tenés que decir que temperatura está, usualmente varías una tablita, pero
+
+386
+00:40:20,460 --> 00:40:24,500
+digamos, justamente porque el ejemplo de baja y mesioradía, cuando te vas a alta y
+
+387
+00:40:24,500 --> 00:40:32,970
+mesioradía, se te empieza a complicar, tratar de ser lo mano. Entonces te doy el color
+
+388
+00:40:32,970 --> 00:40:37,710
+de la llama y vos me te decís que temperatura tiene, ¿no? Si es resultado, es una temperatura,
+
+389
+00:40:37,710 --> 00:40:43,420
+es un número real y a medida que van variando sutilmente los los tonos la
+
+390
+00:40:43,420 --> 00:40:47,180
+llama la temperatura va aumentando también va a ese sentido que va a
+
+391
+00:40:47,180 --> 00:40:51,820
+pear de un espacio de tres menciones a un número real eso regresión al
+
+392
+00:40:51,820 --> 00:40:53,620
+resultado número real
+
+393
+00:40:53,620 --> 00:40:58,940
+este entonces vos acá tenéis ejemplo también de baja dimensión de día donde
+
+394
+00:40:58,940 --> 00:41:04,620
+el dominio X es una sola dimensión esto no me voy a cansar de repetirlo
+
+395
+00:41:04,620 --> 00:41:12,670
+usted me va a alcanzar de oírlo, pero no se va a escribocar nunca, acá EX tiene una sola
+
+396
+00:41:12,670 --> 00:41:16,270
+dimensión, en los casos reales, simplemente justo en siete dimensiones, tranquilamente
+
+397
+00:41:16,270 --> 00:41:22,390
+puede tener mil dimensiones, también, no da para graficarlos.
+
+398
+00:41:22,390 --> 00:41:29,390
+Entonces, ¿Vos tenés un manón de puntos azules que conforman tu data set? También son tus
+
+399
+00:41:29,390 --> 00:41:33,070
+mediciones, o sea, es lo que representa el mundo real o la aplicación que vos crees
+
+400
+00:41:33,070 --> 00:41:37,720
+de hacer, te dice mira, estos son los puntos de azul, les quiero una función que
+
+401
+00:41:37,720 --> 00:41:42,320
+aproxime los puntos de azul, de manera que yo estoy de una coordenada x y vos
+
+402
+00:41:42,320 --> 00:41:46,360
+me tenés que decir cuál es el valor de ahí que corresponde a esa coordenada,
+
+403
+00:41:46,360 --> 00:41:51,400
+también, entonces en el medio está lo que consideramos así arbitrariamente como
+
+404
+00:41:51,400 --> 00:41:59,020
+un good fit, es eso lo que yo espero que dé, también, entonces yo entreno el
+
+405
+00:41:59,020 --> 00:42:04,180
+modelo y me da eso del medio y digo, bien, perfecto, porque las mediciones pueden tener
+
+406
+00:42:04,180 --> 00:42:09,500
+disparidades, pero y vos me tenés que estimar una, no me hace a predecir con precisión,
+
+407
+00:42:09,500 --> 00:42:13,960
+o sea, si el valor está acá, bueno, entre acá, ribilla, acá abajo es válido, también
+
+408
+00:42:13,960 --> 00:42:21,760
+el tipo me va a tirar este valor acá y es lo que yo espero. Claro, si tu modelo es
+
+409
+00:42:21,760 --> 00:42:28,160
+de regresión lineal, vos vas a tener esto, o dicho de otra manera, si tu modelo está
+
+410
+00:42:28,160 --> 00:42:34,160
+poco entrenado, o no es el modelo adecuado, y vos vas a tener esto, vos sabe que mejor
+
+411
+00:42:34,160 --> 00:42:41,240
+lo mejorable, lo del medio, mucho mejor que esto de acá, está bien, el Overfeating, ahí abajo
+
+412
+00:42:41,240 --> 00:42:53,160
+dice Overfeat, es esa curva quebrada, que lo que hace es aprenderse de memoria los valores,
+
+413
+00:42:53,160 --> 00:42:57,880
+y no es lo que vos está buscando, vos está buscando generalizarlo, está bien, entendiendo
+
+414
+00:42:57,880 --> 00:43:01,520
+a más que los valores que vos le están dando, no son la verdad absoluta, pueden tener
+
+415
+00:43:01,520 --> 00:43:07,860
+sus errores, los puntos tienen que estar en el medio, no exactamente. Bueno, ese overfeating
+
+416
+00:43:07,860 --> 00:43:12,420
+es lo que hay que evitar y lo que hay que buscar es que la curva se hace. No va a ser una
+
+417
+00:43:12,420 --> 00:43:16,780
+curva, no va a ser muchas dimensiones, no va a poder tener una apreciación de cómo
+
+418
+00:43:16,780 --> 00:43:23,860
+quedó tu curva. Va a tener que evaluarlo con valores del reset, va a tener que tomar parciales
+
+419
+00:43:23,860 --> 00:43:30,060
+y finales, va a tener que decir che, va a tener que tener con estas descriptores, ahora
+
+420
+00:43:30,060 --> 00:43:35,160
+eso te tiro otro escritor que no es parte de lo que está en entrenamiento porque si es parte de lo que está en
+
+421
+00:43:35,160 --> 00:43:41,210
+entrenamiento, uno verfitting te lo va a decir bien, entonces vos traes otro que no es de lo que está en
+
+422
+00:43:41,210 --> 00:43:47,610
+entrenamiento, también exactamente lo mismo que pasa en matemática, no tomás la misma el mismo ejercicio de la guía
+
+423
+00:43:47,610 --> 00:43:57,710
+porque queréis evitar que te lo pretende de memoria, no es la manera de aprender matemática, de eso se trata, bueno,
+
+424
+00:43:57,710 --> 00:44:05,500
+Una de las cosas que ocurre es que esto es muy técnico, si lo estoy tirando tampoco fuera
+
+425
+00:44:05,500 --> 00:44:12,580
+de contexto, vos mejoras, o sea reducíselo verfitting, si aumentas la cantidad de datos,
+
+426
+00:44:12,580 --> 00:44:18,190
+aumenta el dataset, te permite mejorar lo que llamamos generalización, vos querés que
+
+427
+00:44:18,190 --> 00:44:22,370
+el modelo generalice a partir de lo que vos le estás enseñando, si vos le da una cantidad
+
+428
+00:44:22,370 --> 00:44:28,050
+muestra finitas y esperás que te he resultado para infinitos casos, para cualquier caso
+
+429
+00:44:28,050 --> 00:44:33,340
+intermedio, que no son las muestras que vuelve a irte. Entonces, tiene que lograr esa rila
+
+430
+00:44:33,340 --> 00:44:40,530
+general, de encontrar un imárentes de jude, que nunca lo vio antes, pero si che esto y la
+
+431
+00:44:40,530 --> 00:44:49,790
+pinta de ser un cuadrado. Hay otra cuestión, esta la pongo, es relevante y la voy a mencionar
+
+432
+00:44:49,790 --> 00:44:55,870
+más adelante, ahora está media descolgada en la depositiva, menor exposición a los datos.
+
+433
+00:44:55,870 --> 00:45:00,870
+esto tiene que ver con la forma de aprender, yo no me acuerdo, ahora me queda la duda
+
+434
+00:45:00,870 --> 00:45:09,210
+si en la próxima diapositiva parece esto o no, pero vos puedes consumir el dataset varias veces,
+
+435
+00:45:09,210 --> 00:45:17,110
+en mismo dataset, y si yo no quiero que aprendas de cada muestra todo lo que se puede aprender,
+
+436
+00:45:17,110 --> 00:45:22,720
+quiero que aprendas un poquito y después lo estudia de vuelta y después lo se desvuelta,
+
+437
+00:45:22,720 --> 00:45:28,960
+es una forma rara, ahí ya no, no, yo no conozco una buena meta fuera o una relación con la
+
+438
+00:45:28,960 --> 00:45:35,560
+forma de aprender, la forma que aprendemos nosotros, pero y esto, esto bastante más profundo,
+
+439
+00:45:35,560 --> 00:45:40,880
+cuando llevo el momento posiblemente cuando estudiamos diplarning, lo voy a profundizar un poco
+
+440
+00:45:40,880 --> 00:45:49,560
+en lo que lo, en el significado esto, porque esto de menor expresión en los datos no es intuitivo,
+
+441
+00:45:49,560 --> 00:45:56,040
+es un descubrimiento, no son cosas que se razonan, son cosas que se descubren en la práctica y se fue
+
+442
+00:45:56,040 --> 00:46:06,980
+descubriendo de acá el 7080 y es lo que yo origen al al machinar. Bueno, entonces la solución
+
+443
+00:46:06,980 --> 00:46:12,740
+al Uber Fitness aumenta el volumen de datos y en el caso, no en el caso de lo que van a tener
+
+444
+00:46:12,740 --> 00:46:19,140
+de pedo, pero en el caso general más paradigme learning es reducir la exposición de datos,
+
+445
+00:46:19,140 --> 00:46:24,500
+significa reducir el learning rate, va a demorar más en aprender con los mismos datos,
+
+446
+00:46:24,500 --> 00:46:31,420
+pero va a evitar logartiting. Bueno, esto es lo que les dije antes, para entrenar
+
+447
+00:46:31,420 --> 00:46:41,810
+voz divisa en tres partes, el sistema de machine learning recorre todo el dataset varias veces,
+
+448
+00:46:41,810 --> 00:46:48,050
+cada vez cada vuelta que le da el dataset entera se lo llaman épocas. Es como si te dijieras que
+
+449
+00:46:48,050 --> 00:46:54,820
+repita la guía de ejercicio, pero hay que suponiendo que cuando la vas a hacer de vuelta ya te lo
+
+450
+00:46:54,820 --> 00:47:02,660
+olvidaste. Está incorporando el método, pero te olvidaste de ejercicio exacto. No te aprendas de
+
+451
+00:47:02,660 --> 00:47:10,980
+memoria de eso se trata. Entonces ustedes no van a hacer algo más tan sofisticado por su
+
+452
+00:47:10,980 --> 00:47:17,500
+entrenamiento va a ser muy rápido y muy fácil, pero esto viene bien para
+
+453
+00:47:17,500 --> 00:47:24,330
+Diplar, es el momento adecuado, vos, cada vuelta adecuado se llama época, entonces
+
+454
+00:47:24,330 --> 00:47:30,130
+voy al programa salvo para aprender durante 20 épocas, 50 épocas, en cada
+
+455
+00:47:30,130 --> 00:47:34,210
+época que es un momento adecuado para hacer una prueba, lo que yo decía es una
+
+456
+00:47:34,210 --> 00:47:42,000
+versión parcial se lo llama validación validación también validación y cuando
+
+457
+00:47:42,000 --> 00:47:49,320
+termino todo tenés el test también entonces durante el proceso en el caso
+
+458
+00:47:49,320 --> 00:47:53,080
+usted va a demorar a un medio un segundo pero cuando va a llamar a diplar ni puede
+
+459
+00:47:53,080 --> 00:47:59,120
+durar 15 minutos puede durar 2 horas puede durar 2 días o una semana depende
+
+460
+00:47:59,120 --> 00:48:05,000
+de los que ligen a ser entonces vos querés tener resultados parciales para
+
+461
+00:48:05,000 --> 00:48:08,390
+a ver si la cosa está haciendo bien o se está descondorando.
+
+462
+00:48:08,390 --> 00:48:10,390
+Para eso te la valedación.
+
+463
+00:48:10,390 --> 00:48:14,090
+También te va, cada época te va tirando un resultado para ser y vos
+
+464
+00:48:14,090 --> 00:48:19,750
+ves si está aprendiendo o no está aprendiendo nada.
+
+465
+00:48:19,750 --> 00:48:22,350
+Bueno, esto es medio overkill, pero es el momento donde
+
+466
+00:48:22,350 --> 00:48:24,790
+vemos la neurona de las redes neuronales,
+
+467
+00:48:24,790 --> 00:48:28,830
+que es lo que está dentro del deep learning y está dentro de,
+
+468
+00:48:28,830 --> 00:48:34,030
+básicamente de todo lo que le llamamos IA al día de hoy.
+
+469
+00:48:34,030 --> 00:48:40,050
+Entonces, ahora me he escuchado el término red neoronal de Neuronas.
+
+470
+00:48:40,050 --> 00:48:44,050
+Hay una que es eso a mí, a mí me da dolor de esto,
+
+471
+00:48:44,050 --> 00:48:48,160
+o cuando la gente guerra del término y trata de descubrir
+
+472
+00:48:48,160 --> 00:48:49,720
+que es a partir de la palabra.
+
+473
+00:48:49,720 --> 00:48:52,520
+O sea, todas las palabras son metáforas.
+
+474
+00:48:52,520 --> 00:48:53,080
+¿Está bien?
+
+475
+00:48:53,080 --> 00:48:55,000
+No son neuronas.
+
+476
+00:48:55,000 --> 00:48:59,860
+Agarrano en el nombre que viene de las neurosciencias o de las biologías.
+
+477
+00:48:59,860 --> 00:49:02,980
+Y dijera, este es un nombre está bueno para describir
+
+478
+00:49:02,980 --> 00:49:06,300
+esta función matemática, que se programa,
+
+479
+00:49:06,300 --> 00:49:10,680
+incluso simplemente en Harvard.
+
+480
+00:49:10,680 --> 00:49:14,680
+Y entonces dicen, no, sí, porque las redes neuronales están
+
+481
+00:49:14,680 --> 00:49:17,600
+inspiradas en la neurona del cerebro.
+
+482
+00:49:17,600 --> 00:49:22,120
+No, también las redes neuronales son funciones matemáticas.
+
+483
+00:49:22,120 --> 00:49:25,840
+alguien se lo ocurrió y su asociación superficial sobre
+
+484
+00:49:25,840 --> 00:49:29,440
+el funcionamiento de las neuronas y le trajo el nombre.
+
+485
+00:49:29,440 --> 00:49:36,720
+no están inspiradas en el nombre nada más tempirado, quiero explicar que primero vamos a
+
+486
+00:49:36,720 --> 00:49:42,090
+gráfico que es de lo general particular, la derecha temográfico general, cada columna se les
+
+487
+00:49:42,090 --> 00:49:49,770
+llaman capas, cada bolita es una neurona, está bien, esto es una configuración particular en capas
+
+488
+00:49:49,770 --> 00:49:56,710
+donde a las bolitas tienen entradas del lado izquierdo y salida del lado derecho, o sea cada
+
+489
+00:49:56,710 --> 00:50:04,960
+una una tiene una salida, muchas entradas una salida. Entonces, cada la salida de cada
+
+490
+00:50:04,960 --> 00:50:13,320
+capa se conectan en este caso a todas las neuronas de la capa siguiente, todas con todas se
+
+491
+00:50:13,320 --> 00:50:20,490
+conectan a las entradas de la capa siguiente y así hasta que tenés una sola salida en este
+
+492
+00:50:20,490 --> 00:50:26,750
+y acabo tenés la regresión, entonces se llama regresión con perceptrones
+
+493
+00:50:26,750 --> 00:50:31,050
+multicapas de neurona perceptron, esto que estaba viendo es el nombre técnico de
+
+494
+00:50:31,050 --> 00:50:43,420
+perceptron, en las redes neuronales, una configuración de capas, las tres
+
+495
+00:50:43,420 --> 00:50:48,360
+capas, esto se usa en Deep Learning y por eso los tipos de nada más que por
+
+496
+00:50:48,360 --> 00:50:54,520
+es que si lo estoy presentando ahora y más adelante vamos a grabar de acá de modo más en
+
+497
+00:50:54,520 --> 00:51:00,640
+ciclopé y contarle cómo funciona como es porque aprender de que se trata sin ser experto en el
+
+498
+00:51:00,640 --> 00:51:09,240
+tema se permiten de ver qué cosa puede hacer y qué cosa no yo estoy sorprendido que todavía
+
+499
+00:51:10,760 --> 00:51:15,700
+gente composbrado composbrado en la universidad de preciosas de Estados Unidos,
+
+500
+00:51:15,700 --> 00:51:20,620
+por lo de la internet, en Machine Learning, en el director oficial, todavía hay algunas cosas
+
+501
+00:51:20,620 --> 00:51:28,740
+en las confundas, también. Y cuando vos ves esto y lo ves bien, sin ni ser nivel experto, pero
+
+502
+00:51:28,740 --> 00:51:35,840
+ves conceptualmente, empezás a entender un montón de cosas sobre la IA, que ya o si
+
+503
+00:51:35,840 --> 00:51:40,800
+llegó momento vamos a hacer un poquito, si cabe hacemos un poquito un debate sobre qué
+
+504
+00:51:40,800 --> 00:51:48,220
+puede hacer una ia y que no. Bueno, esto lo menciona acá, es un mecanismo que vamos a
+
+505
+00:51:48,220 --> 00:51:57,300
+verlo mucho mejor más adelante. Esto que tenemos acá es un perceptro, pero antes de abajo
+
+506
+00:51:57,300 --> 00:52:01,900
+quiero mostrarle esto de la izquierda, este es el perceptro, esto que tenemos acá lo
+
+507
+00:52:01,900 --> 00:52:10,900
+dije mal, esto es un regreso, el conjunto, está hecho con perceptrones o neuronas. X son
+
+508
+00:52:10,900 --> 00:52:16,060
+las señales individuales de entrada, entonces voy a agarrar a una neuronaca roja que tiene
+
+509
+00:52:16,060 --> 00:52:22,300
+tres entradas, que provienen de las tres rojas, eso son el input, acá están entrando tres valores,
+
+510
+00:52:22,300 --> 00:52:29,000
+también, una RGB o algo así, en el caso de ustedes tendrían que ser siete valores de los
+
+511
+00:52:29,000 --> 00:52:34,420
+invariantes de HUD y cada una de las bolitas de la primera capa tendría siete entradas,
+
+512
+00:52:34,420 --> 00:52:39,040
+bueno acá hay cuatro dibujadas, que es el caso de estas de acá de la derecha, tiene cuatro de
+
+513
+00:52:39,040 --> 00:52:47,880
+4 datos de entrada, 4 pesos W, los weights, pesos oponeraciones, acá está la
+
+514
+00:52:47,880 --> 00:52:54,960
+poneración, pues un factor se multiplica la X1 por el W1, también la X2 por
+
+515
+00:52:54,960 --> 00:52:59,800
+el W2 se multiplica en todas y se suman, es mucho gráfico para una operación
+
+516
+00:52:59,800 --> 00:53:03,800
+bastante sencilla, digo sencilla porque saben cómo se llama esta operación,
+
+517
+00:53:03,800 --> 00:53:09,170
+producto escalar, pues tienes un vector X, un vector W y ese
+
+518
+00:53:09,170 --> 00:53:13,130
+ese propio escalario y te da un valor, o sea, multiplicas una por una y sumas todo,
+
+519
+00:53:13,130 --> 00:53:19,450
+está bien, más fácil imposible lo vieron en primer año, y hasta se lo guardan, así
+
+520
+00:53:19,450 --> 00:53:24,890
+que no hay mucha vuelta, pero que se lo guardan. El tema es, equisón datos que
+
+521
+00:53:24,890 --> 00:53:32,510
+sigan de fuera, W son parámetros internos de la neurona, y esos son los parámetros
+
+522
+00:53:32,510 --> 00:53:40,130
+de entrenamiento, o sea, cuando este modelo de regresor hecho con perceptrones multicapas,
+
+523
+00:53:40,130 --> 00:53:45,930
+entrenamiento consiste en ir ajustando los valores de W hasta que he resultado da lo que
+
+524
+00:53:45,930 --> 00:53:54,500
+vos crees que también medio magia, también. Entonces, bueno, escribís una algorithms, no hay
+
+525
+00:53:54,500 --> 00:54:02,200
+una manera intuitiva de expresar lo que pasa ahí adentro. O sea, se van ajustando los
+
+526
+00:54:02,200 --> 00:54:06,860
+valores, hay un proceso de entrenamiento que va ajustando paulatinamente estos valores
+
+527
+00:54:06,860 --> 00:54:11,090
+y después funciona, así porque funciona, ¿qué es eso?
+
+528
+00:54:11,090 --> 00:54:13,410
+Sabemos que funciona.
+
+529
+00:54:13,410 --> 00:54:21,770
+Gran parte del advenimiento de la IA fue por descubrimientos
+
+530
+00:54:21,770 --> 00:54:25,400
+experimentales, también.
+
+531
+00:54:25,400 --> 00:54:30,880
+Y esto no sé, yo me parece que a ustedes le puedes
+
+532
+00:54:30,880 --> 00:54:33,440
+sonar raro, a mí no me sonar raro, pero me parece que
+
+533
+00:54:33,440 --> 00:54:39,440
+ustedes pueden cerrar, pero en realidad el mundo, la tecnología, avance
+
+534
+00:54:39,440 --> 00:54:44,720
+experimentalmente y la teoría viene después, hay de las dos, a la vez es absurge
+
+535
+00:54:44,720 --> 00:54:49,920
+una teoría que da, la teoría de la computación cuántica dio lugar a treinta y
+
+536
+00:54:49,920 --> 00:54:56,530
+pico años después a la computadora cuántica, pero el transistor que se
+
+537
+00:54:56,530 --> 00:54:59,610
+descubrió de año 49 y ganaron un premio Nobel se descubrió
+
+538
+00:54:59,610 --> 00:55:06,410
+principalmente y no era el que se había teorizado y la teoría llevó como no sé
+
+539
+00:55:06,410 --> 00:55:14,900
+15-20 años en desarrollarse, o sea, se podía fabricar y la máquina de apor, digamos,
+
+540
+00:55:14,900 --> 00:55:20,780
+los barcos cruzaban o sea, nos con máquina de apor, y antes de que existiera
+
+541
+00:55:20,780 --> 00:55:25,700
+determinámica la teoría que explicaba el principio de funcionamiento,
+
+542
+00:55:25,700 --> 00:55:41,840
+Obviamente, cuando surgió la teoría entendiste más allá de la intuición, entendiste cómo optimizarlo y el diario, digamos, no sé si ustedes saben cómo fue la optimización de la máquina de aportar, resultado fue asombroso,
+
+543
+00:55:41,840 --> 00:55:45,100
+dice, es mucho mejor hacer un motor de combustible interno,
+
+544
+00:55:45,100 --> 00:55:49,600
+o sea que esa conclusión se obtuvo a partir de la tería,
+
+545
+00:55:49,600 --> 00:55:52,100
+le podía casarlo, ¿no?
+
+546
+00:55:52,100 --> 00:55:56,100
+Entonces, va un poco de uno, un poco de la otra,
+
+547
+00:55:56,100 --> 00:55:58,100
+pero estas cosas son avances teóricos,
+
+548
+00:55:58,100 --> 00:56:02,600
+las avances prácticos, experimentales, prácticos,
+
+549
+00:56:02,600 --> 00:56:07,100
+se usan y la tería viene con varios años de atraso,
+
+550
+00:56:07,100 --> 00:56:09,600
+a veces la tradíces año de atraso explicando cosas
+
+551
+00:56:09,600 --> 00:56:14,840
+que se sabían experimentalmente si usaban se vendían, se usaban todo el mundo lo usamos,
+
+552
+00:56:14,840 --> 00:56:21,000
+la explicación llega mucho más tarde. A veces, a veces no, no se explican. Entonces se habla
+
+553
+00:56:21,000 --> 00:56:25,690
+en ías, se habla de caja negra, me da yo en treno y tengo un montón de doble veces.
+
+554
+00:56:25,690 --> 00:56:31,850
+Quiero corregir su comportamiento, qué tocó, no tengo la menor idea flaco,
+
+555
+00:56:31,850 --> 00:56:36,250
+capaz que tenés millones de dos parámetros. No se sabe cuál hay que tocar para corregir
+
+556
+00:56:36,250 --> 00:56:43,510
+entre una de vuelta, así funciona. Bueno, pasemos a clasificar, bueno, creo que se entiende,
+
+557
+00:56:43,510 --> 00:56:50,140
+no, clasificación, este apareció en imagen. Bueno, acá tenemos un dominio de dos dimensiones,
+
+558
+00:56:50,140 --> 00:56:57,780
+este color y textura y se acaba de producir algo, este, y vos tenés, entonces las coordenadas,
+
+559
+00:56:57,780 --> 00:57:06,740
+esto lo mismo que cuando estamos con las frutas, las coordenadas son los descriptores y el color y
+
+560
+00:57:06,740 --> 00:57:13,060
+forma, cuadrado, naranja o círculo azul, son la categoría, ese es el resultado que
+
+561
+00:57:13,060 --> 00:57:18,940
+vos esperas, también eso es cuando ya tenés el resultado, yo te pregunto che, si el
+
+562
+00:57:18,940 --> 00:57:24,740
+descriptor cae en esta coordenada tenemos el puntelo de mouse y vos similaga, esa está
+
+563
+00:57:24,740 --> 00:57:33,180
+cerca de los círculos, eso debe tener que ser un círculo, esta línea, esta línea viene
+
+564
+00:57:33,180 --> 00:57:39,460
+representar y la aprendizaje de un clasificador. O sea, después de entrenar con este dataset,
+
+565
+00:57:39,460 --> 00:57:46,460
+el clasificador sigua la conclusión de que la línea recta diagonal que pasa por acá es una buena
+
+566
+00:57:46,460 --> 00:57:53,900
+división para separar cuadrados de círculos. Está bien. Especialmente, porque al matenés, que es lo
+
+567
+00:57:53,900 --> 00:58:00,340
+deseable siempre, en los descriptores que haya un buen espacio entre un cumulo de una categoría y un
+
+568
+00:58:00,340 --> 00:58:07,220
+cumulo de otra categoría. Pero bueno, en dos dimensiones está claro, si usted tiene un montón
+
+569
+00:58:07,220 --> 00:58:14,970
+de vectores de siete dimensiones, en el momento de juo, y ya se les va a complicar. Intuitivamente
+
+570
+00:58:14,970 --> 00:58:19,050
+no lo van a querer hacer. Quieren que ustedes se van a agradecer que hay una máquina que
+
+571
+00:58:19,050 --> 00:58:23,370
+lo hace por vos. Voletirá lo valores, le dirá los ejemplos de lo que crees, haces tu
+
+572
+00:58:23,370 --> 00:58:31,160
+atraser y esperas que el tipo te aprenda a separar el espacio. Ni siquiera vamos a ver la recta,
+
+573
+00:58:31,160 --> 00:58:35,760
+lo que vamos a tener es una máquina que vos le tiras una coordenada y te da como resultado
+
+574
+00:58:35,760 --> 00:58:39,600
+a que categoría pertenece, está bien, esto viene a ilustrar a ver cómo va a funcionar
+
+575
+00:58:39,600 --> 00:58:46,120
+por adentro esa máquina. Bueno, ustedes van a usar, ustedes quieran, pero creo que venimos
+
+576
+00:58:46,120 --> 00:58:51,480
+usado no se alecio, les vine recomendando el árbol de decisión minaria porque funciona
+
+577
+00:58:51,480 --> 00:59:00,360
+muy fácil, es muy rápido entrenar y ilustra lo que queremos mostrar con el TP2, está bien,
+
+578
+00:59:00,360 --> 00:59:04,280
+no nos vamos a meter en el mundo de Machine Learning y a ver todos los tipos de
+
+579
+00:59:04,280 --> 00:59:08,200
+máquinas que había, de hecho estaban en las presentaciones, yo los recorteis, me
+
+580
+00:59:08,200 --> 00:59:13,120
+quedé alguna idea positiva, mira, saltego, de otros máquinas posibilas, también,
+
+581
+00:59:13,120 --> 00:59:17,840
+me lo saltego, porque no es la idea enseñar acá, árbol de decisión minaria, es un
+
+582
+00:59:17,840 --> 00:59:24,170
+tipo, bueno no, le voy a explicar cómo funciona para que, pues le mostré el
+
+583
+00:59:24,170 --> 00:59:29,590
+preceptor en regreso, le voy a dar un ejemplo de cómo funciona un
+
+584
+00:59:29,590 --> 00:59:36,120
+clasificador. Lo que importa es cómo funciona en inferencia, ¿no? Después el
+
+585
+00:59:36,120 --> 00:59:40,380
+entrenamiento es más sofisticado y más adelante vamos a ver el
+
+586
+00:59:40,380 --> 00:59:42,740
+entrenamiento de Diplar, ni que es mucho más complicado y ese lo
+
+587
+00:59:42,740 --> 00:59:45,560
+vamos a ver el profundidad y todo esto le va a quedar claro por
+
+588
+00:59:45,560 --> 00:59:49,800
+añadidura. Pero el largo del decisión minaria es así, vamos
+
+589
+00:59:49,800 --> 00:59:53,000
+a entrar con siete características, un descriptor de siete
+
+590
+00:59:53,000 --> 00:59:58,520
+características, ¿no? Y el nodo uno de ese árbol dice, voy a
+
+591
+00:59:58,520 --> 01:00:04,600
+agarrar la característica número 3 y le voy a comparar con un brael que tengo ya almacenado
+
+592
+01:00:04,600 --> 01:00:12,720
+también digo 100 mayor a 0,5 sigue por acá, es esto como alija de su propia aventura y 100
+
+593
+01:00:12,720 --> 01:00:20,880
+menor a 0,5 sigue por la otra rama también y cada nodo tiene que característica que muestra si
+
+594
+01:00:20,880 --> 01:00:27,460
+qué característica de la muestra va a usar de 0,6 en el momento de que y con qué un brael lo va a
+
+595
+01:00:27,460 --> 01:00:35,730
+comparar para decir si es mayor o menor. Estas dos datos, qué característica y qué un brael
+
+596
+01:00:35,730 --> 01:00:42,880
+son el resultado del entrenamiento. Esa hay toda una teoría y un algoritmo que dice que si
+
+597
+01:00:42,880 --> 01:00:50,360
+volle la segunda tazet, hay un método con el cual la máquina lige en cada nodo, cuál es
+
+598
+01:00:50,360 --> 01:00:59,480
+la mejor, cuál es el concepto y identificar dentro de ese dataset, cuál es la característica
+
+599
+01:00:59,480 --> 01:01:06,120
+más determinante, la que separa un grupo de otro de la mejor manera. Entonces, el invariante
+
+600
+01:01:06,120 --> 01:01:12,080
+es un número 3 listo, esa. Y cuál es el valor que agrozó modo lo separa mejor? Bueno,
+
+601
+01:01:12,080 --> 01:01:20,060
+eso es lo que hace el árbol de decisión miraria, tiene varios niveles, ¿no? Este árbol en particular,
+
+602
+01:01:20,060 --> 01:01:25,940
+va siguiendo las ramas y terminas en una de estas de abajo. O sea que ahí está el resultado.
+
+603
+01:01:25,940 --> 01:01:33,880
+O sea, los resultados son discretos. El resultado es, aquí no dos sigas. Entonces, la cantidad
+
+604
+01:01:33,880 --> 01:01:38,720
+de resultados posibles tiene que ver con la profundidad de profundidad es cuánto a niveles
+
+605
+01:01:38,720 --> 01:01:45,400
+tenés, ¿no? Si vos querés más resultado posibles, necesitas más niveles. Ojo que los distintos
+
+606
+01:01:45,400 --> 01:01:49,960
+no dos pueden tener asociada la misma categoría. O sea, llegas a la misma categoría por dos
+
+607
+01:01:49,960 --> 01:02:00,640
+camino distinto depende como sea el descriptor, o sea, como mínimo, si la cantidad de nodos
+
+608
+01:02:00,640 --> 01:02:05,880
+finales tiene que ser igual o superior a la cantidad de categorías que vos tenés. Si
+
+609
+01:02:05,880 --> 01:02:10,980
+vos lo sé exactamente igual porque vos tenés 4 categorías y le quería dar 4 nodos finales
+
+610
+01:02:10,980 --> 01:02:17,630
+que sería terminar este nivel, puede pasar que no logre determinarlos bien, porque requiera
+
+611
+01:02:17,630 --> 01:02:21,690
+hacer más preguntas. Entonces, vos necesitas aumentar la cantidad de niveles por
+
+612
+01:02:21,690 --> 01:02:26,750
+lo que tengas solo cuatro categorías para que el tipo pueda responderlo yendo por
+
+613
+01:02:26,750 --> 01:02:32,670
+distintos caminas. Bueno, pueda reconocer la categoría yendo por distintos caminas.
+
+614
+01:02:32,670 --> 01:02:38,750
+Bueno, a camino otro tema, recuerden la relevancia de esto es para más adelante, para cuando
+
+615
+01:02:38,750 --> 01:02:45,760
+veamos Diplarning. ¿Cómo hacemos clasificación con perceptrones
+
+616
+01:02:45,760 --> 01:02:52,840
+multicapa. Bueno, primero de todo, el output, el output de un para subtrón multicapa de una
+
+617
+01:02:52,840 --> 01:03:00,160
+red neuronal es un número real y sirve para hacer regresión y justamente como es un número real
+
+618
+01:03:00,160 --> 01:03:08,720
+no sirve para expresar una etiqueta. Esto es súper relevante. O sea, la red neuronal no es la
+
+619
+01:03:08,720 --> 01:03:15,300
+etiqueta, no se calculan. En el caso de un árbol de decisión minaria como el que vimos recién,
+
+620
+01:03:15,300 --> 01:03:21,640
+es todo discreto, las etiquetas son discretas. La etiqueta no puede ser resultado de una operación
+
+621
+01:03:21,640 --> 01:03:28,150
+de una forma matemática porque te va con decimales. Y esto no desvaga bueno, ¿qué es?
+
+622
+01:03:28,150 --> 01:03:33,430
+No, pero quita más cerca del perro del semáforo. No funciona así, o sea, se le va a pifiar por
+
+623
+01:03:33,430 --> 01:03:39,310
+algún lado, o sea, es una abordaje espantoso. De hecho, no se usa por no sirven, está
+
+624
+01:03:39,310 --> 01:03:46,800
+mal planteado ya desde la teoría. Lo que se hace es cuántas categorías de distintas
+
+625
+01:03:46,800 --> 01:03:56,430
+de 5. Te hago, te entreno un regreso para cada categoría que te dice, valores de 0 a 1.
+
+626
+01:03:56,430 --> 01:04:00,970
+Uno es que sí, cero es que no. Entonces, el primero para reconocer perros, el segundo
+
+627
+01:04:00,970 --> 01:04:05,610
+para reconocer gato, si no sé, las categorías que vos tengas. O en el caso de ustedes, de
+
+628
+01:04:05,610 --> 01:04:13,890
+simbariente de júr, reconocer este cuadrado, triángulo y estrella. Entonces, un regreso
+
+629
+01:04:13,890 --> 01:04:19,170
+arreconoce estrella y te tira un valor entre ser y uno, si eso no hace una estrella.
+
+630
+01:04:19,170 --> 01:04:24,150
+También, claro, si vos tenés mil categorías, como 10 mil categorías como un clasificador
+
+631
+01:04:24,150 --> 01:04:30,890
+de 10 mil categorías, digamos, como no estoy inventando, vos tenés que recorrar todos
+
+632
+01:04:30,890 --> 01:04:36,930
+los valores para ver cuál dio más, incluso poner otros criterios para poder decir que
+
+633
+01:04:36,930 --> 01:04:45,060
+esta es la categoría. Entonces esa es la manera en que se clasifica con redes neuronales
+
+634
+01:04:45,060 --> 01:04:53,600
+y cuál es la, digamos, la gran ventaja es que el cuerpo antes de la última neurona que
+
+635
+01:04:53,600 --> 01:04:59,220
+es la que calcula las salidas, esa ponderación en ese producto escalar, creo que me faltó
+
+636
+01:04:59,220 --> 01:05:08,350
+que te calcula de resultado, todo lo anterior es común a todos los regresores, entonces no son
+
+637
+01:05:08,350 --> 01:05:16,880
+un regresor independiente para cada categoría, es una máquina cuya salida final también es
+
+638
+01:05:16,880 --> 01:05:26,400
+un regresor para cada categoría, así como funciona la clasificación con regresores que es la
+
+639
+01:05:26,400 --> 01:05:34,830
+única manera de hacerlo para rellenaronares. Bueno, esto me voy y ya se vuelve más especializado
+
+640
+01:05:34,830 --> 01:05:40,150
+que pasa, se lo digo muy para arriba, ¿qué pasa cuando vos tenés que separar estos dos
+
+641
+01:05:40,150 --> 01:05:48,810
+categorías? Volsa no tenés una línea que te divida en dos semifelios, el espacio, sino
+
+642
+01:05:48,810 --> 01:05:54,730
+que tenés una interior y otra exterior. Entonces, hay técnicas, esto viene de la matemática,
+
+643
+01:05:54,730 --> 01:05:59,970
+dice che, si yo logro ajustar automáticamente una tercera dimensión
+
+644
+01:05:59,970 --> 01:06:04,490
+que te lo separe todo ello ahora, lo puedo aplicar un plano y recordar.
+
+645
+01:06:04,490 --> 01:06:07,350
+Son vericuetos,
+
+646
+01:06:07,350 --> 01:06:11,540
+lo que les muestras que la disciplina del Machine Learning
+
+647
+01:06:11,540 --> 01:06:16,380
+es mucho más compleja de lo que pueda parecer superficialmente.
+
+648
+01:06:16,380 --> 01:06:20,780
+Bueno, y bien así, yo creo que me olvidé adelantarles que esta era una presionación muy larga.
+
+649
+01:06:20,780 --> 01:06:24,030
+Creo que la más larga de toda la materia,
+
+650
+01:06:24,030 --> 01:06:34,270
+este y yo tengo pensado a dar dos, la segunda es rápida, esa mena y un poco más también
+
+651
+01:06:34,270 --> 01:06:41,150
+si llevo pero a veces originalmente yo le digaba la clase exclusivamente al tema de
+
+652
+01:06:41,150 --> 01:06:46,750
+Machine Learning, le recorté un montón de cosas que demostraron ser inútiles como pasar
+
+653
+01:06:46,750 --> 01:06:55,610
+por una variedad extensa de técnicas de clasificación, por ejemplo. Bueno, entonces clástering,
+
+654
+01:06:55,610 --> 01:07:03,160
+vamos al tema final, acá, esta es la única imagen que efectivamente representa lo que dice,
+
+655
+01:07:03,160 --> 01:07:12,020
+es un clástering. Hay un agorismo famoso, que se llama Camins, si no me estoy equivocando
+
+656
+01:07:12,020 --> 01:07:20,460
+es el siglo XX, y es de esos algoritmos que por su simplificidad y por ser viviana y todo
+
+657
+01:07:20,460 --> 01:07:29,130
+perduran, ¿verdad? Le voy a describir, le voy a escribir lo que hace el Camíx, porque es lo que hace
+
+658
+01:07:29,130 --> 01:07:35,070
+un clástering, también es el problema de clástering, no me voy a meter tanto en cómo funciona.
+
+659
+01:07:35,070 --> 01:07:43,070
+Bueno, estos puntos, las coordenadas son dos características, todos dos características son
+
+660
+01:07:43,070 --> 01:07:50,060
+muestras de dos características simplificado y los colores no los colores todavía no voy a
+
+661
+01:07:50,060 --> 01:07:56,870
+si yo te tiro muestras de dos características mía tazet son las coordenadas son las muestras
+
+662
+01:07:56,870 --> 01:08:03,930
+pero no las etiquetas las etiquetas no forman parte del tazet o sea yo te tiro un montón de puntos
+
+663
+01:08:05,610 --> 01:08:09,930
+clastering bueno por ahí por el término ya se dan cuenta depende del manejo en inglés que
+
+664
+01:08:09,930 --> 01:08:22,590
+tengan. La función del algoritmo de Clastering es agruparlos por proximidad y determinar a las
+
+665
+01:08:22,590 --> 01:08:32,670
+categorías. Entonces puedo acá decir yo que tengo tres clastering y te voy a decir aquí, aquí
+
+666
+01:08:32,670 --> 01:08:37,670
+clastero de categoría, pertenece cada uno de los puntos. O sea, en tu datación, bueno, lo
+
+667
+01:08:37,670 --> 01:08:40,250
+Es decir, este imerente de jú, pertenece un cuadrado,
+
+668
+01:08:40,250 --> 01:08:44,030
+voletirás un montón de imerentes de jú,
+
+669
+01:08:44,030 --> 01:08:50,470
+que vos sabés que pertenecen a formas diferentes,
+
+670
+01:08:50,470 --> 01:08:57,600
+y es decir, a ver si descubrí a qué formas pertenecen.
+
+671
+01:08:57,600 --> 01:09:00,580
+¿Pobrás empezar a hacer un montón de formas?
+
+672
+01:09:00,580 --> 01:09:06,120
+Sin anotar qué formas hiciste y ver si encuentra similitudes,
+
+673
+01:09:06,120 --> 01:09:08,680
+en las distintas formas que ustedes dibujan.
+
+674
+01:09:08,680 --> 01:09:16,730
+Bueno, eso hace el abrimo de Camins, esto es un entrenamiento no supervisado, porque vos no
+
+675
+01:09:16,730 --> 01:09:21,330
+decís la categoría o el resultado que esperas de cada uno, solamente tirar los descriptores
+
+676
+01:09:21,330 --> 01:09:30,490
+en tu database y acá voy a exagerar un poquito, no es exacto lo que digo, pero a diferencia
+
+677
+01:09:30,490 --> 01:09:37,070
+del anterior, vos en el anterior, en regreso y en clasificación entrenaba como parte de tu
+
+678
+01:09:37,070 --> 01:09:45,500
+desarrollo y tu resultado era para que haga inferencia, está bien, acá separarlo en grupos
+
+679
+01:09:45,500 --> 01:09:54,720
+suele ser el trabajo, el trabajo de tipo de producción, cuando vas a chiquir o conocer
+
+680
+01:09:54,720 --> 01:09:58,360
+los grupos que llegan acá, entonces no es que vos estás preparando la máquina para
+
+681
+01:09:58,360 --> 01:10:03,680
+después usarla, sino que este es el resultado que vos ya estás esperando, está bien, después
+
+682
+01:10:03,680 --> 01:10:08,220
+se puede, hay una inferencia en hasta ahí, pero no me quiero meter en detalles. Les voy
+
+683
+01:10:08,220 --> 01:10:15,420
+a tirar un ejemplo y este ejemplo lo voy a repetir cuando veamos reconocimiento facial,
+
+684
+01:10:15,420 --> 01:10:20,920
+acá me estoy saltando la parte de los escritores, pero si vos tenés, de escritores de gente
+
+685
+01:10:20,920 --> 01:10:26,960
+captaba por una cámara de seguridad en un lugar público, tenés los escritores de un montón
+
+686
+01:10:26,960 --> 01:10:33,180
+de cara, pero no seas quiénes son. Pero bueno, pues si quién es este tipo, no, pero
+
+687
+01:10:33,180 --> 01:10:40,740
+Pero usted puede decir que a este tipo lo vi esta mañana ayer antes, antes, a por qué,
+
+688
+01:10:40,740 --> 01:10:46,860
+porque empieza a reconocer, a ser clasterino, a reconocer descriptores similares, es decir,
+
+689
+01:10:46,860 --> 01:10:53,230
+esto aparecieron este descriptor y similares aparecieron en todos estos momentos de la
+
+690
+01:10:53,230 --> 01:10:54,330
+cámara seguridad.
+
+691
+01:10:54,330 --> 01:10:58,370
+Entonces, se puede descubrir que hay un tipo mereo de ando, que estoy inventando, entonces
+
+692
+01:10:58,370 --> 01:11:04,370
+una novela a partir del ejemplo de clásterinde de rostros de caras.
+
+693
+01:11:04,370 --> 01:11:08,370
+Este es un ejemplo que está en internet bastante común donde agarran,
+
+694
+01:11:08,370 --> 01:11:14,530
+no sé si agarró fotos de IMDb o de donde que hay gente famosa
+
+695
+01:11:14,530 --> 01:11:18,530
+y juntó un montón de fotos y se acelé clásterin.
+
+696
+01:11:18,530 --> 01:11:24,750
+Este jejud empezó si y el ejemplo particular lo hizo con jugadores.
+
+697
+01:11:24,750 --> 01:11:36,810
+Bueno, este es la parte ya responsable, está bueno porque la parte de comportamiento
+
+698
+01:11:36,810 --> 01:11:41,850
+responsable de un momento de entreamiento y el uso de la inteligencia artificial es la
+
+699
+01:11:41,850 --> 01:11:48,010
+parte de que a nadie no importa. Cada vez que yo sigo acá, en la mis clase presenciales,
+
+700
+01:11:48,010 --> 01:11:55,090
+no son las que le digo ustedes, la gente pone una cara y se lo oye esto, así que el mundo
+
+701
+01:11:55,090 --> 01:12:03,560
+se está haciendo el corno. Esto fue, este es el caso, esto pasó en 2015. Yo creo que le
+
+702
+01:12:03,560 --> 01:12:10,860
+mencioné en 2012 en Nació de Ibilardin para 2015, Google puso, tenía estos algoritmos
+
+703
+01:12:10,860 --> 01:12:15,540
+de clasificación de imágenes que eran revolucionarios, no está muy bueno, pero pasó
+
+704
+01:12:15,540 --> 01:12:24,400
+esto. A esta pareja, a esta pareja joven de negros, los clasificó como gorillas. Y se
+
+705
+01:12:24,400 --> 01:12:32,590
+Moli o racismo y no sé qué historia y a ver, yo lo sé, vos puedes suponarlo, el algoritmo,
+
+706
+01:12:32,590 --> 01:12:39,270
+partiendo en los colores, el reflejo azulado, la malacadidad de la cámara y que es eso,
+
+707
+01:12:39,270 --> 01:12:45,230
+yo entiendo que lo pueda confundir con gorillas y no es un tema de racismo, es un tema de cómo
+
+708
+01:12:45,230 --> 01:12:50,830
+funciona el algoritmo visual delicial, miste, pero bueno, entonces, ¿qué es lo que, a dónde va
+
+709
+01:12:50,830 --> 01:12:54,890
+con todo el sermo un lío, hubo el dijo que el lío va a corregir y lo corregió. El
+
+710
+01:12:54,890 --> 01:12:58,110
+iminio de la categoría de gorilas porque de la Universidad está tratando de este tipo
+
+711
+01:12:58,110 --> 01:13:02,800
+de programas. No es que no se equivocara, se equivocaba, también se equivocaba con muchas
+
+712
+01:13:02,800 --> 01:13:08,920
+cosas, pero esta es la que despertaba el reclamo racista, las otras no, si a cada
+
+713
+01:13:08,920 --> 01:13:14,480
+onda dice que hay que haber perdido a veces las rascacielos, te decía edificio, no
+
+714
+01:13:14,480 --> 01:13:20,840
+había gente reclamando porque confundía un rascacielo con una edificio común, también,
+
+715
+01:13:20,840 --> 01:13:24,080
+Pero en el caso de los negros y los bolidas, bueno, ahí hay ginto.
+
+716
+01:13:24,080 --> 01:13:26,960
+Tampoco una fibra sensible.
+
+717
+01:13:26,960 --> 01:13:32,790
+Entonces, hay guías de guía responsable,
+
+718
+01:13:32,790 --> 01:13:34,690
+está la guía de Google, está la guía de Microsoft,
+
+719
+01:13:34,690 --> 01:13:37,930
+que lo voy a poner, pero básicamente lo que te dice es,
+
+720
+01:13:37,930 --> 01:13:41,610
+no seas un meronerdad en la máquina.
+
+721
+01:13:41,610 --> 01:13:44,250
+Todo lo que hace, ahí la guía es una caja negra
+
+722
+01:13:44,250 --> 01:13:47,820
+y va a aprender de los altacer que nosotros le pongamos.
+
+723
+01:13:47,820 --> 01:13:48,460
+Está bien.
+
+724
+01:13:48,460 --> 01:13:53,060
+Entonces, fijate, si vos no estás volcando a tus propios prejuicios,
+
+725
+01:13:53,060 --> 01:13:57,300
+o digamos si vos observás que en el proceso de entrenamiento
+
+726
+01:13:57,300 --> 01:14:01,340
+no están volcando a tus propios prejuicios.
+
+727
+01:14:01,340 --> 01:14:04,140
+Yo voy pasando de la positiva, pero voy contando.
+
+728
+01:14:04,140 --> 01:14:05,620
+Este es un caso de la EGA 80.
+
+729
+01:14:05,620 --> 01:14:10,020
+Nunca me ocupé de referir al caso perfecto concreto.
+
+730
+01:14:10,020 --> 01:14:13,580
+Yo lo cuento como me lo contaron, que seguramente se apartó
+
+731
+01:14:13,580 --> 01:14:14,980
+del caso original.
+
+732
+01:14:14,980 --> 01:14:26,030
+Pero Masin Dernin tuvo un crecimiento importantísimo en los bancos de Nueva York, también, porque en todos
+
+733
+01:14:26,030 --> 01:14:33,190
+sonidos estaba la tecnología que se está desarrollando y la plata está en los bancos, y en Nueva York de empezar a
+
+734
+01:14:33,190 --> 01:14:42,150
+hacer con las computadoras, trabajo que se siano más, no todo lo que dijeron es boten esto un trabajo manual de entrevistas con un tipo
+
+735
+01:14:42,150 --> 01:14:47,590
+y analizar la historia, creer que diría y papá para poder saber si le vas a prestar plata
+
+736
+01:14:47,590 --> 01:14:53,300
+o no. Entonces juntaron toda esa información que ya tenían de la gente que ya le habían
+
+737
+01:14:53,300 --> 01:15:01,720
+prestado plata y si dijeron mirada y dijeron entrenemos un clasificador que te diga si le
+
+738
+01:15:01,720 --> 01:15:08,100
+prestas plata o no, porque ya ya tenemos la información de la gente que lo hace manualmente
+
+739
+01:15:08,100 --> 01:15:13,780
+que analiza la historia contable y le dice te presto o no te presto. Eso resultó lo tenemos
+
+740
+01:15:13,780 --> 01:15:22,640
+tenía un dataset supervisado, todo lo entregaron y descubrieron que si el tipo
+
+741
+01:15:22,640 --> 01:15:26,940
+era blanco el algoritmo le prestaba plata y si el tipo era negro el algoritmo
+
+742
+01:15:26,940 --> 01:15:36,590
+el modelo no le prestaba, entonces qué te ha pasado y pasó que el dataset
+
+743
+01:15:36,590 --> 01:15:42,110
+tenía todos los prejuicios de la gente que había hecho ese trabajo también
+
+744
+01:15:42,110 --> 01:15:46,690
+entonces básicamente obviamente no hay un dato una característica en el escritor que diga
+
+745
+01:15:46,690 --> 01:15:53,610
+es blanco en negro, pero estaba la dirección, también había toda una tipificación del tipo de trabajo
+
+746
+01:15:53,610 --> 01:15:59,310
+que tenía, donde vivía, donde trabajaba y qué es eso, qué así, qué clasificaba, diga mirada
+
+747
+01:15:59,310 --> 01:16:03,950
+históricamente a esta gente no se le presta y yo por lo tanto mi resultado es no le presta, bueno ese
+
+748
+01:16:03,950 --> 01:16:11,350
+es el tipo de cosas donde las personas, o sea nosotros no, no las máquinas, tiene que levantar la
+
+749
+01:16:11,350 --> 01:16:15,510
+bandera y siche, corrijamos acá. Tengo otro caso que no tiene que ver con
+
+750
+01:16:15,510 --> 01:16:20,610
+conía, pero tiene que ver con el uso de reponsado. Leo, tengo un
+
+751
+01:16:20,610 --> 01:16:24,810
+profesor que quedaba, que quedaba clases en la otra universidad, me
+
+752
+01:16:24,810 --> 01:16:29,400
+acompañó en pandemia, pero eso fue a vivir a Europa y donde encontré
+
+753
+01:16:29,400 --> 01:16:34,480
+trabajo, su trabajo soñado que era diseñar drones y diseñar
+
+754
+01:16:34,480 --> 01:16:40,600
+drones y hace unos años, me dijo que la empresa le estaba
+
+755
+01:16:40,600 --> 01:16:47,360
+haciendo revien que la venta de drones había subido un montón y están trabajando barbaro,
+
+756
+01:16:47,360 --> 01:16:51,770
+¿no? Y yo claro, porque había empezado a la guerra de Ucrania o a Rusia contra Ucrania.
+
+757
+01:16:51,770 --> 01:17:00,030
+Y entonces me dijo, no, nuestra empresa no hace drones para uso militar y toda una
+
+758
+01:17:00,030 --> 01:17:06,510
+perata y yo les pregunté, ¿y vos cómo sabes? ¿Cómo sabes que cliente que te está comprando
+
+759
+01:17:06,510 --> 01:17:10,670
+los drones, pues te cree que Rusia te va a decir, yo te estoy encargado los drones para
+
+760
+01:17:10,670 --> 01:17:21,960
+llevar a guerra, entonces esta es la negra, pero no seas un mero en el araje, cuando
+
+761
+01:17:21,960 --> 01:17:26,320
+voltas a una empresa que declara que los drones no lo hace para la guerra y te están
+
+762
+01:17:26,320 --> 01:17:32,960
+viendo un sistema de vision artificial que tenga mucha puntería, bueno, preguntar a ver
+
+763
+01:17:32,960 --> 01:17:40,520
+para que se va a usar este, de eso se trata, todo esto es trapo el lado al
+
+764
+01:17:40,520 --> 01:17:47,260
+entrenamiento de la idea, bueno vamos allá a la parte final, primero
+
+765
+01:17:47,260 --> 01:17:51,740
+tengo que identificar el tipo de problema, en otro caso es clasificación, pero
+
+766
+01:17:51,740 --> 01:17:56,340
+si tu problema vamos a ver otros modos con diplera, ni vamos a dar detección de
+
+767
+01:17:56,340 --> 01:18:00,140
+segmentación semántica, vamos a dar otro tipo de problema, no le pifi
+
+768
+01:18:00,140 --> 01:18:04,180
+identificar el tipo de problema, pues vas a encarar para el lado totalmente equivocado,
+
+769
+01:18:04,180 --> 01:18:08,780
+muy importante, ok, tengo que clasificar, listo eso lo que tiene que hacer, no es lo
+
+770
+01:18:08,780 --> 01:18:15,420
+mismo que hacer regresión, definir cuáles son tus muestras, ese cuáles son las características
+
+771
+01:18:15,420 --> 01:18:20,180
+con las que vas a armar tus muestras, eso lo mismo en el descriptor, es súper importante
+
+772
+01:18:20,180 --> 01:18:27,550
+definir esas características y como vimos en el ejemplo de las frutas de los citrus, a veces
+
+773
+01:18:27,550 --> 01:18:31,170
+que de acuerdo, va a empezar con la parte más intuitiva, pero chequea si si ya se
+
+774
+01:18:31,170 --> 01:18:35,890
+faltan más muestras, porque las navajas y la mandarina no se podían distinguir solamente
+
+775
+01:18:35,890 --> 01:18:42,370
+con el diámetro y el color. Entonces, súper importante, de hecho, cuando vos definís
+
+776
+01:18:42,370 --> 01:18:49,070
+las muestras y armás el dataset, ahí donde estás volcando tu conocimiento, pues está
+
+777
+01:18:49,070 --> 01:18:54,660
+haciendo una transferencia del conocimiento nuestro a la máquina, ese conocimiento está
+
+778
+01:18:54,660 --> 01:19:00,600
+expresado en Dataset, en cómo definir las muestras y en la cantidad de muestras que estas y con las que
+
+779
+01:19:00,600 --> 01:19:09,350
+logras el Dataset. O sea que ustedes, cuando haran su Dataset de Ju y Formas, están concentrando el
+
+780
+01:19:09,350 --> 01:19:15,270
+conocimiento que tiene que adquirir la máquina, el Machine Learning, la aprendizaje de máquina,
+
+781
+01:19:15,270 --> 01:19:22,680
+tu clasificor se va a entrenar con ese conocimiento. Cada vez más, estos, los técnicos, los que
+
+782
+01:19:22,680 --> 01:19:27,360
+programan, dice, ah, esa es la parte fácil. No, no, esa es la parte donde está el verdadero
+
+783
+01:19:27,360 --> 01:19:33,250
+valor del proceso y que no es programación. De hecho, la programación, la parte técnica,
+
+784
+01:19:33,250 --> 01:19:41,050
+armar ese dataset, es la parte más valiosa de todo el proceso. Más adelante condíble,
+
+785
+01:19:41,050 --> 01:19:46,970
+le voy a contar casos concretes, caso en lo que yo estoy trabajando, casos concretos,
+
+786
+01:19:46,970 --> 01:19:55,510
+de alarmar el dataset, estás volcando el conocimiento real, le está dando valor a todo esto.
+
+787
+01:19:55,510 --> 01:20:04,310
+Bueno, lejir la máquina de cuada es relativo, cuando si no estamos en diplar, ni que es
+
+788
+01:20:04,310 --> 01:20:11,720
+pesado en treinar, y estamos en los machine learning clásicos, las máquinas son en
+
+789
+01:20:11,720 --> 01:20:17,080
+ser muy rápidas, entonces lo que yo vengo leyendo en paper desde antes,
+
+790
+01:20:17,080 --> 01:20:24,720
+de la pandemia, es que la abordaje típico es armada el dataset, entrenar con varias máquinas
+
+791
+01:20:24,720 --> 01:20:29,520
+y ver cuál es la más performante o la más adecuada, digamos, la que tiene más precisión
+
+792
+01:20:29,520 --> 01:20:33,680
+y la que menos siguiuca, etcétera. Ya no es un tema de elegir de antemano la máquina
+
+793
+01:20:33,680 --> 01:20:41,720
+que no se usa en todas, o sea, muchas y después se lige, después de entrenar, después
+
+794
+01:20:41,720 --> 01:20:46,400
+de pasar por todo el procedimiento, comparar si te quedas con la mejora, eso es lo más fácil,
+
+795
+01:20:46,400 --> 01:20:51,760
+porque hoy los recursos se están para hacer eso. Bueno, así es el dataset, entrenas y
+
+796
+01:20:51,760 --> 01:21:00,050
+variedad y con eso tenerse al resultado. Bueno, súper importante elegir las características
+
+797
+01:21:00,050 --> 01:21:05,050
+relevantes. En un primer abordad que vos puedes hacer un ejercicio mental y darte cuenta
+
+798
+01:21:05,050 --> 01:21:10,390
+que el día entre el color no son suficientes para discriminar toda la fruta que vos querés
+
+799
+01:21:10,390 --> 01:21:18,080
+y eso es algo que puedes hacer vos porque vos entendés el problema con o conoces las frutas,
+
+800
+01:21:18,080 --> 01:21:24,520
+sabes de qué se trata, la máquina no, la máquina venúmero nada más, a lo sumo no va a funcionar
+
+801
+01:21:24,520 --> 01:21:30,920
+porque vos no elegiste las características discriminantes necesarias, después armar el dataset,
+
+802
+01:21:30,920 --> 01:21:38,080
+la calidad del dataset, o sea que los ejemplos que vos ponés sean representativos, hay un tipo
+
+803
+01:21:38,080 --> 01:21:43,960
+y se encuentra luego para el 50. Bueno, hace 50 iguales. Si opones, hace una guía ejercicio
+
+804
+01:21:43,960 --> 01:21:49,230
+de 100 ejercicios y son todas copias al mismo ejercicio. Eso es fíaca. Pero darte cuenta
+
+805
+01:21:49,230 --> 01:22:00,280
+que no sirve. No, no sirve. Tenía una guía ejercicio con los 100 ejercicios el mismo.
+
+806
+01:22:00,280 --> 01:22:05,080
+Si no varían a ver, no tiene que ser variante, tiene que ir pasando por todos los casos.
+
+807
+01:22:05,080 --> 01:22:10,560
+no nos decidimos para aprender, también. Esa es la renovancia de con qué criterio se arma un
+
+808
+01:22:10,560 --> 01:22:15,160
+dataset. Bueno, finalmente, tercer criterio es menos importante, y por eso no solo se lo
+
+809
+01:22:15,160 --> 01:22:23,700
+demás, si usen directamente el largo del decisión minaria, es elegir quemar a quina y todo
+
+810
+01:22:23,700 --> 01:22:29,860
+eso. Use necesidad, eso es lo de menos. Muy importante, cuando van cuadrados y los dibujen,
+
+811
+01:22:29,860 --> 01:22:36,620
+los dibujen distintos, con los casos más extremos, digamos, eso es lo más importante también,
+
+812
+01:22:36,620 --> 01:22:41,260
+que la línea nos salen rectas, salen más o menos culos para adentro, culo para afuera,
+
+813
+01:22:41,260 --> 01:22:52,240
+que eso es lo más importante. Bueno, esto yo se los dije varias veces y que me lo he
+
+814
+01:22:52,240 --> 01:22:59,720
+salto bien. Ustedes van a ser tres programas, hagan lo como quieran, pero lo primero van a ser
+
+815
+01:22:59,720 --> 01:23:06,830
+todo lo de la clase anterior que para los contornos te tira los invariantes de ju. Te lo
+
+816
+01:23:06,830 --> 01:23:13,920
+tira en la terminal y o te lo guardas, yo lo pongo en la terminal y después copio todo
+
+817
+01:23:13,920 --> 01:23:19,150
+eso y lo pego en una hoja de cálculo. Hace como quieras, o sea, tenés que ver las
+
+818
+01:23:19,150 --> 01:23:25,650
+formas y cuando toca suena tecla te imprime el invariante de ju, también, después que
+
+819
+01:23:25,650 --> 01:23:30,850
+terminaste copiado en una hoja de cálculo, te acordás que te quiera cada cosa, le termina
+
+820
+01:23:30,850 --> 01:23:36,200
+haciendo la parte supervisada, ¿no?, que es. Tenéis que hacer otra aplicación que es en
+
+821
+01:23:36,200 --> 01:23:40,040
+el entrenador que va a consumir ese atacer que os hiciste, si tú no haja de crédito,
+
+822
+01:23:40,040 --> 01:23:43,820
+lo que guardaste como ser ese video o lo que vos quieras, tu entrenador tiene que abrir
+
+823
+01:23:43,820 --> 01:23:51,880
+eso, cargarlo en los arrays de memoria, entrenar en una fracción de segundo, y guardar el resultado
+
+824
+01:23:51,880 --> 01:24:00,270
+del entrenamiento, guardarlo como archivo, usualmente los modelos de clasificadores o de lo que
+
+825
+01:24:00,270 --> 01:24:05,430
+de Machine Learning, tiene una función para guardar los parámetros una vez que está entrenado, guardados
+
+826
+01:24:05,430 --> 01:24:12,070
+un archivo, o por menos que te lo entre en una variable que vos puedas guardar en un archivo.
+
+827
+01:24:12,070 --> 01:24:18,380
+Y después finalmente vas a ser el clasificador final, lo que pide el trabajo práctico,
+
+828
+01:24:18,380 --> 01:24:25,120
+también el entregable, que es una variación del primero, o sea, porque en el primero
+
+829
+01:24:25,120 --> 01:24:29,640
+si existe toda la parte de reconocimiento de contorno extracción de inmanente de ju, lo que pasa
+
+830
+01:24:29,640 --> 01:24:34,960
+aquí ahora, vas a usar esos inmanentes de ju para alimentar el clasificador ya ha entrenado y que te
+
+831
+01:24:34,960 --> 01:24:40,680
+diga la categoría, entonces vuelve a suscribir arriba del contorno o poner cuadrado, también, de eso se trata.
+
+832
+01:24:40,680 --> 01:24:52,940
+Bueno gente, tuica, no, no, no, no, no quiero cortar, a ver, ah, está, bien, vamos a hacer así, quiero dar
+
+833
+01:24:52,940 --> 01:25:00,700
+una un minuto como para que la mejora se se reseten, también voy a cambiar del tema. Bueno,
+
+834
+01:25:00,700 --> 01:25:05,860
+creo que se entendió, ¿no? Si quinas una pregunta desde el momento de hacerlo, porque cuando
+
+835
+01:25:05,860 --> 01:25:14,200
+termina clase, ¿no? Eso sería una pregunta. Hacado y por terminar la teoría del T-2 y voy
+
+836
+01:25:14,200 --> 01:25:22,760
+a cambiar completamente. De hecho, si el camino académico dice que yo debería haber
+
+837
+01:25:22,760 --> 01:25:27,020
+que llegue un mensaje a lesión. Bueno, el camino a camino y si yo debería continuar con
+
+838
+01:25:27,020 --> 01:25:35,440
+Dipliarden, pero yo me parece que es especializarnos en un tema, es embotarnos, viste, llegarnos
+
+839
+01:25:35,440 --> 01:25:39,780
+al cansancio, entonces yo voy a hacer acá, voy a poner un freno a mano, voy a cambiar
+
+840
+01:25:39,780 --> 01:25:46,480
+a otro tema que nada que ver con lo que venimos viendo, para ampliar un poco el alcance de
+
+841
+01:25:46,480 --> 01:25:54,360
+materia y después vamos a volver esto esto va a ser TP3 no este otro tema y después
+
+842
+01:25:54,360 --> 01:26:03,410
+vamos a volver con el TP4 a construir a continuar donde dejamos el TP2 es decir lo que están
+
+843
+01:26:03,410 --> 01:26:07,050
+haciendo ahora clasificación que es medio urística con un poquito de Machine Learning con
+
+844
+01:26:07,050 --> 01:26:12,790
+Invalenteju, lo vamos a llevar a solo Deep Learning en entrenamiento de modelos de Deep Learning
+
+845
+01:26:12,790 --> 01:26:22,000
+directamente con tantas 7 imágenes y descubrir ahí el verdadero mundo de la inteligencia
+
+846
+01:26:22,000 --> 01:26:29,440
+revisión de cómo se hace la adección, la clasificación, la cementación con
+
+847
+01:26:29,440 --> 01:26:35,720
+diplarden, también es un mundo muy interesante que a malo vamos a recorrer empezado con el
+
+848
+01:26:35,720 --> 01:26:40,960
+pie derecho o conociéndolo de fondo y no altuntum tratando de hacer cosas. Bueno,
+
+849
+01:26:40,960 --> 01:26:48,860
+lo les quería mostrar esto porque ¿qué les estoy mostrando? Les estoy mostrando a Sebot.
+
+850
+01:26:48,860 --> 01:26:58,980
+A Sebot es una marca de artigos, con SP32, creo que a esta altura todo el mundo
+
+851
+01:26:58,980 --> 01:27:09,180
+usó Arduino o SP32, tenemos uno y a mí me interesa que el proyecto final que algún
+
+852
+01:27:09,180 --> 01:27:18,740
+grupo haga algo de localización visual con el audito éste. Entonces ya veremos
+
+853
+01:27:18,740 --> 01:27:25,000
+hay varias maneras de hacerlo, solo voy tirando algunas imágenes o filmaciones de
+
+854
+01:27:25,000 --> 01:27:34,840
+cosas que ya hicieron los alumnos en la otra universidad, pero con el descio tenemos si
+
+855
+01:27:34,840 --> 01:27:39,960
+Si usted logra acompañar a un grupo seco pa' y tiene, digamos, la capacía de suelo de antes,
+
+856
+01:27:39,960 --> 01:27:45,800
+tenemos algo bastante disruptivo, que va a ser un robot autónomo guiado por imágenes.
+
+857
+01:27:45,800 --> 01:27:53,560
+Nosotros sabemos cómo se hacen, es transmitirle todo el conocimiento para que lo puedan hacer ustedes.
+
+858
+01:27:53,560 --> 01:27:59,480
+Veremos después si hay un grupo que tiene especial interés en esto o le signamos en medio a la marchanta.
+
+859
+01:27:59,480 --> 01:28:01,980
+Vamos a ver a quién le toca.
+
+860
+01:28:01,980 --> 01:28:09,520
+Bueno, entonces, creo que todos se están viendo la que dice Warp, también me confirman eso.
+
+861
+01:28:09,520 --> 01:28:11,520
+Ahora sí, no, no me estoy equivocando.
+
+862
+01:28:11,520 --> 01:28:14,520
+Gracias.
+
+863
+01:28:14,520 --> 01:28:23,120
+Aquí está mandando en el primer paso hacia la localización de Roach.
+
+864
+01:28:23,120 --> 01:28:27,180
+También es lo que ya en Movisión 3D, empezamos por dos de y medio.
+
+865
+01:28:27,180 --> 01:28:36,180
+medio. La versión 3D es un tema muy amplio. Nosotros tenemos la abordada, una abordada
+
+866
+01:28:36,180 --> 01:28:45,180
+es muy pragmático, muy para llevarlos a la práctica. De todos modos es un tema amplio, complejo.
+
+867
+01:28:45,180 --> 01:28:54,180
+Esta primera presentación es muy sencilla, es la abordada general, es muy intuitiva y nos vamos
+
+868
+01:28:54,180 --> 01:29:04,180
+a seguir metiendo en las profundidades. Así que estoy dejando las profundidades para la clase que viene. Yo después de esta presentación voy a empezar con algo que no voy a por terminar hoy.
+
+869
+01:29:05,730 --> 01:29:13,020
+Bien. Bueno, ¿se usted que sabe en inglés qué significa warp o de dónde le suena el término?
+
+870
+01:29:13,020 --> 01:29:23,850
+Yo no sé, alecio, pero siempre tengo la sensación de que pusiera grabar y se fueron.
+
+871
+01:29:23,850 --> 01:29:30,070
+muy bien, muy bien. Ahí contestó un lo contestó. Gracias, Franco. Si de formación.
+
+872
+01:29:30,070 --> 01:29:38,210
+Word es de formar. Yo para mí, Word todo la vida fue el, como se llama, el motor del
+
+873
+01:29:38,210 --> 01:29:46,420
+Star Trek, del Enterprise. Así que sí, tal cual Word es de formación, bueno, eso es
+
+874
+01:29:46,420 --> 01:29:52,600
+el término que usan visual. El tema de transformaciones geometricas, a la que le voy
+
+875
+01:29:52,600 --> 01:30:01,990
+dedicar la clase que viene, hasta ahora ustedes estuvieron convirtiendo la imagen de color
+
+876
+01:30:01,990 --> 01:30:11,030
+a monochromática, de monochromática de imagen binaria, por ahí hicieron hoy, pasaron elementos
+
+877
+01:30:11,030 --> 01:30:17,610
+estructurales y si hicieron operaciones morfológicas, básicamente lo que tenía una imagen input
+
+878
+01:30:17,610 --> 01:30:23,370
+y tenía una imagen de output de exactamente la misma dimensión y lo que hacían era
+
+879
+01:30:23,370 --> 01:30:26,370
+determinar el color del pixel de una coordenada
+
+880
+01:30:26,370 --> 01:30:29,370
+realizando la misma coordenada de la imagen original.
+
+881
+01:30:29,370 --> 01:30:32,370
+Es como que sí que ustedes trabajaban sobre el pixel
+
+882
+01:30:32,370 --> 01:30:36,370
+cambiando el color de ese pixel, también con algún criterio,
+
+883
+01:30:36,370 --> 01:30:38,370
+con alguna función.
+
+884
+01:30:38,370 --> 01:30:40,370
+Las transformaciones geometricas se refieren
+
+885
+01:30:40,370 --> 01:30:42,370
+a otro tipo de transformación.
+
+886
+01:30:42,370 --> 01:30:44,660
+De vos cambias de lugar el pixel,
+
+887
+01:30:44,660 --> 01:30:48,140
+o sea el color que el mismo, pero ahora la mandas a otro lugar.
+
+888
+01:30:48,140 --> 01:30:51,200
+Está bien.
+
+889
+01:30:51,200 --> 01:30:57,140
+en rigor vos no los píxeles no se mueven porque los píxeles pertenecer a una grilla,
+
+890
+01:30:57,140 --> 01:31:06,200
+lo que haces es, tenés una imagen original y una imagen destino y desiste en esta coordenada,
+
+891
+01:31:06,200 --> 01:31:10,040
+voy a poner el color que la imagen original estaba en otra coordenada,
+
+892
+01:31:10,040 --> 01:31:21,020
+eso es un Word, es lo que se usa en general, el término general es Word, es mover los píxeles,
+
+893
+01:31:21,020 --> 01:31:28,130
+está bien, acá hay unas fórmulas, este es un detacito, ya vamos a ir a la parte de
+
+894
+01:31:28,130 --> 01:31:34,450
+más, yo le dije que esto era más a mí en el justo empiezo de esta fórmula, si vamos,
+
+895
+01:31:34,450 --> 01:31:40,750
+voy a la imagen anterior, uno intuitivamente dice bueno, vamos a ver, el primer pixel
+
+896
+01:31:40,750 --> 01:31:47,970
+adónde era un juego, el segundo adónde era un juego, bueno, no, cuando vos vas a
+
+897
+01:31:47,970 --> 01:31:53,890
+a dar cualquiera de estas funciones, el barrio se hace sobre la imagen desarida, especialmente
+
+898
+01:31:53,890 --> 01:31:58,700
+que la imagen desarida tiene un tamaño que puede ser distinto al de la entrada, porque
+
+899
+01:31:58,700 --> 01:32:03,460
+eso es el resultado, la pregunta que voy a hacer es, en este pixel de la imagen desarida
+
+900
+01:32:03,460 --> 01:32:10,260
+qué color pongo, o en todo caso de dónde tomo el color en la imagen original para generar
+
+901
+01:32:10,260 --> 01:32:16,610
+este pixel de la imagen desarida, y eso lo es, una vez por cada pixel de la imagen desarida
+
+902
+01:32:16,610 --> 01:32:20,280
+y no una vez por cada pise de la imagen de entrada.
+
+903
+01:32:20,280 --> 01:32:25,120
+Creo que a mí me resulta reobio el motivo, cualquier cosa lo piensan.
+
+904
+01:32:25,120 --> 01:32:27,480
+Pero con este ejemplo lo va a quedar más claro.
+
+905
+01:32:27,480 --> 01:32:31,320
+Rysize es la transformación gemétrica más básica.
+
+906
+01:32:31,320 --> 01:32:35,280
+Cambia de tamaño, en este caso, incluso se mantiene a revisión de aspecto.
+
+907
+01:32:35,280 --> 01:32:37,200
+O sea, que le aplica a sus factores calas.
+
+908
+01:32:37,200 --> 01:32:40,280
+Si vos tenés la imagen original del gato, alta resolución
+
+909
+01:32:40,280 --> 01:32:44,290
+y quieres generar la imagen esta de baja resolución,
+
+910
+01:32:44,290 --> 01:32:50,630
+vamos a suponer que la original es Full HD de dos megapíxeles y lo que vas a generar
+
+911
+01:32:50,630 --> 01:33:01,350
+es de 100 kilópíxeles, porque estoy metando un número, porque sí, voy a recorrer 100.000
+
+912
+01:33:01,350 --> 01:33:07,160
+píxeles de salida y generar cada uno, bueno, vas a recorrer 2.000 millones de píxeles
+
+913
+01:33:07,160 --> 01:33:14,500
+de entrada, de hecho, quizás, vuelvo a que se se copiarte de manera saltiada, algunos
+
+914
+01:33:14,500 --> 01:33:19,340
+la entrada para generar esta imagen de salida también ahí explico por qué el
+
+915
+01:33:19,340 --> 01:33:23,080
+barrio lo hace si la imagen de salida no es la imagen de entrada detalle
+
+916
+01:33:23,080 --> 01:33:29,790
+arégotico vamos al caso más sofisticado el web arbiterario se llama
+
+917
+01:33:29,790 --> 01:33:36,380
+rimap y vos le pasás en en una matriz que tiene el mismo tamaño de la imagen
+
+918
+01:33:36,380 --> 01:33:41,720
+de salida en cada coordenada en cada si cada coordenada la imagen de salida
+
+919
+01:33:41,720 --> 01:33:45,400
+dice, ¿de qué coordenar el imagen de entrada que va a tomar el pixel?
+
+920
+01:33:45,400 --> 01:33:50,180
+¿Está bien? Y tu responsabilidad genera esa matriz con la función matemática o manual
+
+921
+01:33:50,180 --> 01:33:57,840
+o como quieras, ¿también? Entonces, Frisad y Cera como lo más básico, lo más sofisticado
+
+922
+01:33:57,840 --> 01:34:03,000
+lo tenés con Rimap, a ver si otra deposibilidad de Rimap está, ¿también? ¿Vos puedes
+
+923
+01:34:03,000 --> 01:34:09,800
+expresar cualquier deformación arbitraria, también sí, a ver si es otra, no, no, no tengo otra,
+
+924
+01:34:13,400 --> 01:34:18,480
+y si vos crees una función matemática, tienes una fórmula matemática sofisticada,
+
+925
+01:34:18,480 --> 01:34:24,840
+programala, genera los resultados y aplicarle el remap como vos crees, también, pero en el medio
+
+926
+01:34:24,840 --> 01:34:30,240
+tenemos las que nos pueden interesar nosotros, son transformaciones geométricas con fórmulas
+
+927
+01:34:30,240 --> 01:34:38,280
+se ha implementadas también y que tienen cierto uso, bueno, entonces son más o menos paramedica,
+
+928
+01:34:38,280 --> 01:34:44,320
+entonces hay una transformación que se llama anti distorsión delente y que vamos a profundizar en
+
+929
+01:34:44,320 --> 01:34:53,090
+el tema cuando hay una presentación dedicada a la anti distorsión delente y esto es un ejemplo
+
+930
+01:34:53,090 --> 01:34:57,890
+muy pragmático, no sé si se va a entender pero vos tenés un tipo de cámaras gran angular con
+
+931
+01:34:57,890 --> 01:35:07,320
+un ángulo de visión de 180 grados que se pone en el techo como cámara de seguridad y una
+
+932
+01:35:07,320 --> 01:35:18,260
+función de warp, una transformación geométrica, te toma este rectángulo deformado que se
+
+933
+01:35:18,260 --> 01:35:25,940
+vea acá en amarillo y te genera este imagen de acá en la derecha. De hecho estas cámaras
+
+934
+01:35:25,940 --> 01:35:34,060
+existentes son las manejas por UEFA con tu celular y tenés una especie de joystick en el celular
+
+935
+01:35:34,060 --> 01:35:40,710
+y la movés como si fuera una cámara física pero bueno está no hay no hay partes móviles en la
+
+936
+01:35:40,710 --> 01:35:47,350
+cámara lo único que está haciendo es que camiando los parámetros de dónde querés que tome la vista para
+
+937
+01:35:47,350 --> 01:35:55,710
+que te génerde una vista más común esto se llama una imagen colinial también esto que está en las
+
+938
+01:35:55,710 --> 01:36:00,370
+izquierda es lo que realmente recibe el sensor de la cámara también y es lo que
+
+939
+01:36:00,370 --> 01:36:05,610
+atravese una transformación geométrica genera la de la derecha, bueno ahí
+
+940
+01:36:05,610 --> 01:36:11,890
+tenemos un ejemplo, acá tengo tres ejemplos que es muy importante central para
+
+941
+01:36:11,890 --> 01:36:17,970
+llevamos a dedicar muchas depositivas a la otra presentación y es lo que me
+
+942
+01:36:17,970 --> 01:36:24,630
+interesa a mí como Vision Robotica, empezan a tener el mundo 3D, esto intenta no
+
+943
+01:36:24,630 --> 01:36:31,870
+estar perfecto pero intenta obtener un imagen cenital una vista de vuelo de pájaro y si
+
+944
+01:36:31,870 --> 01:36:39,260
+vos tenés este imagen vos no podés los autos te ponen en tean puntos ciegos no o sea
+
+945
+01:36:39,260 --> 01:36:42,940
+detrás de la camineta o no estás viendo bueno si vos por más que de forma de
+
+946
+01:36:42,940 --> 01:36:47,980
+imagen nunca vas a descubrir que lo que está del otro de la camineta no es información
+
+947
+01:36:47,980 --> 01:36:54,020
+no está en la imagen bueno esto es si mirar un vuelo de pájaro no es perfecto porque si fuera
+
+948
+01:36:54,020 --> 01:36:59,820
+estuviera bien calibrado las líneas, estas serían paralelas y ven que están media torcidas,
+
+949
+01:36:59,820 --> 01:37:06,980
+pero lo hace bastante bien comparado con esto que la imagen cruda en perspectiva, que saca la
+
+950
+01:37:06,980 --> 01:37:15,500
+dash cam, la cámara del auto. Hay una transformación geométrica que se llama homografía super
+
+951
+01:37:15,500 --> 01:37:23,910
+importante para que el robot pueda entender dónde está. Esto se usa el central, por ejemplo en la
+
+952
+01:37:23,910 --> 01:37:28,110
+competencia de voz, creo que ustedes saben, algo les comenté, pero ustedes saben que hay una
+
+953
+01:37:28,110 --> 01:37:33,950
+competencia de vícoles autónomo de voz y a ustedes se presenta todos los años, perdón, que dije
+
+954
+01:37:33,950 --> 01:37:40,910
+a ustedes los matanzas se presenta, perdón, eh, me digo que es diversidad, la dos se presenta
+
+955
+01:37:40,910 --> 01:37:48,830
+todos los años, la desea matanzas se presenta todos los años, este último año se presenta
+
+956
+01:37:48,830 --> 01:37:55,970
+dos equipos a este último año, uno clasificó el otro lado, que clasificó viajo volvido
+
+957
+01:37:55,970 --> 01:38:01,110
+de viajar a Rumania y ahora la altura es ahora más de equipos, pero bueno esto
+
+958
+01:38:01,110 --> 01:38:06,730
+usualmente es gente que está en cuarto año, que todavía no está en quinto, hay que ver.
+
+959
+01:38:06,730 --> 01:38:15,100
+Y los equipos son en ser misitos informáticos y elitrónicos, bien, y es, creo que lo estoy
+
+960
+01:38:15,100 --> 01:38:23,540
+no se me dicen si alguno está enterado esto o está interesado en participar ahora en octubre no no
+
+961
+01:38:23,540 --> 01:38:27,740
+que estoy relevando la vista ahora si usted ya sabía en el tema y si hay alguno que vino a
+
+962
+01:38:27,740 --> 01:38:34,260
+hacer la materia muy adecuadamente para poder participar en octubre ahora me lo dicen cualquier cosa
+
+963
+01:38:34,260 --> 01:38:43,400
+porque es fundamental saber de vision artificial para participar de esa competencia para poder hacerlo
+
+964
+01:38:43,400 --> 01:38:52,140
+Bueno, acá tenés un ejemplo también de las líneas para el más o menos paralelas de
+
+965
+01:38:52,140 --> 01:38:57,740
+estacionamiento, te revelan que vos lograste obtener a partir de un warp, una vista senita
+
+966
+01:38:57,740 --> 01:39:03,210
+a una vista desde arriba. Sí, las líneas te quedan bien, inevitablemente los autos se van
+
+967
+01:39:03,210 --> 01:39:10,370
+a ver todos deformados, pero bueno, es lo que hay, pero vos tenés una vez, acá una vez
+
+968
+01:39:10,370 --> 01:39:18,710
+que vos transformaste esta imagen de la izquierda en la derecha, vos puedes hacer un algoritmo que
+
+969
+01:39:18,710 --> 01:39:30,470
+detecte espacios vacíos y espacios ocupados. Bueno, súper importante, vos es un resize y te vas y
+
+970
+01:39:30,470 --> 01:39:38,320
+desiche de dónde tomo, de qué coordenada tomo el color para el pixel que tengo que poner acá y
+
+971
+01:39:38,320 --> 01:39:45,100
+y la corona te da con decimales. Entonces, ¿cómo haces? Bueno, se llama
+
+972
+01:39:45,100 --> 01:39:50,340
+interpolación de colores, los de píxeles, ¿no? Y ahí yo voy a presentar tres
+
+973
+01:39:50,340 --> 01:39:54,780
+métodos, no es que hace solo tres métodos. De hecho, son los tres métodos más
+
+974
+01:39:54,780 --> 01:40:00,300
+básicos y te voy a explicar hasta dónde envisión artificial sirve y después para
+
+975
+01:40:00,300 --> 01:40:03,620
+arriba tenés todos los métodos que se te ocurran, ¿no? Cada vez más pesado, más
+
+976
+01:40:03,620 --> 01:40:06,820
+pero que dejan de haber sentido en visión artificial.
+
+977
+01:40:06,820 --> 01:40:11,420
+Tiene sentido en generación de imágenes, en retocues de imágenes,
+
+978
+01:40:11,420 --> 01:40:14,020
+también los fotoyópitas cosas.
+
+979
+01:40:14,020 --> 01:40:17,530
+Esto es lo básico básico.
+
+980
+01:40:17,530 --> 01:40:20,730
+Los tres métodos se llaman Nieres Nabor,
+
+981
+01:40:20,730 --> 01:40:24,820
+que es el vecino más cercano, Villinial y Vigúbica.
+
+982
+01:40:24,820 --> 01:40:30,020
+Y está representado por lo que es la línea abajo,
+
+983
+01:40:30,020 --> 01:40:32,620
+pero voy a explicar la línea arriba.
+
+984
+01:40:32,620 --> 01:40:35,740
+La idea arriba es una aproximación mucho más intuitiva
+
+985
+01:40:35,740 --> 01:40:39,290
+porque te muestro el ejemplo en una sola dimensión
+
+986
+01:40:39,290 --> 01:40:42,170
+cuando tu problema en realidad es en dos dimensiones
+
+987
+01:40:42,170 --> 01:40:47,130
+entonces para entender un poquito voy a agarrar este ejemplo acá abajo el dominio
+
+988
+01:40:47,130 --> 01:40:51,130
+estado por las intersecciones o sea cada intersección de la idea grises claritas
+
+989
+01:40:51,130 --> 01:40:52,570
+acá abajo
+
+990
+01:40:52,570 --> 01:40:55,370
+es una coordenada de pixel
+
+991
+01:40:55,370 --> 01:40:57,930
+también o sea la coordenada es exactamente acá y escretas
+
+992
+01:40:57,930 --> 01:41:01,290
+acá acá acá no es que el cuadrado este es un pixel
+
+993
+01:41:01,290 --> 01:41:07,290
+Acá hay cuatro píxeles, son los vértices de ese cuadrado imperfectivo.
+
+994
+01:41:07,290 --> 01:41:16,990
+La altura es la intensidad del píxel, vamos a quedarnos en monochromático que vamos a fácil de ver
+
+995
+01:41:16,990 --> 01:41:23,990
+por más que te lleno de colores de ilustración, pero, o sea, que acabo tenés un píxel que es oscuro
+
+996
+01:41:23,990 --> 01:41:26,990
+y acabo tenés un píxel que es bastante clara, porque más alto.
+
+997
+01:41:26,990 --> 01:41:34,990
+Está bien. Y lo que te ilustra esto es el método para calcular el valor que va a tomar.
+
+998
+01:41:34,990 --> 01:41:42,280
+Entonces el vecino más cercano es el método más rápido que dice, me redondeo la coordenada más cercana.
+
+999
+01:41:42,280 --> 01:41:49,280
+Entonces, el resultado es éste. La barrita, la columna negra es la que te dice el resultado,
+
+1000
+01:41:49,280 --> 01:41:53,280
+que cuál es el color que termina adoptando el tono de bris.
+
+1001
+01:41:53,280 --> 01:41:59,120
+y dice, mira, adoptó este porque está más cerca del izquierda que el de la derecha.
+
+1002
+01:41:59,120 --> 01:42:01,120
+Eso es un redondeo, está bien.
+
+1003
+01:42:01,120 --> 01:42:08,420
+Entonces, en el caso de 2D, va a agarrar la coronada más cercana con el mismo criterio
+
+1004
+01:42:08,420 --> 01:42:11,420
+que en este caso es el de abajo a la izquierda.
+
+1005
+01:42:11,420 --> 01:42:17,020
+También, si tuviera un poquito más allá en gris, está la función general,
+
+1006
+01:42:17,020 --> 01:42:21,020
+depende de dónde toca la coordenada, es el valor que va a adoptar.
+
+1007
+01:42:21,020 --> 01:42:28,020
+Entonces claramente copie un valor o copie el otro. Entonces tenemos la transición agrupta, así como si interpretan 2D.
+
+1008
+01:42:28,020 --> 01:42:34,020
+La lineal es un promedio ponderado. No, pesa más cuanto más cerca estás.
+
+1009
+01:42:34,020 --> 01:42:41,660
+En 2D es interesante la lineal porque primero promedías en X y después en Y.
+
+1010
+01:42:41,660 --> 01:42:46,660
+Y acá viene un dato que no hay intuitivo atrás, que no pensás.
+
+1011
+01:42:46,660 --> 01:42:54,510
+si lo haces al revés primero ni y después en X, el resultado distinto, está bien, entonces no es un
+
+1012
+01:42:54,510 --> 01:43:01,650
+el propio algoritmo se llama que tiene opinión, porque el propio algoritmo, usualmente primero lo
+
+1013
+01:43:01,650 --> 01:43:07,690
+hace en X y después lo hace en X por ningún motivo particular, está bien, y depende cómo lo haga
+
+1014
+01:43:07,690 --> 01:43:16,130
+el resultado te da diferente, como no es relevante el problema a nadie importa, se quedan con ese resultado
+
+1015
+01:43:16,130 --> 01:43:22,510
+y ya está, está, pero entonces no es super elegante, no es una forma suerta y la
+
+1016
+01:43:22,510 --> 01:43:33,330
+bicúbica te hace esto, fíjate que le vamos a repasar, el vecino más cercano toma el color
+
+1017
+01:43:33,330 --> 01:43:40,890
+de la coordenada más cercana, va a acceder a una a un solo pixel y toma ese color y lo repite,
+
+1018
+01:43:40,890 --> 01:43:49,830
+la bilinean toma los colores de los cuatro píxeles cercanos, hace una doble
+
+1019
+01:43:49,830 --> 01:43:56,590
+interpolación, de hecho son tres interpolaciones, también y para determinar el
+
+1020
+01:43:56,590 --> 01:44:03,270
+color resultante, parte de cuatro valores, hace tres operaciones, la bícubica agarrara
+
+1021
+01:44:03,270 --> 01:44:10,270
+16 píxeles del rededor, te hace unas cuantas interpolaciones cúbicas que son
+
+1022
+01:44:10,270 --> 01:44:18,250
+sin con total para determinar el color, o sea que he estado claro que el vecino más cercano
+
+1023
+01:44:18,250 --> 01:44:25,450
+es la más eficiente, la más rápida de computar es mucho más rápido, porque es un acceso
+
+1024
+01:44:25,450 --> 01:44:31,210
+a pixel y cero operaciones, mientras que la binial son cuatro acceso a píxeles, tres operaciones
+
+1025
+01:44:31,210 --> 01:44:36,680
+y la bicúbica más complicada, ¿también? ¿Cuál es el resultado? Bueno acá tenés una especie
+
+1026
+01:44:36,680 --> 01:44:43,520
+de R6 que estás agrandando un imagen. Obviamente para que se note, es un imagen de 5 por 5
+
+1027
+01:44:43,520 --> 01:44:48,070
+píxeles que acá la agrandaste y es mucho más que 5 por 5 píxeles. Si llegará a
+
+1028
+01:44:48,070 --> 01:44:55,740
+el vecino más cercano, te toma a tus colores, o sea, la coordenada de la tomabas, estos
+
+1029
+01:44:55,740 --> 01:45:00,980
+puntos negros representan las coordenadas de la imagen original, o sea, la versión chiquita
+
+1030
+01:45:00,980 --> 01:45:07,740
+de 5 por 5 píxeles. En la media que vos te lejas, toma el color de, que corresponde
+
+1031
+01:45:07,740 --> 01:45:13,480
+a té punto y de repente toma el color del otro. Entonces, la versión del Nieres
+
+1032
+01:45:13,480 --> 01:45:18,760
+Nevor, del versión más cercano, te da un imagen pixelada, cuando las grandes se pixelan,
+
+1033
+01:45:18,760 --> 01:45:25,560
+ese es el efecto, bastante conocido, pero es súper rápido de calcular. La bidinial,
+
+1034
+01:45:25,560 --> 01:45:34,010
+te hace una versión suavizada, hay una transición suave desde un pixel original al otro, todo
+
+1035
+01:45:34,010 --> 01:45:42,810
+interpolado. Tiene este efecto estrella, si vos ves acá en negro o en verde, se nota como
+
+1036
+01:45:42,810 --> 01:45:51,060
+rayos horizontales y verticales, muy marcados, ¿no? Esto es porque la grilla está organizada
+
+1037
+01:45:51,060 --> 01:45:55,620
+está organizada con un cuadri culado, pero bueno es un efecto de la viginidad y la
+
+1038
+01:45:55,620 --> 01:46:03,020
+bicúbica logra un fenómeno mucho más suave, lo podrías llamar foto realista, acá no lo
+
+1039
+01:46:03,020 --> 01:46:08,020
+podemos ver porque estamos haciendo un sub muy grande, estamos viendo algo que viene de las
+
+1040
+01:46:08,020 --> 01:46:17,300
+penas 25 píxeres, pero logra de este fenómeno, ahora vos te perdés en el promedio, porque
+
+1041
+01:46:17,300 --> 01:46:21,900
+que vos acá tenés un amarillo muy marcado y vos nunca llegás a ese amarillo siempre se están
+
+1042
+01:46:21,900 --> 01:46:29,760
+promediendo varios píseles de alrededor. Bien, ¿qué nos interesa a nuestro episodio artificial?
+
+1043
+01:46:29,760 --> 01:46:37,940
+¿Cómo reseta fácil? ¿Está bien? Bueno, la bicúbica no. ¿Ustedes me entienden? ¿De repente hay
+
+1044
+01:46:37,940 --> 01:46:42,840
+si a vos te interesa la bicúbica, porque tenéis un buen motivo para hacerlo? Pero en principio
+
+1045
+01:46:42,840 --> 01:46:50,720
+la bicúbica, no, pues si por un tema de performance voy a usar el vecino más cercano, si estas transiciones
+
+1046
+01:46:50,720 --> 01:46:57,110
+abruptas me resultan en un problema porque estoy buscando bordo, de buscar bordo, de significa
+
+1047
+01:46:57,110 --> 01:47:01,990
+bordo, lo vamos a ver más allá, lo que significa buscar transiciones abruptas, entonces
+
+1048
+01:47:01,990 --> 01:47:09,880
+es su terabilidad y ya no hay más motivos generales para usar otra cosa. Si vas a usar otra cosa,
+
+1049
+01:47:09,880 --> 01:47:14,560
+es porque hay un motivo particular que te lo justifica si no no tiene sentido también y las
+
+1050
+01:47:14,560 --> 01:47:20,120
+dos son muy rápidas obviamente la primera es mucho más rápido que la segunda que también sigue siendo
+
+1051
+01:47:20,120 --> 01:47:28,490
+rápida bueno terminamos work y nos queda un poco minutos entonces yo voy a hacer una maldad y voy
+
+1052
+01:47:28,490 --> 01:47:40,080
+a la estoy buscando bueno tenía abierta voy a abrir la perdón que también la lenta y maquina no me
+
+1053
+01:47:40,080 --> 01:47:53,690
+no me estás explicando lo que tiene que explicar. Bueno, quedan 5 minutos de
+
+1054
+01:47:53,690 --> 01:47:58,410
+clase, 6 minutos, tengo yo muy reloj, están viendo coordenadas homogéneas.
+
+1055
+01:47:58,410 --> 01:48:04,980
+¿A ver, alguno que me responda? Sí, gracias, ahí está. Bueno, como los
+
+1056
+01:48:04,980 --> 01:48:10,420
+momentos que tenían gatitos, acá a este, coordenadas homogéneas es tema
+
+1057
+01:48:10,420 --> 01:48:15,940
+geométrico, en medio de extracto, yo voy a empezar con esta presentación,
+
+1058
+01:48:15,940 --> 01:48:18,020
+Voy a ver, las poquitas diapositivas,
+
+1059
+01:48:18,020 --> 01:48:22,220
+lo vamos a cortar, esto va a ser una introducción más filosofía que otra cosa.
+
+1060
+01:48:22,220 --> 01:48:26,900
+La clase que viene lo más probable es que vuelva a arrancar desde acá,
+
+1061
+01:48:26,900 --> 01:48:31,060
+pero las primeras de positivas, las que vemos hoy, las voy a pasar más rápido.
+
+1062
+01:48:31,060 --> 01:48:37,360
+Está bien, no necesito darle contexto tipo precarentemente.
+
+1063
+01:48:37,360 --> 01:48:39,320
+Bueno, esto es lo que decía, una introducción filosófica,
+
+1064
+01:48:39,320 --> 01:48:41,640
+yo acá no estoy entrando en coordenadas homogéneas,
+
+1065
+01:48:41,640 --> 01:48:46,040
+estoy repasando temas que usted vino en el primer año.
+
+1066
+01:48:46,040 --> 01:48:51,450
+y yo en repaso porque la experiencia me dice que se equivocan.
+
+1067
+01:48:51,450 --> 01:48:55,480
+Entonces yo no voy a esperar a que se equivocan para corregirlo, se les voy a decir,
+
+1068
+01:48:55,480 --> 01:49:00,480
+ya llevo a quedar claro y no van a llegar a esa situación de error.
+
+1069
+01:49:00,480 --> 01:49:07,480
+Transformación lineal, en particular nosotros X y I lo vemos como vectores,
+
+1070
+01:49:07,480 --> 01:49:12,480
+a es una matriz más concretamente X y I son vectores de mismo tamaño.
+
+1071
+01:49:12,480 --> 01:49:19,040
+entonces es una matriz cuadrada, típicamente es de rango o un pleto, o sea que es invertible,
+
+1072
+01:49:19,040 --> 01:49:24,560
+el determinante no es cero, no, es invertible y si vos, incluso, puede despejar, y estos
+
+1073
+01:49:24,560 --> 01:49:28,680
+son todos conceptos que usted tiene incorporado y sale el resultado intuitivo, pueden despejar
+
+1074
+01:49:28,680 --> 01:49:36,280
+X pasando a para otro lado como la inversa de A, pues de A a la menos 1 por I te da X,
+
+1075
+01:49:36,280 --> 01:49:44,280
+también es una transformación lineal, está, si x es 0 y es 0, independientemente de a,
+
+1076
+01:49:44,280 --> 01:49:53,730
+bien, entonces paso a ecuación homogénea que estoy, yo estoy seguro que ustedes la vieron
+
+1077
+01:49:53,730 --> 01:49:57,730
+y que le suena el nombre y que nunca entendieron para qué corno se lo hemos dicho,
+
+1078
+01:49:57,730 --> 01:50:03,120
+también, hay un tema con la matemática, la matemática no es lo que ustedes creen,
+
+1079
+01:50:03,120 --> 01:50:06,360
+creen, es mucho más de lo que ustedes vieron matemáticas bastante
+
+1080
+01:50:06,360 --> 01:50:09,560
+avanzadas, también, terminó de cuestiones diferenciadas.
+
+1081
+01:50:09,560 --> 01:50:13,320
+La sección de diferenciera se vendió Newton en el 1.600 y Pico, si lo
+
+1082
+01:50:13,320 --> 01:50:18,880
+17, a la segunda mitad, o sea, que son años, pero con otra
+
+1083
+01:50:18,880 --> 01:50:22,120
+formulación, es decir, te pudo ver una revisión en la versión que
+
+1084
+01:50:22,120 --> 01:50:24,680
+usted tiene, es mucho más conceptual y más fácil de entender, la
+
+1085
+01:50:24,680 --> 01:50:30,360
+que usaba él, que era equivalente, pero era un desastre terrible.
+
+1086
+01:50:30,360 --> 01:50:32,280
+Está bien en la bienventada, ¿no?
+
+1087
+01:50:32,280 --> 01:50:38,400
+y usted viene con su vez, pero eso es matemática del siglo 17, pero vieron más, porque usted
+
+1088
+01:50:38,400 --> 01:50:45,760
+vieron campos escalares y cosas que necesitaban en física, en el prisión matemática del siglo
+
+1089
+01:50:45,760 --> 01:50:52,170
+19 y los informáticos vieron matemáticos de siglo 19 y ya está, está claro que la matemática
+
+1090
+01:50:52,170 --> 01:51:00,270
+si viene es una disciplina que sigue en desarrollo para la ingeniería, ya está desarrollada, los
+
+1091
+01:51:00,270 --> 01:51:04,150
+que van cambiando son los métodos en ese y en esa, pero es la misma matemática, ¿no?
+
+1092
+01:51:04,150 --> 01:51:08,390
+El trónico tuvieron que haber visto bastante más, el trónico tuvieron que haber visto
+
+1093
+01:51:08,390 --> 01:51:12,990
+transformada furier, transformada de la plaza, transformada de lore, transformada z, haber
+
+1094
+01:51:12,990 --> 01:51:18,110
+algún el trónico que me diga así, si vio todas las pistas transformadas o alguna no les
+
+1095
+01:51:18,110 --> 01:51:19,110
+suena.
+
+1096
+01:51:19,110 --> 01:51:20,110
+Sí.
+
+1097
+01:51:20,110 --> 01:51:21,110
+Sí.
+
+1098
+01:51:21,110 --> 01:51:22,110
+Perfecto.
+
+1099
+01:51:22,110 --> 01:51:26,110
+No te voy a preguntar a otra, no sé si hay más, pero transformadas hay infinitas, pero no
+
+1100
+01:51:26,110 --> 01:51:31,790
+se cuantas más vieron, eso es matemática de siglo XX, mediado de siglo XX, se desarrolló
+
+1101
+01:51:31,790 --> 01:51:39,640
+la transformación de Setta, que es la más avanza de todas y hasta ahí llegaron. Cabe notar
+
+1102
+01:51:39,640 --> 01:51:45,360
+que, ah estoy pensando que los informáticos tienen una materia que es matemática aplicada
+
+1103
+01:51:45,360 --> 01:51:51,050
+que es donde ven criptografía, ahí usaron matemática de la década en 90, porque si llegaron
+
+1104
+01:51:51,050 --> 01:51:55,410
+a ver, creo que todos los que están acá o muchos se hicieron esa materia, si llegaron
+
+1105
+01:51:55,410 --> 01:52:06,530
+a ver, déjame recordar bien, la AIS, el cifrador AIS, eso si lo vieron con la matemática
+
+1106
+01:52:06,530 --> 01:52:12,660
+o en la gera modular, esa es matemática de la década de 90, de medio de la década de 90.
+
+1107
+01:52:12,660 --> 01:52:22,100
+Y eso es como una cosa bastante más avanzada, ¿no? Pero aún así, ustedes tienen una
+
+1108
+01:52:22,100 --> 01:52:25,800
+visión de la matemática. Esa matemática aplicada como que te saca y te
+
+1109
+01:52:25,800 --> 01:52:29,660
+muestra otro aspecto de la matemática, otra manera de entenderla, ¿no?
+
+1110
+01:52:29,660 --> 01:52:34,340
+La visión de la matemática es, pongo fórmula, la valúa y me da un valor, ¿no?
+
+1111
+01:52:34,340 --> 01:52:39,520
+Bueno, bastante digamos, un montón de cosas les enseñan en matemática.
+
+1112
+01:52:39,520 --> 01:52:44,620
+Yo no me quejo de los que enseñan matemática, por la verdad que hace trabajo de
+
+1113
+01:52:44,620 --> 01:52:50,160
+mirar, pero hay un gap, porque la matemática tiene una aplicación en
+
+1114
+01:52:50,160 --> 01:52:59,190
+genería que después no se suele ver, también, y me da reservo porque la vamos a ir viendo
+
+1115
+01:52:59,190 --> 01:53:07,350
+paulatinamente más adelante, está bien, pero hay conceptos, a veces vos esperas eso, che
+
+1116
+01:53:07,350 --> 01:53:13,030
+pongo valor, calcúlo y me da valor, pero a veces vos tenés que usar la herramienta
+
+1117
+01:53:13,030 --> 01:53:18,260
+matemática, porque es muy poderosa, para meterla en un problema que no tiene una formulación
+
+1118
+01:53:18,260 --> 01:53:23,260
+tan tan simple como la otra y tenés que buscar. Y ese es el caso de las secciones homogéneas
+
+1119
+01:53:23,260 --> 01:53:30,620
+que no llegaron a ver ningún caso. Está bien. De hecho nosotros vamos a a haber coordenadas
+
+1120
+01:53:30,620 --> 01:53:35,220
+homogéneas, es el nombre de esta presentación. ¿Qué recuerda a ustedes de las secciones
+
+1121
+01:53:35,220 --> 01:53:50,010
+homogéneas? O sea, si vos tenés a x es igual a cero. ¿Cuánto vale x? Cero, cero. Bueno,
+
+1122
+01:53:50,010 --> 01:53:55,810
+justamente esa es la solución trivial y es la solución que no interesa, también gracias por
+
+1123
+01:53:55,810 --> 01:54:03,140
+responder porque está esperando que alguien me responda a eso. En AX igual a 0 A es rectangular,
+
+1124
+01:54:03,140 --> 01:54:10,720
+0 es el vector 0, no es el valor 0, también A es rectangular y representa un caso de rango
+
+1125
+01:54:10,720 --> 01:54:17,390
+en completo donde tu solución, tu solución no es única sino que forma un sub espacio. En particular,
+
+1126
+01:54:17,390 --> 01:54:21,390
+a mí me interesa de rango que le falta una ecuación,
+
+1127
+01:54:21,390 --> 01:54:23,390
+en un completo de falta una ecuación,
+
+1128
+01:54:23,390 --> 01:54:25,390
+todo tu sub espacio es una recta,
+
+1129
+01:54:25,390 --> 01:54:27,390
+si quieres imagínate un espacio 3D,
+
+1130
+01:54:27,390 --> 01:54:29,390
+que es el que le va a usar,
+
+1131
+01:54:29,390 --> 01:54:32,390
+y tu sub espacio de soluciones,
+
+1132
+01:54:32,390 --> 01:54:34,390
+son infinitas soluciones,
+
+1133
+01:54:34,390 --> 01:54:36,390
+forma una recta que pasa por cero,
+
+1134
+01:54:36,390 --> 01:54:38,390
+siempre pasa por cero,
+
+1135
+01:54:38,390 --> 01:54:40,390
+entonces cero es el que no te dice nada,
+
+1136
+01:54:40,390 --> 01:54:42,390
+me interesa los otros,
+
+1137
+01:54:42,390 --> 01:54:43,390
+son infinitas soluciones,
+
+1138
+01:54:43,390 --> 01:54:46,390
+nadie va a resolver infinitas soluciones,
+
+1139
+01:54:46,390 --> 01:54:50,680
+pero estén alineas en una recta, basta con tener una solución que no sea el
+
+1140
+01:54:50,680 --> 01:55:00,290
+cero, ya sabes, ya tenés de terminar la recta entera, también. A esa, a esa, a esa manera de
+
+1141
+01:55:00,290 --> 01:55:05,300
+necesitar una solución, a esa manera de expresar una recta, la vamos a llamar
+
+1142
+01:55:05,300 --> 01:55:09,460
+coordenadas homogéneas, la tengo que presentar, la vamos a dar la cosa que viene, pero nos
+
+1143
+01:55:09,460 --> 01:55:15,460
+quedamos con el concepto de que la ecuación homogénea tiene como solución un subespacio,
+
+1144
+01:55:15,460 --> 01:55:21,780
+infinitas soluciones y no vamos a usar esta formulación a por x igual a cero si vamos a usar el
+
+1145
+01:55:21,780 --> 01:55:27,720
+concepto y de ahí viene el nombre que vamos a usar en colonadas homogéneas que lo van a haber mucho
+
+1146
+01:55:27,720 --> 01:55:33,720
+lo vamos a repetir como algo cotidiano también bueno finalmente a yo mi reloj nos pasé
+
+1147
+01:55:33,720 --> 01:55:42,370
+dos minutos la transformación a fin si estos fueran escalares y x serían fueron variables de
+
+1148
+01:55:42,370 --> 01:55:47,890
+renúmeros reales esto es la cuestión de una recta en dos de esta bien pero x y
+
+1149
+01:55:47,890 --> 01:55:57,040
+son vectores a su una matriz, es otro vector y esta es una transformación a fin
+
+1150
+01:55:57,040 --> 01:56:02,640
+usted me pueden decir que diferencia entre una transformación a fin y una transformación
+
+1151
+01:56:02,640 --> 01:56:09,000
+lineal, le pregunto de otra manera, esta transformación a fin que está acá es una transformación
+
+1152
+01:56:09,000 --> 01:56:16,260
+genial, recuerden que estamos terminando acá así que cuando más rápido me respondan más rápido
+
+1153
+01:56:16,260 --> 01:56:29,270
+nos vamos a ver algunos porque o sea no es difícil la pregunta que dice el tema es recordar cuál
+
+1154
+01:56:29,270 --> 01:56:38,490
+es la pregunta, ¿no? Yo necesito destrabar con esta termina acá la clase pero necesito que
+
+1155
+01:56:38,490 --> 01:56:45,570
+superen esta esta pregunta, esta transformación afín que está acá abajo, es una transformación
+
+1156
+01:56:45,570 --> 01:57:05,620
+Daniel? Sí. ¿Por qué? A ver algún otro que me quiera responder? Sería, la B sería un
+
+1157
+01:57:05,620 --> 01:57:12,970
+cero, estaría pasando por origen. Si te lo harás, la capuce B, no puse cero. No, no,
+
+1158
+01:57:12,970 --> 01:57:18,730
+no, pero sería como que el valor de B sería cero, ¿para lo primero? No, no, no, no, no,
+
+1159
+01:57:18,730 --> 01:57:25,610
+o sea, B puede ser cualquier valor, no tiene por qué ser cero. Pero si no, no lo pongo,
+
+1160
+01:57:25,610 --> 01:57:31,730
+si viva lecero no lo pongo, la transformación afina es la que tiene esta forma, esto se lo
+
+1161
+01:57:31,730 --> 01:57:37,150
+dicen a todos, no solamente el que me ha respondido, que es y es igual a ac, cuando tenés esta
+
+1162
+01:57:37,150 --> 01:57:43,250
+forma y es igual a ac por aquí más b, se lo llama transformación afina, mi pregunta es esto,
+
+1163
+01:57:43,250 --> 01:57:50,240
+así como está, es una transformación ideal, sería que es cuando ve igual a cero porque
+
+1164
+01:57:50,240 --> 01:57:54,440
+tiene que pasar como hijo recién por el eje cero.
+
+1165
+01:57:54,440 --> 01:57:56,860
+Claro, eso es lo que me respondo recién.
+
+1166
+01:57:56,860 --> 01:58:00,460
+Yo estoy repitiendo la pregunta original.
+
+1167
+01:58:00,460 --> 01:58:03,940
+Si esto que está acá, es una transformación lineal.
+
+1168
+01:58:03,940 --> 01:58:06,230
+No, solo cuando es cero.
+
+1169
+01:58:06,230 --> 01:58:07,390
+Ah, ahora sí.
+
+1170
+01:58:07,390 --> 01:58:09,910
+Entonces, la transformación a fin no es una transformación lineal.
+
+1171
+01:58:09,910 --> 01:58:12,950
+En todo caso, la transformación lineal es un caso particular
+
+1172
+01:58:12,950 --> 01:58:16,310
+de transformación a fin cuando ve es igual a cero.
+
+1173
+01:58:16,310 --> 01:58:17,590
+Bien, perfecto.
+
+1174
+01:58:17,590 --> 01:58:19,390
+Creo que estamos en la misma página.
+
+1175
+01:58:19,390 --> 01:58:24,290
+digamos, ustedes dicen che, es simple, pero también reconocen que ahora
+
+1176
+01:58:24,290 --> 01:58:29,890
+pregunta y no me las van a responder, entonces no hay algo ahí en el video, no
+
+1177
+01:58:29,890 --> 01:58:35,210
+sé si es un tema de dificultad, o es un tema de atención, o lo que sea, pero
+
+1178
+01:58:35,210 --> 01:58:39,810
+digamos cuesta llegar a este punto. Bueno, el tema es así, históricamente
+
+1179
+01:58:39,810 --> 01:58:44,850
+mucha gente reconoce la ecuación de la recta y se le cruzan los cables y
+
+1180
+01:58:44,850 --> 01:58:51,020
+en línea recta, entonces es lineal, no tiene nada que ver. Lineal es lo de arriba, son
+
+1181
+01:58:51,020 --> 01:58:56,260
+nombres, ¿eh? Alguien de puso el nombre, yo no discuto el nombre. Lineal es lo de arriba
+
+1182
+01:58:56,260 --> 01:59:03,050
+y una es la cosa que pasa por cero, también. O sea, sí, X es cero y es cero. Es una característica
+
+1183
+01:59:03,050 --> 01:59:08,150
+de una transformación ideal. La ecuación de la recta no es una transformación de
+
+1184
+01:59:08,150 --> 01:59:15,960
+no confundan los términos, no tiene por qué serlo, no tiene nada que ver, digamos, salgo
+
+1185
+01:59:15,960 --> 01:59:21,860
+que justo en la recta pase por ser, que sería un caso así particular, entonces vamos a usar
+
+1186
+01:59:21,860 --> 01:59:27,620
+la transformación a fin, también me interesa mucho este formato y como la transformación
+
+1187
+01:59:27,620 --> 01:59:32,620
+niña es muy práctica, pues cuestiones que digamos usted ya conoce, pero que vamos a ir
+
+1188
+01:59:32,620 --> 01:59:39,820
+recordad de la clase que viene, vamos a abordar de las primeras cosas que vamos a hacer, vamos
+
+1189
+01:59:39,820 --> 01:59:48,620
+a ver de qué manera podemos usar la matemática en formas que no son las habituales, para convertir
+
+1190
+01:59:48,620 --> 01:59:53,380
+una transformación a fin en una transformación lineal que no va a facilitar la bid. Nos
+
+1191
+01:59:53,380 --> 01:59:59,100
+requiere una capacidad de atracción un poco mayor, pero después no va a facilitar la
+
+1192
+01:59:59,100 --> 02:00:07,310
+y que de hecho es la manera que se usa en visión artificial y en robótica, se usan estas
+
+1193
+02:00:07,310 --> 02:00:15,170
+transformaciones a fines, expresas en coordenadas homogéneas que es lo que va a permitir expresar
+
+1194
+02:00:15,170 --> 02:00:20,410
+esto en una como transformación ideal. Bueno, eso es lo que vamos a ver la clase que viene,
+
+1195
+02:00:20,410 --> 02:00:26,690
+yo ya termine acá, está bien, y todo esto es para explicar, seguir explicando los distintos
+
+1196
+02:00:26,690 --> 02:00:29,490
+Warp, las transformaciones geométricas, que tengo pendiente.
+
+1197
+02:00:29,490 --> 02:00:36,050
+Si la clase que viene como ven, nos metemos con geometría de una manera que no lo han visto,
+
+1198
+02:00:36,050 --> 02:00:43,130
+o sea, en secundaria y en primaria han visto rey, no sé, cruce de rey, pero vamos a ir
+
+1199
+02:00:43,130 --> 02:00:50,170
+a una cosa que tiene mucho más que ver con cómo hace un robot o un vehicle autónomo para
+
+1200
+02:00:50,170 --> 02:00:52,970
+entender el mundo que está alrededor.
+
+1201
+02:00:52,970 --> 02:01:01,600
+Bueno gente, acá terminé, yo le dejo lo saludo, obviamente si querían preguntar algo
+
+1202
+02:01:01,600 --> 02:01:05,680
+hoy se me ha aprovechado los rastos que te dían, no obviamente si querías hacer preguntas
+
+1203
+02:01:05,680 --> 02:01:11,780
+pueden hacerlas, pero, usualmente no quieren, así que lo saludo y le dejo la clase
+
+1204
+02:01:11,780 --> 02:01:12,780
+a Lesio.
+
+1205
+02:01:12,780 --> 02:01:16,820
+Salud.
+
+1206
+02:01:16,820 --> 02:01:25,450
+Bueno gente, nada de mi parte, le deje un enlace ahí con la segunda parte, pero que sería
+
+1207
+02:01:25,450 --> 02:01:31,950
+el segundo trabajo práctico, tienen que entregar las dos partes, la semana que viene,
+
+1208
+02:01:31,950 --> 02:01:38,870
+el jueves 10 de septiembre, es muy simple, nos le va a suponer una mayor carga, así que
+
+1209
+02:01:38,870 --> 02:01:46,340
+nada, si tienen dudas, pueden preguntarnos a bizarnos, pero por hoy, nada más. Así que
+
+1210
+02:01:46,340 --> 02:01:52,610
+a menos que haya una duda, los despido y nos estamos viendo.
+
+1211
+02:01:52,610 --> 02:01:58,600
+una consulta, perdón. Sí. No sé si lo mencionó, no, no, pero no lo acuerdo. Las
+
+1212
+02:01:58,600 --> 02:02:07,770
+entregas son durante la clase, ¿no? No es que se entregan en alguna plataforma en miel o en tints.
+
+1213
+02:02:07,770 --> 02:02:12,650
+Momentotenso. ¿Qué pasa si te digo que tenés que entregar ahora? Nada mentira. No, las
+
+1214
+02:02:12,650 --> 02:02:18,290
+entregas se hacen acá en la clase. Ustedes demuestran lo que hicieron y se van con una nota
+
+1215
+02:02:18,290 --> 02:02:24,090
+que esa nota me la guardo yo y al final se promedía y es lo que termina siendo la nota
+
+1216
+02:02:24,090 --> 02:02:28,790
+de la materia. Así que no tienen que entregar nada, solo tienen que hacer el trabajo,
+
+1217
+02:02:28,790 --> 02:02:34,350
+exponerlo, defenderlo y listo. Perfecto, gracias.
+
+1218
+02:02:34,350 --> 02:02:43,200
+Conojente, si no hay más dudas, ahora sí, los despido. Muy fin de semana.
