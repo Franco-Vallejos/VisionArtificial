@@ -1,0 +1,4 @@
+|--- hu_4 <= 0.00
+|   |--- weights: [13.00, 0.00] class: CD
+|--- hu_4 >  0.00
+|   |--- weights: [0.00, 14.00] class: Flor

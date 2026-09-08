@@ -1,0 +1,44 @@
+{
+  "muestras_totales": 31,
+  "muestras_entrenamiento": 27,
+  "muestras_prueba": 4,
+  "muestras_por_clase": {
+    "CD": 15,
+    "Flor": 16,
+    "Huevo": 0,
+    "Taza": 0
+  },
+  "precision_prueba": 1.0,
+  "clases_matriz": [
+    "CD",
+    "Flor",
+    "Huevo",
+    "Taza"
+  ],
+  "matriz_confusion": [
+    [
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ]
+  ]
+}
