@@ -62,7 +62,7 @@ def procesar_referencia(
 ) -> tuple[dict[str, np.ndarray], dict[str, object]]:
     """Genera todas las etapas y reproduce la eleccion del contorno principal."""
     gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
-    _, binaria = cv2.threshold(gris, umbral, 255, cv2.THRESH_BINARY)
+    _, binaria = cv2.threshold(gris, umbral, 255, cv2.THRESH_BINARY_INV)
 
     cierre = binaria.copy()
     apertura = binaria.copy()
