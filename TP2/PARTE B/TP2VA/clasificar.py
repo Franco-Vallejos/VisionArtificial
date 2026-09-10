@@ -24,6 +24,7 @@ COLUMNAS_HU = [
 
 # Camara e interfaz
 INDICE_CAMARA = 0
+VENTANA_RESULTADO = "Clasificacion ML"
 VENTANA_FILTROS = "Filtros aplicados"
 VENTANA_CONTROLES = "Panel de controles"
 NOMBRE_CONTROL_UMBRAL = "Umbral (0=Otsu)"
@@ -217,6 +218,7 @@ def main():
     if not camara.isOpened():
         raise SystemExit("ERROR: no se pudo abrir la camara.")
 
+    cv2.namedWindow(VENTANA_RESULTADO, cv2.WINDOW_NORMAL)
     cv2.namedWindow(VENTANA_FILTROS, cv2.WINDOW_NORMAL)
     cv2.namedWindow(VENTANA_CONTROLES, cv2.WINDOW_NORMAL)
     cv2.resizeWindow(
@@ -303,6 +305,7 @@ def main():
             frame.shape[1],
             frame.shape[0],
         )
+        cv2.imshow(VENTANA_RESULTADO, frame)
         cv2.imshow(VENTANA_FILTROS, vista_filtros)
         tecla = cv2.waitKey(ESPERA_TECLA_MILISEGUNDOS) & MASCARA_CODIGO_TECLA
         if tecla in (TECLA_ESCAPE, TECLA_SALIR):

@@ -1,0 +1,8 @@
+{
+  "umbral": 74,
+  "invertir": 0,
+  "morfologia": 6,
+  "area_min_x100": 5,
+  "area_max_pct": 40,
+  "confianza_x100": 85
+}

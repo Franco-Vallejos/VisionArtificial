@@ -41,6 +41,9 @@ VENTANA_SELECTOR = "Seleccion de referencia"
 
 ANCHO_PANEL = 400
 ALTO_PANEL = 285
+GROSOR_CONTORNOS_EXTERNOS = 10
+GROSOR_CONTORNO_ELEGIDO = 12
+GROSOR_CONTORNOS_INTERNOS = 10
 
 
 def listar_referencias() -> list[Path]:
@@ -90,7 +93,11 @@ def procesar_referencia(
 
     for indice in externos:
         cv2.drawContours(
-            vista_contornos, contornos, indice, (0, 255, 255), 2
+            vista_contornos,
+            contornos,
+            indice,
+            (0, 255, 255),
+            GROSOR_CONTORNOS_EXTERNOS,
         )
 
     indice_elegido = None
@@ -124,7 +131,11 @@ def procesar_referencia(
         proporcion_agujero = area_agujero / area_elegida
 
         cv2.drawContours(
-            vista_elegido, contornos, indice_elegido, (0, 255, 0), 3
+            vista_elegido,
+            contornos,
+            indice_elegido,
+            (0, 255, 0),
+            GROSOR_CONTORNO_ELEGIDO,
         )
         cv2.rectangle(
             vista_elegido, (x, y), (x + ancho, y + alto), (255, 180, 0), 2
@@ -134,7 +145,11 @@ def procesar_referencia(
         )
         for hijo in hijos:
             cv2.drawContours(
-                vista_elegido, contornos, hijo, (255, 0, 255), 2
+                vista_elegido,
+                contornos,
+                hijo,
+                (255, 0, 255),
+                GROSOR_CONTORNOS_INTERNOS,
             )
             cv2.drawContours(
                 mascara_elegida, contornos, hijo, 0, cv2.FILLED
