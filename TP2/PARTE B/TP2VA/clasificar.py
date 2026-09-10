@@ -39,8 +39,6 @@ DESPLAZAMIENTO_TEXTO = 8
 ALTURA_MINIMA_TEXTO = 24
 FUENTE_TEXTO = cv2.FONT_HERSHEY_SIMPLEX
 TODOS_LOS_CONTORNOS = -1
-UNA_MUESTRA = 1
-DIMENSION_INFERIDA = -1
 ESPERA_TECLA_MILISEGUNDOS = 1
 MASCARA_CODIGO_TECLA = 0xFF
 DIVISOR_GRILLA = 2
@@ -84,14 +82,18 @@ def detectar_contornos(
     umbral: int,
     morfologia: int,
 ) -> tuple[list[np.ndarray], dict[str, np.ndarray]]:
+    """Detecta contornos y conserva copias intermedias solo para mostrarlas."""
     gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
     alto, ancho = gris.shape
     area_imagen = alto * ancho
     area_minima = area_imagen * AREA_MINIMA_RELATIVA
     area_maxima = area_imagen * AREA_MAXIMA_RELATIVA
     validos: list[np.ndarray] = []
+
+    # SOLO VISUALIZACION: este diccionario no participa en la deteccion ni
+    # se entrega al modelo. Guarda imagenes para ilustrar las fases.
     etapas: dict[str, np.ndarray] = {
-        "Imagen original": imagen,
+        "Imagen original": imagen.copy(),
         "Escala de grises": gris,
     }
 
@@ -105,6 +107,9 @@ def detectar_contornos(
             VALOR_BINARIO_MAXIMO,
             tipo_umbral,
         )
+
+        # SOLO VISUALIZACION: la copia permite mostrar el umbral antes de
+        # aplicar la morfologia. Los contornos se calculan con `binaria`.
         umbralizada = binaria.copy()
         if morfologia > 0:
             lado_kernel = (
@@ -120,6 +125,8 @@ def detectar_contornos(
                 kernel,
                 iterations=ITERACIONES_MORFOLOGIA,
             )
+
+        # SOLO VISUALIZACION
         if tipo == cv2.THRESH_BINARY_INV:
             etapas["Umbral invertido"] = umbralizada
             etapas["Morfologia"] = binaria
@@ -143,6 +150,7 @@ def preparar_etapa(
     ancho: int,
     alto: int,
 ) -> np.ndarray:
+    """SOLO VISUALIZACION: prepara una fase para la ventana de filtros."""
     if imagen.ndim == 2:
         imagen_color = cv2.cvtColor(imagen, cv2.COLOR_GRAY2BGR)
     else:
@@ -173,6 +181,7 @@ def construir_vista_filtros(
     ancho: int,
     alto: int,
 ) -> np.ndarray:
+    """SOLO VISUALIZACION: arma la cuadricula; no modifica la prediccion."""
     ancho_celda = ancho // DIVISOR_GRILLA
     alto_celda = alto // DIVISOR_GRILLA
     vistas = [
@@ -185,9 +194,9 @@ def construir_vista_filtros(
 
 
 def invariantes_hu(contorno: np.ndarray) -> np.ndarray:
-    hu = cv2.HuMoments(cv2.moments(contorno)).flatten()
-    return -np.sign(hu) * np.log10(np.abs(hu) + EPSILON_HU)
-
+    """Calcula los siete invariantes de Hu de un contorno."""
+    momentos = cv2.moments(contorno)
+    return cv2.HuMoments(momentos).flatten().astype(np.float64)
 
 def cargar_modelo():
     if not ARCHIVO_MODELO.is_file():
@@ -222,6 +231,9 @@ def main():
         UMBRAL_MAXIMO,
         lambda _valor: None,
     )
+
+    # SOLO VISUALIZACION: OpenCV necesita una imagen minima para mantener
+    # visible la ventana que contiene los trackbars.
     contenido_controles = np.zeros(
         (
             ALTO_CONTENIDO_CONTROLES,
@@ -250,34 +262,42 @@ def main():
             NOMBRE_CONTROL_MORFOLOGIA, VENTANA_CONTROLES
         )
         contornos, etapas = detectar_contornos(frame, umbral, morfologia)
-        for contorno in contornos:
-            descriptor = invariantes_hu(contorno).reshape(
-                UNA_MUESTRA, DIMENSION_INFERIDA
-            )
-            etiqueta = int(modelo.predict(descriptor)[0])
-            reconocido = etiqueta in categorias
-            nombre = categorias[etiqueta] if reconocido else "Desconocido"
-            color = COLOR_RECONOCIDO if reconocido else COLOR_DESCONOCIDO
 
-            x, y, _, _ = cv2.boundingRect(contorno)
-            cv2.drawContours(
-                frame,
-                [contorno],
-                TODOS_LOS_CONTORNOS,
-                color,
-                GROSOR_CONTORNO,
+        if contornos:
+            descriptores = np.asarray(
+                [invariantes_hu(contorno) for contorno in contornos],
+                dtype=np.float64,
             )
-            cv2.putText(
-                frame,
-                nombre,
-                (x, max(ALTURA_MINIMA_TEXTO, y - DESPLAZAMIENTO_TEXTO)),
-                FUENTE_TEXTO,
-                ESCALA_TEXTO,
-                color,
-                GROSOR_TEXTO,
-                cv2.LINE_AA,
-            )
+            etiquetas_modelo = modelo.predict(descriptores)
+            for contorno, etiqueta_modelo in zip(contornos, etiquetas_modelo):
+                etiqueta = int(etiqueta_modelo)
+                reconocido = etiqueta in categorias
+                nombre = categorias[etiqueta] if reconocido else "Desconocido"
+                color = COLOR_RECONOCIDO if reconocido else COLOR_DESCONOCIDO
 
+                # SOLO VISUALIZACION: dibujar el contorno y escribir la etiqueta
+                # ocurre despues de predecir; no cambia los Hu ni la categoria.
+                x, y, _, _ = cv2.boundingRect(contorno)
+                cv2.drawContours(
+                    frame,
+                    [contorno],
+                    TODOS_LOS_CONTORNOS,
+                    color,
+                    GROSOR_CONTORNO,
+                )
+                cv2.putText(
+                    frame,
+                    nombre,
+                    (x, max(ALTURA_MINIMA_TEXTO, y - DESPLAZAMIENTO_TEXTO)),
+                    FUENTE_TEXTO,
+                    ESCALA_TEXTO,
+                    color,
+                    GROSOR_TEXTO,
+                    cv2.LINE_AA,
+                )
+
+        # SOLO VISUALIZACION: estas operaciones construyen y muestran las
+        # ventanas. El procedimiento termina en `modelo.predict` de arriba.
         vista_filtros = construir_vista_filtros(
             etapas,
             frame.shape[1],

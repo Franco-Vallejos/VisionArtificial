@@ -29,7 +29,6 @@ UMBRAL_INICIAL_OTSU = 0
 AREA_MINIMA_RELATIVA = 0.005
 AREA_MAXIMA_RELATIVA = 0.95
 MARGEN_BORDE = 2
-EPSILON_HU = 1e-30
 
 # Columnas del CSV
 PRIMER_INDICE_HU = 1
@@ -99,9 +98,9 @@ def detectar_contornos(imagen: np.ndarray) -> list[np.ndarray]:
 
 
 def invariantes_hu(contorno: np.ndarray) -> np.ndarray:
-    """Calcula los siete invariantes de Hu en escala logaritmica."""
-    hu = cv2.HuMoments(cv2.moments(contorno)).flatten()
-    return -np.sign(hu) * np.log10(np.abs(hu) + EPSILON_HU)
+    """Calcula los siete invariantes de Hu de un contorno."""
+    momentos = cv2.moments(contorno)
+    return cv2.HuMoments(momentos).flatten().astype(np.float64)
 
 
 def imagenes_de(carpeta: Path) -> list[Path]:
