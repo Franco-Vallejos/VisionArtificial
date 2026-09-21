@@ -1,0 +1,2683 @@
+# Transcripcion de la clase 17/09/2026
+
+Fuente: `Clase Visión Artificial-20260917_191306-Grabación de la reunión.mp4`
+
+**00:00:01.680 - 00:00:10.600**  
+o algo, ustedes son mantener a darle un feedback oral de lo que está pasando, de tener transcripción.
+
+**00:00:10.600 - 00:00:23.980**  
+Bueno, estamos listos para empezar. Bueno, estimadores, estimadores, estimadores, estimadores
+
+**00:00:23.980 - 00:00:30.880**  
+son alborismos de esta racional con cálculo numérico, que te permiten aproximar a partir
+
+**00:00:30.880 - 00:00:35.640**  
+de los datos para la próxima modelo. ¿Qué es un modelo de esto? Como siempre yo busco
+
+**00:00:35.640 - 00:00:40.440**  
+imagen en internet, tenía que buscar modelos matemáticos, puse modelos, me pareció esto.
+
+**00:00:40.440 - 00:00:47.400**  
+Entonces, nosotros vamos a ver modelos matemáticos. Esta es una manera gráfica que es yo,
+
+**00:00:47.400 - 00:00:52.200**  
+yo lo veo así y me parece buenísimo, no sé si ustedes lo entiendan, no, pero vánganse
+
+**00:00:52.200 - 00:00:58.880**  
+la, son universitarios avanzados, así que lo van a tener que entender. Obviamente una
+
+**00:00:58.880 - 00:01:02.360**  
+transformación geométrica, más las que nosotros manejamos, que son transformaciones
+
+**00:01:02.360 - 00:01:07.960**  
+iníales, también se entiende todo completo por esto que hice p subí prima, si igual
+
+**00:01:07.960 - 00:01:15.640**  
+a t por p subí, t es la matriz de transformación y acá está multiplicando p subí, p subí,
+
+**00:01:15.640 - 00:01:23.600**  
+p subí son vectores y tenemos este concepto de correspondencia, o sea p sub 1, se relaciona
+
+**00:01:23.600 - 00:01:28.680**  
+con p sub 1, p sub 2, con p sub 2, estos son correspondientes, un se corresponden
+
+**00:01:28.680 - 00:01:36.520**  
+uno con el otro, que es que es peso. Punto ser un imagen, son vectores 2D. Obviamente,
+
+**00:01:36.520 - 00:01:42.480**  
+ya a esta altura ya saben, estamos trabajando en coronados homogéneas, entonces el vector
+
+**00:01:42.480 - 00:01:49.920**  
+tiene tres elementos y T es una homografía, es una transformación afirma que es una transformación
+
+**00:01:49.920 - 00:01:56.960**  
+coordenada homogénea de tres partes. Entonces, esto gráficamente te viene a decir
+
+**00:01:56.960 - 00:02:03.040**  
+que tú tienes una coordenada en una imagen, le aplica su una homografía, una transformación
+
+**00:02:03.040 - 00:02:09.320**  
+T y te da otra coordenada, también hasta ahí medio como que no debería, imagínense que sea
+
+**00:02:09.320 - 00:02:18.060**  
+un escalamiento, una cosa muy sencilla que te reduce a la mitad el vectoro. Entonces
+
+**00:02:18.060 - 00:02:25.500**  
+que volvedas un punto 10, 10 y el resultado es 5, 5. Claro, no puede ser. Bueno, esa transformación
+
+**00:02:25.500 - 00:02:30.980**  
+te puede ser una homografía, también más tan demás sofisticados, como sea vos definís
+
+**00:02:30.980 - 00:02:36.220**  
+esa transformación atrás de parámetros. O sea, si tu transformación es una rotación,
+
+**00:02:36.220 - 00:02:41.140**  
+a ver vamos a hacer una pregunta, si ponen micrófono, ¿cuántos parámetros, qué parámetros
+
+**00:02:41.140 - 00:02:46.500**  
+son los que definen una rotación? Estaban dando una rotación 2D.
+
+**00:02:47.500 - 00:02:56.580**  
+A ver, algunos que tiene. No sé, los otros pueden opinar también, porque acá hay
+
+**00:02:56.580 - 00:03:03.940**  
+varias respuestas posibles, solo una es la correcta. Sí, yo tengo que decir una rotación. ¿Cuántos
+
+**00:03:03.940 - 00:03:17.050**  
+parámetros me especifican la rotación? A ver, hay un otro. Una profe. ¿Cuál? El ángulo.
+
+**00:03:17.770 - 00:03:23.730**  
+El ángulo de rotación, exactamente. Gracias. Ojo que estas son preguntas incompletamente
+
+**00:03:23.730 - 00:03:32.730**  
+especificadas, yo lo hago propósito. Hay un contexto, no te acito, que no aclare, que
+
+**00:03:32.730 - 00:03:39.770**  
+usted lo tiene que andar adivinando. Bueno, entonces sí, es una, porque el parámetro
+
+**00:03:39.770 - 00:03:46.210**  
+es el dato que a mí me define la transformación, también. La rotación se especifica con un ángulo
+
+**00:03:46.890 - 00:03:52.890**  
+de rotación. Ahora, ese es un solo parámetro que genera una matriz de 2x2, que con senos y
+
+**00:03:52.890 - 00:03:59.850**  
+cocenas. Esa generación no es lineal. Usted sabe, yo genera una vez esa matriz y después
+
+**00:03:59.850 - 00:04:04.850**  
+se aplico la misma rotación a una nube de puntos. Entonces la linealizo una vez, cancuros
+
+**00:04:04.850 - 00:04:09.530**  
+senos y cocenas una sola vez, y después hago presiones señales con la matriz. Son cuatro
+
+**00:04:09.530 - 00:04:14.290**  
+elementos, los que defino, pero eso no son los que llamo parámetros, por eso iba a la pregunta
+
+**00:04:14.290 - 00:04:19.010**  
+a ver si se entendía que era más parámetro. Entonces si yo, esto se lo voy a decir y apareces
+
+**00:04:19.010 - 00:04:23.930**  
+por una tablita. Ahora, yo quiero definir una traslación. Bueno, la traslación en xy,
+
+**00:04:23.930 - 00:04:29.730**  
+son dos parámetros, también. Y si yo quiero redefinir una rota traslación, es delta
+
+**00:04:29.730 - 00:04:35.690**  
+x del taí y alpha, también son tres parámetros. Bueno, eso básicamente la idea, yo pongo parámetros
+
+**00:04:35.690 - 00:04:39.770**  
+de fina de la transformación y la transformación se aplica a los puntos de la izquierda, que son
+
+**00:04:39.770 - 00:04:45.610**  
+p subí, para generar que la nube de a punto de subí es porque son dos de puntos en su índice.
+
+**00:04:45.610 - 00:04:51.170**  
+Para generar los puntos p primas subí de otro lado, esos puntos son correspondientes. Hasta
+
+**00:04:51.170 - 00:05:00.250**  
+ahí, todo esto resume gráficamente el modelo de los que vimos la clase pasada, la transformación
+
+**00:05:00.250 - 00:05:06.570**  
+es geometria. Podría ser cualquier tipo de función, acá son específicamente transformaciones
+
+**00:05:06.570 - 00:05:12.810**  
+ni al estés, es la transformación indiana. Bueno, esto es lo que te dice, habíamos visto
+
+**00:05:12.810 - 00:05:18.970**  
+a esta altura con todo lo que lo repetí la clase pasada, espero que por dos movilizas
+
+**00:05:18.970 - 00:05:24.410**  
+se ha entrado. La rotación tiene un parámetro alpha, también la traslación tiene dos parámetros
+
+**00:05:24.410 - 00:05:29.530**  
+del taí y del taí, la rota traslación tiene tres parámetros, justo lo que dije recién,
+
+**00:05:29.530 - 00:05:33.530**  
+no. Simitaridad es cuando ya no es una transformación
+
+**00:05:33.530 - 00:05:39.570**  
+obligada porque no preserva distancia, es, además de rototeración escala, se llama así, se
+
+**00:05:39.570 - 00:05:45.410**  
+llama simitaridad, es un nombre que viene la matemática. Entonces, tenéis cuatro parámetros.
+
+**00:05:45.410 - 00:05:50.690**  
+¿Cuánto parámetro tenéis poner voz para poder generar la matriz de tres por tres
+
+**00:05:50.690 - 00:05:57.050**  
+de transformación indiana? Una transformación al fin general, contiene todo lo de arriba,
+
+**00:05:57.050 - 00:06:01.690**  
+también, todo lo de arriba son casos particulares y son seis parámetros y de abajo terminan
+
+**00:06:01.690 - 00:06:08.970**  
+0-0-1, básicamente tiene que definir lo como quiera, pero hay ese grado de libertad.
+
+**00:06:08.970 - 00:06:16.810**  
+Y la homografía tiene ocho y esto, todo esto repitiendo cosas que dijiste la clase pasada,
+
+**00:06:16.810 - 00:06:23.850**  
+pero que no pretende haber recuerdo. La homografía es una transformación homogénea. Eso
+
+**00:06:23.850 - 00:06:32.370**  
+significa que todos los resultados proporcionales se corresponden al mismo. Entonces,
+
+**00:06:32.370 - 00:06:37.610**  
+hay un grado de libertad que se opie, porque si me da un valor o me da el doble, es el
+
+**00:06:37.610 - 00:06:42.770**  
+anda, también, es un grado de libertad numérico para resultados que le va a dar infinitos
+
+**00:06:42.770 - 00:06:47.530**  
+resultados, pero que son equivalentes. Entonces, en vez de tener nueve grado de libertad, porque
+
+**00:06:48.090 - 00:06:59.130**  
+3x3, tengo nueve menos uno que no me sirve, que es el anda, el de las subespecializaciones
+
+**00:06:59.130 - 00:07:04.650**  
+proporcionales. Así que rigor, yo necesito especificar ocho parámetros, no sé cuál es, no estoy
+
+**00:07:04.650 - 00:07:10.210**  
+diciendo cuál es, porque esto es matemática, son cuantas situaciones para cuantas incógnitas,
+
+**00:07:10.210 - 00:07:16.690**  
+también no importa qué cuaciones son mientras sean independientes. La traslación puede definir
+
+**00:07:16.690 - 00:07:20.850**  
+como el de aquí del teilo, puede definir en coroná polario, como aquí era el tema que va a
+
+**00:07:20.850 - 00:07:28.690**  
+necesitar dos parámetros. Y siempre por la duda, los parámetros son y números reales,
+
+**00:07:28.690 - 00:07:34.690**  
+también, si mi parámetro es un vector de dos dimensiones, entonces las reales son dos.
+
+**00:07:34.690 - 00:07:40.930**  
+Entonces, se entiende todo esto, no lo digo en el aire, porque lo necesito para la positiva
+
+**00:07:40.930 - 00:07:49.810**  
+para dentro de una de la positiva va a surgir ese tema. Bueno, entonces todo lo que dije recién
+
+**00:07:49.810 - 00:07:57.570**  
+era simplemente la exposición de cosas que usted ya sabe, acá donde viene el tema, problema
+
+**00:07:57.570 - 00:08:03.050**  
+inverso, yo no les digo solver, lo voy a dar solver después de recordar, pero es bastante sencillo.
+
+**00:08:03.050 - 00:08:09.650**  
+Hoy lo limito a un solver a una solución sencillo, ¿cuál es el problema inverso?
+
+**00:08:11.170 - 00:08:16.650**  
+Yo tengo los correspondencias, la prueba inverso no es tengo p-primiteo que saca el pei,
+
+**00:08:16.650 - 00:08:21.810**  
+porque eso lo hace con la inversa de la transformación, no, no, no, no, no, esta es más complicada.
+
+**00:08:22.930 - 00:08:29.610**  
+Yo te dois las correspondencias, te digo, las coordinadas en la imagen, se corresponden con
+
+**00:08:29.610 - 00:08:36.690**  
+estas otras coordinadas en la imagen bien, la imagen bien. Yo estoy estudiando el ejemplo,
+
+**00:08:36.690 - 00:08:41.610**  
+digo, estos puntos, si yo le transformo, me dan estos otros puntos. La pregunta es cuál era
+
+**00:08:41.610 - 00:08:52.650**  
+transformación. Esa es el prédio inverso. Estoy dando los puntos, me tiene que dar la matrista
+
+**00:08:52.650 - 00:08:59.370**  
+que hacer la transformación. O sea, más específicamente, dame los parámetros. Es decir, si yo
+
+**00:08:59.370 - 00:09:07.170**  
+sé que tengo una 9 puntos y después tengo una 9 puntos rotada, decime cuál es el ángulo
+
+**00:09:07.170 - 00:09:14.170**  
+alfa de rotación. Ese es un ejemplo de cómo planteo el problema. Si ustedes miran
+
+**00:09:14.170 - 00:09:19.850**  
+al cubo mágico hacia arriba, es medio truchoso porque el tipo agarró la foto y lo que hizo
+
+**00:09:19.850 - 00:09:25.410**  
+fue girar 90 grados a la foto. No lo que sacó otra foto que se hace y es súper interesante,
+
+**00:09:25.410 - 00:09:33.090**  
+pero en la misma foto es girar 90 grados. Esas líneas celestres, celestres, chulturquesas son
+
+**00:09:33.090 - 00:09:39.070**  
+coloros técnicos. Esas líneas celestres se están mostrando por más que son un montón, si las
+
+**00:09:39.070 - 00:09:45.570**  
+miran bien van a ver que son correspondencias. O sea, agarran un punto en la imagen de la
+
+**00:09:45.570 - 00:09:54.250**  
+de la izquierda y buscan el mismo punto en la imagen o la escena de la derecha. Cuando
+
+**00:09:54.250 - 00:09:59.570**  
+sigo el mismo punto en la escena es en la imagen que está representada, no la misma coordenada
+
+**00:09:59.570 - 00:10:06.810**  
+en la píxata. Obviamente es otra coordenada de píxata girada. Entonces, esto se los comento,
+
+**00:10:06.810 - 00:10:12.210**  
+no lo vamos a grabar por ahora. Yo tengo un método para obtener correspondencias de forma
+
+**00:10:12.210 - 00:10:19.370**  
+automática entre correspondencias entre dos imágenes. Que me da P y P prima, un montón,
+
+**00:10:19.370 - 00:10:28.130**  
+un montón, miles te puedes obtener. Y la pregunta es ¿qué angulo giro? En el caso de
+
+**00:10:28.130 - 00:10:32.570**  
+arriba, en realidad arriba hay una rotación y una traslación porque las rotaciones puras
+
+**00:10:32.570 - 00:10:41.810**  
+son raras en visualidad pues se rota alrededor del cero y el cero está en la esquina superior
+
+**00:10:41.810 - 00:10:49.730**  
+a la izquierda. Entonces, no son muy útiles. Cualquier rotación, con otro centro de rotación,
+
+**00:10:49.730 - 00:10:55.530**  
+matemáticamente, es equivalente a una rota traslación. Entonces, me voy a terminar preguntando
+
+**00:10:55.530 - 00:11:02.050**  
+cuál es la rota traslación. Entonces, si esos dos cubos, ¿cuántas correspondencias necesitas?
+
+**00:11:02.050 - 00:11:08.010**  
+Esa es la pregunta. ¿Cuánta? No se estoy haciendo, la pregunta vamos a responder en
+
+**00:11:08.010 - 00:11:13.530**  
+el siguiente depositivo. ¿Cuántas correspondencias yo necesito? Si tengo que
+
+**00:11:13.530 - 00:11:21.290**  
+calcular una rotación. Y después, a ver, ¿cómo lo calculo? Es más importante todavía,
+
+**00:11:21.290 - 00:11:28.090**  
+pero acá el cómo lo calculo es usar la función que te da a que te lo calcula. Acá la
+
+**00:11:28.090 - 00:11:33.170**  
+cuestión es ¿cuántas correspondencias? Le tengo que proporcionar a esa función para
+
+**00:11:33.170 - 00:11:39.610**  
+que lo pueda calcular. Es ese título que está acá. Esto se razón así. Es una cuestión
+
+**00:11:39.610 - 00:11:44.450**  
+de n ecuaciones en incógnitas las incógnitas, eso es la cantidad de parámetro que dijimos.
+
+**00:11:44.450 - 00:11:49.090**  
+Tengo que ir con una rota traslación. Tengo tres incógnitas. Entonces, ¿cuántas? ¿Cuántas?
+
+**00:11:49.090 - 00:11:55.090**  
+¿Cuántas? ¿Cuántas ecuaciones necesitas? Si son tres incógnitas necesito tres ecuaciones.
+
+**00:11:55.090 - 00:12:05.610**  
+Solo saben, mínimo, ¿no? Vamos a quedarnos con tres ecuaciones. Pero cada correspondencia es
+
+**00:12:05.610 - 00:12:13.650**  
+una equivalencia en dos D, porque cada correspondencia te está dando en X y N, cada correspondencia
+
+**00:12:13.650 - 00:12:22.990**  
+te proporciona dos ecuaciones. Por ese motivo, voy a decir ¿cuántas ecuaciones necesitas
+
+**00:12:22.990 - 00:12:28.730**  
+dividir por dos y me dice cuántas correspondencias como mínimo necesito? Si tengo más, tengo
+
+**00:12:28.730 - 00:12:36.430**  
+sobrebundancia de correspondencia y no lo voy a guardar hoy, pero es un problema que no solo
+
+**00:12:36.430 - 00:12:40.870**  
+tiene solución, sino que es desearle. También, ya tengo más ecuaciones que incógnitas en
+
+**00:12:40.870 - 00:12:47.190**  
+matemáticas, sin determinado. Perdón, ese sobre determinado no tiene solución. No, es mucho
+
+**00:12:47.190 - 00:12:54.910**  
+mejor. Cuanto más mediciones tenés de lo mismo, es mejor todavía. Lo voy a guardar en
+
+**00:12:54.910 - 00:13:01.470**  
+otras clases, ese tema, matemáticamente. A ver, matemáticamente, no es que vamos a empezar
+
+**00:13:01.470 - 00:13:05.550**  
+a ver fórmulas, porque ustedes las matemáticas se las saben, te los voy a usar los conceptos,
+
+**00:13:05.550 - 00:13:10.230**  
+que ustedes ya tienen, como estoy haciendo ahora. Entonces, si yo quiero en un arroto
+
+**00:13:10.230 - 00:13:18.860**  
+traslación, que la transformación está lauclidiana o otra formación de cuerpo rígido, necesito
+
+**00:13:18.860 - 00:13:23.260**  
+determinar tres parámetros, me bastan dos correspondencias, porque cada correspondencia
+
+**00:13:23.260 - 00:13:28.620**  
+aporta dos ecuaciones, o sea, que dos correspondencias solamente ya te está aportando cuatro
+
+**00:13:28.620 - 00:13:36.460**  
+cuestiones. Bueno, el tema es que vamos a llegar a que la homografía, como tiene ocho parámetros,
+
+**00:13:36.460 - 00:13:42.820**  
+necesita cuatro correspondencias. Con tres notas de alcanza, pero con sólo cuatro correspondencias
+
+**00:13:42.820 - 00:13:48.460**  
+ya tenés determinada una homografía que explica una transformación de una imagen a la otra.
+
+**00:13:48.460 - 00:13:57.780**  
+Bueno, yo me voy a quedar acá los problemas que con los que vamos a trabajar ahora, se
+
+**00:13:57.780 - 00:14:04.780**  
+aprovechamos la problema mínimo, o sea, tengo cuatro correspondencias que me dan ocho ecuaciones
+
+**00:14:04.780 - 00:14:12.740**  
+y ahí alguien se ocupó de resolver el problema y tiene solución en la lítica y me da la solución,
+
+**00:14:12.740 - 00:14:18.420**  
+también. Otro día vamos a seguir con mediciones reales, solvers y cómo trabajar cuando tenemos
+
+**00:14:18.420 - 00:14:24.740**  
+100 correspondencias, que es mejor, pero en la matemática que ustedes conocen en su sistema
+
+**00:14:24.740 - 00:14:35.940**  
+sobre determinado. Así que dejo esto y paso a dejamos al tema estimadores y lo que les digo
+
+**00:14:35.940 - 00:14:44.020**  
+es hay una función que te determina cuál es la homografía, entre dos imágenes, pero
+
+**00:14:44.020 - 00:14:51.300**  
+vos tenés que indicarle cuatro correspondencias. Se acuerdan de la clase de pasad, yo le dije,
+
+**00:14:51.860 - 00:14:56.260**  
+hay una homografía, no sabemos cómo lo obtenemos, vamos a suponer que se está,
+
+**00:14:56.260 - 00:15:05.140**  
+hoy aparece la función para obtenerla. Bueno, a presentación ya viste a ser ital, yo aprovecho
+
+**00:15:05.140 - 00:15:14.340**  
+para repetir lo mismo, me parece que viene en una diapositiva. Vista frontal es cuando la cámara
+
+**00:15:14.340 - 00:15:21.060**  
+mira de forma perpendicular a una escena que es predominamente plana, entonces yo mira la pareja
+
+**00:15:21.060 - 00:15:28.820**  
+y pongo la cámara mirando perpendicular de frente a la pareja de su avista frontal. Si la veo en
+
+**00:15:28.820 - 00:15:35.780**  
+diagonal es una vista imperfectiva, el aviso de frente es plana. Cuando el plano es el de piso y
+
+**00:15:35.780 - 00:15:43.780**  
+mira desde arriba se llama vistas en ital. Los satélites tienen vistas en ital. Asimágenes satélites
+
+**00:15:43.780 - 00:15:53.300**  
+son satélites mirando exactamente para abajo. Están muy lejos, necesitas mucha sum, lentes, muy
+
+**00:15:53.300 - 00:16:00.820**  
+presibilizos, etcétera. Entonces no es caro, darse el lujo de mirar en diagonal. A ver, ser lo que da
+
+**00:16:00.820 - 00:16:06.340**  
+otra, pues si satélite no llega y vos querés mirar más allá, bueno, estas más sum, también, si
+
+**00:16:06.420 - 00:16:14.660**  
+miras en de buena también ando más lejos. Bueno así que esto es una vista senital y el TP3
+
+**00:16:16.580 - 00:16:26.580**  
+tiene que ver con localizar en dos de en en en en el plano y la vida senital es un concepto
+
+**00:16:26.580 - 00:16:32.740**  
+intermedio que va a nos va a resultar este muy útil. Bueno imagínense este este problema
+
+**00:16:36.900 - 00:16:44.340**  
+perdón me puse el casete equivocado. Yo tengo que pasar esta de opositiva rápido porque son las
+
+**00:16:44.340 - 00:16:50.740**  
+que vimos la clase pasada también y hoy a llegar al punto que es donde dejamos la clase pasada. Entonces
+
+**00:16:51.460 - 00:17:00.060**  
+yo tengo que hacer algún sistema de conducción de vehículo autónomos. Ok, tengo que ver las
+
+**00:17:00.060 - 00:17:06.540**  
+líneas de los bordes de la ruta y por ejemplo hay un acuro al final, entonces terminar che y
+
+**00:17:06.540 - 00:17:11.620**  
+a que distancia estoy de los bordes de la ruta, después puedo decidir si yo tengo que ir por
+
+**00:17:11.620 - 00:17:18.660**  
+la mitad de la derecha, porque es olemano. Y a que distancia está? Yo puedo tener un sistema que me
+
+**00:17:18.660 - 00:17:25.260**  
+diga en píxeles acá se termina la ruta, pero esa coordenada en píxeles yo la tengo transformar en
+
+**00:17:25.260 - 00:17:34.780**  
+metros, ese es el problema que vamos a encargar también, le mostré esto, estas son vistas enitales,
+
+**00:17:34.780 - 00:17:40.860**  
+todas las vistas enitales como no son perfectas, las vamos a considerar vistas perfectivas y se
+
+**00:17:41.380 - 00:17:50.340**  
+encendan en la realidad y se corrige con una homografía, todas, todas. Entonces este tipo de
+
+**00:17:50.340 - 00:17:56.380**  
+trajo práctico ustedes van a usar una vista imperfectiva, forzada, o sea que esté bien en
+
+**00:17:56.380 - 00:18:04.860**  
+Diego Nala el plano, para que se note como funciona, pero eso aunque tengas la cámara perfectamente
+
+**00:18:05.580 - 00:18:12.780**  
+no está nunca perfecto el pixel y siempre las es una corrección homográfica, por la duda no es que
+
+**00:18:12.780 - 00:18:20.340**  
+estoy chavita, eso soy consciente que digo dos veces las cosas, yo tengo mucha fe en la homosis
+
+**00:18:20.340 - 00:18:29.900**  
+que te divina entrando aunque no quieras y te resistas. Bueno así que el TP13 puede resuelves
+
+**00:18:29.900 - 00:18:38.140**  
+yo click en una bola, o sea que te termino la coordenada x y en píxeles de la bola, me
+
+**00:18:38.140 - 00:18:42.740**  
+tiene que decir cuál es la coordenada en metros, son centímetros, milímetros en la mesa,
+
+**00:18:42.740 - 00:18:50.260**  
+lo que esta es la última depositiva de la clase pasada y voy a retomar todo lo que vimos
+
+**00:18:50.260 - 00:18:56.220**  
+acá porque acá arranca el tema, lo de hacer click es una manera de decir que tengo un sistema
+
+**00:18:56.380 - 00:19:01.480**  
+artificial que me detecta las bolas en la mesa y me da su coordenada, no importa cómo tuve la
+
+**00:19:01.480 - 00:19:08.660**  
+coordenada, lo importante es que lo tuve en píxeles y yo ahora quiero coordenadas métricas, este
+
+**00:19:08.660 - 00:19:15.860**  
+temita que estoy abordando de homografía, el Deep Learning no lo hace bien, lo hace bastante mal
+
+**00:19:15.860 - 00:19:23.940**  
+entonces los sistemas serios, no digo a académico o que alguno hace un trabajo práctico de
+
+**00:19:23.940 - 00:19:31.500**  
+en algún lado, los sistemas serios us pueden usar Deep Learning todo pero después te meten
+
+**00:19:31.500 - 00:19:42.060**  
+homografía y terminan calculando la distancia de manera matemática, está bien haciendo el
+
+**00:19:42.060 - 00:19:50.740**  
+cálculo, no piden lo Deep Learning que infiera y suponga un valor, entonces vamos a determinar
+
+**00:19:50.900 - 00:19:57.340**  
+de alguna manera las posiciones en píxeles de estas bolas y aquí coordenada pertenece en la mesa,
+
+**00:19:57.340 - 00:20:02.400**  
+se asume que tiene un sistema de coordenada de la mesa, entonces tenemos que empezar a sumir un
+
+**00:20:02.400 - 00:20:06.700**  
+montón de información que no está acá en la imagen, sino que vos la configuraste y acá es
+
+**00:20:06.700 - 00:20:12.860**  
+donde empezamos a ver el TP3 que es un caso de uso muy frecuente, cámara fija, escena fija,
+
+**00:20:12.860 - 00:20:20.180**  
+vos hiciste un proceso de registración de la escena en este caso es determinar un sistema de referencia
+
+**00:20:20.180 - 00:20:29.300**  
+inventar, determinarlo arbitrariamente de la mesa donde vos deciste, este me parece el cosito
+
+**00:20:29.300 - 00:20:40.180**  
+de este que no quiero, la mambo, acá, no, si lo muevo me tengo que alejar, la, cómo se llama el
+
+**00:20:40.900 - 00:20:49.860**  
+cosito, este, la buchaca, no se quede la izquierda abajo, va a tener el cero, de hecho voy a
+
+**00:20:49.860 - 00:20:57.380**  
+usar el borde de la mesa, el borde interno de la mesa van a hacer los ejes X y griega, este
+
+**00:20:57.380 - 00:21:02.980**  
+de acá va a ser de X y griega, este de acá va a ser de X, la intersección de esos dos ejes me da
+
+**00:21:02.980 - 00:21:08.380**  
+el origen y a partir de ahí mido todo en milímetros, hay más allá de que tengo, no tengo
+
+**00:21:08.380 - 00:21:14.940**  
+una profesión milimétrica, la unidad va a ser milímetros, este, y tengo que tener una homografía
+
+**00:21:14.940 - 00:21:22.220**  
+y acá viene el tema, la homografía, yo tengo dos homografías y me estoy adelantando, por eso tengo
+
+**00:21:22.220 - 00:21:30.460**  
+una homografía que es una matriestra por tres, de hoy la coordenada, la homogénea, en píxeles y el
+
+**00:21:30.460 - 00:21:37.700**  
+resultado me da la coordenada milímetros, y ya tengo resultado que te buscando y no necesito
+
+**00:21:37.820 - 00:21:47.620**  
+generar el warp, warp perspectiva, no necesito generar la vista frontal de la mesa, de hecho el warp, el
+
+**00:21:47.620 - 00:21:54.500**  
+warp de la imagen, es una tarea relativamente pesada, en el sentido 6x en mi computadora lo hace
+
+**00:21:54.500 - 00:21:58.980**  
+lo hace en tiempo real y no tengo problema, sí está bien, pero se lo das una rama repa y lo vas a hacer un
+
+**00:21:58.980 - 00:22:08.700**  
+sistema de visión artificial y es lento, también, y digamos, usualmente si vos para determinar las
+
+**00:22:08.700 - 00:22:14.020**  
+coordenadas, primero se es un warp y después buscar las coordenadas en píxeles dentro del warp para
+
+**00:22:14.020 - 00:22:20.060**  
+hacer una escala y pasarlo a milímetros, estás usando una muleta que no es necesaria, se estás
+
+**00:22:20.060 - 00:22:23.900**  
+haciendo un montón de procesamente el divino o todo simplemente porque no entendes el problema,
+
+**00:22:24.900 - 00:22:30.740**  
+yo prefiero que lo entiendo por lo menos se nos voy a explicar, después ustedes estarán más o
+
+**00:22:30.740 - 00:22:39.460**  
+menos permeables a entenderlo, acá el problema es que vos tenés la coordenada en píxeles de una
+
+**00:22:39.460 - 00:22:46.460**  
+bola y hay una homografía que te da resultó directamente milímetros, hay que determinar esa homografía,
+
+**00:22:46.460 - 00:22:53.620**  
+pero ya está, no necesitas generar la vista el warp, por cuestiones académicas y todo eso el
+
+**00:22:53.620 - 00:22:59.460**  
+trabajo práctico, y ya que estás hacia el warp y mostrarlo, está bien, pero la idea es que
+
+**00:22:59.460 - 00:23:05.380**  
+vos haces el warp para visualización, no para seguir miendo cosas en la imagen deformada,
+
+**00:23:05.380 - 00:23:14.460**  
+eso no es una buena práctica, porque en la imagen deformada en la parte de abajo que tiene más
+
+**00:23:14.460 - 00:23:20.340**  
+resolución a chico y perdi de información, y en la parte de arriba que tienen menos resolución
+
+**00:23:20.340 - 00:23:27.140**  
+agrandó, píxelo y generó datos, pero no es información, la información es lo que
+
+**00:23:27.140 - 00:23:34.180**  
+llamó a la cámara, la cámara es el sensor, la imagen que viene, esa es la que tiene la información que
+
+**00:23:34.180 - 00:23:41.420**  
+puste captada, todo lo que vos procesar después, si vos es el warp, no vas a obtener nueva información,
+
+**00:23:42.140 - 00:23:46.900**  
+también lo que sí puede correr rico de perder información, es lo que pasa, bueno,
+
+**00:23:46.900 - 00:23:56.540**  
+entonces vamos a encarar este tema con introduciendo conceptos, la homografía es una transformación
+
+**00:23:56.540 - 00:24:07.300**  
+plano a plano y transforma de una perspectiva a otra perspectiva, mi interés, nuestro interés en
+
+**00:24:07.300 - 00:24:16.540**  
+esta materia y es el interés principal, es que uno de esos planos sea una vista frontal,
+
+**00:24:16.540 - 00:24:22.980**  
+también entonces no es que va de una perspectiva a otra perspectiva cualquiera, sino que va de una
+
+**00:24:22.980 - 00:24:27.860**  
+perspectiva así que en diagonal obviamente dice perfecto, algo que es frontal o arraves,
+
+**00:24:27.860 - 00:24:34.700**  
+parte de un juego frontal y lo llevo a una perspectiva, o sea que mi homografía siempre
+
+**00:24:34.980 - 00:24:39.860**  
+una de los dos de las dos imágenes o de los dos lados de la homografía,
+
+**00:24:39.860 - 00:24:47.180**  
+de los sistemas de referencias, va a corresponder a la vista frontal, el otro la vista
+
+**00:24:47.180 - 00:24:53.660**  
+imperfectiva, en el trajo práctico el caso uso normal es la cámara obtiene una vista
+
+**00:24:53.660 - 00:25:01.980**  
+imperfectiva y tiene que generar o pasar a coordenadas frontales, también específicamente,
+
+**00:25:02.460 - 00:25:16.320**  
+ese es el caso uso normal, entonces esa coordenada frontal es tengo dos casos, dos casos que
+
+**00:25:16.320 - 00:25:22.760**  
+ustedes van a ver, uno es el que me da coordenadas físicas en milímetros en lo que vos quieras y
+
+**00:25:22.760 - 00:25:32.200**  
+el otro es el que me genera un warp y me da coordenadas en píxeles, son lo mismo con escala distintas,
+
+**00:25:32.200 - 00:25:38.920**  
+una tan píxeles la otra está en milímetros, hay gente que dice sabes que voy a hacer un warp y hago
+
+**00:25:38.920 - 00:25:44.520**  
+coincidir el píxel con el milímetro, bueno pero eso es una casualidad, a veces después de ese,
+
+**00:25:44.520 - 00:25:52.800**  
+no, ni siquiera es conveniente por lo menos, acá no, porque acá siempre es mejor entender que
+
+**00:25:52.800 - 00:25:59.000**  
+existen las dos y que son dos distintas, también, porque si vos decís no, porque es más
+
+**00:25:59.000 - 00:26:03.800**  
+eficiente y lo hago así, buenísimo, pero que no sea una limitación conceptual tuya,
+
+**00:26:08.940 - 00:26:15.820**  
+me acuerdo ahora de estas limitadas mentales, hay una universidad donde las materias
+
+**00:26:15.820 - 00:26:21.500**  
+la damos, es el cuatro mes de los que corresponden, o en el primero o en el segundo cuatro mes, y
+
+**00:26:21.500 - 00:26:26.100**  
+es distinto, acá todas las materias se dan todos los cuatro mes de nada, pero nada, el otro tiene menos
+
+**00:26:26.100 - 00:26:32.380**  
+alumnos, se da el cuatro mes de corazón, y de repente surgió que si hay muchos alumnos abrimos
+
+**00:26:32.380 - 00:26:39.060**  
+una comisión, si hay alguna comisión le damos una materia y a la otra le damos otra materia y el
+
+**00:26:39.060 - 00:26:45.260**  
+cuatro mes de siguiente lo damos al revés, entonces los tipos siguen al día, pero algunos hace
+
+**00:26:45.260 - 00:26:51.540**  
+una versión alternada de materias, que se puede de las correlativas para mí y todo, yo tengo el
+
+**00:26:51.540 - 00:26:57.260**  
+siguiente problema, cuando tengo que alternar dos cuatro mes tres, del mismo año a todo
+
+**00:26:57.260 - 00:27:01.980**  
+día, cuando tengo que alternar el segundo cuatro mes tres o un año con el primero cuatro mes
+
+**00:27:01.980 - 00:27:07.980**  
+tres años siguiente, son dos cuatro mes de consecutivos, creo que viene entendiendo lo que digo,
+
+**00:27:07.980 - 00:27:15.180**  
+saca entre lo mismo, la gente con la que yo hablo no lo entiende, porque hay un corte de, o sea,
+
+**00:27:15.180 - 00:27:19.520**  
+si es el tres cuatro mes tres cuatro y cinco, está todo bien, si es el tres de cinco y el seis, me
+
+**00:27:19.520 - 00:27:24.660**  
+paso perdón, lo dije a revés, entre el cinco y el seis está en el mismo año, si es el seis
+
+**00:27:24.660 - 00:27:32.320**  
+al siete hay un corte de año y no lo ven posible, no lo entiendo, esos son trabaj mentales, o sea,
+
+**00:27:32.320 - 00:27:42.840**  
+se puede, pero del otro lado, el hay un software que no comprende el concepto, entonces acá es
+
+**00:27:42.840 - 00:27:48.760**  
+súper importante entender que la homografía vas a usar una para obtener los milímetros
+
+**00:27:48.760 - 00:27:56.680**  
+o centímetros o kilómetros y otra para la visualización frontal, son muy parecidas, son
+
+**00:27:56.680 - 00:28:09.400**  
+proporcionales y una y otra, pero son dos, entonces esto que esto que le dije, yo es esto que está
+
+**00:28:09.400 - 00:28:16.760**  
+acá, este, yo te paso el comento, estas cosas les hago propósito, no sé si funciona, mi cabeza
+
+**00:28:16.760 - 00:28:23.520**  
+funciona, como yo dice estas, estas son diapositivas nuevas, las hices de poco, las diez de poco en la otra
+
+**00:28:23.520 - 00:28:28.440**  
+universidad, las tengo de amor y entonces yo la muchas veces de lo que vengo hablando es lo que va
+
+**00:28:28.440 - 00:28:33.560**  
+a aparecer en la siente de la positiva, mi sensación es que funciona, capaz que los confundo más
+
+**00:28:33.560 - 00:28:42.000**  
+pero, entonces yo tengo esto, tengo la mesa de utilizar con la imagen que es la medición, el sensor
+
+**00:28:42.000 - 00:28:49.160**  
+captó esa imagen, esto de la derecha es un warp, sirve para visualización, yo no debería ejecutar
+
+**00:28:49.160 - 00:28:55.680**  
+un modelo de detección de bolas en la imagen de la derecha, y o no es que está prohibido, si lo
+
+**00:28:55.680 - 00:29:01.720**  
+vas a hacer, tener un buen motivo, o sea acá lo más sano es ejecutarlo en la imagen de la izquierda,
+
+**00:29:01.720 - 00:29:09.880**  
+la que es que le tiene la imagen, la medición pura y después convertir coordenadas, entonces
+
+**00:29:12.160 - 00:29:17.560**  
+yo voy a tener estas dos homografías, la que te convierte de las coordenadas de píxeles acá,
+
+**00:29:17.560 - 00:29:23.920**  
+a coordenadas de píxeles de al lado, esa es la homografía con la cual se genera el warp,
+
+**00:29:25.040 - 00:29:34.600**  
+o sea la que convierte por píxeles a píxeles es la que le aplico la imagen entera y obtengo la visualización
+
+**00:29:35.480 - 00:29:42.080**  
+que en este caso es una vista segital, la otra homografía que le digo que proporciona el
+
+**00:29:42.080 - 00:29:52.040**  
+convierte de píxeles a centímetros, ahí por no vas a hacer un warp, por no vas a generar un imagen,
+
+**00:29:52.040 - 00:29:57.480**  
+una imagen se genera en píxeles, no en centímetros, lo que vas a hacer es que le hace clic acá de
+
+**00:29:57.480 - 00:30:02.040**  
+la coordenada y tener la coordenada en centímetro, digo podés detectar todas las bolas y poner un
+
+**00:30:02.040 - 00:30:09.120**  
+carterito que diga coordenadas en centímetros de cada una de ellas usando la homografía directamente
+
+**00:30:09.120 - 00:30:19.960**  
+sobre la coordenada, no hay warp en esta segunda homografía, lo que llamamos plano físico,
+
+**00:30:20.960 - 00:30:33.960**  
+plano imagen y plano físico, bueno, yo en esta, yo que ya le estoy tirando más información,
+
+**00:30:33.960 - 00:30:43.600**  
+lo anterior, es la esencia del TP3, esto también está en el TP3 y les quiero decir para que
+
+**00:30:43.600 - 00:30:48.880**  
+si yo tengo, acabo de hablar exclusivamente de visualización, yo tengo las coordenadas en centímetros
+
+**00:30:48.880 - 00:30:57.160**  
+que es lo que quería buscar con una homografía, ahora le voy a dar un caso de uso que cuando yo no se
+
+**00:30:57.160 - 00:31:04.720**  
+lo explico, la mayoría rompe acá, no se ve como resolverlo y un tema que es muy fácil, lo que pasa es
+
+**00:31:04.720 - 00:31:12.160**  
+que a ustedes le va a llevar tiempo a terminar de entender la transformación homográfica, es medio raro
+
+**00:31:12.160 - 00:31:22.000**  
+ultima, entonces los conceptos le van, digo, aunque no lo crea, a mí me llevó años, me leí un
+
+**00:31:22.000 - 00:31:30.600**  
+paper de que no están viejos, no son esos papers de la de Gal 80, son papers del 2000 y pico que
+
+**00:31:30.600 - 00:31:37.120**  
+habla de la homografía y claro, ahí me di cuenta que las propiedades que tiene son tantas y están
+
+**00:31:37.120 - 00:31:46.120**  
+profundo el tema, que de esta clase a ustedes pueden entender algo, pero si alguno se entusias más
+
+**00:31:46.120 - 00:31:54.360**  
+medio raro, me pasa a mí nada más, pero y le empieza a dar vuelta mentalmente al tema, hay un montón
+
+**00:31:54.360 - 00:32:02.360**  
+de aspectos que los van a ir descubriendo que no lo vieron de entrada y que es bastante más complejo,
+
+**00:32:02.360 - 00:32:11.360**  
+bueno, los que le digo es, ustedes obtuvieron de alguna manera la homografía para generar la vista
+
+**00:32:11.360 - 00:32:19.400**  
+senital y si no el warp generan la vista senital, ahora yo le digo, quiero que me dibujen una
+
+**00:32:19.400 - 00:32:28.480**  
+grilla en perspectiva, esta que está en nila acá, la dibujen yo a mano, me salió, ahí está, es lo que, no se
+
+**00:32:28.480 - 00:32:33.920**  
+dibuja así, o sea, la quiero, la tienega el cular, que salga bien, una de un podericulado,
+
+**00:32:35.480 - 00:32:42.480**  
+cómo haces y vos podés empezar a marear de con ecuaciones, es decir, flaco, es lo más fácil del mundo,
+
+**00:32:42.480 - 00:32:53.960**  
+ahora que te la homografía, es lo más fácil del mundo, la grilla en la vista, en la vista senital es
+
+**00:32:53.960 - 00:32:58.960**  
+buena pavada, bueno, de hecho tendré que ser cuadrado acá que me quedaron rectangular de la cuadrada,
+
+**00:33:00.960 - 00:33:07.960**  
+digamos, calcular los vertices, esto es una pavada, creo que no lo todos explicarse bien, necesito la pregunta,
+
+**00:33:07.960 - 00:33:15.000**  
+pero tenemos, hace este cuadro y culado acá, en las coordenadas de la vista senital, ni siquiera se
+
+**00:33:15.000 - 00:33:22.480**  
+falta dibujar la vista senital, lo calculas a las coordenadas, y a esas coordenadas, le calculas, le aplican
+
+**00:33:22.480 - 00:33:29.480**  
+la homografía inversa, y para cada punto acá podré ser el correspondiente punto que te define la grilla en perspectiva,
+
+**00:33:29.480 - 00:33:35.480**  
+vamos a niveles prácticos, vamos, o sea, ¿qué significa dibujar la grilla?
+
+**00:33:36.480 - 00:33:43.480**  
+y eso tengo que dibujar segmentos rectos, y para acá segmento necesito los vertices de sus extremos,
+
+**00:33:43.480 - 00:33:56.480**  
+entonces tengo 1, 2, 3, 4, segmentos, así lo instituinares y los transversales son 1, 2, 3, 4, 5, 6, 7, 7, 7, 4, segmentos, 13, segmentos,
+
+**00:33:56.480 - 00:34:08.480**  
+o sea, 26 vertices de segmentos, yo necesito determinar los 26 algunos coincidentes, ¿no?, porque este vertices de vertices
+
+**00:34:08.480 - 00:34:16.480**  
+de parte de segmentos es el mismo que la otra, para terminar son 26 vertices, yo lo determino de manera muy fácil en el espacio senital de warp,
+
+**00:34:16.480 - 00:34:29.560**  
+y lo que hago es transformarlo con la homografía inversa y ya me dan las coordenadas en el espacio de la vista imperfectiva
+
+**00:34:29.560 - 00:34:39.560**  
+y los anotos directamente en esa imagen, más fácil no se lo puede dejar, pero cuando vas a dibujar una grilla
+
+**00:34:39.560 - 00:34:48.560**  
+tenés que pensarla en este espacio, en el espacio serital, ojo que lo mismo podría hacer derecho con la grilla en centímetros,
+
+**00:34:48.560 - 00:34:56.560**  
+y en vez de usar esta homografía, usan la homografía que te llevas a centímetros, yo me voy a ver, quiero dar un cuadro y curado de 20 centímetros del lado,
+
+**00:34:57.560 - 00:35:09.560**  
+en las coordenadas son 0, 0, 20, 0, 40, 0, 60 y después para arriba, ¿no?, si tu mesa había de villar no es múltiplo de 20 centímetros,
+
+**00:35:09.560 - 00:35:18.560**  
+bueno no te va a coincidir con el borde, no importa, pues sigue con el cero, del otro, no, bueno creo que se entendió, si vas a dibujar una grilla,
+
+**00:35:18.560 - 00:35:37.560**  
+tenés que pensarla en el plano, en la vista frontal y transformarla con la homografía, esa es la manera, bueno, entonces, esto es un resumen de todo lo que venimos hablando, primero,
+
+**00:35:38.560 - 00:35:46.560**  
+para transformar la imagen a plano físico, no es un resumen, esto es específicamente la transformación, no la notación, sino la de plano físico,
+
+**00:35:46.560 - 00:36:00.560**  
+no hay warp de visualización, eso es con la otra homografía, con la visualización, la plano físico hace la homografía directa, que a partir del pixel obtener las coordenadas físicas,
+
+**00:36:01.560 - 00:36:14.560**  
+y puedes hacer al revés, a partir de la coordenada físicas obtener con la homografía inversa, el pixel, ¿por qué?, porque yo digo, a ver, en la vista de perspectiva marcame la coordenada ciencia,
+
+**00:36:14.560 - 00:36:21.560**  
+bueno lo explicaba la homografía inversa y te da el pixel en la mesa a villar por el, ¿a dónde va?,
+
+**00:36:21.560 - 00:36:32.560**  
+este foto, yo tengo dos videos de este foto, de hecho, este es un fotograma, este es un trabajo práctico del año pasado,
+
+**00:36:32.560 - 00:36:42.560**  
+no hicieron la otra universidad porque allá es presencial, entonces es más fácil, bueno igual a ustedes les tengo que dar un autito, uno mucho mejor que este,
+
+**00:36:42.560 - 00:36:53.560**  
+para hacer un trabajo de este estilo, de haber un paso más sofisticado, ¿no?, pero, acá le he sido un autito que lo manejaban con, tiene un sp2, lo maneja un Bluetooth,
+
+**00:36:53.560 - 00:36:59.560**  
+creo que todos están familiarizados con estas cosas, tiene dos ruedas y fácil de manejar el sp3,
+
+**00:36:59.560 - 00:37:08.560**  
+tiene que simplemente le mandas las instrucciones de que si querés que gire de izquierdo de derecha se va a hacer,
+
+**00:37:08.560 - 00:37:17.560**  
+le mandas la velocidad de cada una de las dos ruedas, entonces el autito tiene un marcador arruco,
+
+**00:37:17.560 - 00:37:25.560**  
+esto, creo que se lo comenté hace pasada, todavía no se los divien pero están los marcadores cuére, y te conocen,
+
+**00:37:25.560 - 00:37:36.560**  
+para localización, los arrucos son mejores, el cuére codifica un texto,
+
+**00:37:36.560 - 00:37:44.560**  
+típicamente una URL, el marcador arruco codifica un símbolo, un ID,
+
+**00:37:44.560 - 00:37:55.560**  
+entonces acá están usando un set de marcadores que tienen 50 ID, y de los cuales se usan solo 5, 4 para lo que es la cancha,
+
+**00:37:56.560 - 00:38:03.560**  
+entonces ¿qué hace el sistema? esto es más sofisticado que lo que usted va a hacer de p3 pero el uso también,
+
+**00:38:03.560 - 00:38:12.560**  
+identifica 4 marcadores de la cancha y con eso vika las esquinas de la cancha,
+
+**00:38:12.560 - 00:38:20.560**  
+también ya alguien cargó cuáles son las coordenadas métricas, o sea,
+
+**00:38:21.560 - 00:38:29.560**  
+este es el cero, tiene un ahí diferente cada uno, saben que este es el cero y se saben las dimensiones de la cancha,
+
+**00:38:29.560 - 00:38:38.560**  
+yo no lo recuerdo pero 50 centímetros por 40 y eso está cargado en el código, en tu código Python,
+
+**00:38:38.560 - 00:38:44.560**  
+entonces se releva la cancha y con eso se releva la homografía,
+
+**00:38:45.560 - 00:38:52.560**  
+que te permite generar una visualización, por un lado hace un warp cuando le finis cuantos píxeles crees para eso,
+
+**00:38:52.560 - 00:38:58.560**  
+pero por otro lado haces la conversión a centímetros, directa, eso ya sale,
+
+**00:38:58.560 - 00:39:03.560**  
+entonces cuando después vos tenés la cordana en píxeles de este marcador, porque el agudito se mueve,
+
+**00:39:03.560 - 00:39:09.560**  
+4 cuadros, vos ya tenés la homografía que te lo traduce a milímetros,
+
+**00:39:10.560 - 00:39:20.560**  
+bueno, entonces, esto ya lo vimos visto, cuando vimos sistemas de referencia,
+
+**00:39:20.560 - 00:39:28.560**  
+6 cámaras, W, de World of the World, y acá vamos a tener otro cita que es la vista senitar,
+
+**00:39:28.560 - 00:39:37.560**  
+por qué no las coordenadas en el plano, son dos de, no son tres de,
+
+**00:39:37.560 - 00:39:49.560**  
+bueno, entonces cámara es la cámara, mundo real es nuestro plano físico y Z es la visualización,
+
+**00:39:49.560 - 00:39:52.560**  
+es el sistema de referencia en píxeles de la visualización,
+
+**00:39:53.560 - 00:40:01.560**  
+entonces H, Z, Z es la homografía que convierte de la cámara a el espacio senital,
+
+**00:40:01.560 - 00:40:08.560**  
+esto es la que te produce la visualización,
+
+**00:40:08.560 - 00:40:12.560**  
+esta es el warp perfecto,
+
+**00:40:13.560 - 00:40:21.130**  
+ahora te interesa obtener, por ejemplo, una manera de hacer esto,
+
+**00:40:21.130 - 00:40:28.130**  
+es obtener W, Z, dice ok, ya lo tengo a la vista senita,
+
+**00:40:28.130 - 00:40:31.130**  
+ahora lo quiero pasar a metricas, entonces puedes obtener esto,
+
+**00:40:31.130 - 00:40:35.130**  
+que va a ser una transformación de escala, también, pero en definitivo,
+
+**00:40:35.130 - 00:40:42.130**  
+vos puedes ir a buscar directamente W, que es la que transforma de la coordenada en píxeles,
+
+**00:40:42.130 - 00:40:47.130**  
+del imagen de la cámara a el plano físico,
+
+**00:40:47.130 - 00:40:51.130**  
+fíxeles son todas coordenadas, son homogéneas, son homogéneas,
+
+**00:40:51.130 - 00:40:55.130**  
+al final del día vos tenes que deshomogenerizar,
+
+**00:40:55.130 - 00:41:01.730**  
+o sea, normalizar y quitar el último valor que te queda en uno,
+
+**00:41:01.730 - 00:41:05.730**  
+bueno, ¿cómo obtenes la homografía?
+
+**00:41:05.730 - 00:41:08.730**  
+En este caso es la de la vista senital,
+
+**00:41:08.730 - 00:41:12.730**  
+yo porque la vista senital, yo insisto porque más gráfico para entender,
+
+**00:41:12.730 - 00:41:20.730**  
+vos producís una vista senital, pero después que se manejen la homografía física,
+
+**00:41:20.730 - 00:41:24.730**  
+no lo tendría que traer ningún problema.
+
+**00:41:24.730 - 00:41:27.730**  
+Primero de todo vos tenés que definir cómo va a ser,
+
+**00:41:27.730 - 00:41:29.730**  
+¿qué tamaño tiene tu vista senital?
+
+**00:41:29.730 - 00:41:37.270**  
+Entonces acá tenés el 0, 0, también y acá tenés el 100, 200,
+
+**00:41:37.270 - 00:41:46.270**  
+¿por qué? Porque yo decidí que mi visualización va a ser un imagen de 100 por 200,
+
+**00:41:46.270 - 00:41:51.270**  
+también, súper importante, eso es una decisión tuya de diseños,
+
+**00:41:51.270 - 00:41:55.270**  
+que déis la visualización más grande, cambié de los píxeles de ahí.
+
+**00:41:55.270 - 00:42:03.270**  
+Hay otra cosa muy importante que no sale de la imagen y es un dato que tenés que proporcionar vos externamente,
+
+**00:42:03.270 - 00:42:06.270**  
+la relación de aspecto, está bien.
+
+**00:42:06.270 - 00:42:13.270**  
+Acá estos 100, 200, asume que la mesa de villar tiene el doble largo que de ancho.
+
+**00:42:13.270 - 00:42:21.270**  
+Yo creo que es así pero, digamos, vos tenés que saber cuál es la proporción por lo menos
+
+**00:42:21.270 - 00:42:25.270**  
+y tenés que mantener esa proporción en la visualización, si no te va a salir deformado
+
+**00:42:25.270 - 00:42:29.270**  
+y eso no se obtiene automáticamente de la imagen en perspectiva,
+
+**00:42:29.270 - 00:42:31.270**  
+es un dato que tenés que tener.
+
+**00:42:32.270 - 00:42:40.270**  
+Entonces, cuando vos planteas que esta tuvita senital, este es el espacio senital,
+
+**00:42:40.270 - 00:42:45.270**  
+fíjate que esta línea, este están planteando correspondencias.
+
+**00:42:45.270 - 00:42:53.270**  
+Entonces vos, a mano o vas a hacer clic en este vértice de la mesa,
+
+**00:42:53.270 - 00:42:58.270**  
+vas a terminar las coronadas en píxeles y vas a decir,
+
+**00:42:58.270 - 00:43:05.270**  
+el 00 de mi vista senital se corresponde con esta coordenada de acá,
+
+**00:43:05.270 - 00:43:12.270**  
+este, creo que lo puse a revés el día 200, no?
+
+**00:43:12.270 - 00:43:14.270**  
+No, 100, 200, se quita bien.
+
+**00:43:14.270 - 00:43:22.270**  
+El 100 cero que está acá se corresponde con la coordenada que hay que ver cuál es de acá y así con las cuatro.
+
+**00:43:22.270 - 00:43:34.720**  
+Con eso vos tenés cuatro correspondencias, son las que necesitas para la función Get Perspective Transform,
+
+**00:43:34.720 - 00:43:37.720**  
+a divinen que hace esa función, no, no estoy introduciendo acá,
+
+**00:43:37.720 - 00:43:42.720**  
+y la función que va le da a las cuatro correspondencias necesarias y te calcula la homografía,
+
+**00:43:42.720 - 00:43:46.720**  
+es lo que vimos con el estimador, es lo que hace,
+
+**00:43:46.720 - 00:43:53.720**  
+no es un solo el calculo directo, le da a las cuatro correspondencias y te calcula la homografía.
+
+**00:43:53.720 - 00:43:59.720**  
+Obviamente que depende si vos presentas las correspondencias la pueden poner por un lado,
+
+**00:43:59.720 - 00:44:03.720**  
+primero las de esta imagen, segundo la de la otra imagen o a revés,
+
+**00:44:03.720 - 00:44:09.720**  
+depende del orden en que se las presentas, te va a dar la homografía o la homografía inversa, no?
+
+**00:44:09.720 - 00:44:11.720**  
+Obvio.
+
+**00:44:11.720 - 00:44:17.720**  
+Bueno, les digo la función es por la duda que se encuentra ya que Chagepd y otra cosa.
+
+**00:44:17.720 - 00:44:22.720**  
+Get Perspective Transform es la función que yo les recomiendo usar en este TP3,
+
+**00:44:22.720 - 00:44:26.720**  
+ahí otra más general cuando vos tenés más que cuatro correspondencias,
+
+**00:44:26.720 - 00:44:30.720**  
+y cuando es más, no es cinco, sino 100 o mil,
+
+**00:44:30.720 - 00:44:34.720**  
+que surge en el método que yo les mostré con el cubito,
+
+**00:44:34.720 - 00:44:38.720**  
+ahí usa Fynomography que es mucho mejor.
+
+**00:44:38.720 - 00:44:41.720**  
+En el TP3, ustedes van a tener cuatro correspondencias,
+
+**00:44:41.720 - 00:44:46.720**  
+entonces no tienen que usar Fynomography, tienen que usar Get Perspective Transform,
+
+**00:44:46.720 - 00:44:49.720**  
+que ya es el cálculo directo.
+
+**00:44:50.720 - 00:45:01.720**  
+Bueno, entonces una vez que tienen determinadas las correspondencias y calculadas la homografía HZC,
+
+**00:45:01.720 - 00:45:07.720**  
+ahí puedes usar Word Perspective con HZC, te va a generar la vista serital.
+
+**00:45:07.720 - 00:45:15.720**  
+En rigor, no es exactamente esta vista porque si se fijan en la diapositiva anterior,
+
+**00:45:16.720 - 00:45:20.720**  
+las dos atrás, vos estás tomando las coordenadas internas,
+
+**00:45:20.720 - 00:45:29.720**  
+o sea que debería tomar solamente la parte de adentro de la mesa,
+
+**00:45:29.720 - 00:45:32.720**  
+esto es una ilustración.
+
+**00:45:32.720 - 00:45:39.290**  
+Bueno, entonces vos querés hacer la visualización como está acá abajo,
+
+**00:45:39.290 - 00:45:41.290**  
+también usas Word Perspective.
+
+**00:45:41.290 - 00:45:44.290**  
+Creo que esto ya lo hablamos porque se generan dos triángulos negros,
+
+**00:45:45.290 - 00:45:49.290**  
+porque es de la parte que la cámara no ve,
+
+**00:45:49.290 - 00:45:52.290**  
+vos estás viendo toda la ruta la vez a lo lejos,
+
+**00:45:52.290 - 00:45:55.290**  
+en la parte de abajo es solo tu carril, porque la cámara no llega,
+
+**00:45:55.290 - 00:46:03.290**  
+bueno, lo que pasa acá, en la parte de abajo es solamente este carril de la derecha,
+
+**00:46:03.290 - 00:46:08.290**  
+en la medida que subís en la imagen de la vista serital, ves más.
+
+**00:46:09.290 - 00:46:17.760**  
+Otra cosa, vos para generar esta imagen, la homografía tuvo en cuenta por ejemplo correspondencias
+
+**00:46:17.760 - 00:46:20.760**  
+y uno decide hasta dónde quiere ver.
+
+**00:46:20.760 - 00:46:25.760**  
+En rigor, esta imagen de acá abajo podría ir mucho más grande a tener infinitos,
+
+**00:46:25.760 - 00:46:27.760**  
+si yo veo el horizonte.
+
+**00:46:27.760 - 00:46:32.760**  
+De hecho, nunca, nunca el contenido de la homografía serital va a superar el horizonte,
+
+**00:46:32.760 - 00:46:36.760**  
+o sea que esta parte de arriba de ser este imagen no va a aparecer esto,
+
+**00:46:36.760 - 00:46:41.760**  
+esto puede crecer hasta el infinito y nunca llegar a ver el cielo.
+
+**00:46:41.760 - 00:46:46.760**  
+Bueno, si lo entienden en barro ahora y si no, el que sea curioso,
+
+**00:46:46.760 - 00:46:49.760**  
+se lo queda romiendo un poco.
+
+**00:46:49.760 - 00:46:52.760**  
+Bueno, entonces, ¿cómo hago la transformación de mundo real?
+
+**00:46:52.760 - 00:46:58.760**  
+Yo voy a usar la visualización de la vista serital para estas diapositivas,
+
+**00:46:58.760 - 00:47:01.760**  
+para explicar mejor lo que estoy, lo que quiero decir,
+
+**00:47:01.760 - 00:47:04.760**  
+pero no es algo que ustedes necesiten.
+
+**00:47:07.000 - 00:47:10.760**  
+Una manera, si ustedes tienen la vista serital
+
+**00:47:10.760 - 00:47:13.760**  
+y lo que tienen que hacer es una rototrolación,
+
+**00:47:13.760 - 00:47:16.760**  
+justo acá, a diferencia antes que yo lo había sugerido,
+
+**00:47:16.760 - 00:47:20.760**  
+poner el cielo a cero acá, está bien, está puesto acá,
+
+**00:47:20.760 - 00:47:23.760**  
+que es más o menos el medio.
+
+**00:47:23.760 - 00:47:27.760**  
+Recuerden que el imagen tiene el cero a cero, a la arriba
+
+**00:47:27.760 - 00:47:32.720**  
+no es donde ustedes lo quieren poner, o sea que va a ser una traslación y un cambio de
+
+**00:47:32.720 - 00:47:39.760**  
+escala. En principio no hay un, no necesito una rotación. Quieren pasar de pixel, o sea, de
+
+**00:47:39.760 - 00:47:46.720**  
+una manera es partir de esta y aplicar un cambio de escala y una traslación, roto traslación,
+
+**00:47:46.720 - 00:47:54.600**  
+la combinan, se generan su transformación de roto traslación, multiplican por HWZ, también,
+
+**00:47:54.600 - 00:48:19.640**  
+por H, pero ésta es HWZ, esa traslación y escala, también, la multiplican por HWZC y
+
+**00:48:19.640 - 00:48:23.920**  
+te da HWZ, que es la que te transforma directamente de los pixels a las coordenadas, entonces
+
+**00:48:23.920 - 00:48:28.680**  
+luego puedes tener el otro número tan inventado, ¿no? Puedes tener la coordenada ésta en
+
+**00:48:28.680 - 00:48:38.560**  
+píxeles, los promos multiplican por HWZ y te da 4375 directamente. Esa es la idea que
+
+**00:48:38.560 - 00:48:43.320**  
+definitiva es lo que está buscando, saber cuál es la coordenada en el plano físico.
+
+**00:48:43.320 - 00:48:53.240**  
+Bueno acá tengo un ejemplo de cómo saco directamente, sin usar la visualización sin usar
+
+**00:48:53.760 - 00:49:01.000**  
+la transformación que te genera la vida sanitaria. Y a mí me interesa que ustedes aprendan
+
+**00:49:01.000 - 00:49:09.200**  
+esto porque lo otro es un paso necesario, también, vamos a hacer la vida sanitaria, pero eso es una
+
+**00:49:09.200 - 00:49:18.880**  
+cosa lateral, quiero que pruebe, llegues a determinarla directamente y es lo mismo que antes,
+
+**00:49:18.880 - 00:49:27.160**  
+lo que pasa es que tu espacio físico, ahora ya no son píxeles. Bueno, vas a generar una vista,
+
+**00:49:27.160 - 00:49:31.360**  
+pues yo no te importa de cuántos píxeles, por cuántos píxeles, sí, tiene que tener la redacción
+
+**00:49:31.360 - 00:49:37.800**  
+de aspecto, se supone que vos conoces las dimensiones de la mesa, también, vas a definir los cuatro puntos
+
+**00:49:37.800 - 00:49:44.540**  
+de la mesa, hacer tu sistema de referencia, también, entonces, esto se plantea así,
+
+**00:49:44.540 - 00:49:51.780**  
+pues pésero P1, P2 y P3, son los nombres que le vamos a estos puntos y tiene su correspondencia,
+
+**00:49:51.780 - 00:49:59.540**  
+acá lo puedo llamar a las coordenadas en píxeles P1, P1, tienes cuatro correspondencias,
+
+**00:49:59.540 - 00:50:07.660**  
+con esas cuatro las coordencias, vas a obtener la homografía, también con Get Perspective Transform,
+
+**00:50:07.660 - 00:50:13.020**  
+las cuatro correspondencias, obtener la homografía y esa te convierte de píxeles del imagen
+
+**00:50:13.020 - 00:50:19.780**  
+perfectiva a coordenadas métricas, coordenadas de tu plano físico. El único tema que me falta
+
+**00:50:19.780 - 00:50:27.420**  
+decir es que las coordenadas en el plano físico, de pésero P1, P2 y P3, las tenés que dar en tu
+
+**00:50:27.420 - 00:50:32.300**  
+sistema de referencia físico, el que voy a hacer es elegir, si vos crees como dice acá,
+
+**00:50:32.300 - 00:50:36.860**  
+creer el origen, lo crees en el centro de la mesa, no sé por qué motivo lo crees ahí,
+
+**00:50:37.420 - 00:50:42.300**  
+entonces la coordenada a pésero lo vas a estar en que me dire en este sistema de referencia,
+
+**00:50:42.300 - 00:50:50.580**  
+también que va a estar en el negativo en los x y en positivo en el y, está bien, otro detalle por
+
+**00:50:50.580 - 00:50:55.260**  
+si están dormidos, si usted es su sanete sistema de referencia, se an importa que la imagen
+
+**00:50:55.260 - 00:51:05.420**  
+tenga el y para abajo, que el cero está acá y le grega positiva hacia abajo, la propia correspondencia
+
+**00:51:05.420 - 00:51:10.220**  
+cuando vuelves y cómo son las coordenadas en tu plano físico, va a usar el sistema de referencia
+
+**00:51:10.220 - 00:51:16.220**  
+a tuyo, no va a tener que hacer ninguna corrección adicional pues está todo implícito en cómo
+
+**00:51:16.220 - 00:51:24.700**  
+expresarse esa coordenada, ahora estas coordenadas en el plano físico, es parte del trabajo de ese
+
+**00:51:24.700 - 00:51:31.940**  
+tapo, pues pusiste la cámara, me diga la mesa de determinar las coordenadas en un papelito y lo
+
+**00:51:31.940 - 00:51:39.380**  
+cargas en tu código Python, también esto no es que se va a recalcular en cada frame, después
+
+**00:51:39.380 - 00:51:44.900**  
+en el tp3 lo vamos a hacer esto de una manera más automática comiso artificial, pero en este caso
+
+**00:51:44.900 - 00:51:50.060**  
+usted diría que relevar los datos y meterlo en el código, y ya tenés las correspondencias,
+
+**00:51:50.060 - 00:51:57.900**  
+necesitas la foto, necesitas obtener sobre la foto las coordenadas en píxeres, pero la de plano
+
+**00:51:57.900 - 00:52:08.400**  
+físico ya las tenés de antemano, esto ya se lo expliqué, me quedó la diapositiva, se me
+
+**00:52:08.400 - 00:52:19.320**  
+quedó jurada, bueno también se me quedó tras papelada, lo único me faltó decir, es un de
+
+**00:52:19.320 - 00:52:29.400**  
+trasisito, es muy pavote, pero voy a explicar acá, dijimos que vos tenías, a ver cuánto cuántas
+
+**00:52:29.720 - 00:52:40.200**  
+vamos a contarlas, ah, dijimos que teníamos 26 coordenadas, botanes 26 coordenadas que son
+
+**00:52:40.200 - 00:52:47.800**  
+las que necesitan para los tres segmentos que vas a dibujar en este ejemplo, ¿no? Entonces
+
+**00:52:47.800 - 00:52:55.560**  
+vos tenés de finis 26 coordenadas en el espacio senital que es refasible, ¿no? Como le dije,
+
+**00:52:55.560 - 00:53:05.640**  
+0, 0, 0, 10, 0, 20, 0, 30, o lo que, y vos tenés un conjunto de 26, una raíz de 26 coordenadas,
+
+**00:53:05.640 - 00:53:13.320**  
+aquí se diga la coordenada, y te querés transformar todas para tener las coordenadas en píxeres,
+
+**00:53:13.320 - 00:53:20.120**  
+en la imagen de perspectiva, bueno, perspectiva y transform es la función del PSV que hace eso,
+
+**00:53:21.120 - 00:53:28.960**  
+todos los puntos, los 26 puntos, la transformación h que tenés que usar, y te da los puntos
+
+**00:53:28.960 - 00:53:36.600**  
+transformados que ya te los da de esos homogenizados, volverá a los puntos en 2D y te lo da en 2D,
+
+**00:53:36.600 - 00:53:43.880**  
+entonces qué diferencia ahí con hacerlo de arriba que es multiplicar por h, esto hace la expansión
+
+**00:53:43.880 - 00:53:50.640**  
+dimensional, los multiplica a los 26 puntos, multiplica por h, y después hace la de esos homogenización,
+
+**00:53:50.640 - 00:53:57.880**  
+o sea, la normalización, y le quita la dimensión extra, con lo que te da punto 2D, es cómodo,
+
+**00:53:59.240 - 00:54:04.520**  
+principalmente cuando vas a transformar un montón de puntos, si quieres le puedo usar para un solo
+
+**00:54:04.520 - 00:54:09.680**  
+punto, pero está pensado para lo que decimos 9 puntos, en este caso las coordenadas de la grilla
+
+**00:54:09.680 - 00:54:19.520**  
+completa, bien, bueno y ahora vamos a la última parte que, la última parte que no les
+
+**00:54:19.520 - 00:54:27.040**  
+conté del TP3, que vamos a usar un marcador fiduciario, y esto sí, se los anticipé de manera
+
+**00:54:27.040 - 00:54:36.200**  
+suelta, le voy a hablar del código QR y enseguida, a ver, está el código RUCO, no está el código
+
+**00:54:36.200 - 00:54:44.560**  
+RUCO, así que vamos a hablar solamente el código QR, el código QR es popular, los aburrimos
+
+**00:54:44.560 - 00:54:52.120**  
+a que los detectan están por todos lados, OpenCB tiene el objeto, el CB punto QR code detector,
+
+**00:54:52.120 - 00:54:58.840**  
+y tiene dos métodos, uno que se llama detect, y otro que se llama dicode, tiene otro método que
+
+**00:54:58.840 - 00:55:07.040**  
+se llama detectan dicode, entonces está bueno porque acá te pone de manifiestos dos etapas,
+
+**00:55:07.640 - 00:55:16.200**  
+detect utiliza estos cuadradotes, todos los jodidos QRes tienen tres cuadradotes, no son cuatro,
+
+**00:55:16.200 - 00:55:22.280**  
+justamente porque le da invariancia rotacional, si fueran cuatro, habría cuatro posiciones
+
+**00:55:22.280 - 00:55:29.760**  
+posibles, digamos, acá hay una sola, porque hay un vértice que no tiene cuadradotes, ¿verdad? Normalmente,
+
+**00:55:29.760 - 00:55:39.320**  
+normalmente, así como están con el vértice sin cuadradote abajo a la derecha, es la posición
+
+**00:55:39.320 - 00:55:44.480**  
+estándar, donde voy a decirse, el vértice principal es el derrío, ahora les cuento el
+
+**00:55:44.480 - 00:55:56.080**  
+orden de los vértices, se usan esos cuadradotes para localizar el código QR e identificar el
+
+**00:55:56.080 - 00:56:04.080**  
+borde del cuadril atero, está bien, y eso te lo da detect, detect, te devuelve cuatro coordenadas,
+
+**00:56:05.280 - 00:56:11.680**  
+ordenadas, cuatro las cuatro coordenadas del código QR, y es la única parte que nos interesa a
+
+**00:56:11.680 - 00:56:22.560**  
+nosotros en intp3, dicode aplica una homografía, todo lo que ustedes están haciendo a mano, el
+
+**00:56:22.560 - 00:56:30.000**  
+detector QR lo hace, lo tiene incorporado, aplica una homografía para después hacer una lectura del
+
+**00:56:30.000 - 00:56:39.120**  
+contenido, entonces genera una vista frontal, es una vista mínima, donde cada uno de estos cuadradotes con
+
+**00:56:39.120 - 00:56:47.560**  
+información es un pixel, está bien, pero perfecto, y ahí hace la decodificación del patrón de
+
+**00:56:47.560 - 00:57:00.520**  
+los pixels, está bien, y te da la string, el texto resultante, usualmente el que usa esto con
+
+**00:57:00.520 - 00:57:05.280**  
+código QR quiere el data, entonces se aplica el método detectandicodo que hace todo junto,
+
+**00:57:06.280 - 00:57:12.160**  
+la facilidad de dividirlos, porque en misión artificial muchas veces voy a detectarlo y trabajar con
+
+**00:57:12.160 - 00:57:18.720**  
+esos vértices, y la decodificación puede ser un paso posterior y quizás, como en el caso de este,
+
+**00:57:18.720 - 00:57:27.280**  
+ni siquiera lo necesitamos, bien, entonces bueno, usar detect, le ponen la imagen, detecta varios
+
+**00:57:28.800 - 00:57:38.400**  
+codios QR, o sea que te devuelve un montón de puntos, bueno, este es el sistema, acá están
+
+**00:57:38.400 - 00:57:50.000**  
+p1, p2 y p3, o sea como le decía, el vértice que no tiene el cuadro, es el punto 2,
+
+**00:57:51.200 - 00:57:59.360**  
+también, y se numeran con este de acá, el opuesto, es el principal, el p0 y luego en sentido horario,
+
+**00:58:01.040 - 00:58:06.000**  
+no importa que te he girado, van a venir en ese orden, así como está,
+
+**00:58:08.960 - 00:58:16.780**  
+al darte las cuatro coordenadas, vos puede ser el método, vos puede ser una correspondencia,
+
+**00:58:18.380 - 00:58:24.620**  
+porque si vos es un dato que tiene que tenerte, o sea, conoces el tamaño de tu código QR y vos
+
+**00:58:24.620 - 00:58:30.380**  
+hiciste 10 por 10 centímetros, por el imprimiste vos, 10 por 10 centímetros, entonces,
+
+**00:58:30.700 - 00:58:37.900**  
+este, este es el sistema de coordenadas recomendado, eso está fundamentalizado,
+
+**00:58:37.900 - 00:58:43.020**  
+vos siempre podás hacerlo que quieras, pero hay, hay incluso funciones que no son cosas que
+
+**00:58:43.020 - 00:58:48.860**  
+vamos en el tp3, pero sí más adelante, que asumen que usa este sistema de coordenadas y no aceptan
+
+**00:58:48.860 - 00:58:59.500**  
+otro, este asume que el cero está en el centro, acá, acá vos tenés el cero cero, y por lo tanto
+
+**00:59:00.860 - 00:59:11.900**  
+acá arriba es menos 5 centímetros, menos 5 centímetros, digamos, ele es la longitud del lado,
+
+**00:59:12.700 - 00:59:16.700**  
+si decimos que hay 10 centímetros, entonces, es menos cero sobre 2, menos cero sobre 2,
+
+**00:59:18.140 - 00:59:24.060**  
+si lo que es de centrés de, acá está entre 3, es la coordenadas 0, si eso es lo que es de centrés
+
+**00:59:24.060 - 00:59:29.660**  
+de justo en el tp3 no lo vamos a editar, después sí lo vamos a editar, en otro momento.
+
+**00:59:30.780 - 00:59:35.820**  
+Entonces, vos acá tenés como plantear, pero claro, vamos a ver que es 10 milímetros,
+
+**00:59:35.820 - 00:59:49.300**  
+menos 50, 50, 50, 50, 50, 50, menos 50, 50, eso 4 valores son las coordenadas de los 4
+
+**00:59:49.380 - 00:59:56.020**  
+bértices de tu espacio físico, y así como lo dije, te escribís el array en Python en una línea,
+
+**00:59:58.020 - 01:00:01.700**  
+al poner el número 50, vos está asumiendo que vas a trabajar así en milímetros,
+
+**01:00:04.980 - 01:00:08.100**  
+entonces, ¿qué hace? ¿sablicas detecta en imagen?
+
+**01:00:09.300 - 01:00:14.740**  
+Armas la correspondencia, así que el primer punto que detecté, se corresponde al menos 50, 50,
+
+**01:00:14.820 - 01:00:19.140**  
+el otro es el otro, general es la homografía, y tenés para cada cuadro,
+
+**01:00:19.140 - 01:00:25.460**  
+tenés la homografía que te tendrán forma de la cámara al clara físico. Bueno, entonces,
+
+**01:00:30.040 - 01:00:34.520**  
+que me he un poquito, no me acuerdo cuál comiene ver. Segúnito, este,
+
+**01:00:43.750 - 01:00:48.150**  
+creo que está viendo un vídeo, yo lo he habido fluido, a veces por Teams,
+
+**01:00:48.630 - 01:00:52.310**  
+reproducirlo y mandarlo, pues se acrobieran de recortar, pero bastante sencillo,
+
+**01:01:02.040 - 01:01:10.120**  
+bueno, esto es una filmación, ya con un celular, también, lo que es un vídeo muy cortito,
+
+**01:01:10.120 - 01:01:16.200**  
+hay un montón de contexto que no está aplicado, hay un sistema que ahora le voy a mostrar,
+
+**01:01:17.000 - 01:01:28.200**  
+que está observando con otra cámara que no es esta de celular y de danclicks en la imagen,
+
+**01:01:28.200 - 01:01:40.680**  
+ahí estamos. Una de estas gente se llevó el touto su casa, se armó un tripo de un tripo de
+
+**01:01:40.680 - 01:01:47.320**  
+para sostener otro celular, entonces tiene una cámara fija, esa cámara fija está, no sé,
+
+**01:01:47.320 - 01:01:54.280**  
+acá la complicaron al divino botón porque la conectan por Wi-Fi a un SP32, no sé qué dijo hace,
+
+**01:01:55.320 - 01:02:01.640**  
+o sea, está bien, hace lo que quiera. Voy a poder huirse todo dando el cam en el celular y
+
+**01:02:01.640 - 01:02:08.200**  
+tenías la imagen en la computadora. Lo que tiene acá, voy a poner pausa, lo que tiene acá para,
+
+**01:02:08.200 - 01:02:15.400**  
+no, ahora voy a dejar que lo vean, fíjense que anda borracho y que acá hay un punto amarillo,
+
+**01:02:15.400 - 01:02:23.700**  
+la verdad que el color no es muy feliz y ahí llego, vamos a ver varias cosas, vamos a ver de vuelta,
+
+**01:02:23.700 - 01:02:28.580**  
+ahora voy a explicar lo que viene pasando acá. El usuario se clica, ahora cuando aparece el
+
+**01:02:28.580 - 01:02:38.700**  
+punto amarillo, bueno, ahí no se está notando muy bien porque está el cursor del maudele ahí lo sacó,
+
+**01:02:38.700 - 01:02:46.060**  
+cuando eso click se empezó a mover el auto y paró cuando el código QR del centro, el código QR
+
+**01:02:46.060 - 01:02:51.980**  
+llegó el punto amarillo más o menos, es más o menos importante, nunca va a llegar exacto,
+
+**01:02:51.980 - 01:02:57.220**  
+entonces va a quedar un loop infinito tratando de corregir, entonces cuando llegó a la región,
+
+**01:02:57.220 - 01:03:02.460**  
+va a tener que reconocer que llegó y paró. Entonces, qué está pasando ahora? Este imagen que
+
+**01:03:02.460 - 01:03:10.260**  
+vos ves no es directamente la imagen en perspectiva que sacó el tipo de, sino que es una visualización con
+
+**01:03:10.260 - 01:03:22.580**  
+Word. Esa visualización la obtuvieron con, a ver si lo lo ven acá, con estos códigos que se
+
+**01:03:22.580 - 01:03:32.500**  
+llama Naruco, bueno, no tengo, se lo mostré hasta este código acá, los códigos de la cancha, no de
+
+**01:03:32.500 - 01:03:39.620**  
+la zona, estos de acá. Usaron esos cuatro códigos para obtener el Word de la homografía para
+
+**01:03:39.620 - 01:03:49.280**  
+hacer este Word y luego hacen click en la imagen y el autito empiezan a pegar cuadro por cuadro,
+
+**01:03:49.280 - 01:03:54.680**  
+están fíjense que están notados el autito, esto es una Word perspectiva, el auto se ve medio de
+
+**01:03:54.680 - 01:04:04.920**  
+forma, va a ver a notaciones azules, en realidad tienen un, tiene un, un, es es cartesiano,
+
+**01:04:04.920 - 01:04:09.440**  
+dibujado sobre el código eruco, no se nota muy bien acá y además una notación en azules,
+
+**01:04:09.760 - 01:04:18.680**  
+se acuaron por cuadro, están localizando el autito y obteniendo sus coordinadas métricas y haciendo
+
+**01:04:18.680 - 01:04:22.880**  
+la, la siguiente pregunta, si el autito está en esta coordinada y esta orientación, porque es un,
+
+**01:04:22.880 - 01:04:28.280**  
+es un cuerpo rígido, no es un punto, es un sistema de referencia, también tiene su dos ejes,
+
+**01:04:28.280 - 01:04:35.360**  
+si el autito está acá apuntando a tal lugar y el destino está en el terminado lugar, que es el punto
+
+**01:04:39.440 - 01:04:45.240**  
+que maniobra tiene que hacer el auto para llegar allá, eso es lo que hacen cuadro por cuadro,
+
+**01:04:46.880 - 01:04:55.160**  
+como está hecho más o menos, la parte visual de visión está hecha, la parte de control del auto no
+
+**01:04:55.160 - 01:05:01.560**  
+está bien hecho, ustedes notan claramente que está borracho, a ver si no me acuerdo si queda
+
+**01:05:01.560 - 01:05:09.240**  
+acabo o va a hacer otro clic, ahí hace otro clic y el auto gira, y ahí lo ve, que ahora ahí no
+
+**01:05:09.240 - 01:05:18.880**  
+se ve el clic de destino, bien, porque va borracho es muy simple, porque en vez de tener la cámara
+
+**01:05:18.880 - 01:05:26.160**  
+conectada por lo que se ve la computadora, están transmitiendo pro wifi, entonces la cámara
+
+**01:05:26.160 - 01:05:33.440**  
+codifica, transmite, decodifica y eso mete un lag, entonces la cuenta que está haciendo
+
+**01:05:33.440 - 01:05:38.920**  
+la computadora para decir a dónde tiene que el auto corresponde, ha dado una fracción de
+
+**01:05:38.920 - 01:05:46.440**  
+segundo antes, cuando el auto está girando y yo va a apuntar exactamente, cuando vos ves que el
+
+**01:05:46.440 - 01:05:53.520**  
+auto apunta exactamente el destino, en la realidad el auto yo se pasó, a ver otro lado, entonces puede
+
+**01:05:53.520 - 01:06:03.560**  
+alemandar el que corresponde, ese es el problema, no pretendo arreglarlo ahora, como es, entonces
+
+**01:06:03.560 - 01:06:07.840**  
+el trabajo de ustedes, yo le dije acá también a parte de trabajo práctico, después voy a arracar con
+
+**01:06:07.840 - 01:06:15.960**  
+otro tema, pero quiero dejar esto, como es el trabajo de ustedes, usted va a tener un código QR o
+
+**01:06:16.920 - 01:06:26.800**  
+QR, si alguien quiere buscar código QR, le va a andar todo mejor, imagínense la siguiente situación,
+
+**01:06:26.800 - 01:06:35.640**  
+ustedes lo imprimen, los recortan, ponen la cámara fija en perspectiva, ustedes úsualmente están
+
+**01:06:35.640 - 01:06:43.120**  
+empezando la cámara de Notdux o uso una cámara USB, así que la pongo en la posición que quiero y
+
+**01:06:43.120 - 01:06:50.840**  
+observan la mesa de escritoria, entonces ponen su código, su marcador fiduciario,
+
+**01:06:50.840 - 01:06:58.280**  
+Juerro Barucho, lo ponen en la mesa, toca en una tecla y van a usar ese marcador y fiduciario para
+
+**01:06:58.280 - 01:07:04.720**  
+registrar el plano, en el sentido que ahí van a obtener la homografía, la posición de ese
+
+**01:07:04.720 - 01:07:11.440**  
+marcador fiduciario va a ser el 00 de su sistema de referencia físico y usted va a tener
+
+**01:07:11.440 - 01:07:18.200**  
+acargado el tamaño del marcador y con eso van a conocer, van a ser una transformación métrica,
+
+**01:07:18.200 - 01:07:28.560**  
+o sea, en ese paso usted ya tiene la transformación que transforma de píxeles a coordenadas físicas y luego
+
+**01:07:28.560 - 01:07:34.520**  
+van a mover el código, el marcador fiduciario, pero no van a volver a calcular la homografía, el 00
+
+**01:07:34.520 - 01:07:39.520**  
+se ha quedado establecido en el cuadro anterior, ahora van a mover y lo que van a hacer es
+
+**01:07:41.520 - 01:07:48.720**  
+usando la homografía que ya tienen calculada en la registración, van a convertir los píxeles
+
+**01:07:48.720 - 01:07:53.920**  
+con los que está de la coordenada que está detectando el código QR, a coordenadas métricas y
+
+**01:07:53.920 - 01:07:59.360**  
+los vas a imprimir arriba, entonces vos vas a mover ese código QR, el sistema del marcador fiduciario y
+
+**01:07:59.360 - 01:08:04.000**  
+vas a poder indicar en qué coordenada se está, eso como la base, la robótica móvil, también,
+
+**01:08:04.000 - 01:08:13.080**  
+es la versión fácil de esto, que no es tan trivial, ¿está? Si lo hacen bien, le va a funcionar,
+
+**01:08:13.080 - 01:08:17.800**  
+que lo funcionaron bárbano y van a descubrir problemitas que yo no quise, a propósito no quise
+
+**01:08:17.800 - 01:08:23.680**  
+abordar en esta clase, que son problemas de precisión, eso hay que verlos en la práctica,
+
+**01:08:24.200 - 01:08:32.560**  
+todo eso después en otra clase vamos a ver cómo se hace de verdad, cómo se corrige y cómo se
+
+**01:08:32.560 - 01:08:38.320**  
+le da precisión al sistema, creo que se entendió los que les pedí el TP después explica dibujar
+
+**01:08:38.320 - 01:08:45.640**  
+una grilla, mostrar una vista zenital, también hacer world projectives y todo eso, pero eso se
+
+**01:08:45.640 - 01:08:52.520**  
+trata, alguno en vez de imprimir el código Aruco o el marcador fiduciario, lo puedo poner en la
+
+**01:08:52.520 - 01:09:02.600**  
+pantalla de celular, también es un mes lo mismo, que entonces hay algunas cámaras por el brillo
+
+**01:09:02.600 - 01:09:08.240**  
+de la pantalla de celular, no lo detecta bien, o sea que cambia ese brillo de celular de ajustar
+
+**01:09:08.240 - 01:09:15.920**  
+la cámara o lo imprimir, y ya está, otra les contiene con las que se te azotó para es que los
+
+**01:09:15.920 - 01:09:25.400**  
+detectores de código QR y Aruco detectan, están empezados para detectar los de frente,
+
+**01:09:25.400 - 01:09:31.000**  
+de frente o en perspectiva, pero no en cualquier perspectiva, cuando vos te pasas de los más o menos
+
+**01:09:31.000 - 01:09:38.480**  
+45 grados, los deja detectar, o sea que si o si bueno vas a hacer una perspectiva arrasante,
+
+**01:09:38.480 - 01:09:44.240**  
+vas a tener que poner la cámara mirando más bien desde arriba, y la cámara tiene que trafica,
+
+**01:09:44.240 - 01:09:51.560**  
+o sea que no puedes usar tu celular de cámara y tenerla con la mano, la otra es quiero usar la
+
+**01:09:51.560 - 01:09:57.760**  
+cámara de la Node, y no lo quiero inclinar tanto, en vez de hacerlo en el plano de la mesa, los
+
+**01:09:57.760 - 01:10:06.960**  
+es el plano de la pared, o en tu pantalla, y en moves un código Aruco en tu pantalla, y tener las
+
+**01:10:06.960 - 01:10:12.240**  
+coordadas, bueno ahí usted cada uno se rebuzca en palabras como lo hace, bueno, vamos a hacerlo
+
+**01:10:12.240 - 01:10:16.600**  
+lo siguiente, yo ahora voy por tener miedo a este tema, si tienen que preguntar algo,
+
+**01:10:16.600 - 01:10:22.640**  
+pregúnten, se estudiando unos segundos por si alguno quiere sacarse dudas de esto,
+
+**01:10:24.640 - 01:10:35.980**  
+bien, entonces voy a hacerlo siguiente, voy a hacer un doble cambio, alguna vez se lo dije muy por
+
+**01:10:35.980 - 01:10:46.980**  
+arriba, pero si la clase se pueda hacer divertida, vamos a suponer que está divertido,
+
+**01:10:46.980 - 01:10:52.500**  
+o sea los trabajos prácticos son más a menos, el objetivo no es que sea divertido, el objetivo
+
+**01:10:52.500 - 01:10:58.140**  
+es que liban la aplicación y con este con el mundo real, eso es fundamental, la academia ustedes
+
+**01:10:58.140 - 01:11:05.460**  
+saben por qué lo viven, la academia y falla bastante en conectar con el mundo real, no digo que este
+
+**01:11:05.460 - 01:11:13.940**  
+mal todo lo que se hace, pero está faltando una cosa, los temas la manera la abordaje típico
+
+**01:11:13.940 - 01:11:22.650**  
+es agarrar un tema y verlo a fondo, yo trato de conectar con el mundo real y para no terminar
+
+**01:11:22.650 - 01:11:26.930**  
+aburriendo, en vez de ver a un fondo un tema, hacemos la práctica, cambiamos el tema,
+
+**01:11:28.210 - 01:11:36.570**  
+cuál es la contra y quiero mareos, entonces yo hoy voy a seguir dentro de esta temática que yo
+
+**01:11:36.570 - 01:11:43.650**  
+lo llamo vision 3D, tiene que ver con la localización de las cosas, yo ahora me voy a meter en la
+
+**01:11:43.650 - 01:11:50.370**  
+teoría, voy a empezar con la teoría de los modelos de cámara, eso tema hasta que termina la clase,
+
+**01:11:50.370 - 01:11:56.330**  
+me queda a medida, son presentaciones, las primeras ahora menas, después algunos,
+
+**01:11:56.330 - 01:12:00.770**  
+me tengo que ver, creo que no vamos a llegar a la parte de fórmula, pero vamos a ver en qué orden,
+
+**01:12:01.490 - 01:12:12.530**  
+la clase que viene, voy a hacer un cambio abrupto y vamos a volver al tema del tp2,
+
+**01:12:12.530 - 01:12:20.610**  
+que era detección y clasificación, vamos al tp2 donde ustedes detectaba una forma y me decían que
+
+**01:12:20.610 - 01:12:30.780**  
+vamos a volver al mismo problema, pero ya no es detección de forma, vamos, este es el nivel superior,
+
+**01:12:31.500 - 01:12:38.500**  
+lo vamos a resolver con diplarden y la manera, es súper importante entender lo que están haciendo,
+
+**01:12:38.500 - 01:12:43.100**  
+porque lo mismo, el objetivo de lo mismo, la manera de hacerlo es nada que ver,
+
+**01:12:43.100 - 01:12:49.980**  
+entonces lo vamos a guardar todo y la clase que viene, es un trabajo practico que por la experiencia
+
+**01:12:49.980 - 01:12:59.300**  
+reciente del último año se resuelve muy fácil, no necesariamente eso significa que saben lo que
+
+**01:12:59.300 - 01:13:05.180**  
+hicieron, así que la clase que viene me voy a ocupar de explicar qué es lo que van a hacer y por
+
+**01:13:05.180 - 01:13:12.580**  
+qué se hace así, recuerden que yo estoy postergando y presentaciones teóricas, ahora voy a dar algunas,
+
+**01:13:12.580 - 01:13:17.780**  
+pero las presentaciones teóricas de diplarding, ahora voy a dar teóricas, pero no de diplarding,
+
+**01:13:17.780 - 01:13:23.860**  
+las estoy postergando para después y vamos a tratar de entender cómo funcionan estas cosas por
+
+**01:13:23.860 - 01:13:35.260**  
+dentro, está, entonces hicimos clasificación de detección en TP3, desde TP2, pasamos a localización en
+
+**01:13:35.260 - 01:13:45.430**  
+este caso se en el plano con homografía, la clase que viene, vamos a volver a detección y
+
+**01:13:45.430 - 01:13:52.830**  
+clasificación con diplarding y después vamos a volver a localización 3D, pero con métodos
+
+**01:13:52.830 - 01:14:01.710**  
+más sofisticados que nos permite salir del plano, así que como ven, lo voy marriando,
+
+**01:14:01.710 - 01:14:07.470**  
+voy saltiando un tema de lo otro, pero la idea es que no sea muy monotono la secuencia de trabajo
+
+**01:14:07.470 - 01:14:16.910**  
+practico, bien, dicho todo esto estoy abriendo las presentaciones, ahora voy a ir abriendo una por una,
+
+**01:14:17.910 - 01:14:30.430**  
+bien, acá está, así que como yo deje de compartir, compartir de vuelta, bueno acá estábamos,
+
+**01:14:30.430 - 01:14:37.430**  
+esto es una, una temática que yo vengo dando así muchos años y este año estoy probando, de hecho,
+
+**01:14:37.430 - 01:14:44.910**  
+estoy estrellando con ustedes, una forma que se supone que es más amena, lo separe, me di cuenta
+
+**01:14:44.910 - 01:14:48.870**  
+que las presentaciones en el raga porque juntaban muchos temas, lo separe en presentaciones
+
+**01:14:49.390 - 01:14:55.430**  
+independientes que les da más orden también a ustedes y a mí me permiten cortar en cualquier
+
+**01:14:55.430 - 01:15:02.110**  
+momento son presentaciones cortas, bueno vamos a empezar hablando de esto, cámara, cámara, modelo de cámara,
+
+**01:15:03.110 - 01:15:13.550**  
+primer concepto desde la intuición campo visual, acá dice o y o de es ojo izquierdo ojo derecho,
+
+**01:15:14.550 - 01:15:20.030**  
+obviamente estos ángulos, esto es la visión que vos tenés primero en el plano horizontal,
+
+**01:15:20.030 - 01:15:27.270**  
+porque el campo uno, el espacio visual, el campo visual, se debería medir en los radianes,
+
+**01:15:27.270 - 01:15:33.830**  
+bueno acá lo hacemos un corte en un plano horizontal y vemos el ángulo de visión lateral
+
+**01:15:34.830 - 01:15:42.710**  
+esto es ángulo, ahí dice 60 grados, se den cuenta que depende de cada uno, depende que tan
+
+**01:15:42.710 - 01:15:49.990**  
+rasgado tener los ojos y si y la nariz cuánto te tapa, vos ve más o menos con cada ojo, eso
+
+**01:15:49.990 - 01:16:01.870**  
+entiendo, acabo de recibir una notificación, ahí descubrí que es un sonido nuevo, me tenía
+
+**01:16:01.870 - 01:16:12.910**  
+preocupado, perdón, esto es no la escuchado, entonces el campo visual se refiere a el ángulo de
+
+**01:16:12.910 - 01:16:20.790**  
+apertura que vos puedes captar, pues verá, si alguien está filmando con la cámara y hace un zoom,
+
+**01:16:20.790 - 01:16:26.710**  
+un zoom muy grande, entonces ve algo que está muy lejos, se relajó esta reduciendo el campo visual,
+
+**01:16:27.230 - 01:16:36.030**  
+de un ángulo que está captándonos en 90 grados, repente concentra toda la resolución en 10 grados
+
+**01:16:36.030 - 01:16:43.550**  
+para adelante, entonces eso será, bueno el zoom, el zoom te cambia el campo visual, a esto lo que te
+
+**01:16:43.550 - 01:16:52.470**  
+dice, lo muestro por arriba, pues no viene el tema, pero por ahí interesa, los ojos tienen mejor
+
+**01:16:52.470 - 01:17:00.790**  
+vista y con más definición en un campo visual que sea donde el ojo se mueve, cuando uno pone
+
+**01:17:00.790 - 01:17:10.550**  
+una cámara en un robotito y la cámara está fija, no es como el globo ocular que anda mirando
+
+**01:17:10.550 - 01:17:16.830**  
+para un lado para el otro, entonces uno tiene una vista de una resolución bastante mala, pero
+
+**01:17:16.830 - 01:17:22.310**  
+buena resolución en el medio y vuelvo a hacer de moverle el ojo, o cuando lees vas moviendo el ojo y
+
+**01:17:22.310 - 01:17:28.990**  
+concentrando en cada palabra, haciendo saltito para ver por cada vez, que ahí tenés alta definición,
+
+**01:17:28.990 - 01:17:34.590**  
+pero bueno, entonces se dice que más o menos 20 grados, 40 grados total, vos reconoces símbolos,
+
+**01:17:34.590 - 01:17:42.350**  
+después discriminás colores en un ángulo de 60 grados total, 120 grados, es lo que se llama
+
+**01:17:42.350 - 01:17:49.070**  
+visión binocular donde vos ves cuando dos ojos y tenés noción de profundidad, pero tu visión
+
+**01:17:49.070 - 01:17:55.990**  
+llega a más menos 110 grados en la que se llama visión monocular, o sea ves con un ojo, pero no
+
+**01:17:55.990 - 01:18:02.510**  
+con el otro, pues la navís te tapa, también, y acá es interesante, porque uno ve más que 180 grados,
+
+**01:18:02.510 - 01:18:08.350**  
+la depende, hay uno más o menos grados, vamos a ver incluso un poquito para atrás, es un tema para
+
+**01:18:08.350 - 01:18:12.590**  
+tener una cuenta desde la intuición, las cámaras y el modelo de cámara que vamos a ver,
+
+**01:18:12.590 - 01:18:17.110**  
+capta solamente, ya 180 grados sería lo máximo que podría captar,
+
+**01:18:18.870 - 01:18:24.950**  
+también, bueno, hay varios modelos de cámaras, hay otros que captan más de 180 grados y otros,
+
+**01:18:24.950 - 01:18:31.990**  
+pero son otros, y lo vamos a ver en otra presentación, en principio eso tengo este modelo de
+
+**01:18:32.310 - 01:18:38.150**  
+cámaras, que depende del zoom y la apertura del ángulo, o pues tener una perdón, depende de la
+
+**01:18:38.150 - 01:18:46.470**  
+lente, pues tener un mayor o menor apertura, acá te presento tres cámaras que tienen son tres
+
+**01:18:46.470 - 01:18:52.910**  
+modelos distintos, tres usan tres modelos matemáticos, se llama tres modelos de cámara,
+
+**01:18:53.670 - 01:19:00.790**  
+este es el normal, también la común, se llama estenopeica o pinhole, este es el gran angular
+
+**01:19:00.790 - 01:19:09.030**  
+ofish, hay, ojo y pescado, y este es el 360, omnidireccionario, vamos a empezar por el coseterno
+
+**01:19:09.030 - 01:19:16.910**  
+del primero, vamos a ver cómo funciona, sensor y la lente del sensor, el sensor es un chip y en
+
+**01:19:16.910 - 01:19:21.750**  
+ese chip los píxeles son físicos, entonces si chip no tiene varias resoluciones, a ver, el sensor
+
+**01:19:21.750 - 01:19:31.230**  
+tiene una única resolución, si vos crees menos lo que haces es, les es menos píxeles, los
+
+**01:19:31.230 - 01:19:36.550**  
+intercalados, está bien, hoy les es un warp, hace un resize, al imagen que te llega,
+
+**01:19:36.550 - 01:19:42.230**  
+solamente por un tema de eficiencia, luego tenés un sensor que es para foto, que de 50 megapíxeles,
+
+**01:19:42.230 - 01:19:49.590**  
+o cuando que era filmar, principalmente por un tema de almacenamiento, 50 mil megapíxeles,
+
+**01:19:49.590 - 01:19:55.870**  
+30 veces por segundo, no perdón, no es almacenamiento, no te darán chovandas para transmitir
+
+**01:19:55.870 - 01:19:59.790**  
+toda la información, entonces los videos se hacen a menos resolución, por un tema de cuántos
+
+**01:19:59.790 - 01:20:08.030**  
+bytes por segundo pueden transmitir desde este sensor a la CPU, o la memoria, bueno, entonces por
+
+**01:20:08.030 - 01:20:14.470**  
+ejemplo, el sensor tiene 14 milímetros, 50 megapíxeles, o sea que cada píxeles es un micrómetro,
+
+**01:20:14.470 - 01:20:21.030**  
+o por eso un microcopio y puedes ver el pixel, por otro lado, el sensor en sí que recibe la luz,
+
+**01:20:21.030 - 01:20:30.510**  
+no es tan chiquitito, este es un muy buen sensor, de hecho, cuanto más grande, mejor porque recibe
+
+**01:20:30.510 - 01:20:39.030**  
+más luz, también necesitas un sistema de lentes más complejos, bueno, el tema de la lente, bueno,
+
+**01:20:39.030 - 01:20:43.830**  
+meter la lente, voy a pedir una lente de plástico o un ediente de vidrio, las vidrio son mejores,
+
+**01:20:43.830 - 01:20:50.110**  
+la plástico son más barata, el tema es que vos montas la lente, o sea, hace todo perfecto, bueno,
+
+**01:20:50.110 - 01:20:58.750**  
+vamos a ver qué pasa, cuál es la función de la lente, asegurar que a cada pixel le llega un
+
+**01:20:58.750 - 01:21:03.030**  
+rasio de luz de una determinada dirección, esto está mal porque los rasios no son paralelos,
+
+**01:21:03.750 - 01:21:13.310**  
+bien bien, a ver si tengo agua anda en metalicencia, los rasios no son paralelos,
+
+**01:21:13.310 - 01:21:18.030**  
+cómo se deforman después de la lente de la importa, es como que dicen, en la retina la imagen está
+
+**01:21:18.030 - 01:21:24.910**  
+proyectada a revés, ok, y como es la única manera que tengo que ver, me da igual cómo está
+
+**01:21:24.910 - 01:21:29.270**  
+proyectada a dentro del ojo, también nunca me voy a dar cuenta de que está revés, bueno,
+
+**01:21:29.270 - 01:21:35.790**  
+qué pasa con los rasios después de la lente, es algo interesante, lo importante es que hay un
+
+**01:21:35.790 - 01:21:43.190**  
+único rasio, también que es la recta proyectiva del punto principal, que pasa derecho, todos los
+
+**01:21:43.190 - 01:21:50.490**  
+demás son deformados por la lente, y esto pega y potéticamente en el centro,
+
+**01:21:50.490 - 01:21:59.050**  
+ahora la pregunta es si vos tenés este montaje y tu pixel es de un micrómetro, bueno,
+
+**01:21:59.050 - 01:22:02.890**  
+la realidad es sensora más chico, o sea que podría ser menos de un micrómetro,
+
+**01:22:04.090 - 01:22:11.410**  
+date cuenta que los metodomantajes no tienen una precisión de un micrómetro cuando está colocando
+
+**01:22:11.410 - 01:22:23.710**  
+el lente, ni les interesa, está bien, entonces el pixel que se llama punto principal, la
+
+**01:22:23.710 - 01:22:33.710**  
+coordenada del punto principal, no es exactamente el pixel central del sensor, sino que es
+
+**01:22:33.710 - 01:22:40.590**  
+algún pixel que está por ahí y que te va a cambiar de cámara a cámara, inclusive en el mismo modelo
+
+**01:22:40.590 - 01:22:47.870**  
+de cámara producido en serie todos iguales los micrómetros cambian, también, o sea que ya vamos a
+
+**01:22:47.870 - 01:22:54.030**  
+tomar nota mental, porque interesa, todavía no le dije para qué, pero interesa saber dónde está el
+
+**01:22:54.030 - 01:22:59.070**  
+pixel principal, eso no interesa para reconocer, para detectar gatos y semanforos en imagen,
+
+**01:22:59.070 - 01:23:06.590**  
+interesa para la visión 3D, cuando vos querés, cuando vos querés manejar coordenadas localización,
+
+**01:23:06.590 - 01:23:13.630**  
+acá empieza a hacer importante el punto, entonces ese pixel central se puede determinar por
+
+**01:23:13.630 - 01:23:19.190**  
+ese síme medio soptico, o sea por algoritmos de visión artificial, pero hay que determinarlo para cada
+
+**01:23:19.190 - 01:23:26.270**  
+cámara individual, porque te cambia, mismo modelo, te cambia de unidad, te cambia la coordenada del
+
+**01:23:26.270 - 01:23:31.510**  
+punto principal, afortunadamente después no cambia, como que el lente quedó hoy y es siempre el mismo,
+
+**01:23:32.630 - 01:23:38.350**  
+bueno, en el mundo de visión artificial, yo se amarte factos, es un término, no es que está
+
+**01:23:38.350 - 01:23:45.790**  
+universalmente aceptado, pero es esto, hay un montón de cosas que son muy lindas desde el
+
+**01:23:45.790 - 01:23:55.030**  
+punto de vista artístico y son buscadas y deseadas en fotografía, pero no sirven para la visión
+
+**01:23:55.030 - 01:24:03.220**  
+artificial, la complica, son indeseados, son un obstáculo, uno de ellos se fuera de foco,
+
+**01:24:03.820 - 01:24:09.260**  
+también, el fuera de foco te da una noción de profundidad cuando vos puedes enfocar la flor y hacer
+
+**01:24:09.260 - 01:24:14.140**  
+que el fondo que es fuera de foco está buenísimo del punto de vista artístico, a la visión artificial
+
+**01:24:14.140 - 01:24:20.220**  
+no le sirve, la visión artificial prefiere el enfoque infinito, el enfoque infinito no sólo es
+
+**01:24:20.220 - 01:24:28.740**  
+posible, sino que es más fácil que lograr enfocar a un lado y les enfocar el resto, una imagen
+
+**01:24:28.740 - 01:24:38.220**  
+infinita completa es preferible porque blures el difuminado, no me acuerdo la traducción directa de
+
+**01:24:38.220 - 01:24:50.220**  
+la palabra blures, como parece esto, es el difuminado, entonces no es zoom, zoom no acerca, zoom a
+
+**01:24:50.220 - 01:24:57.580**  
+granda, esto es una ejemplo de una imagen gigapixel, esto se estrenó en 2008 en un discurso de
+
+**01:24:57.580 - 01:25:04.620**  
+guama y, claro, se dio a conocer por un tema disosivo, se che, yo te estoy sacando fotos con
+
+**01:25:04.620 - 01:25:12.380**  
+esto y llevo zoom, en este caso, mostro al poder del zoom que podés leer el cartel de la dirección,
+
+**01:25:13.820 - 01:25:19.660**  
+indirectamente te están diciendo mira que puedo ver la cara en las tipos, acá me interesa la
+
+**01:25:19.660 - 01:25:27.060**  
+identidad de esto pero yo en una, de hecho es así, en una manifestación en la lugar de que usan
+
+**01:25:27.060 - 01:25:34.980**  
+estas cámaras, pueden identificar a cada uno de los, digo manifestación de amontoramiento de
+
+**01:25:34.980 - 01:25:40.660**  
+gente, también, porque están festejando por lo que sea, pueden identificar a cada uno,
+
+**01:25:40.660 - 01:25:48.580**  
+o sea, esa es la capacidad que tenemos, bueno, el tema que el zoom no acerca a granda, está bien, y
+
+**01:25:48.580 - 01:25:57.260**  
+ustedes en el TP3, pone una cámara en una posición fija y obtiene una homografía, si vos
+
+**01:25:57.260 - 01:26:08.380**  
+cambias del zoom, tiene que volver a registrar y obtener un nuevo homografía, entonces el zoom cuando
+
+**01:26:08.380 - 01:26:13.420**  
+se usa en visión artificial, lo que se usa es, se acomoda el zoom y se pone, se deja fijo,
+
+**01:26:16.140 - 01:26:22.500**  
+bueno, el difuminado por movimiento, el monzón blur tampoco sirve para nada, de hecho, yo le
+
+**01:26:22.500 - 01:26:34.800**  
+he un paper una vez que demostraba que no sirve, o sea, había gente que se anora, pero yo a partir
+
+**01:26:34.800 - 01:26:41.400**  
+del blur, puedo dar a me cuenta del movimiento de las cosas, dice así, mira, la intuición es
+
+**01:26:41.400 - 01:26:46.520**  
+correcta, pero a la hora de la precisión y de un montón de cosas, la verdad que es más lo que
+
+**01:26:46.520 - 01:26:54.080**  
+te ruina y lo que te da, entonces el paper de salienta completamente el uso del motion blur,
+
+**01:26:55.800 - 01:27:03.480**  
+estos de este yo lo mismo, estos de este ellos, estas manchitas se obtienen con una lenta,
+
+**01:27:03.480 - 01:27:10.080**  
+se vos compras una lente que te da este efecto, estos rayos, vos vas a ver el solo,
+
+**01:27:10.080 - 01:27:17.360**  
+vos voy a usar las estrellas, a veces no ver rayos, si vos sacas una foto con tu cámara normal,
+
+**01:27:17.360 - 01:27:23.960**  
+las estrellas son puntos, no tiene rayos, y si vos mira tiene algunos rayos, pero depende de tu
+
+**01:27:23.960 - 01:27:37.880**  
+ojo y las imperfectiones de tu ojo y de tu lente y de lo sucio que este ojo, de la carga de la grima
+
+**01:27:37.880 - 01:27:45.360**  
+que tengas, de hecho, parpadias y te van a cambiar los rayos que está viendo, nada eso sirve para
+
+**01:27:45.360 - 01:27:52.200**  
+visual artificial, bueno, este es un primera bordaje a cámara, también yo ahora voy a abrir
+
+**01:27:52.720 - 01:28:03.860**  
+una segunda y a positivo, a ver si estoy, esta se llama cámaras, esta se llama modelo de cámaras y
+
+**01:28:03.860 - 01:28:12.120**  
+me de cuenta que le dejé la misma, la misma caráctula, se llama modelo de cámaras, no te confirme
+
+**01:28:12.120 - 01:28:18.680**  
+el mes que está viendo esto sino yo empecé a presentar eso, modelo de cámara pinhole, pinhole en
+
+**01:28:18.680 - 01:28:27.000**  
+inglés es el agujerito hecho con el filero, también en castellano se llama modelo de cámara este
+
+**01:28:27.000 - 01:28:35.480**  
+nopeica, esta foto es bastante particular porque tiene, entonces obviamente es un castillo a un lugar
+
+**01:28:35.480 - 01:28:40.680**  
+muy antiguo que tienen estas aberturas, no se nota muy bien, pero son más chicas de lo que parece
+
+**01:28:40.680 - 01:28:47.120**  
+acá, pues son grandes de este lado, pero son chicas del otro lado y resulta que son pasillos
+
+**01:28:47.120 - 01:28:54.240**  
+bastante oscuros que están iluminados por estas vendanitas chiquitas, cuando del otro lado hay mucha
+
+**01:28:55.160 - 01:29:00.480**  
+luz, se proyecta la imagen invertida, también, o sea estos rojos son flores que hay en el
+
+**01:29:00.480 - 01:29:09.080**  
+piso del otro lado, bueno esa es el fenómeno de la cámara pinhole, yo no sé si ustedes tuven
+
+**01:29:09.080 - 01:29:13.960**  
+una oportunidad de verlos, un fenómeno que lo conozco de chico porque lo veía, había un cuarto que
+
+**01:29:13.960 - 01:29:19.280**  
+por el ojo de la cerradura se veía entraba luz y en la pared se proyectaba la imagen al revés,
+
+**01:29:19.280 - 01:29:26.360**  
+siempre es una curiosidad de chico de ella, lo primero que lo produtos a reconocer es la imagen y
+
+**01:29:26.360 - 01:29:33.680**  
+por qué se vea revés, bueno es esto, es esto, ¿cuál es la idea del modelo de cámara este nopeica?
+
+**01:29:33.680 - 01:29:38.440**  
+Bueno, las cámaras comunes tienen este modelo de cámara, obviamente vos antes de tener un
+
+**01:29:38.440 - 01:29:44.800**  
+agujito, por eso una lente, a partir de la lente estás torciendo los rayos, lográs el mismo fenómeno,
+
+**01:29:45.320 - 01:29:51.680**  
+también, no me importa lo que pasa después de la lente, el modelo, cuando digo simplificado, no
+
+**01:29:51.680 - 01:29:57.340**  
+es sobre simplificado, es un modelo simplificado que representa bien lo que pasa en el
+
+**01:29:57.340 - 01:30:08.680**  
+día, vos quitás la lente en tu modelo, abstracto, conceptual, no necesitas considerar la lente,
+
+**01:30:09.200 - 01:30:16.600**  
+sino que, decís, todos los rayos de luz van a incidir en un punto de imagen y ahí se
+
+**01:30:16.600 - 01:30:22.560**  
+forma la imagen, o sea, cada punto de la imagen corresponde a una dirección diferente,
+
+**01:30:22.560 - 01:30:34.360**  
+un rayo de luz diferente, ustedes ya vieron esta, este gráfico, ¿cómo se proyecta de los
+
+**01:30:34.360 - 01:30:42.600**  
+botones, un centro, los rayos de luz de un punto 3D se proyectan al centro de la cámara y en un
+
+**01:30:42.600 - 01:30:51.040**  
+plano que voy a imaginar yo, la intersección es el lugar donde se tiene la proyección de ese punto
+
+**01:30:51.040 - 01:30:56.840**  
+de luz, también, de ese rayo de luz, ese punto se proyecta y ahí se forma la imagen 2D,
+
+**01:30:57.160 - 01:31:06.880**  
+todo esto lo vimos así que no voy a repetir, el efecto de este nopeico es que vologra que en
+
+**01:31:06.880 - 01:31:11.760**  
+este plano, en este punto, solo vengan rayos de esta dirección y no de otros,
+
+**01:31:14.240 - 01:31:19.080**  
+eso es lo que logra la lente, esto es un equivalente, obviamente bueno, puedes poner un plano
+
+**01:31:19.080 - 01:31:23.960**  
+delante de la cámara y pretender que ocurra todo esto, porque es la lente que se ocupa
+
+**01:31:23.960 - 01:31:29.920**  
+a hacerlo y lo hace en el sobre el sensor y el sensor ya viste que geometrico, el sensor es una
+
+**01:31:29.920 - 01:31:39.400**  
+matriz de, es decir, sensores de luz individuales, no uno para cada pixel, uno para cada canal
+
+**01:31:39.400 - 01:31:48.240**  
+de RGB, está, y que tienen esa disposición de matriz sería coediculada, la geometría
+
+**01:31:49.160 - 01:31:56.240**  
+bueno, este concepto, coordinación, una coordinación es una transformación matemática que
+
+**01:31:56.240 - 01:32:01.360**  
+preserva las rectas, claramente, esta imagen de acá no es una coordinación porque uno sabe que
+
+**01:32:01.360 - 01:32:12.720**  
+los edificios no son trocidos, sino se derrumban, entonces las cámaras comunes son
+
+**01:32:12.720 - 01:32:19.160**  
+coliniales, esta imagen no está sacada con una cámara pinco, es un gran angular, también es otra
+
+**01:32:19.160 - 01:32:24.560**  
+cosa, lo que pasa que gran angular está bueno para mostrar lo que no es una coordinación, las
+
+**01:32:24.560 - 01:32:31.400**  
+cámaras column comunes son coliniales, pero son coliniales, pero pueden tener alguna
+
+**01:32:31.400 - 01:32:38.040**  
+deformación delente que aparte un poquitito de la coordinación perfecta, así que en otro momento
+
+**01:32:38.040 - 01:32:43.880**  
+en otra clase veremos las deformaciones de la lenta, deformaciones indeseadas de la lenta,
+
+**01:32:47.120 - 01:32:52.680**  
+modelo, eso fue el modelo de cámara estenopeica o pinco, que es que la cámara común,
+
+**01:32:52.680 - 01:33:00.760**  
+esta es gran angular, ahora la cosa se pone más divertida y más superficial porque no nos
+
+**01:33:00.760 - 01:33:08.920**  
+vamos a meter con ningún tipo de fórmula, los drones usan este tipo de modelo de cámara porque
+
+**01:33:08.920 - 01:33:16.400**  
+justamente gran angular significa que veis más, sé que no recordo verlo dicho, hoy las cámaras
+
+**01:33:16.400 - 01:33:23.960**  
+comunes suelen tener una apertura de 90 grados o menos, 60 grados, se ve bastante poco lo que
+
+**01:33:23.960 - 01:33:31.880**  
+se ve, intuitivamente uno cuando mira ve mucho más, entonces voy a hacer un habido conferencia y
+
+**01:33:31.880 - 01:33:36.680**  
+tú tienes que apuntar la cámara porque vea, está ahí, no ve para el costado, si tiene mucha gente no
+
+**01:33:40.680 - 01:33:47.430**  
+el gran angular tiene una apertura mucho más grande, la lente de forma a la imagen de esta manera
+
+**01:33:47.430 - 01:33:56.310**  
+cae en la esensora y toda esta nocolinialidad, todo esto que se ve torcido, lo produce la lente y el
+
+**01:33:56.310 - 01:34:02.230**  
+esensor lo termina captando así, está bien, bueno no se falta que les cuente mucho lo que pasa,
+
+**01:34:03.590 - 01:34:10.150**  
+ustedes saben que acá esta calle es recta que estos edificios son verticales, las son torcidos,
+
+**01:34:10.630 - 01:34:18.470**  
+esto por ejemplo, si esto es el enemigo con las fontanas de trevi, y este edificio tiene frente
+
+**01:34:18.470 - 01:34:25.830**  
+plano, no es torcido como se lo va acá, esto es una deformación del la lente de gran angular,
+
+**01:34:25.830 - 01:34:33.510**  
+pero una deformación, no es una deformación arbitraria casual, toda la lente de gran angular de
+
+**01:34:33.510 - 01:34:39.270**  
+forma de la misma manera y hay un modelo matemático que no solo explica la deformación, sino que te
+
+**01:34:39.270 - 01:34:47.030**  
+puedes generar una coliniación, o sea, te pueden derezar esta imagen con un Word, también,
+
+**01:34:47.030 - 01:34:55.430**  
+lo vamos a ver después, bueno las cámaras de gran angular pueden tener un campo visual que llega a
+
+**01:34:55.430 - 01:35:03.270**  
+los 200 y pico de grados, o sea más que 180, está viendo para atrás, el modelo cámara pinhole no
+
+**01:35:03.270 - 01:35:11.190**  
+admite, de hecho para tener una apertura de 180 grados tendrías una imagen infinita y no admite pasada,
+
+**01:35:11.190 - 01:35:17.510**  
+el gran angular puede ver más que eso, también, las cámaras omnidireccionales, esto está revés,
+
+**01:35:17.510 - 01:35:24.870**  
+gran angular es abajo, omnidireccionales es arriba, este vem todo, 180 grados, cuatro piden
+
+**01:35:24.870 - 01:35:31.030**  
+grosólitos en para todos lados, en el sensor te genera esto, después ves cómo procesas por software,
+
+**01:35:31.030 - 01:35:38.390**  
+eso es un Word para poder verlo todo, es muy, es muy común entrar con una cámara omnidireccional
+
+**01:35:38.390 - 01:35:43.590**  
+a un auto, sacarlo una foto y después ponerte y se echa, mira cómo es el interior del auto, pero vos,
+
+**01:35:44.470 - 01:35:49.430**  
+lo que ves es una imagen interactiva que las giras con el mouse, las desplazas con el mouse,
+
+**01:35:50.150 - 01:35:57.510**  
+tener la información de 360, los cuatro piden radianes y vos, el software te genera una coliniación
+
+**01:35:58.230 - 01:36:05.190**  
+de la dirección en donde la que vos querés mirar, bueno, gran angular, a ver, esta ya está buena,
+
+**01:36:05.190 - 01:36:11.030**  
+porque esta foto se interpreta así, el plano, el piso es plano, los edificios son verticales de
+
+**01:36:11.030 - 01:36:16.550**  
+todo torcido, esto es su edificio que se ven acá arriba, están atrás del camarógrafo,
+
+**01:36:17.670 - 01:36:21.990**  
+son los edificios que están atrás, pasa que como la cámara está mirando ligeramente para
+
+**01:36:21.990 - 01:36:31.670**  
+la arriba, están mirados también para atrás, esta epitonal, esta dirección y esta otra dirección
+
+**01:36:32.390 - 01:36:39.990**  
+son las opuestas, o sea, esto hacia el izquierda, totalmente hacia el izquierda, o sea, hacia el lado
+
+**01:36:39.990 - 01:36:47.030**  
+del camarógrafo y esto es hacia la derecha, bueno, más o menos creo que en el día, o sea que la
+
+**01:36:47.030 - 01:36:51.190**  
+cámara está apuntando, bueno, el centro te dice hacia donde apunta la cámara que es por acá más o
+
+**01:36:51.910 - 01:36:58.870**  
+esto para acá, está apuntando el vértice de edificio y este punto acá arriba, intuitivamente te
+
+**01:36:58.870 - 01:37:03.670**  
+digo que es exactamente vertical hacia arriba, el vertical del camarógrafo por ahí está un poquito más
+
+**01:37:03.670 - 01:37:11.190**  
+arriba, todo lo que está para arriba en píxeles, está hacia atrás del camarógrafo, bueno,
+
+**01:37:11.910 - 01:37:25.100**  
+acá hay dos formas de captar la imagen, vos tenés la lente, la lente escara y vos ponés un
+
+**01:37:25.100 - 01:37:32.940**  
+sensor, los sensores son cuadrados, son rectangulares, un sensor que capta más que todo lo que trae la
+
+**01:37:32.940 - 01:37:40.940**  
+lente, entonces estás desperdiciando píxeles de sensor, pero estás agarrando todo lo que tendré
+
+**01:37:40.940 - 01:37:51.340**  
+a la lente, la otra versión es ponen un sensor que se aprovecha el 100% y te desperdicia partes de
+
+**01:37:51.340 - 01:37:57.420**  
+lo que te entrega la lente, son dos tipos de cámara, o sea, bueno, compraste de una manera,
+
+**01:37:57.420 - 01:38:04.540**  
+vienen de una manera o de otra, las dos en gran angular, en una si tenés la imagen completa si
+
+**01:38:04.540 - 01:38:13.100**  
+cruda, vas a tener una zona negra, en la otra no, claro, normalmente las dos cosas son caras,
+
+**01:38:13.100 - 01:38:18.140**  
+en un gran angular, el sensor y la lente, ahora si la lente es muy cara, andas de poco motivo,
+
+**01:38:19.980 - 01:38:25.020**  
+es muy cara por la definición ni la precisión con la que adapta y todo lo que vos quieras,
+
+**01:38:25.020 - 01:38:32.380**  
+entonces vos deciché, desperdicia el sensor, pero aprovecho toda la lente, si esa revés no tengo
+
+**01:38:32.380 - 01:38:39.420**  
+un sensor de alta resolución y movimiento, andas con poca luz y que se sois, lente, bueno,
+
+**01:38:39.420 - 01:38:44.380**  
+listo, desperdicio, parte de lo que meterá lente, todo depende de los que vos quieras obtener.
+
+**01:38:45.420 - 01:38:53.340**  
+Bueno, acá tenés otra imagen con gran angular, que estas columnas que vos sabes intitivamente,
+
+**01:38:53.340 - 01:39:01.020**  
+que tendría que ser verticales tan torcidas y que este piso supone que es plano y acá se ve torcido,
+
+**01:39:01.020 - 01:39:07.900**  
+entonces eso te echaba y te dice, esto es un gran angular, acá hay una característica notable,
+
+**01:39:07.900 - 01:39:15.740**  
+gran angular, obviamente ustedes ven que esta vertical está torcida, todas las radiales,
+
+**01:39:15.740 - 01:39:22.460**  
+o sea cuando vos haces centro todo lo que va radiales eso, todas las rectas que convergen al centro
+
+**01:39:22.460 - 01:39:30.460**  
+de la imagen se preservan y siguen siendo rectas, está bien, y todo lo que está en la cena es una
+
+**01:39:30.460 - 01:39:40.140**  
+recta, pero que no convergen al centro de la imagen, entonces esa se curva, acá se ve el, como la
+
+**01:39:40.140 - 01:39:46.140**  
+cerámica estaba, no sé la piedra, se ve en las líneas radiales se preservan como rectas,
+
+**01:39:46.140 - 01:39:52.700**  
+pero las prependiculares son todas curvas, bueno acá tenés otra gran angular,
+
+**01:39:56.380 - 01:40:01.500**  
+se puede medir la distorsión de la lente, eso es otra presentación, y si tenerlo para
+
+**01:40:01.500 - 01:40:08.340**  
+meter la distorsión vos podés generar la colineación y enterés a la imagen, suponiendo que te sirve para
+
+**01:40:08.340 - 01:40:15.140**  
+algo, bueno en vision 3D, vos tenés que trabajar con colineaciones, no puedes trabajar con este
+
+**01:40:15.140 - 01:40:20.380**  
+cosa así, lo que pasa es poder manejar directamente las coordenadas como hablamos hoy con la homografía,
+
+**01:40:20.380 - 01:40:29.380**  
+no necesitas hacer work, esto es un work, su work específico de que tender esa la imagen, o sea de
+
+**01:40:29.380 - 01:40:40.340**  
+anti distorsión, le quita la distorsión de lente, bueno acá hay un método específico de
+
+**01:40:40.340 - 01:40:44.580**  
+anti distorsión, acá me estoy de cuentas yo no letro la anti distorsión de camaras comunes,
+
+**01:40:44.580 - 01:40:53.580**  
+hay otro específico para las de gran angular, me voy a sentir esta parte, todo no es el tema, bueno,
+
+**01:40:55.580 - 01:41:03.740**  
+con esos parámetros de distorsión, que no le dije como se calculan, vos podés hacer un
+
+**01:41:03.740 - 01:41:09.020**  
+work, y con un poco más, puedo decir quiero un work y a de una manera que vos con la homografía
+
+**01:41:09.020 - 01:41:15.860**  
+decías qué parte querías, de qué parte querías obtener una vista frontal,
+
+**01:41:16.980 - 01:41:23.340**  
+vos cuando decís colineación dice bueno por de qué parte, acá está ilustrado, está anotado,
+
+**01:41:25.020 - 01:41:36.700**  
+con líneas curvas amarillas, lo que corresponden a los lados rectos de esta imagen que se
+
+**01:41:36.700 - 01:41:44.380**  
+tiene con un work, entonces vos tenés una cámara de gran angular puesto en el techo con 180
+
+**01:41:44.380 - 01:41:50.700**  
+arados de visión que te genera eso, y por software vos generas esta imagen de acá al costado,
+
+**01:41:50.700 - 01:41:58.260**  
+las techoes son cámaras que se venden y vos manejas la vez con el celular y manejas con un
+
+**01:41:58.260 - 01:42:03.580**  
+joystick como si fuera una cámara física que se está moviendo, que la se gira para el costado,
+
+**01:42:03.580 - 01:42:09.620**  
+las se miramos para abajo, más para arriba y en realidad lo que está haciendo es un work,
+
+**01:42:09.620 - 01:42:19.060**  
+no hay nada físico que se mueva, y generas esta imagen de acá. Bueno, finalmente la cámara
+
+**01:42:19.060 - 01:42:24.380**  
+omnidireccional hace rato hace años y quiero comprar una y no la consigo, son cámaras más,
+
+**01:42:24.380 - 01:42:30.620**  
+cuando la vea, cuando consigas bien que se pueda traer Argentina, todo el precio y si va
+
+**01:42:30.620 - 01:42:38.380**  
+a la pena, la quiero comprar para unaencia. Bueno, cámara omnidireccional, esto es bastante
+
+**01:42:38.380 - 01:42:45.380**  
+raro, acá si usted presta la atención a esta línea, la imagen termina acá, lo otro es un fondo
+
+**01:42:45.380 - 01:42:53.320**  
+seré este que le puse yo. Claro, cuando lo no está, si uno lo ve en vídeo, empiezan
+
+**01:42:53.320 - 01:43:01.480**  
+a entender un poco más, pero es bastante bastante raro esto, eso es un camino que va
+
+**01:43:01.480 - 01:43:09.560**  
+para adelante y es como que si acá hay un camino perpendicular, bueno, no nada que ver,
+
+**01:43:09.560 - 01:43:14.720**  
+este camino que va para adelante, la parte atrás son ésta y ésta, para uno de los
+
+**01:43:15.200 - 01:43:27.360**  
+este es la parte de la atrás, está bien, esta veidrina es plana, está bien, todo este puente, está bien,
+
+**01:43:29.040 - 01:43:38.600**  
+este túnel elevado, está al mismo nivel, horizontal, también si después, si bien después es
+
+**01:43:38.600 - 01:43:43.280**  
+medio, es medio curvo, pero está al mismo nivel, no tiene esto que sea para arriba y para abajo,
+
+**01:43:43.280 - 01:43:48.240**  
+todo esto es de formación delerente, el omnidireccional, acá se ve mucho mejor,
+
+**01:43:50.400 - 01:43:55.880**  
+esto es una, obviamente es una cámara elevada, no sé si es con un dron, seguramente,
+
+**01:43:57.640 - 01:44:11.290**  
+esto es una playa recta, esta parte que uno ve la cámara, si quiere ver la parte de adelante,
+
+**01:44:11.290 - 01:44:15.370**  
+la cámara mira para todos lados, para atrás también, no, es la que se ve acá, que ésta es
+
+**01:44:15.370 - 01:44:21.730**  
+una perpendicular a la costanera, la venida costanera es recta, está bien, esto se va para
+
+**01:44:21.730 - 01:44:25.690**  
+la izquierda, esto se va para la derecha y ésta parte que se ve acá de las palmeritas,
+
+**01:44:25.690 - 01:44:34.410**  
+es la parte de atrás, acá se ve todo el mar, está atrás de la cámara, exactamente atrás
+
+**01:44:34.410 - 01:44:39.410**  
+que está venida, es un tipo que viene por esta venida, el mar que ve es éste que está acá,
+
+**01:44:40.410 - 01:44:45.090**  
+bueno por eso, más o menos se van a dar una idea, ahora las verticales se preservan,
+
+**01:44:45.090 - 01:44:52.930**  
+está bien, acá es bastante distinto que es la gran angular, la gran angular, la coordinación
+
+**01:44:52.930 - 01:45:02.330**  
+ocurría solamente en la que las radiales la convergían al centro, esta preserva las verticales,
+
+**01:45:02.330 - 01:45:06.530**  
+todos los edificios, los demás acá, todos los edificios están de hechitos para arriba,
+
+**01:45:07.530 - 01:45:13.370**  
+ya se otra información, ¿quí de formación hace? Bueno, no es fácil de imaginar, es exactamente
+
+**01:45:13.370 - 01:45:20.410**  
+la que usas en los mapas, la antártida está recontra grandada, está por aquí, claro,
+
+**01:45:20.410 - 01:45:29.050**  
+porque el ecuador, esto tiene 40 mil kilómetros, pero en el punto de acá abajo, mi de cero,
+
+**01:45:29.050 - 01:45:40.770**  
+depende de qué la atitude estaba, tiene una distancia distinta, están bien, son circunferencias
+
+**01:45:40.770 - 01:45:48.730**  
+cada vez más chicas, bueno la única, digamos, lo único que interpretar es que este mapa es una
+
+**01:45:48.730 - 01:45:57.370**  
+proyección, hay que restrangular de una feira que es la tierra vista desde afuera, esto es una
+
+**01:45:57.370 - 01:46:04.490**  
+proyección, hay que rectangular de una feira vista desde adentro, o sea, es lo que desde adentro se
+
+**01:46:04.490 - 01:46:10.090**  
+ve cuando miras para afuera, también lo que se proyectaría en la superficie de la feira, pero es
+
+**01:46:10.090 - 01:46:18.210**  
+la misma fórmula, también de manera que, si voy a decir que esta distancia son cada menores
+
+**01:46:18.210 - 01:46:24.570**  
+cuando más arriba voy, acá también eso explica por qué se la, por qué aparecen estas curvas,
+
+**01:46:25.290 - 01:46:33.210**  
+y las nubes tienen esa forma, eso porque son distancia, cada scan es una circunferencia cada
+
+**01:46:33.210 - 01:46:38.890**  
+es menor, en la parte de arriba del sensor, esto es en la parte de abajo, bueno, que es si yo,
+
+**01:46:38.890 - 01:46:46.370**  
+le da para pensar, el nombre se va a proyección al que rectangular, y luego el modelo es equivalista en
+
+**01:46:46.370 - 01:46:53.850**  
+sin índica proyección, entonces son dos nombres técnicos que tienen, acá son dos cámaras
+
+**01:46:55.290 - 01:47:03.250**  
+omisirecionales, que se obtienen con muchas cámaras y después se fusionan por software,
+
+**01:47:03.250 - 01:47:12.410**  
+también, y se genera el warp de antes, en general, por un tema práctico, hay un punto de donde se agarra
+
+**01:47:12.410 - 01:47:19.850**  
+la cámara y eso suele ser un punto ciego, también, no necesariamente tiene que ser un punto ciego,
+
+**01:47:19.850 - 01:47:29.930**  
+pero como que no hay mucho interés el sur de la cámara, bueno, ya se hizo ahora, así que como le
+
+**01:47:29.930 - 01:47:36.890**  
+dije, estuvieron empezar con este tema, lo voy a cortar acá, voy a hacer una cosa, a cortar la
+
+**01:47:36.890 - 01:47:38.970**  
+nación y de de cuento como si esto.
+

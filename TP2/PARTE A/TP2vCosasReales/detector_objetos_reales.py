@@ -188,7 +188,7 @@ def main():
     ventana_config = "Controles"
     ventana_proceso = "Proceso de reconocimiento"
 
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     if not cap.isOpened():
         print("ERROR: no se pudo abrir la webcam.")
         sys.exit(1)

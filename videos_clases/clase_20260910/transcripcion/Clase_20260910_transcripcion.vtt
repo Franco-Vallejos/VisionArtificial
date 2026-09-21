@@ -1,0 +1,2924 @@
+WEBVTT
+
+00:00:01.680 --> 00:00:13.020
+ahí empezó ahora y ahora de tener la transcripción listo ahora sí bueno yo voy a empezar
+
+00:00:13.020 --> 00:00:18.640
+con esto pero seguida voy a poner un vídeo también está es más como ustedes sabieron
+
+00:00:18.640 --> 00:00:26.600
+las primeras las primeras partes este voy a poner este vídeo voy a hacer la revés
+
+00:00:26.600 --> 00:00:36.700
+compartir esta pestaña este voy a hacer pantalla completa que aparece un marco ruido en perú
+
+00:00:36.700 --> 00:00:42.420
+ok bueno está viendo youtube no dice marco ruido en perú y no sé qué más
+
+00:00:42.420 --> 00:00:48.180
+está es cortita tiene dura menos minuto por ahí la la rango de vuelta
+
+00:00:50.580 --> 00:00:57.140
+enseguida voy a la voy a repetir yo lo veo fluido usted lo vean medio entre cortado por el
+
+00:00:57.140 --> 00:01:04.220
+Teams este de todos modos de todos modos acá creo que se entiende se entiende más o menos
+
+00:01:04.220 --> 00:01:10.140
+acá ésta es una dash cam una cámara que ponés ahí este adentro de la autos sobre
+
+00:01:10.140 --> 00:01:18.820
+para brisas y lo que ustedes están viendo no es en tiempo real o sea está hecho
+
+00:01:18.820 --> 00:01:24.420
+convision artificial está hecho con un algoritmo con una con una máquina que no le da el
+
+00:01:24.420 --> 00:01:30.100
+cuero para hacerlo en tiempo real también entonces es un efecto que te permite agregarle
+
+00:01:30.100 --> 00:01:35.520
+cuando descargar el archivo de la dash cam y demora más en procesarlo lo que demoró en
+
+00:01:35.520 --> 00:01:43.620
+fin mar de ese minuto este tarda más también dicho esto voy a poner una vuelta todo lo que
+
+00:01:43.620 --> 00:01:53.140
+vieron ahí se llaman asistencia a la conducción y la idea es nada de esto es robusto
+
+00:01:53.140 --> 00:01:58.780
+o sea la reponsarea siempre es el conductor o sea el tipo más o menos tiene un sistema para
+
+00:01:58.780 --> 00:02:05.640
+calcular la distancia a un auto el otro auto pero ni está calibrado no es el todo preciso puede
+
+00:02:05.640 --> 00:02:11.500
+fallar entonces bueno puedes montar todo tu sistema este de conducción autónoma en lo que
+
+00:02:11.500 --> 00:02:19.300
+ves esta esta dash cam también en este ahorismo pero sí es el un primer paso porque lo que vamos a
+
+00:02:19.300 --> 00:02:27.940
+encarar hoy el tema yo lo llamo vision geometrica también o vision 3d geometría 3d también
+
+00:02:27.940 --> 00:02:34.180
+en la les comente por el día que por el que el año que viene vamos a hacer dos materias una
+
+00:02:34.180 --> 00:02:44.740
+dedicada a todo a vision 3d y otra al resto este a lo que tuvieron viendo hasta ahora para
+
+00:02:44.740 --> 00:02:51.340
+hacerlo un poquito más interesante nosotros ustedes estuvieron haciendo detección y clasificación
+
+00:02:51.340 --> 00:02:58.060
+ya en un pipeline de detección y clasificación de formas con heurísticas a programando el programando
+
+00:02:58.060 --> 00:03:03.580
+ustedes el pipeline el paso siguiente es hacerlo con deep learning que además es mucho más avanzado y
+
+00:03:03.580 --> 00:03:09.880
+es otra manera de trabajar los dos caminos para entender digamos los dos extremos de la de la
+
+00:03:09.880 --> 00:03:16.080
+vision artificial pero lo alterno porque si no es ese muy tedioso el tema no nos salimos del
+
+00:03:16.080 --> 00:03:21.400
+mismo tema de clasificación de detección acá estamos yendo a otra cosa estamos abriendo
+
+00:03:21.400 --> 00:03:27.800
+este otro aspecto bastante distinto de lo que venimos viendo de la vision artificial que tiene
+
+00:03:27.800 --> 00:03:33.280
+que ver con entender la escena en particular esto está por terminar lo voy a poner que arranque
+
+00:03:34.160 --> 00:03:40.720
+en particular yo quiero que se concentren en esas flechas que aparecen de vez en cuando abajo
+
+00:03:40.720 --> 00:03:47.840
+también y que de alguna manera tindicán dónde está el plano está a ver si ahora cuando van a
+
+00:03:47.840 --> 00:03:55.760
+aparecer cómo diga me están esas esas flechas dígame cómo cómo creen ustedes que hace este
+
+00:03:55.760 --> 00:04:05.330
+sistema de vision artificial para medir la distancia a los autos que nadie dice que es regal esa
+
+00:04:05.330 --> 00:04:13.130
+distancia o sea irse cinco metros y si ponerse una sintamétrica por ahí te da siete metros que se
+
+00:04:13.130 --> 00:04:19.690
+yo pero pero vamos a suponer con el mejor esfuerzo que siempre puede fallar este tamaño
+
+00:04:19.690 --> 00:04:26.490
+el rectángulo que detecta el del auto no bueno a ver muy bien esa es la manera de pensarlo
+
+00:04:26.490 --> 00:04:34.410
+obviamente cuando uno yo aprovecho me subo a lo que vos me decís para comentarle más cosas
+
+00:04:34.410 --> 00:04:40.810
+yo sé que ese método no funciona pero es una buena manera de pensarlo también después cuando
+
+00:04:40.810 --> 00:04:47.530
+te metes en el tema no funciona porque la detección del auto te da un rectángulo que es impreciso
+
+00:04:47.530 --> 00:04:53.530
+o sea te lo puede detectar si por eso un vídeo es que el rectángulo cambia brutamente de tamaño
+
+00:04:53.530 --> 00:05:00.090
+viste como como que como que vibra este cuadro por cuadro entonces no es una medida y creamos si
+
+00:05:00.090 --> 00:05:06.730
+cambia un poquito de tamaño vos asumiz que se ha sacado se habrá en un poquito vos sumí que se
+
+00:05:06.730 --> 00:05:13.530
+acercó bastante también entonces hay un tema de sensibilidad ahí y de precisión de la de la
+
+00:05:13.530 --> 00:05:21.290
+detección nada más que por eso pues sino sí también hay otra cosa que vos deberías para
+
+00:05:21.290 --> 00:05:28.210
+calcular la distancia con el tamaño vos deberías saber el tamaño del auto de verías para cada modelo
+
+00:05:28.210 --> 00:05:35.770
+de auto deberías conocer no sé altura ancho exacto de cada uno entonces si bien
+
+00:05:35.770 --> 00:05:44.530
+es viable sabemos que no va para acá bueno pero hay otro tema aun conociendo el tamaño real del
+
+00:05:44.530 --> 00:05:51.050
+auto y viendo el auto con píxeles con precisión hay más cosas no te las puedo ser rápido pero
+
+00:05:51.050 --> 00:05:59.690
+eso por eso meternos ahora en matemática te faltan datos geometricamente te faltan datos que
+
+00:05:59.690 --> 00:06:04.250
+tiene que ver con la apertura que tiene la cámara tiene que ver con con unas cuantas cosas está bien
+
+00:06:05.530 --> 00:06:11.290
+entonces hoy no vamos a meter con la geometría que va a tratar de explicar esto mira concentrar en el
+
+00:06:11.290 --> 00:06:16.930
+plano vamos a suponer voy a pausar pero no quiero arrancar de vuelta vamos a suponer que todo el
+
+00:06:16.930 --> 00:06:22.790
+análisis se hace en el plano o sea por un lado se detectan autos con cuadraditos y luego de una
+
+00:06:22.790 --> 00:06:29.570
+manera vos sabes cuál es el plano el plano del a falto entonces el cuadradito del auto vas a
+
+00:06:29.570 --> 00:06:38.130
+si el donde apoya en el plano era falto y en ese plano puedo medir distancias todo esto que te digo no
+
+00:06:38.130 --> 00:06:45.530
+te lo estoy demostrando es lo que vamos a empezar a ver en este momento entonces no pero voy a pasar
+
+00:06:45.530 --> 00:06:54.290
+dos vídeos más así termino termino compartir esta pestaña a ver si están viendo que es un vídeo de 10
+
+00:06:54.290 --> 00:07:03.210
+segundos le tiene lo voy a pausar porque el movimiento no hice mucho o sea con el movimiento se
+
+00:07:03.210 --> 00:07:10.650
+dieron rápidamente cuenta de que esto es un autito de hecho es un startup se llama es un robotito
+
+00:07:11.370 --> 00:07:15.810
+muy como no fácil de arbar cualquiera lo hará se puede comprarlo para comprar las partes y armártele
+
+00:07:15.810 --> 00:07:23.130
+armártele o portuguete diseñar del tuyo estos códigos que están acá que tienen un aire a
+
+00:07:23.130 --> 00:07:32.130
+QR se llaman arucos y usarlos así el nombre genérico tiene son marcadores fiduciarios
+
+00:07:32.130 --> 00:07:38.010
+o sea marcadores que se reconocen fácilmente porque están diseñados para ser reconocidos
+
+00:07:38.010 --> 00:07:44.970
+fácilmente por visión artificial y para las cuales vos conoces de alguna manera conoces su
+
+00:07:44.970 --> 00:07:52.410
+suposición o que les localizarlos entonces vos acá esto todos estos lo vamos a ver con más
+
+00:07:52.410 --> 00:07:58.570
+profundidad más adelante pero son distintos porque cada uno tiene un ID a diferencia de QR que tiene un
+
+00:07:58.570 --> 00:08:05.210
+texto esto tiene un ID de hecho estos son de un diccionario posiblemente un diccionario de 50
+
+00:08:05.210 --> 00:08:13.690
+hay diferentes acá se usan 5 o sea que la máquina detecta los 5 y sabe cuál es cual también
+
+00:08:13.690 --> 00:08:25.080
+entonces si vos conoces las coordenadas de la pista de esas cuatro vértices de la pista el tema
+
+00:08:25.080 --> 00:08:33.320
+es a pesar de que la cámara está inclinada matemáticamente vos podés calcular la coordenada de
+
+00:08:33.320 --> 00:08:39.440
+este robotito también o sea quiero que lo piden ser así todo esto lo voy a repetir en un más
+
+00:08:39.440 --> 00:08:46.600
+más tarde también con más detalle con más profundidad el vos tenés la coordenada en píxeles de esto
+
+00:08:46.600 --> 00:08:51.080
+porque lo de te lo detectó algo te dice que hay un guardadito y tiene una más también
+
+00:08:51.080 --> 00:08:58.200
+otorcido esto que cosa que está mal tiene la coordenada en píxeles el tema es cuál es la coordenada
+
+00:08:58.200 --> 00:09:04.880
+métrica entonces vos sabes de antemano no es que los sacas de la imagen que este es el ponerle
+
+00:09:04.880 --> 00:09:11.080
+vamos a hacer si este es el 0 0 esto pueden ser 50 centímetros en x esto puede ser un metrón
+
+00:09:11.080 --> 00:09:17.640
+en x estoy inventando los veros lo sabes también y forma un rectángulo entonces a pesar de que la
+
+00:09:17.640 --> 00:09:25.120
+cámara esté como una perspectiva inclinada por no estaba visto desde arriba hay una forma no se
+
+00:09:25.240 --> 00:09:34.720
+protección de hecho el término matemático es homografía que te permite convertir la coordenada en
+
+00:09:34.720 --> 00:09:41.480
+píxeles lo que te deja acá a coordenadas métricas del mundo real ese ese es el objetivo de lo que
+
+00:09:41.480 --> 00:09:45.480
+estamos haciendo ahora y el trabajo práctico va a ser parecido de este no va a hacer un robotito
+
+00:09:45.480 --> 00:09:51.600
+va a hacer algo más más sencillo y aburrido justamente para si quieren poner un robotito
+
+00:09:51.600 --> 00:09:57.920
+en la ópera es más trabajo además tienen los robots este lo va a hacer con un código de código
+
+00:09:57.920 --> 00:10:04.920
+de corre y lo va a similar con la mano ese ese va a ser el próximo trabajo práctico bueno
+
+00:10:04.920 --> 00:10:13.920
+te muestro por último este vídeo que a ver el que lo otro me vi olvidado bueno este nuestro
+
+00:10:13.920 --> 00:10:22.760
+proyecto acá esto le voy a sacar el audio este esto esto de año pasado de año pasado en
+
+00:10:22.760 --> 00:10:30.720
+otra universidad un proyecto bueno que le faltó le faltó bastante bien donde sigieron pero
+
+00:10:30.720 --> 00:10:36.040
+tenía que ver si vamos un poco más este están acá están mostrando cosas que no son las que me
+
+00:10:36.040 --> 00:10:45.120
+interesan ahí está lo que ven acá para lo que ven acá en la pantalla y yo para lo estoy
+
+00:10:45.120 --> 00:10:51.280
+me voy a enseñar lo sabía importante acá en principio ven el tripo de también acá está el
+
+00:10:51.280 --> 00:10:56.480
+tripo de ahí está la cámara el tripo de que sostiene un celular como ven es una vista
+
+00:10:56.480 --> 00:11:02.040
+en perspectiva no es la cámara no está exactamente arriba lo se están mirando en perspectiva
+
+00:11:02.040 --> 00:11:09.960
+incluso podría estar más lejos más más inclinado entonces acá gracias a los marcadores que
+
+00:11:09.960 --> 00:11:19.440
+hay en los vértices lograron una vista cenital o sea transformaron lo que es un trapesoide el
+
+00:11:19.440 --> 00:11:25.600
+rectángulo de la pista en perspectiva es un es un trapecio también y sin embargo lograron una
+
+00:11:25.600 --> 00:11:34.080
+vista rectangular eso eso es la conversión es una homografía y si no un warp que lo que vimos
+
+00:11:34.080 --> 00:11:41.060
+la clase pasada un warp con una homografía bueno no sé si lo que le dije el exhibió les
+
+00:11:41.060 --> 00:11:45.520
+complica más la vida vamos creo que estamos viendo todos coordenados homogéneas así que ahora
+
+00:11:45.520 --> 00:11:54.160
+de vuelta vamos así bueno recordemos transformación lineal típico caso es una matriz cuadrada vamos
+
+00:11:54.160 --> 00:12:01.720
+a tener tres por tres ponele x e y son vectores de tres dimensiones vectores columnos acá y bueno
+
+00:12:01.720 --> 00:12:07.840
+el determinante de a no es cero o sea que es invertible si vos crees tener sí quiere
+
+00:12:07.840 --> 00:12:13.840
+despejar x pasada invertiza pasas al otro lado de la transformación y listo y cuáles
+
+00:12:13.840 --> 00:12:24.560
+una homogénea a rectangular el cero es un vector cero no es un valor cero a rectangular y hay
+
+00:12:24.560 --> 00:12:31.460
+infinitas soluciones o sea justamente de regola tiene un déficit de un incompleto el caso que me
+
+00:12:31.460 --> 00:12:36.800
+interesa ilustrar es cuando te falta una ecuación entonces tus infinitas soluciones forman un
+
+00:12:36.800 --> 00:12:43.560
+sub espacio de una sola dimensión una recta una recta que pasa por cero bueno no me
+
+00:12:43.560 --> 00:12:48.840
+interesa la forma a x igual a cero me interesa que asocien porque la palabra homogénea viene de ahí
+
+00:12:48.840 --> 00:12:55.320
+aquí cuando vos tenés valores en una recta las coordenadas son proporcionales se va a
+
+00:12:55.320 --> 00:13:00.040
+arrasar un punto de la recta lo multiplicas por dos y te va a dar otro punto de la recta también
+
+00:13:00.040 --> 00:13:05.920
+lo multiplicas por landa por landa es la constante que vamos a usar cualquier constante y te va a dar
+
+00:13:06.720 --> 00:13:15.680
+otro punto de la recta bueno ese tema de que a mí me interesa como resultado como solución la
+
+00:13:15.680 --> 00:13:21.680
+recta son infinitas infinitas soluciones no voy a indicar todas las infinitas soluciones con
+
+00:13:21.680 --> 00:13:28.320
+cualquiera que indique menos cero se sobren tiende no o sea para formar la recta son dos puntos
+
+00:13:28.320 --> 00:13:34.560
+el cero y cualquier otra que yo indico ya tengo de terminar la recta entonces los valores que yo
+
+00:13:34.560 --> 00:13:44.280
+busco son cualquier valor proporcional me sirve a esa cualidad de que cualquier proporcional me
+
+00:13:44.280 --> 00:13:50.040
+sirve se lo llama homogéneo es nombre que se le dan matemáticas también todas a química es
+
+00:13:50.040 --> 00:13:55.960
+otra cosa bueno finalmente transformación a fin yo si los conté la que hace pasada
+
+00:13:55.960 --> 00:14:03.320
+transformación a fin dió de la primera transformación ideal se va a usar la última la vamos a
+
+00:14:03.320 --> 00:14:10.440
+ver ahora a continuación este por eso el nombre vamos a tratar de recordarlo transformación a
+
+00:14:10.440 --> 00:14:17.960
+fines esto es una por el número primero orden porque tiene x a la 1 y la constante y x a la 1 o sea
+
+00:14:17.960 --> 00:14:25.360
+la transformación ideal es un monómio de primero en este es un polinomio de primero nuevamente la
+
+00:14:25.360 --> 00:14:34.840
+matriz cuadrada a por el vector x más ve que es otro vector no es como si la x es la variable y
+
+00:14:34.840 --> 00:14:41.960
+ahí ves a las contantes el factor de x y la constante que se suma a esa forma se le llama a fin
+
+00:14:41.960 --> 00:14:46.880
+recuerden los nombres en matemáticas no se le dan a los conceptos por ser complejos se los dan
+
+00:14:46.880 --> 00:14:52.480
+porque si los nombres ha seguido también cuando está diciendo che el tecorda la ecuación que es
+
+00:14:52.480 --> 00:14:58.520
+así bueno lo pusieron a fin no hay que romperse mucho no usualmente hay una historia de por qué le
+
+00:14:58.520 --> 00:15:04.680
+pusieron hace nombres viste pero es como ponerle jertru y satuija que se yo o sea está tía
+
+00:15:04.680 --> 00:15:14.280
+ponen dije la nombres más raro este bueno este entonces claro si vos salís de vector y si te
+
+00:15:14.280 --> 00:15:21.120
+vas a x es un un escalaria o sea dos nombres reales x e y es la cosa de la recta y como les
+
+00:15:21.120 --> 00:15:30.760
+conté la clase pasada me toma pasa todos los años de no usar la matemática también y eso no es
+
+00:15:30.760 --> 00:15:37.880
+culpa a ustedes yo le atribuyo el tema a el programa de la carrera que se hace en todo el mundo no es
+
+00:15:37.880 --> 00:15:45.720
+un tema de matanzas particular este que te dan matemáticas y después hay una brecha muy grande
+
+00:15:45.720 --> 00:15:49.200
+hasta que la vas a usar de hecho la estás usando por una materia definitiva lo que no eligieron
+
+00:15:49.200 --> 00:15:56.120
+esta materia capa que jamás nunca jamás van a usar esa matemática bueno seguramente ustedes
+
+00:15:56.120 --> 00:16:02.640
+le dieron ecuaciones homogéneas el nombre de suena ni se acuerdan bien de que se trataba y esta
+
+00:16:02.640 --> 00:16:09.760
+la transformación a fin lo asoció la ecuación de la recta y el error dice a recta lineal porque una
+
+00:16:09.760 --> 00:16:17.440
+línea recta no no es una asociación libre de palabra típica de xgpt no ecuación de la recta
+
+00:16:17.440 --> 00:16:24.680
+suena es a fin y no es una transformación lineal ta lineal pasa por cero es la arriba o sea
+
+00:16:24.680 --> 00:16:32.520
+sí equivale cero y va al cero no importa lo que va a diga bueno ya ya estamos renovados con
+
+00:16:32.520 --> 00:16:38.080
+estos conceptos no esto acá no se no no se suisten estos son nombres raros todos significan
+
+00:16:38.080 --> 00:16:45.000
+lo mismo lo que pasa es que le voy a estar mencionando son pierdo oportunidad para repetir
+
+00:16:45.000 --> 00:16:51.320
+la cosa que le entre por osmosis en visión artificial conclusion varias disciplinas y cada disciplina
+
+00:16:51.320 --> 00:16:58.800
+tiene su propia jerga y hay conceptos que tienen distintos nombres en distintas jergas bien entonces
+
+00:16:58.800 --> 00:17:06.680
+en matemática se llaman transformaciones ecuillanas y se definen como la transformación que preserva la
+
+00:17:07.680 --> 00:17:19.040
+instancia entonces vamos a visualizarla con un ejemplo yo tengo una nube de puntos en un espacio
+
+00:17:19.040 --> 00:17:23.960
+3d también para hacerlo para visualizar más sabe que son ocho vértices de un cubo
+
+00:17:23.960 --> 00:17:30.400
+entonces son viste formar el cubito ahí poseo de que si trasar los inventos dibujas un cubo en el
+
+00:17:30.400 --> 00:17:36.040
+espacio esto se voy a transformarlo que voy a hacer no se rotarlo
+
+00:17:37.040 --> 00:17:42.200
+una transformación linear una transformación de hecho no solo esa voy a rotarlo
+
+00:17:45.000 --> 00:17:50.640
+el tema que es cuando vuelo rotas las distancias relativas entre los ocho puntos se conservan
+
+00:17:50.640 --> 00:17:57.680
+también ahora cuando vos lo voy a escalar también lo voy a agrandonos ahí se no se conservan
+
+00:17:57.680 --> 00:18:05.280
+la distancia también entonces la transformación que preserva la distancia son solamente las rotaciones
+
+00:18:05.280 --> 00:18:12.920
+y las traslaciones o sea esa nube de puntos yo la corro o sea le sumo 100 a las coordenadas
+
+00:18:12.920 --> 00:18:20.560
+equis de todos los puntos y el cubo queda desplazado 100 unidades en x también pero las distancias
+
+00:18:20.560 --> 00:18:28.840
+entre los puntos se se preservan es una manera matemáticamente precisa decirlo también y acá están
+
+00:18:28.840 --> 00:18:36.720
+los tres nombres que lo voy a mencionar estableciendo el cuarto que te rile transformación
+
+00:18:36.720 --> 00:18:42.360
+occluyana hoy sometría occluyana y sometría significa conservar las distancias
+
+00:18:44.840 --> 00:18:49.640
+la transformación occluyana es el nombre que le dan las matemáticas también transformación
+
+00:18:49.640 --> 00:18:56.560
+de cuerpo rígido en lo mismo pero es el término que se usa en la física en la física mecánica
+
+00:18:56.560 --> 00:19:05.200
+física uno no es fuerza y buena masa para aceleración entonces cuerpo rígido es los infinitos
+
+00:19:05.200 --> 00:19:12.400
+puntos que lo componen conservan su distancia pues o rígido no lo puede deformar
+
+00:19:15.880 --> 00:19:23.880
+en general vos consideras en robóticas vamos a poner un auto un autito que vimos recién el autito
+
+00:19:23.880 --> 00:19:29.320
+rígido también si le das un pisotón deja ser un copo rígido pero cuando se trasladas
+
+00:19:29.320 --> 00:19:33.720
+se trasladas todo junto una tiene que acular en la traslación en la rotación de cada uno de
+
+00:19:33.720 --> 00:19:39.240
+los puntos del auto sino que lo ves en su conjunto eso es lo bueno se simplifica se reduce a un
+
+00:19:39.240 --> 00:19:47.480
+único punto este idea de la geometría lo llamamos roto traslación nombre más sofisticado pero
+
+00:19:47.480 --> 00:19:54.080
+auto definido porque te dice rotación y traslación las dos las dos transformaciones que nos
+
+00:19:54.080 --> 00:19:59.080
+interesan a nosotros y que preservan la distancia hay una transformación más que preservan la
+
+00:19:59.080 --> 00:20:04.800
+distancia que es matemática que mente correcte y no nos interesa que es el espejo también es
+
+00:20:04.800 --> 00:20:09.560
+como doblar una media no sacarlos la versión espejo no no no no no no no no no hay una
+
+00:20:09.560 --> 00:20:14.840
+traslación rotación que te sube la versión espejo no nos interesa matemáticamente es correcto
+
+00:20:14.840 --> 00:20:22.520
+preservar la distancia pero lo vamos a dejar del lado bueno menciono acá el s3 especial euclidian
+
+00:20:22.520 --> 00:20:30.640
+3d grupo es el grupo el grupo que tiene bueno es el mejor níslo voy a definir porque me parece
+
+00:20:30.640 --> 00:20:37.360
+que en la versión que tengo no voy a necesitar hablar de variedades manifold y todos conceptos
+
+00:20:38.360 --> 00:20:46.720
+también y que no son que apenas se mencionan tampoco que son relevantes para entender el tema si
+
+00:20:46.720 --> 00:20:52.360
+fuera el seria relevante si tuvieran escribiendo un paper y quiere fundamentar lo que dice sí que
+
+00:20:52.360 --> 00:20:59.360
+vamos a dejarlo de lado bueno vamos con esto roto traslación la roto traslación es una operación
+
+00:20:59.360 --> 00:21:06.240
+no lineal porque porque es una operación a fin ahí está x prima bueno yo soy fíjaka son lo que
+
+00:21:06.240 --> 00:21:12.920
+podría hacer ahora es en vez esto era lo traje hace mucho en vez de traer fotos de internet
+
+00:21:12.920 --> 00:21:18.880
+imágenes de internet buscar imágenes va a ver cuál me sirve tendré que pedirle a una ia que
+
+00:21:18.880 --> 00:21:25.080
+la genera hasta hace poco si le pedías texto te hace cualquier cosa ahora anda bastante bien pero bueno
+
+00:21:27.080 --> 00:21:34.240
+no hay que les cuento yo tenía esta fórmula en una diapositiva lo que pasa es que como aburrida cuando
+
+00:21:34.240 --> 00:21:41.920
+es así manuscrito tiene ese plus de la ilustración no lo hace un poco más atractivo y yo no tengo
+
+00:21:41.920 --> 00:21:48.240
+buena detrás yo no puedo escribir algo así bueno entonces acá dice x prima es igual a por
+
+00:21:48.240 --> 00:21:56.120
+x más b a por x más b en otra forma hacia la fin también x prima es un vector también x es
+
+00:21:56.120 --> 00:22:01.040
+un vector x prima es un vector no confundir con la coordenada x de x ahí que es lo que está abajo
+
+00:22:01.560 --> 00:22:12.440
+entonces acá dice a por x más b y abajo lo plantea con sus matrices también entonces el
+
+00:22:12.440 --> 00:22:18.920
+resultado dice es un vector el columna de aquí prima y ese producto de una matriz 2 por 2 con
+
+00:22:18.920 --> 00:22:26.440
+sus cuatro elementos a 1 2 3 4 el vector x que tiene su coordenada x ahí y b es un vector
+
+00:22:27.160 --> 00:22:34.360
+son malo constante no es el constante que les sumas b 1 veras listo entonces cómo cómo funciona
+
+00:22:34.360 --> 00:22:41.360
+esto en una isometría bueno la única condición es que hace una rotación entonces no importa
+
+00:22:41.360 --> 00:22:48.080
+qué le guarda recuerde yo me la sé memoria pero no importa a 1 2 a 3 a 4 son cinos y
+
+00:22:48.080 --> 00:22:52.120
+cocenos de un ángulo alfa que es el ángulo de rotación que vos querés que roten todos los
+
+00:22:52.120 --> 00:23:01.080
+y es el respecto del origen y la traslación b 1 2 es cuánto cree que se traslada después de
+
+00:23:01.080 --> 00:23:07.400
+rotar porque así está la la ecuación primero rotada después trasladas este en cuanto
+
+00:23:07.400 --> 00:23:13.240
+querés en x y cuanto en iguales la traslación bien entonces la rota traslación es una transformación
+
+00:23:13.240 --> 00:23:19.640
+a fin está no cualquier transformación a fin es una rota traslación es una si es una transformación
+
+00:23:19.640 --> 00:23:25.880
+porque para que hace una rotación bueno entre a 1 a 2 3 tiene que ver a el primer del
+
+00:23:25.880 --> 00:23:31.880
+termineante su uno uno son cocenos otros cinos el a 2 y a 3 es un negativo del otro a 1 y a
+
+00:23:31.880 --> 00:23:37.720
+4 bueno el montón de condiciones matemáticas no viene al caso pero para recordar que bueno
+
+00:23:37.720 --> 00:23:44.760
+puedes inventar cualquier conjunto de números y a ver cuánto rota porque no es una rotación
+
+00:23:45.720 --> 00:23:53.680
+viene solo esa más panción lineal o sea vos de manera no lineal calculando cinos y cocenos a partir
+
+00:23:53.680 --> 00:23:59.520
+de un único argumento que será ángulo alfa genera estos cuatro elementos esos cuatro elementos
+
+00:23:59.520 --> 00:24:06.240
+son interdependentes porque depende de una única variable alfa no hay cuatro grados libertad hay un
+
+00:24:06.240 --> 00:24:12.300
+solo grados libertad bueno se entendió entonces la rota de otra traslación es una transformación a
+
+00:24:12.300 --> 00:24:22.780
+fin no es lineal no es lineal por culpa de ver también no es lineal bueno acá acá está
+
+00:24:22.780 --> 00:24:27.900
+estamos convirtiendo a coordenar las homogéneas que le voy a tener que explicar no es una cosa
+
+00:24:29.980 --> 00:24:38.300
+complicada en media simple lo complejo es entender el concepto y cómo aplica primero voy a explicar
+
+00:24:38.300 --> 00:24:44.340
+qué es lo que hice acá primero las coordenadas de dos dimensiones les agrega una tercera dimensión que
+
+00:24:44.340 --> 00:24:51.860
+para este ejemplo y por la mitad de la clase va a ser un uno una costa de un uno punto entonces
+
+00:24:51.860 --> 00:25:00.700
+donde decía que hice y ahora dice que hice uno está lo mismo resultado y la matriz que ahora
+
+00:25:00.700 --> 00:25:10.020
+de tres por tres tiene la summa tri rotación que para eso tienen colores también que se yo arrosado y
+
+00:25:10.020 --> 00:25:22.380
+la función o sea colores el vector columna traslación y abajo dice 0 0 1 y si usted quieren ver acá
+
+00:25:23.260 --> 00:25:30.260
+primero vamos por la más fácil de abajo el uno que es esto de acá o sea 0 0 1 por x y 1
+
+00:25:30.260 --> 00:25:38.380
+te da uno es lo que está en esta fila de abajo y el resultado está acá ahora acá arriba si usted
+
+00:25:38.380 --> 00:25:46.260
+tiene un poco de fe estos dos primeros términos son la multiplicación de la summa 3 a y le está
+
+00:25:46.260 --> 00:25:54.820
+sumando por fíjete a caise x a caise y a caise 1 que se te uno acá 1 por b 1 1 por b2 o sea al
+
+00:25:54.820 --> 00:26:01.060
+resultado le está sumando la traslación es decir que vos con esta expansión dimensional con
+
+00:26:01.060 --> 00:26:07.780
+esa agregar uno se llama coordenadas homogéneas de esto con esta expansión dimensional vos
+
+00:26:09.380 --> 00:26:18.700
+linealizaste la rototrasación y esto crea que tiene tiene sus aplicaciones
+
+00:26:19.580 --> 00:26:26.660
+conceptualmente no va a ser más fácil operar y hacer expresiones a la lítica para entender lo que
+
+00:26:26.660 --> 00:26:35.020
+sigue entonces vos ahora tenéis una matriz que 3 por 3 notablemente la última fila 0 0 1 o sea que no
+
+00:26:35.020 --> 00:26:41.180
+contiene información también vos tenés 6 grados de libertad que son estos 6 valores de
+
+00:26:42.180 --> 00:26:53.540
+arriba se dijimos que b 1 y b 2 y esto diga una rotación también así que y esa esa matriz es
+
+00:26:53.540 --> 00:26:58.340
+derrotos de la relación o operación niña una de las cosas que vos puedes combinar las
+
+00:26:58.340 --> 00:27:04.700
+operaciones niñas pero yo tengo que cortar acá un segundo que quiero tengo que pasar acá
+
+00:27:05.580 --> 00:27:11.060
+voy a andar este cambiando de presentación voy a dar la mitad de esta presentación
+
+00:27:11.060 --> 00:27:18.140
+en una parte confío en mí que ven una montaña también donde encontramos los católogos
+
+00:27:18.140 --> 00:27:33.170
+dice transformación egeométricas lineales y gracias gracias a esta bueno vamos a ver esto es lo
+
+00:27:33.170 --> 00:27:40.890
+que le mostré recién lo pasa que en bebe 17 de traslación también entonces esta es una
+
+00:27:40.890 --> 00:27:47.490
+transformación a fin generica hay que ver la rotación depende de los valores de a puede ser
+
+00:27:47.490 --> 00:27:53.010
+otra si si no es una rotación entonces sigue siendo una transformación a fin pero no es una
+
+00:27:53.010 --> 00:28:00.210
+rotación bueno vamos a ver con las homogéneas es porque tienen 3 y nuestros nuestras sentidas
+
+00:28:00.210 --> 00:28:06.050
+son de dos dimensiones son puntos de dos dimensiones en un plano aquí se ha ido y resultado
+
+00:28:06.050 --> 00:28:12.330
+que prima y prima pero en coordenadas homogéneas se expresan en 3 dimensiones ya vamos a ser como
+
+00:28:12.330 --> 00:28:20.770
+entonces vamos a pasarlo solamente para agotar el tema porque es fácil y es lo que vimos acá lo
+
+00:28:20.770 --> 00:28:25.710
+vamos a expandir un poquito más vamos a hacer primero si vos tenés la más fíjense que la
+
+00:28:25.710 --> 00:28:30.270
+esta es la matriz identidad también no tiene cambio esto le cambia los colores a las columnas para
+
+00:28:30.270 --> 00:28:40.920
+que se vea como como que efecto tiene si tu matriz tu sum matriz es la identidad equivale a
+
+00:28:40.920 --> 00:28:48.280
+rota a una rotación cero o sea nada también o sea no y tenés valores acá el efecto de esta
+
+00:28:48.280 --> 00:28:52.280
+matriz de rotación es trasladar o sea esta columna se identifica exclusivamente con la
+
+00:28:53.280 --> 00:28:57.760
+traslación o sea igual lo que por esa casa le suman a x y de todo el conjunto de puntos la
+
+00:28:57.760 --> 00:29:07.880
+tus nube de puntos se se traslada si vos en cambio ponés constantes distintas de uno
+
+00:29:07.880 --> 00:29:14.960
+estas son estas escalando también si vos lo ponés dos dos el tu cuadrado ahora es el doble grande
+
+00:29:14.960 --> 00:29:20.920
+todos los puntos se multiplican por dos todos los los componentes x y de cada punto
+
+00:29:21.280 --> 00:29:29.600
+bueno en realidad vamos a explicar las x por do que es width de ancho y las y griega por h de
+
+00:29:29.600 --> 00:29:39.120
+height de altura entonces te hace una un escalado no uniforme o decir cuánto cuánto que factor
+
+00:29:39.120 --> 00:29:43.480
+de escalado ponés de ancho y que factor por eso tu altura es libertad si vos quede uniforme
+
+00:29:43.480 --> 00:29:49.000
+por el mismo número en los dos lo interesante que vos puedes ir aplicando esto
+
+00:29:49.520 --> 00:29:53.360
+independientemente se aplica su una de la otra la otra pero como la transformación ideal
+
+00:29:53.360 --> 00:30:00.360
+vos puedes juntar multiplicar toda la matriz y hacer una sola que la combinación de transformaciones
+
+00:30:00.360 --> 00:30:08.000
+que vos planteaste también y en esto la tercera columna siempre queda para la traslación
+
+00:30:08.000 --> 00:30:15.760
+es separable no afecta al resto los cuatro valores de casi efectivamente acá está la
+
+00:30:15.760 --> 00:30:25.040
+matriz rotación está ya vimos que podemos escalar lo que vimos acá acá se termine lo que nos
+
+00:30:25.040 --> 00:30:32.040
+interesa que podemos escalar podemos rotar también y podemos trasladar también hay un efecto
+
+00:30:32.040 --> 00:30:39.040
+un efecto más la transformación a fin puede hacer esto que dice shear que en castellano lo van
+
+00:30:39.040 --> 00:30:48.880
+a entender mejores si se amiento que es eso cada uno yo no me puse el nombre que es este efecto
+
+00:30:49.600 --> 00:30:56.280
+este yo no sé yo cuando andaba en subte en subtea los vagones hacían este movimiento para
+
+00:30:56.280 --> 00:31:06.920
+les quiere para la derecha así que bueno esa es un si se amiento entonces esos son efectos de una
+
+00:31:06.920 --> 00:31:11.040
+transformación a fin o sea sueste son las cosas que vos puedes hacer con la transformación a fin
+
+00:31:11.040 --> 00:31:15.040
+digamos de las cosas que se pueden hacer hay cosas que te sirven cosas que no siempre depende
+
+00:31:15.040 --> 00:31:19.400
+el contexto en el contexto de esta materia el si se amiento medio que no interesa
+
+00:31:20.520 --> 00:31:26.240
+me interesa la rotación y la traslación y la escala es una curiosidad que sabes que estar si
+
+00:31:26.240 --> 00:31:33.640
+la vas y le necesitas en nosotros vamos a aplicar el momento de escala este bueno esto lo que te dice si
+
+00:31:33.640 --> 00:31:38.800
+lo haces dos transformaciones primero transformas haciendo una rotación y después transformas haciendo
+
+00:31:38.800 --> 00:31:44.800
+una escala vos pueden multiplicar las dos matrices y obtener la compuesta que te has helado cosas
+
+00:31:44.800 --> 00:31:50.520
+juntas también yo que dije rotar y escalar bueno te roto y escala en una sola transformación
+
+00:31:50.520 --> 00:32:03.520
+rotar escalar y trasladar son las tres las tres transformaciones elementales que nosotros
+
+00:32:03.520 --> 00:32:08.880
+que vamos a hacer y se pueden expresar el conjunto de todas en una sola matriz y si vos quería
+
+00:32:08.880 --> 00:32:16.760
+hacerlo contrario usas la matriz inversa también una una característica a ver una característica
+
+00:32:16.760 --> 00:32:23.320
+a esta matriz es que si vos le invertís sigue teniendo de la forma sigue siendo transformación
+
+00:32:23.320 --> 00:32:29.120
+a fin sigue teniendo el cero cero uno abajo si vos multiplicas una transformación por otra transformación
+
+00:32:29.120 --> 00:32:36.240
+a fin el resultado sigue dando cero cero uno abajo también es una característica de la de la
+
+00:32:36.240 --> 00:32:45.790
+matriz las transformaciones a fines se produce en otras transformaciones a fines bueno una
+
+00:32:45.790 --> 00:32:52.470
+manera conceptual dice en qué momento publica la escala yo se los tiro conceptualmente el trabajito
+
+00:32:52.470 --> 00:32:57.550
+de encajar la pieza de rompe cabeza es algo que lo van a tener que hacer cada uno en su cerebro
+
+00:32:57.550 --> 00:33:04.030
+yo creo que tengo una matriz que expresa una escala la escala de microscopio que te está diciendo
+
+00:33:04.030 --> 00:33:10.790
+que cada pixel tiene medio micrómetro ese es esta matriz acá también y bueno pero no va a
+
+00:33:10.790 --> 00:33:16.950
+fácil decir un pixel micrómetro para primero los píxeles no siempre son cuadrados podrían
+
+00:33:16.950 --> 00:33:22.430
+ser rectangulares y tener una escala distinta en cada uno y a la hora de aplicarlo para obtener
+
+00:33:22.430 --> 00:33:28.670
+las calametricas vos ponés acá esto lo multiplicas por un vector que está en píxeles y el resultado te da
+
+00:33:28.670 --> 00:33:35.150
+en micrómetros también las coordenadas te dan en micrómetros tengo que cuando vuelvo a
+
+00:33:35.150 --> 00:33:41.630
+programar en el código bueno escribís micrómetros bot tiene que saber de un lado pone píxeles de
+
+00:33:41.630 --> 00:33:46.630
+otro lado tenés micrómetros por qué lo digo porque no sólo tenemos que en algún momento conectar
+
+00:33:46.630 --> 00:33:51.030
+con el mundo real o sea ahí a usted viene un vídeo que decía que el auto está 5 metros
+
+00:33:51.750 --> 00:34:00.250
+los metros no son píxeles y es bastante más complicada la relación acá hay una escala que
+
+00:34:00.250 --> 00:34:08.390
+os he dicho ok como lo cual te explico el otro no es así es bastante más complicado bueno
+
+00:34:08.390 --> 00:34:15.350
+esta es una es la caráctula del tema de homografía que requiere que yo para dejar de ver
+
+00:34:15.350 --> 00:34:21.110
+a esta le voy a explicar lo que hace la homografía pero antes de entrar en la fórmula tengo que
+
+00:34:21.110 --> 00:34:29.150
+volver a coronar a su ingeniería a la segunda parte y a ver alguno me explica que hace la homografía
+
+00:34:30.830 --> 00:34:37.120
+acá hay un ejemplo digamos y me puedo explicar esta transformación que está acá
+
+00:34:42.040 --> 00:34:48.880
+si si yo lo llamo abatimiento es como es que tuviera el el poster o el cuadro así de frente y se te está
+
+00:34:48.880 --> 00:34:56.280
+cayendo os hablo inclinas 45 grados yo digo a propósito como es y che pero eso no sea
+
+00:34:56.280 --> 00:35:03.400
+45 grados en revivorno lo puedes saber te faltan datos de la cámara pero sí sí es eso es
+
+00:35:03.400 --> 00:35:09.520
+un abatimiento es una proyección o sea el plano de la inclinas y los proyectas en otro que no es
+
+00:35:09.520 --> 00:35:18.560
+paralelo o sea de la cámara y a eso vamos a ahí con eso vamos a terminar la esta la
+
+00:35:18.560 --> 00:35:24.480
+la proyección de coordenas homogéneas bueno esta transformación es una homografía en rigor
+
+00:35:24.480 --> 00:35:30.560
+una homografía transforma de una posición como esta que está acá a otra como esta que está acá
+
+00:35:31.560 --> 00:35:40.560
+la que está la escala a la izquierda es simplemente uno de los infinitos casos de proyecciones que
+
+00:35:40.560 --> 00:35:48.080
+nosotros lo vamos a llamar vista frontal también es cuando tengo tengo el plano de la pared de la foto
+
+00:35:48.080 --> 00:35:52.800
+tengo y la cámara está perpendicular al objeto técnicamente voy a explicar mejor
+
+00:35:52.800 --> 00:36:01.720
+este me estoy adelantando lo de vista frontal pero tu escena es un plano también tu escena es
+
+00:36:01.720 --> 00:36:06.800
+una pared o digamos hay gente adelante la pared en el fondo hay una pared tu cámara está
+
+00:36:06.800 --> 00:36:12.600
+permeando perpendicularmente a la pared ahí obtiene una vista frontal a eso la escena tiene
+
+00:36:12.600 --> 00:36:18.040
+un plano bueno puede decir al medio del campo miró para arriba y tener una vista frontal este en
+
+00:36:18.040 --> 00:36:26.280
+particular cuando tu plano es el piso y vos está mirando para abajo de arriba eso es una vista
+
+00:36:26.280 --> 00:36:33.720
+senital es una vista frontal esa es la sala senital es la vista de los satélites de las ladrones y es
+
+00:36:33.720 --> 00:36:42.040
+por ejemplo la vista generada artificialmente del del rotito tortuga que les mostré hoy no creemos
+
+00:36:42.160 --> 00:36:47.960
+en el trabajo práctico con los códigos de ruco y todo eso o sea toda la presentación va a
+
+00:36:47.960 --> 00:36:52.800
+aparecer a lado tiene interés es en llegar a eso no tanto por generar la vista sino por
+
+00:36:52.800 --> 00:36:58.840
+vicio artificial de verificar con información generar la vista es para el usuario para el que es
+
+00:36:58.840 --> 00:37:03.720
+desarrollador que está haciendo el debug de su programa lo que interesa es poder sacar coordenadas
+
+00:37:03.720 --> 00:37:14.440
+métricas del robotito ese en su sistema de referencia bueno acá tenés otro caso de homografía no
+
+00:37:14.440 --> 00:37:22.760
+hay que confundir la cámara no cambió el lugar o sea que si si si no viera tanta luz y se pudiera
+
+00:37:22.760 --> 00:37:29.160
+ver a través del vidrio de algunas de algunas eventanas estaría viendo el techo de la
+
+00:37:30.120 --> 00:37:35.240
+la imagen de la izquierda bueno de la derecha también porque la foto es la misma y si tu un
+
+00:37:35.240 --> 00:37:41.320
+warp son los mismos píxeles que cambiaron ligeramente el lugar pero no es que vas a haber otro lado
+
+00:37:41.320 --> 00:37:48.560
+no cambiaste del lugar la cámara es súper súper importante tenerlo en cuenta entonces el
+
+00:37:48.560 --> 00:37:57.940
+fenómeno de que sólo tengo en perspectiva y logro verlo parecido una vista frontal es un fenómeno
+
+00:37:58.620 --> 00:38:05.220
+que ocurre lo lo hago ocurrir calculo la transformación homográfica pero que ocurra en el plano de
+
+00:38:05.220 --> 00:38:12.340
+la factura de la edificio todo lo que no está en ese plano se transforma distinto también no
+
+00:38:12.340 --> 00:38:20.140
+sí el mismo el mismo patrón o sea esta palmera te está tapando el piso que es 1 2 3 4 5 6 bueno acá
+
+00:38:20.140 --> 00:38:28.660
+también no que te fuiste para arriba y ahora el piso 6 lo ves libre no no podés ver lo que
+
+00:38:28.660 --> 00:38:38.020
+se ha tapado en la foto bueno esta esta es una foto son 13 mucho nunca nunca encontré las fotos
+
+00:38:38.020 --> 00:38:45.100
+que más me interesaban y las que yo sé que no estaban buenas entonces esta me resulta muy
+
+00:38:45.100 --> 00:38:53.380
+idiotica primero bastante obvio te eres una mesa villar y al lado tenés una vista cenital
+
+00:38:53.380 --> 00:39:02.020
+generada por homografía fíjense que las bolas acá están más estiladas también no le voy a explicar
+
+00:39:02.020 --> 00:39:08.620
+el fenómeno ahora yo lo entiendo pero también está bueno dejarlo como te hacía tratar de entender
+
+00:39:08.620 --> 00:39:13.940
+por qué las demás arriba que son las que están más lejos se ven más alargadas que las de
+
+00:39:13.940 --> 00:39:26.780
+abajo que se ven más hachatadas lo importante acá es que no es que pusiste la cámara arriba de esta
+
+00:39:26.780 --> 00:39:33.980
+imagen procesando sin una transformación de una transformación homográfica obtuviste la imagen
+
+00:39:33.980 --> 00:39:39.060
+de la derecha yo he pasado de la positiva pero apenas aparezco una matriz me paso a la
+
+00:39:39.060 --> 00:39:46.420
+ahí apareció la madre es listo ahí está fíjense el 8 la carta o la tenés en perspectiva y obtenés
+
+00:39:46.420 --> 00:39:52.940
+una vista frontal mientras en todo esto es una homografía te convierte una perspectiva a otra
+
+00:39:52.940 --> 00:40:02.460
+perspectiva mi interés es captar algo en perspectiva con la cámara y obtener coordenadas en un
+
+00:40:02.460 --> 00:40:08.380
+espacio en un espacio senital frontal o sea pop tener la vista frontal pero puede evitar
+
+00:40:08.380 --> 00:40:14.940
+hacer el warp y hacer la cámara pero sí manejarme con coordenadas es lo que pasaba con el auto
+
+00:40:14.940 --> 00:40:19.980
+pues en ningún momento pues veías que el auto está 5 metros en ningún momento veías la vista
+
+00:40:19.980 --> 00:40:25.500
+senital también tiempo lo usaba en los números para la mujer fíjela coordenada no te
+
+00:40:25.500 --> 00:40:33.660
+podía har generado la vista no no no no se ve que no era de interés pero sabiendo en el piso
+
+00:40:34.300 --> 00:40:40.220
+donde estaba el auto el tipo sabía aplicaba homografía todo eso lo vamos lo tenemos que ver ahora
+
+00:40:40.220 --> 00:40:49.170
+así que volvamos a compartir esta pestaña ustedes tienen que estar viendo a cada varios
+
+00:40:49.170 --> 00:40:56.010
+plenos grises con una recta naranja diagónal no confímenme tiene gracias perfecto perfecto esto le da
+
+00:40:56.010 --> 00:41:01.490
+una primera idea porque se llama homogéneo los planos son discretos pero hay infinitos planos y lo
+
+00:41:01.490 --> 00:41:09.210
+que te estoy haciendo es hay un plano con coordenadas en xe y una coordenada z e igual a 1 donde
+
+00:41:09.210 --> 00:41:17.210
+vos tenés un punto que dice un tercio de 3 y 1 entonces vos después multiplicas z por 3
+
+00:41:18.010 --> 00:41:25.250
+a realidad si multiplicas para el plano z e igual 3 z se multiplica por 3 todos los puntos de
+
+00:41:25.250 --> 00:41:32.770
+la coordenada se multiplica por 3 y te da 1 2 3 parece un tercio de 3 y 1 1 2 3 si lo multiplica por 6 te da esto
+
+00:41:32.770 --> 00:41:44.690
+todos estos puntos son proporcionales esa recta naranja representa ese subespacio de
+
+00:41:44.690 --> 00:41:53.810
+diferentes soluciones donde cualquiera los puntos me da igual pero como vamos a ver esto esto tiene
+
+00:41:53.810 --> 00:41:59.290
+varias aplicaciones las no no concentra en una sola que está bueno entender de manera
+
+00:41:59.290 --> 00:42:06.130
+extracta el componente matemático que bastante tonto lo distinto de esos que entiendo cómo funciona le
+
+00:42:06.130 --> 00:42:12.090
+va a pasar enseguida perdón tiendo para que se usa entonces yo lo voy diciendo tiene varias
+
+00:42:12.090 --> 00:42:20.210
+aplicaciones algunas son más atractas pero una muy muy muy directa es esta esta recta
+
+00:42:20.730 --> 00:42:26.250
+puede ser un raso de luz o líneas de la fechita rasio luz bien el sentido contrario que un
+
+00:42:26.250 --> 00:42:32.450
+proyecto hacia la cámara y gener el donde donde choque con el plano z e igual uno es donde se genera
+
+00:42:32.450 --> 00:42:38.690
+la imagen ahí donde hay una relación muy directa entre el modelo de rectas proyectivas
+
+00:42:38.690 --> 00:42:45.570
+de que son estas de la coordenadas de mujeres y la luz que convergen un punto eso lo vamos a
+
+00:42:45.570 --> 00:42:53.270
+ver ahora más adelante bueno este que está acá es móvios es de la cinta de móvil es de la
+
+00:42:53.270 --> 00:43:02.290
+cinta retorcida si le dice yo por el por el año bueno ok este el silencio de 19 mil y
+
+00:43:02.290 --> 00:43:10.650
+socientos no me acorda mucho esto cuando está pensando en cosas así medidas abstractas y avanzadas
+
+00:43:10.650 --> 00:43:20.090
+de la matemática y vino con esta solución de las coordenadas homogéneas este este lo que se
+
+00:43:20.090 --> 00:43:25.290
+hace es la espalción dimensional que vimos ya boten es un vector en este vamos a ver ejemplo
+
+00:43:25.290 --> 00:43:32.170
+entre dos de y tres de un vector dos de xe hace es una espalición dimensional se acorda que
+
+00:43:32.170 --> 00:43:37.090
+habíamos agradado un uno bueno pero como es homogéneo lo multiplicamos por landa que son todos
+
+00:43:37.090 --> 00:43:42.730
+equivalentes también podemos decir que son congruentes que me da lo mismo entonces usamos
+
+00:43:42.730 --> 00:43:50.570
+esta cuando peguen y pedos de tres dimensiones coordenadas homogéneas son proporcionales entonces
+
+00:43:50.570 --> 00:43:57.410
+corresponde a la misma recta de proyectiva para mí es la misma solución entonces una manera
+
+00:43:57.410 --> 00:44:03.330
+proporcional de decir que pe uno es igual a landa por pedos y landa es cualquier valor esta
+
+00:44:03.330 --> 00:44:12.050
+esta idea de proporcionalidad que hace la congruencia y es lo que le da el nombre de homogéneas
+
+00:44:12.050 --> 00:44:19.370
+también se alegreas una dimensión y entonces ahora tenés infinitos valores posibles para la
+
+00:44:19.370 --> 00:44:28.250
+misma para esta solución entonces acá dicen boten es un espacio vectorial dos de y hay un espacio
+
+00:44:28.250 --> 00:44:37.410
+proyectivo tres de de coordenadas homogéneas donde para cada punto del espacio vectorial hay una
+
+00:44:37.410 --> 00:44:45.210
+recta proyectiva que pasa por el origen en el espacio en este espacio proyectivo asociado bueno
+
+00:44:45.210 --> 00:44:53.890
+muy abstracto la nombre no vamos por una operación muy sencilla cuando la dimensión agregada que en
+
+00:44:53.890 --> 00:45:00.370
+este caso seta cuando el componente es uno digo que está normalizado es un tema esto no está
+
+00:45:00.370 --> 00:45:08.970
+no es en los libros no hay un nombre generado estado universalmente entonces yo le digo normalizado
+
+00:45:08.970 --> 00:45:15.370
+por eso le pongo n sub n normalizado básicamente si vos tenés un p con tres componentes pequis pequis
+
+00:45:15.370 --> 00:45:21.330
+peseta para normalizarlo tenés que dividir por el componente peseta cuando os dividís todo por el
+
+00:45:21.330 --> 00:45:27.810
+componente peseta el tercer componente te queda uno no ese es normalizada obviamente es
+
+00:45:27.810 --> 00:45:32.690
+proporcionable o sea que de los infinitos valores posibles que son todos proporcionales hay un
+
+00:45:32.690 --> 00:45:41.210
+preferido porque alguien le va a dar una aplicación que es el normalizado hay un nombre que se usa
+
+00:45:41.210 --> 00:45:50.970
+que es desomogénaización también eso requiere que lo normalices y le corte ser un y te quedé
+
+00:45:50.970 --> 00:45:57.130
+con las dos dimensiones eso es la desomogénaización pasar del espacio projectivo asociado de tres
+
+00:45:57.130 --> 00:46:05.930
+dimensiones al espacio virtual de dos dimensiones hablé mucho dije muy poco y tengo no quiero seguir
+
+00:46:05.930 --> 00:46:10.570
+por lo que los estoy aturdiendo es muy fácil el tema después lo piensan
+
+00:46:11.530 --> 00:46:22.690
+este acá le voy a explicar cómo funciona la proyección más adelante vamos a ver el modelo de cámara
+
+00:46:22.690 --> 00:46:29.610
+y vamos a ver esto con un poco más arriba esto no no no esto más tema es correcto pero con el
+
+00:46:29.610 --> 00:46:36.650
+modelo de cámara vamos a explicar muchas otras aspectas de por qué pasa esto lo que digo es acá
+
+00:46:36.650 --> 00:46:43.870
+vos tenés un espacio trimensional el espacio donde vivimos nosotros en un tipo corriendo el
+
+00:46:43.870 --> 00:46:49.890
+punto c el origen de este sistema de referencia arbitrario es la cámara también o sea muy
+
+00:46:49.890 --> 00:46:55.330
+cómodo el sistema de referencia para medir todo pero es la cámara donde el centro de
+
+00:46:55.330 --> 00:47:05.130
+procesiones ahí el la lente bueno es donde convergen los rasgos entonces hacemos un plan
+
+00:47:05.130 --> 00:47:11.000
+imaginario que le llamamos planos de la imagen acá este plano imaginario está puesto de una
+
+00:47:11.000 --> 00:47:19.160
+distancia f y vos te puedes preguntar y esa que distancia es o sea cuantos metros de mi cámara está
+
+00:47:19.160 --> 00:47:28.040
+ese plano bueno ese valor es lo que llama valor mulita o tutor es un valor que lo inventas para
+
+00:47:28.040 --> 00:47:32.960
+facilitar la explicación pero cuando llegues al que asulto al final va a desaparecer o sea que
+
+00:47:32.960 --> 00:47:42.120
+vos puedes elegir cualquiera arbitrariamente entonces vamos a hacer dos cosas primero acá abajo están
+
+00:47:45.120 --> 00:47:51.820
+la la la proporcionaridad para decir que este punto el dedo se proyecta en este punto del
+
+00:47:51.820 --> 00:47:59.800
+plano del imagen cómo lo calculas así pero eso lo vamos a hacer mucho más directo ahora
+
+00:47:59.800 --> 00:48:07.560
+ahora les voy a decir que los que vamos a hacer nosotros esto de dividir por zeta por la
+
+00:48:07.560 --> 00:48:13.080
+componente zeta a ver si alguno me puede decir la que le suena eso de dividir por la componente zeta
+
+00:48:13.080 --> 00:48:21.550
+les voy a dar una segunda ojalá alguno puede responder miren que si no volvemos por el tráceo
+
+00:48:21.550 --> 00:48:32.560
+les voy a empezar si gracias si no lo saben asaba no me respondía entonces como nosotros somos
+
+00:48:32.560 --> 00:48:40.160
+gente universitaria avanzada estudiante se avanzaba ingeniería dice yo no necesitas este planteo
+
+00:48:40.160 --> 00:48:45.720
+básico yo puedo trabajar con coordenadas homogéneas y esto debajo ni lo menciono por qué pasa
+
+00:48:45.720 --> 00:48:53.440
+ser oído mi olvido de esto en algún momento tengo que cuando necesito el dato normalizo y listo
+
+00:48:53.440 --> 00:49:02.080
+pero mientras tanto acá viene lo mágico de todo esto si yo quiero saber qué coordenada es esta
+
+00:49:02.680 --> 00:49:11.200
+viste que dice x x y f está bien acá voy a hacer una pregunta si me responden para hacerlo un poquitito o
+
+00:49:11.200 --> 00:49:20.430
+más interactivo qué valor de f elegiría en ustedes si pueden elegir cualquiera o bien a uno me dice
+
+00:49:20.430 --> 00:49:26.470
+pí porque le gustan los números irracionales cero nos va a justo justo cero no me sirve bueno
+
+00:49:26.470 --> 00:49:31.750
+bueno buen intento pues el cero significa que queda todo acabo de todos los puntos convergen
+
+00:49:32.750 --> 00:49:38.230
+una muy bien perfecto gracias no se me ha ocurrido la respuesta de ser o sea no se me va a
+
+00:49:38.230 --> 00:49:42.710
+ocurrir porque como esto yo lo tengo cooperado yo sé que el cero no se puede pero es interesante decir la
+
+00:49:42.710 --> 00:49:51.150
+más fácil sería ser uno el hijo uno y ya está también este entonces si yo elijo uno la f
+
+00:49:51.150 --> 00:49:56.790
+de acá de abajo desaparece también y la forma que tiene esto es la normalización exacta de la
+
+00:49:56.790 --> 00:50:06.200
+normalización como a ver a ver cómo se lo digo eso quiero si chiquueles la coordenada de acá
+
+00:50:06.200 --> 00:50:13.680
+de escuchar lo que te voy a decir es esta x s y s s s s y se va a prestar la coordenada 3 del
+
+00:50:13.680 --> 00:50:18.920
+objeto sí es la misma en coordenadas homogéneas que nada que necesitas a la imagen
+
+00:50:19.920 --> 00:50:27.140
+también y pues si no te va a normalizar si normaliza y ya lo tenés o sea ese dato de normaliza y lo
+
+00:50:27.140 --> 00:50:34.640
+tenés se va a convertir en obvio se avoya la información la tenés es esta entonces teniendo en
+
+00:50:34.640 --> 00:50:39.760
+cuenta algo súper importante que es que mi sistema de referencia le pongo el cero en la cámara
+
+00:50:40.760 --> 00:50:48.560
+y el el x se iban en el plano de la imagen y el z estaba para adelante está y que yo no sé
+
+00:50:48.560 --> 00:50:56.600
+tiene que ser medio controsionista para poder medir o sea conocer las coordenadas de las cosas en el
+
+00:50:56.600 --> 00:51:03.040
+sistema de referencia a la cámara también pero bueno una vez que vos tenés medida la coordenada del
+
+00:51:03.040 --> 00:51:09.160
+dedo en el sistema de referencia a la cámara ya tenés la coordenada en el plano de la imagen
+
+00:51:10.160 --> 00:51:15.840
+tenés que de eso homogenizar es lo único que tiene que tener que hacer también un paso que
+
+00:51:15.840 --> 00:51:22.200
+de acá para adelante va a ser tásito si vos tenés en un plano 2 de y te hago una coordenada 3d
+
+00:51:22.200 --> 00:51:26.840
+es coordenada su homogénea tenés que de eso homogenizar para pasar a los de esa es la esa
+
+00:51:27.840 --> 00:51:33.560
+bueno creo que veo bastante bastante sencillo yo ahora voy a abordar ahora voy a hacer un pequeño
+
+00:51:33.560 --> 00:51:45.240
+desvío para así termino con los coordenadas homogéneas hasta recién veníamos con lo que necesitaba
+
+00:51:45.240 --> 00:51:51.440
+para entender las coordenadas homogéneas y meterme con la homografía yo voy a terminar el tema de la
+
+00:51:51.440 --> 00:51:58.680
+posición con presentando matriz de cámara un tema que va a quedar presentado acá también está
+
+00:51:58.680 --> 00:52:04.120
+bueno ya saber el momento de aprenderlos ahora lo vamos a usar más adelante con otras cosas que
+
+00:52:04.120 --> 00:52:11.400
+son poquito más complicadas y se nos se nos va de tema hoy este que es la calibración de la
+
+00:52:11.400 --> 00:52:17.160
+cámara entonces termino esto y después vuelvo a los transformaciones a usar coordenadas homogéneas para
+
+00:52:17.160 --> 00:52:22.240
+explicarlo homografía para entonces matriz de cámara para dejar a ver por ahí otra
+
+00:52:22.240 --> 00:52:29.760
+positiva sí son estas dos listos el único gráfico está acá es lo que quería recordar tenía
+
+00:52:29.760 --> 00:52:39.000
+una de medio y la borre por qué era redundante el tema es el siguiente ustedes ven esto está ahora
+
+00:52:39.480 --> 00:52:47.540
+es como lo otro por sobre es la cámara hasta acá también este fiquete que que dice XC
+
+00:52:47.540 --> 00:52:54.560
+YCZC de las seiscticamente también le lo otro decía Centro el foco todavíaanson de Centro
+
+00:52:54.560 --> 00:53:01.520
+se foco F, foco es lo mismo foco es ilugar donde cosecón se centra en los rayos estas rectas
+
+00:53:01.520 --> 00:53:08.880
+positivas lo que está ester tocando acá es también arbitrariamente el Horta Q para allá y el
+
+00:53:08.880 --> 00:53:15.520
+para abajo, no lo puedo elegir como quieras, pero el ir para abajo es por lo menos está
+
+00:53:15.520 --> 00:53:20.920
+orientado cómo se mide el imagen, el ir se mide para abajo, entonces recuerda en el cero cero
+
+00:53:20.920 --> 00:53:25.880
+de la imagen está arriba el izquierda, el equipo va para la derecha arriba para abajo, entonces
+
+00:53:25.880 --> 00:53:32.200
+digo bueno, lo ponemos para el hilo a la imagen y el c estaba para adelante, o sea que la cámara
+
+00:53:32.200 --> 00:53:39.080
+mira para allá, acá hay un punto P, que si quiere ser el dedo del tipo que está
+
+00:53:39.080 --> 00:53:50.000
+corriendo, o sea, hay un punto P, que dice X dole B y dole B, Z dole B, doble, para, déjame
+
+00:53:50.000 --> 00:53:53.800
+dejar un preso un poquito, ok, retiro de dicho, acá tres un punto P, vamos a olvidar
+
+00:53:53.800 --> 00:54:02.640
+de un poquito lo dole B que viene en otra presentación en un rato, potele ser el punto
+
+00:54:02.640 --> 00:54:09.120
+P en el sistema de referencia a la cámara, también que sería X, Y y Z, Z, Z, que no es lo
+
+00:54:09.120 --> 00:54:14.160
+que dice acá, o sea, está expresado en otro sistema de referencia, lo tenéis ya expresado
+
+00:54:14.160 --> 00:54:22.120
+en el sistema de referencia de la cámara y ese lo de esos mojenizas y obtenes algo, por
+
+00:54:22.120 --> 00:54:27.960
+lo menos algo en un plano de distancia 1 también, lo que pasa es que vos sacan el plano
+
+00:54:27.960 --> 00:54:36.360
+del imagen, vos quiere formar pasando dos cosas, quieres formar tu imagen y tu cero no
+
+00:54:36.360 --> 00:54:42.920
+está en este punto acá, donde Z corta al plano, se llama punto principal, acá está,
+
+00:54:42.920 --> 00:54:52.920
+principal puente, punto central o punto principal, este, sino que lo querés tener acá, al cero,
+
+00:54:52.920 --> 00:55:00.360
+bien, y tus unidades no son métricas, son píxeles, también, y son unidades independientes,
+
+00:55:00.360 --> 00:55:04.240
+cuánto mide un píxel, y depende, si lo tenés de suelar mide una cosa y si lo proyectas en
+
+00:55:04.240 --> 00:55:09.760
+la pared mide otra, también son unidades virtuales, entonces no hay una relación directa entre
+
+00:55:09.760 --> 00:55:17.440
+metros y píxeles, pero voy a hacer una conversión, para eso lo bueno, las son las coordenadas
+
+00:55:17.440 --> 00:55:23.520
+homogéneas, bueno ahora van a ver cómo termine a pasar, entonces básicamente este punto
+
+00:55:23.520 --> 00:55:31.080
+P, denormalizado, te da un punto en el plano de distancia 1, también, pero ahora tenés
+
+00:55:31.080 --> 00:55:36.200
+que cambiar, hacerlo una traslación, porque en vez que el cero está acá, el cero tiene
+
+00:55:36.200 --> 00:55:42.760
+que estar acá y quieres cambiarlo de escala, en la transformación que vas a hacer es cambiar
+
+00:55:42.760 --> 00:55:50.680
+la escala para que quede expresado en píxeles y trasladarlo para que el cero quede en otro
+
+00:55:50.680 --> 00:56:05.510
+lado, bueno, este es el punto 3D que proyecta, si quieres, este es el punto 3D en el sistema
+
+00:56:05.510 --> 00:56:12.670
+referencia de la cámara, acá botenés la escala, de hecho fx y fx son dos factores que te
+
+00:56:12.670 --> 00:56:20.590
+convierten a píxeles, son los factores que convierten en el punto fx y fx a píxeles,
+
+00:56:20.590 --> 00:56:26.350
+distintos en fx y si los píxeles son rectangulares, desde hace mucho, yo lo tribuyo a los celulares
+
+00:56:26.350 --> 00:56:32.670
+como los celulares se pueden inclinar a poner a paisado o vertical, la industria dijo
+
+00:56:32.670 --> 00:56:36.470
+cheque, necesitamos que los píxeles se ha jugado, no tiene sentido que sean rectangulares,
+
+00:56:36.470 --> 00:56:40.550
+porque antes eran rectangulares, entonces la dos valores van a hacer lo mismo, hoy en la
+
+00:56:40.550 --> 00:56:49.790
+práctica fx y fx en lo mismo, es un factor escala, también, y esto es la traslación, que
+
+00:56:49.790 --> 00:56:53.630
+en este caso son las que trasladas el punto está cambiando el cero del lugar, tu origen
+
+00:56:53.630 --> 00:57:00.150
+no está cambiando el lugar, o sea, decir donde, donde esta sx y sx son las coordenadas del
+
+00:57:00.150 --> 00:57:04.550
+punto principal, qué es exactamente lo que necesitadas hacer para la traslación, esta matriz
+
+00:57:04.550 --> 00:57:10.430
+que tiene tres constante, cx y f que son las mismas, también esta matriz de 3.3 se llaman
+
+00:57:10.430 --> 00:57:19.190
+matriz de cámara y lo aplica a son punto 3d y te da el pixel, obviamente acá te va
+
+00:57:19.190 --> 00:57:23.550
+a dar una W, o sea que vos después tenés que ir a esos homogéneas, el pixel en coordenadas
+
+00:57:23.550 --> 00:57:28.550
+homogéneas, este es la matriz de cámara, expresa el modelo de cámara, toda métrica que
+
+00:57:28.550 --> 00:57:35.710
+vos quiera sacar, vas a poder usar esta matriz para hacer la cuestión inversa, o sea, si
+
+00:57:35.710 --> 00:57:42.950
+vos quisieras, tengo el pixel en la cámara y quiero saber la coordenada 3d, bueno, tenés
+
+00:57:42.950 --> 00:57:48.190
+que despejar, también, le saerán, entonces es un sistema de cuaciones, en ecuaciones
+
+00:57:48.190 --> 00:57:54.110
+en incógnitas, si vos crees despejar acá te van a faltar ecuaciones, porque vos crees saber
+
+00:57:54.110 --> 00:57:58.430
+la coordenada 1.3d, pero tenés 1.2d, te están faltando ecuaciones, entonces lo que
+
+00:57:58.430 --> 00:58:04.430
+se hace es triangular, se sacan, se ven coordenadas desde 2.2d y te da distintos, tenés con
+
+00:58:04.430 --> 00:58:11.470
+esos 3 más ecuaciones y puedo determinar determinadas, puedo determinar determinando la coordenada
+
+00:58:11.470 --> 00:58:16.470
+3d, bueno eso lo vamos a dar más adelante, esto es de terminar acá, entonces yo ahora tengo
+
+00:58:16.470 --> 00:58:25.390
+que, déjeme un segundo, tengo que abrir una presentación que no sigue abrir y que no
+
+00:58:25.390 --> 00:58:37.590
+ahora tengo a mano, me voy a buscar, segundo, si ustedes supieran la presentación que tengo
+
+00:58:37.590 --> 00:58:51.420
+acá, este, oh percibí van a ir más fácil, este acá está, bueno la encontré eso
+
+00:58:51.420 --> 00:59:05.560
+lo bueno, pose dice, ¿no? como siempre, busco en Google, la de una parada illustrativa
+
+00:59:05.560 --> 00:59:13.240
+y apareció esto, el pensador, entonces es una pose de estar pensando,
+
+00:59:14.240 --> 00:59:21.840
+bueno acá está descarte, está bien, sistemas de coordenadas, sígame está
+
+00:59:21.840 --> 00:59:27.080
+recontra relacionado con lo que venimos viendo, sistema de coordenadas, nosotros vamos a
+
+00:59:27.080 --> 00:59:32.960
+trabajar, a veces los problemas tienen varios sistemas de coordenadas, hay dos
+
+00:59:32.960 --> 00:59:38.120
+principales que tenemos siempre y misión artificial, uno es el sistema de coordenadas del mundo,
+
+00:59:38.120 --> 00:59:44.920
+del mundo real, que somos sistema métrico, o sea es un sistema coordenado, métrico, la
+
+00:59:44.920 --> 00:59:48.800
+distancia se miden en metro o en los que vos quieran, vos querés medir en pulgadas, medir
+
+00:59:51.400 --> 00:59:57.440
+y otra es el sistema de referencia de la cámara, en particular en la imagen,
+
+00:59:57.440 --> 01:00:02.800
+todos se miden píxeles, también, en la imagen, en dos de, pero vos tenés un sistema de referencia
+
+01:00:02.800 --> 01:00:08.080
+del mundo y uno de las cámaras, entonces si ché, yo estoy viendo y puedo hacer el modelo,
+
+01:00:08.080 --> 01:00:17.160
+la aplicar la protección que vimos recién en las coordenadas homogéneas, pero esa coordenada
+
+01:00:17.160 --> 01:00:24.160
+del mundo real, normalmente yo retengo expresada en un sistema de referencia de mundo real,
+
+01:00:24.160 --> 01:00:28.120
+también y la tengo que transformar a sistema de referencia de la cámara, o a revés,
+
+01:00:28.680 --> 01:00:33.600
+determino a través del visual artificial, una coordenada respecto de la cámara, pero
+
+01:00:33.600 --> 01:00:39.040
+dado que se va a ir a un sistema de referencia del mundo real, bueno, ¿qué es un sistema de referencia
+
+01:00:39.040 --> 01:00:44.000
+del mundo real? Primero es servitario, vos selejéis donde querés poner el origen y donde poner
+
+01:00:44.000 --> 01:00:51.440
+los ejes, también, y, o sea, primero todo es servitario, entonces típicamente una ligereta para
+
+01:00:51.440 --> 01:00:58.320
+arriba y después se quise ir para que usa la, como se llama la red de la mano derecha,
+
+01:01:02.570 --> 01:01:08.170
+típicamente si tenés una habitación que es más o menos para el epípedo, te vas a ir
+
+01:01:08.170 --> 01:01:13.130
+una esquina y agarras tres alistas, y estos son los ejes, también como hice acá,
+
+01:01:13.130 --> 01:01:18.690
+mientras el piso y la pared son los X series, un error muy común es que vos supones que las
+
+01:01:18.690 --> 01:01:25.650
+paredes centricias de cada 90 grados y rarabelo están, cuando vas a medir, este individuoso
+
+01:01:25.650 --> 01:01:31.810
+es una sorpresa, pero bueno, sí, la vertical se mide compromada, o sea que es algo que sea muy
+
+01:01:31.810 --> 01:01:39.690
+bruto del bañel, la vertical se le viene, el problema es que son los otros ángulos, entonces el
+
+01:01:39.690 --> 01:01:45.890
+Z, ahí está elegido, ¿no? Otra la cuestión en pragmáticas, esto es un ámbito que estaba metrología,
+
+01:01:46.410 --> 01:01:50.890
+como todas las disciplinas, cuando te metes de descubrí que es más complejo de lo que parece
+
+01:01:50.890 --> 01:01:56.530
+simple vista, también, porque a simple vista volvés, pero no te pones a resolver nada, cuando
+
+01:01:56.530 --> 01:02:01.610
+quieres resolver te empiezan a aparecer interrogantes que no lo habías pensado al principio,
+
+01:02:01.610 --> 01:02:11.050
+entonces una de las cosas de un sistema de mundo real es que tengas algún ancla mecánica donde
+
+01:02:11.050 --> 01:02:18.610
+vos puedo decir, che, acá está el origen, está bien, o acá está cualquier coordenada conocida,
+
+01:02:18.610 --> 01:02:23.530
+la ciencia en ciencia, cosa que a partir de ahí vos sabes, ya te lo sabes como la terminada
+
+01:02:23.530 --> 01:02:29.610
+el origen, todo tiene que tener, de hecho hay impresoras traducibles que cuando se autocalibran tienen
+
+01:02:29.610 --> 01:02:36.250
+una parte cita metálica, que justamente dura para que cuando lo toquen, no cambien sus coordenadas
+
+01:02:36.250 --> 01:02:42.090
+para que pones a calibrar con precisión, bueno, yo, bueno, podré contar un montón de ejemplos
+
+01:02:42.090 --> 01:02:48.410
+de calibración y de metrología, podré hubo la otra universidad, había un centro de metrología
+
+01:02:48.410 --> 01:02:56.490
+de vuelván, así que es una disciplina, se han escrito paper, eso es una disciplina bastante
+
+01:02:56.490 --> 01:03:02.250
+compleja, pero nos quedamos con esto, puede finis tu sistema de referencia y después tratas de
+
+01:03:02.250 --> 01:03:08.450
+de alguna manera verlo con la cámara para manejarte todo esto es un visual artificial, acá tenés
+
+01:03:08.450 --> 01:03:13.650
+otro sistema de referencia, acá tenés otro sistema de referencia, bueno, o el elegido en
+
+01:03:13.650 --> 01:03:23.330
+de gris, entonces yo tengo sistema de referencia a la cámara, quizás puedo determinar coordenadas
+
+01:03:23.330 --> 01:03:28.490
+respecto de la cámara, pero ahora quiero saber cuál es la coordenada del objeto que veo, no
+
+01:03:28.490 --> 01:03:32.210
+respecto de la cámara, sino respecto de la habitación del sistema de referencia que elegimos
+
+01:03:32.210 --> 01:03:37.490
+arbitrariamente, ¿no? Entonces eso es cambio de sistema de referencia, vamos a llamar a mi
+
+01:03:37.490 --> 01:03:44.530
+captura, paso por paso, primer caso 2d está doblemente significado, todavía no le dije, le dije
+
+01:03:44.530 --> 01:03:54.370
+solamente que 2d, también sistema de referencia 1 y 2, tiene sus colegas, su ex ex ex 6, el otro
+
+01:03:54.370 --> 01:04:03.610
+es llamado aquí prima y prima, son paralelos, o sea el X prima el X y hay un único punto P que
+
+01:04:03.610 --> 01:04:09.530
+tiene 2 expresiones distintas, P1 y P2, que son las colegas de referencia, un sistema de referencia o
+
+01:04:09.530 --> 01:04:15.530
+respecto de otro sistema de referencia, también, de paso de metido en la mezclatura, llamamos
+
+01:04:15.530 --> 01:04:23.170
+doble ve al mundo, por el World, ese uso, es lo que va a salir en los libros, en los P
+
+01:04:23.170 --> 01:04:29.690
+expresiones, doble ve al mundo y 6 cámaras, también, así que no lo tiene sentido cambiarlo,
+
+01:04:29.690 --> 01:04:36.650
+también, entonces si yo te digo el punto P, SW significa que las coordenadas pesta respecto
+
+01:04:36.650 --> 01:04:44.330
+del mundo, de mi sistema arbitrario, Pc es que el mismo punto expresa su coordenada respecto de
+
+01:04:44.330 --> 01:04:51.130
+la cámara, del sistema de referencia de las cámaras, pero pregunta, ¿qué relacionáis entre el
+
+01:04:51.130 --> 01:05:00.830
+doctor P1 y P2? también, o sea, matemáticamente, ¿qué cuenta tenéis que hacer para si tenéis P1
+
+01:05:00.830 --> 01:05:10.730
+obtener P2 o vicevers? también, entonces, bueno el meme, espero la respuesta mientras
+
+01:05:10.730 --> 01:05:18.050
+de cuento lo último que dice acá, úsualmente al punto origen de cada sistema de coordenada se lo
+
+01:05:18.050 --> 01:05:24.930
+llaman así, también, o sea, el doble minúscula o el SW, el SW para decir que te referís
+
+01:05:24.930 --> 01:05:31.530
+a este sistema de referencia de la mundo y el doble minúscula es el punto 0, el origen de
+
+01:05:31.530 --> 01:05:36.850
+ese sistema de referencia de la mundo, igual que C es el de la cámara, bueno, alguna idea como
+
+01:05:36.850 --> 01:05:51.190
+relacionas P1 y P2, es una composición de factores, eso es, hay que ver a uno, supongo, depende
+
+01:05:51.190 --> 01:06:00.910
+qué secundario fuiste, yo personalmente lo vi en mi segundo año de secundario, así que
+
+01:06:00.910 --> 01:06:07.070
+la única cosa que tiene es que de nuevo, hace mucho, es lo único, me pueden alegar, bueno,
+
+01:06:07.070 --> 01:06:14.150
+a ver si yo no sé si tanto había, pero el, y vos tenés el vector que teúnen los dos
+
+01:06:14.150 --> 01:06:23.390
+orígenes, también, lo que sería el origen 2 respecto del origen 1, o el origen 2 expresado
+
+01:06:23.390 --> 01:06:34.310
+en el sistema de referencia 1, eso, vos apedos le sumas esto y te queda P1, o lo que lo
+
+01:06:34.310 --> 01:06:41.710
+mismo P1 le restas esto y te queda P2, también, bueno, espero que me lo hayan entendido, es
+
+01:06:41.710 --> 01:06:50.070
+muy básico esto, espero que no se te entro pesando con estas cosas, bueno, entonces vos, a
+
+01:06:50.070 --> 01:06:57.310
+cambio en un tema de las jergas, la misma operación de suma correcta de un vector que en matemática
+
+01:06:57.310 --> 01:07:02.110
+se lo llama traslación, el nombre viene de que vos tenés un punto y el punto cambio del
+
+01:07:02.110 --> 01:07:07.870
+lugar, también, acá el punto está en el mismo lugar, lo que cambio es el origen, es lo mismo,
+
+01:07:08.350 --> 01:07:13.910
+también en la misma cuenta, simplemente tenés una expresión distintas, en los dos casos a
+
+01:07:13.910 --> 01:07:19.430
+la operación se llamamos traslación, lo que pasa es que puede decir no, estoy trasladando el
+
+01:07:19.430 --> 01:07:23.670
+origen del vector, no se pensaron como quieras, también, traslación es una suma,
+
+01:07:26.150 --> 01:07:33.150
+bueno ahora vamos, yo le dije que lo había significado doublemente, una por que era 2D y no 3D,
+
+01:07:33.470 --> 01:07:40.470
+pero la otra es porque los ejes están paralelos y los sistemas de referencias no necesariamente tienen
+
+01:07:40.470 --> 01:07:46.070
+los ejes paralelos, mejor dicho, no lo tiene, sería muy raro, pero esto quiere, o sea que la pose de la
+
+01:07:46.070 --> 01:07:51.550
+cámara tuya, está filmando, además se mueve la cámara, o sea que cada fotograma tiene una pose
+
+01:07:51.550 --> 01:07:56.430
+distinta, este, dije pose que es el nombre de la presentación todavía no explique que es,
+
+01:07:56.430 --> 01:08:04.670
+el justo temor no puede pedirle que tenga la pose que la cámara esté justo paralela al sistema
+
+01:08:04.670 --> 01:08:13.150
+de referencia del mundo, entonces no son paralelos y son 3D, entonces en la anterior
+
+01:08:13.150 --> 01:08:18.670
+era muy fácil, como eran paralelos solo lo transformaba con una traslación, como acá no son
+
+01:08:18.670 --> 01:08:24.510
+paralelos, necesito un arroz de traslación, también, o sea tengo un sistema de referencia,
+
+01:08:24.510 --> 01:08:30.870
+fíjense el A y el B, claramente la flecha se apunta en la cualquier lado, está girado, está girado
+
+01:08:30.870 --> 01:08:38.030
+uno a uno, entonces yo siempre se los aclaro porque yo no quiero que se empiecen a romper las
+
+01:08:38.030 --> 01:08:46.230
+cabezas con cosa que no necesitas, en ningún momento ustedes van a tener que alcurar la materia de
+
+01:08:46.230 --> 01:08:56.470
+rotación que te lleva de B a o de A a B, eso existe y eso vamos a tener métodos para determinarlos,
+
+01:08:56.470 --> 01:09:02.510
+también, o sea va a ser resultado un algoritmo, te va a decir esta es la rotación que te convierte
+
+01:09:02.510 --> 01:09:08.910
+un sistema de referencia a otro, lo que vos tenés que estar muy seguro es que convierte de aquí aquí,
+
+01:09:08.910 --> 01:09:13.790
+no, convierte de acá para allá o de allá para acá esa es la parte que no tiene digo carta, o que
+
+01:09:13.790 --> 01:09:18.510
+compartida a revés, tiene que hacer la inversa, pero inversa define, ahí es una materia distinta, no,
+
+01:09:18.510 --> 01:09:26.950
+no es la misma, bueno, entonces, si vos tenés el punto P expresado en el sistema de referencia a B con
+
+01:09:26.950 --> 01:09:37.670
+sus tres exes, X y Z, es un vector de tradimension, esto hay que ser de acá, P sub P,
+
+01:09:38.550 --> 01:09:46.550
+acá dice otra cosa, este es la dita, entonces vos querés empezar lo respecto de A, bueno,
+
+01:09:46.550 --> 01:09:54.270
+la operación que vos le da P sub P y te da como resultado P sub A es un arroz de otra relación,
+
+01:09:54.270 --> 01:10:04.390
+esta, esa tras el trotto de relación, no solo es una transformación niña, la llamamos cambio de
+
+01:10:04.390 --> 01:10:11.270
+sistema de referencia o cambio de sistema de coordenadas que es lo mismo, también es una rototralación,
+
+01:10:11.270 --> 01:10:22.270
+este, como es una rototralación, rototralación en tres dimensiones, entonces la rototralación es
+
+01:10:22.270 --> 01:10:36.660
+una haber pregunta, la rototralación es una transformación, este, lineal o a fin, chan,
+
+01:10:39.910 --> 01:10:50.690
+digan cualquier cosa que está bien, la dos tan fin, lo vimos hace un rato, a fin profano,
+
+01:10:51.690 --> 01:10:58.210
+si, a fin, espero que lo demás entiendan lo que están diciendo, es una transformación a fin,
+
+01:10:58.210 --> 01:11:09.330
+en este caso, ahora se le voy a mostrar, la rototralación no es una matriz por dos, o sea,
+
+01:11:10.050 --> 01:11:13.450
+la rotación no es dos por dos, sino que tres por tres, porque hay tres dimensiones,
+
+01:11:13.450 --> 01:11:23.250
+pero acá abajo, T es una transformación niña, porque estas presa en coordenadas homogéneas,
+
+01:11:23.250 --> 01:11:31.050
+ahora lo hago el mismo truco que hubo quise antes, hago una expansión dimensional y hago que en una
+
+01:11:31.050 --> 01:11:37.570
+sola transformación niña, en T, eso tengo una rototralación, la pregunta es, de cuántas dimensiones
+
+01:11:37.570 --> 01:11:57.920
+este, o sea, es una matriz cuadrada de cuánto por cuánto, chan, si son un montón,
+
+01:11:57.920 --> 01:12:03.520
+nadie se anima a decir un número, o sea, muchas dimensiones no pueden ser, cuestión de que haya
+
+01:12:03.520 --> 01:12:07.080
+4 o 5, que tiene un número instino, cada uno, alguno le va a pegar,
+
+01:12:09.560 --> 01:12:16.880
+4 por 4, muy bien, que era de 1, de 1, 4 por 4, a ver, esta pose, vamos a ver,
+
+01:12:17.640 --> 01:12:24.960
+esta, esta es la matriz de rototralación, ahora vamos a llegar a ese punto, T es una
+
+01:12:24.960 --> 01:12:29.640
+matriz de 4 por 4, por qué, porque están coordenadas homogéneas, o sea que P está preso en coordenadas
+
+01:12:29.640 --> 01:12:39.240
+homogéneas, en este caso, igual que en la rototralación que vimos antes, los valores siempre
+
+01:12:39.240 --> 01:12:47.000
+están normalizados, también, siempre no hace falta desnormalizar, ya lo tenemos normalizado,
+
+01:12:47.000 --> 01:12:50.400
+no está normalizado, cuando eso es cuando es rototralación, cuando hace protección, como el caso
+
+01:12:50.400 --> 01:12:55.880
+de matriz de cámara, ahí sí, después hay que desomogéneasar, acá está normalizada, con lo cual
+
+01:12:55.880 --> 01:13:01.920
+desomogéneas era, es quitar el último uno, la última coordenada siempre va a ser, va a ser 1,
+
+01:13:02.440 --> 01:13:10.440
+entonces qué lo que está diciendo acá, a ver, muy importante, la transformación que convierte
+
+01:13:10.440 --> 01:13:16.040
+con una coordenada del mundo, a una coordenada de cámara, se llama T sub CW, y es importante
+
+01:13:16.040 --> 01:13:22.760
+porque es distinto de lo que ustedes pensarían primero, y el problema es básicamente, cuando trabajamos
+
+01:13:22.760 --> 01:13:29.480
+con victores columnas, las multiplicaciones matricieres se hacen de derechas izquierdas, entonces
+
+01:13:30.200 --> 01:13:35.880
+multiplicas, pep por la matriz, si tienes varias matricias, después multiplicas, creo que se crea
+
+01:13:35.880 --> 01:13:39.080
+que se tiene de lo que digo, vamos multiplicando derechas izquierdas, no, no, no, de izquierdas
+
+01:13:39.080 --> 01:13:44.720
+derechas, porque recuerden que las productos matricieres, el orden de los factores, sí, al tener
+
+01:13:44.720 --> 01:13:56.580
+el producto, perdón, lo dije mal, lo dije mal, no es por el orden de los factores, no, el orden
+
+01:13:56.580 --> 01:14:01.220
+que voy a ejecutar las multiplicaciones, si no lo si lo ponés ha sido lo da vuelta, el orden
+
+01:14:01.220 --> 01:14:07.740
+que los presenta, bueno, miren, acá abajo, esto, voy a explicar por qué se llama CW, y qué significa,
+
+01:14:07.740 --> 01:14:13.900
+qué significa, significa convierte de mundo a cámara, y se lee de derechas izquierdas, de mundo a
+
+01:14:13.900 --> 01:14:19.980
+cámara, por qué, la idea es que cuando vos tenés CW, si tenés la C a la izquierda y la
+
+01:14:19.980 --> 01:14:25.900
+doble a la derecha, entonces el vector que tenés a la derecha tiene que ser W, y el vector
+
+01:14:25.900 --> 01:14:33.100
+que tenés a la izquierda tiene que ser C, también, es solamente por eso, es una cuestión de orden
+
+01:14:33.100 --> 01:14:38.440
+que te evita errores a la hora de escribir fórmulas, sobre todo, cuando son más complicadas,
+
+01:14:38.440 --> 01:14:46.180
+esto se ve, bueno, se ve en todo, pero fíjate, vos determinaste de alguna manera, TCW, que es una
+
+01:14:46.180 --> 01:14:52.940
+matriz 4x4, lo multiplicaba por un punto en la coordena de mundo, coordena somos genia, y te da
+
+01:14:52.940 --> 01:14:59.900
+en la coordena de la cámara, si vos querías hacer el revés, obtener PW a partir de PC,
+
+01:14:59.900 --> 01:15:07.420
+multiplicas por la transformación inversa, también, entonces la TWC, que la que hace la transformación
+
+01:15:07.420 --> 01:15:14.420
+a revés, es la inversa de TCW, siempre que vos invertís una, lo que hace es dar vuelta los
+
+01:15:14.420 --> 01:15:19.660
+subindicen, bueno, finalmente, como toda la transformación ideal se combinan, si vos tenés 3
+
+01:15:19.660 --> 01:15:26.420
+sistemas de referencia, tenés el que transforma de BAA, y el que transforma de CAB, los multiplicas,
+
+01:15:26.420 --> 01:15:35.260
+y tenés el que transforma directamente de CAA, también, una sola transformación 4x4, bueno, pose,
+
+01:15:35.260 --> 01:15:44.620
+no les pregunte, pero porque vamos a responder, ustedes conocen posición, ¿no? ¿Por qué pose?
+
+01:15:45.180 --> 01:15:49.100
+Bueno, en la gera, esto no está recontradificado, estas son cosas que para mí, se tendrían
+
+01:15:49.100 --> 01:15:56.540
+que ser en FIC-1, pero pose es el conjunto, es el término elegido, no encontré otro término y
+
+01:15:56.540 --> 01:16:07.220
+más o menos, la bibliografía es consistente, pose es la combinación de posición y orientación,
+
+01:16:07.940 --> 01:16:16.180
+recuerden, posición y traslación son vectores que se presan de manera, alguna disemposición
+
+01:16:16.180 --> 01:16:21.700
+entre disemposición y traslación, orientación se presa con una madre y rotación, entonces ahí tenemos
+
+01:16:23.700 --> 01:16:32.940
+nuevamente una gera equivalente, posición, traslación y orientación o rotación, también
+
+01:16:33.660 --> 01:16:41.020
+una pose, es el conjunto de una posición con su orientación y se presa con una transformación de
+
+01:16:41.020 --> 01:16:48.620
+roto traslación, el conjunto, está, más adelante, hay montones de manera de expresar una pose,
+
+01:16:48.620 --> 01:16:55.540
+hay montones de manera, vamos a la posición, preso me estoy adelantando, pero pues para expresar una
+
+01:16:55.540 --> 01:17:02.340
+posición, lo primero que sé, obviamente, corte de la cortesiana, centrés de X y Z, bueno,
+
+01:17:02.340 --> 01:17:07.740
+ahí dice, bueno, pueden ser coordenadas colares, pueden ser coordenadas esfericas, en realidad hay
+
+01:17:07.740 --> 01:17:14.900
+infinitos métodos, lo voy a intentar del tuyo, no lineal hacer cualquier cosa, pero como que las
+
+01:17:14.900 --> 01:17:23.740
+coordenadas, las cartesianas son las preferidas, porque son muy claras fáciles entender, entonces en
+
+01:17:23.740 --> 01:17:30.220
+general se usan por defecto salgo, que tengas un motivo, voy a decir, no, por tal motivo concreto
+
+01:17:30.500 --> 01:17:37.620
+prefiero, o me combino usar otra, sin usar las cartesianas, ahora para expresar la rotación, no,
+
+01:17:39.020 --> 01:17:45.020
+o sea, en dos de sí, en dos de sí che, expreso un ángulo alfa de rotación, o sea tengo el
+
+01:17:45.020 --> 01:17:50.980
+cero que la la rotación de referencia, y digo, si, si, si gira el sentido antiorario, es
+
+01:17:50.980 --> 01:17:57.700
+alfapositivo, también, y se está, y ahí presenta una rotación, en dos de, entre es de es más
+
+01:17:58.660 --> 01:18:03.580
+complicada, entre de es, pues sí che agorotación a través de tres ejes, no, agorotación, pero no
+
+01:18:03.580 --> 01:18:08.500
+alrededor de ejes rígido de tu sistema de referencia, sino de los ejes de tu cuerpo rígido,
+
+01:18:08.500 --> 01:18:15.500
+y, y, bueno, depende del orden en que expreses las rotaciones, te va a dar un resultado distinto,
+
+01:18:15.500 --> 01:18:22.540
+o sea que no solamente, voy a decir, qué ángulos, si no, en que orden lo, lo aplicas, o sea,
+
+01:18:22.540 --> 01:18:28.220
+tu, tu sistema para expresar la rotación, requiere especificar varias cosas, pues puede
+
+01:18:28.220 --> 01:18:32.420
+hacer el mundo en el sistema de, de diferentes, y todo es equivalente, no hay que ir uno a
+
+01:18:32.420 --> 01:18:38.060
+mejor que el otro. Entonces para la rotación, ya empieza a ver lío de las maneras en que la
+
+01:18:38.060 --> 01:18:42.340
+va a expresar, no solo por lo pronto lo estamos expresando en una materia de rotación, y no, y
+
+01:18:42.340 --> 01:18:48.180
+nos la vamos a las mal, no, dice mira, vos agarrás el vector, el punto lo multiplicas por la
+
+01:18:48.180 --> 01:18:54.620
+materia de rotación, y te da el ese punto rotado a donde tiene que quedar, no nos vamos a meter
+
+01:18:54.620 --> 01:19:01.140
+con qué ángulos son, o sea, llego, o sea, tiene que ser, si vuelo a aplicas a una 9 puntos,
+
+01:19:01.140 --> 01:19:09.820
+como es una, una transformación ocliana, una rototralación, la 9 puntos va a rotar de manera
+
+01:19:09.820 --> 01:19:15.420
+consistente, también, si ya habéis tenido un cubo, o los puntitos de un conejito, te va a quedar
+
+01:19:15.420 --> 01:19:22.260
+el conejito rotado, también, pero manteniendo de estar en ese sitio, entonces tenéis una materia
+
+01:19:22.260 --> 01:19:27.540
+de rotación, o sea, mira, no sé qué ángulos, o sea, que eso es presa la rotación 3D, por las
+
+01:19:27.540 --> 01:19:30.980
+dudas, la rotación en 3D tiene 3 grados libertad, o sea, o sea, o sea, hay que presar,
+
+01:19:30.980 --> 01:19:35.340
+algunos lo dicen en el fabetagama, decirlo como quieras, pues hay 3 grados de libertad, lo mismo que
+
+01:19:35.340 --> 01:19:41.540
+la posición en 3D tiene 3 grados libertad, entonces una pose entre dimensiones tiene 6 grados
+
+01:19:41.660 --> 01:19:51.340
+libertad, en total, pues tiene que determinar a 6 valores, depende del método que usas para aplicarlo,
+
+01:19:52.340 --> 01:20:00.580
+bueno, un cuerpo rígido se reduce a un subsistema de referencia, son un cuerpo rígido,
+
+01:20:00.580 --> 01:20:10.580
+pueden infinito puntos, pero para hacer cuentas, yo reduco toda la 9 puntos a sus sistemas
+
+01:20:10.580 --> 01:20:15.900
+referencias, tengo el autito y le elijo arbitralmente su sistema referencia, que digo,
+
+01:20:15.900 --> 01:20:20.580
+sabe qué pone donde pone el origen, en el medio de la auto, pero en el medio en el barricéntelo,
+
+01:20:20.580 --> 01:20:25.940
+no, no, en el medio en XI, pero en el piso abajo, porque me comiene, porque así será la posición
+
+01:20:25.940 --> 01:20:33.140
+cuando van dando respecto del piso, y poner el Z para arriba y el X para adelante, bueno,
+
+01:20:33.780 --> 01:20:40.900
+voy a elegir cómo querés definir, pero hay un punto de ese cuerpo rígido, hay un sistema
+
+01:20:40.900 --> 01:20:46.580
+referencia arbitral, yo decir, todo lo que expreso el cuerpo rígido, lo expreso sobre ese sistema
+
+01:20:46.580 --> 01:20:57.060
+referencia, también entonces ese sistema referencia respecto del mundo, también la pose de ese sistema
+
+01:20:57.060 --> 01:21:07.490
+referencia respecto del mundo, se expresa con una transformación de rotos traslación, también,
+
+01:21:07.490 --> 01:21:18.440
+o con una transformación de cambio de coordenadas, esto lo mismo, la matriz que te dice donde está el
+
+01:21:18.440 --> 01:21:24.320
+autito, es la matriz que agarra un punto de la 9 puntos del autito de la coordenada, también que
+
+01:21:24.320 --> 01:21:29.640
+estás respecto de su sistema de referencia y te lo transforma al mundo, en este caso,
+
+01:21:30.120 --> 01:21:33.960
+la matriz de WC, la que te transforma un punto de la cámara, de sistema referencia de la cámara,
+
+01:21:33.960 --> 01:21:47.560
+al mundo, entonces la pose se expresan una forma de expresarlas, es la transformación de un sistema
+
+01:21:47.560 --> 01:21:58.080
+de coordenadas al otro, bueno, acá está la matriz de 4x4, es simple vista sin presionante, pero
+
+01:21:58.080 --> 01:22:07.080
+vamos a la disección, tenés un asum matriz rotación de 9 elementos, tenés un vector traslación,
+
+01:22:08.800 --> 01:22:18.000
+todo 3D, así que son 3 elementos, termina con 0, 0, 0, 1, ahí también la equivalencia que
+
+01:22:18.000 --> 01:22:25.800
+tiene con la matriz 3x3 que vimos antes y vos acá tenés 1.3D en coordenadas homogéneas,
+
+01:22:25.800 --> 01:22:35.600
+normalizado y el resultado te da la rototragación, también normalizada, está, bien, acá terminamos
+
+01:22:35.600 --> 01:22:52.960
+con pose, vamos a ser que más que más tengo, bueno la pose de una cámara, también se lo se lo
+
+01:22:52.960 --> 01:23:02.380
+llama para metroextrínseco, es una carga muy peculiar, pero cuando hay dos casos de
+
+01:23:02.380 --> 01:23:07.920
+interés, uno que es muy bueno para ilustrar esto es cuando vos tenés una cámara fija,
+
+01:23:07.920 --> 01:23:13.620
+ustedes vieron que al guiar el robotito con los código arucos, con el video que el
+
+01:23:13.620 --> 01:23:21.720
+monstruo principio había una cámara dentro de un celular, en un trípode, bueno, el tema que
+
+01:23:21.720 --> 01:23:29.880
+vos tenés que saber che, cuál es la pose de esa cámara respecto del rectángulo, que es la
+
+01:23:29.880 --> 01:23:34.160
+cancha, el rectángulo, está bien, del rectángulo que es tu sistema de referencia al mundo,
+
+01:23:35.160 --> 01:23:41.920
+tiene que saber ese dato, bueno esto se lo llama para metroextrínseco, la pose y de
+
+01:23:41.920 --> 01:23:47.800
+puedes expresar con una matriz 4x4, que convierte coordenadas de la cámara,
+
+01:23:47.800 --> 01:23:56.280
+coordenadas de esa cancha que está ahí abajo, bueno acá les muestro esto, hay vídeos de resultados,
+
+01:23:56.280 --> 01:24:02.640
+se dan cuenta, pues me logran relacionar estas dos imágenes de la izquierda,
+
+01:24:03.840 --> 01:24:08.240
+es una imagen convertida monochromática y después anotada con puntos de interés verdes,
+
+01:24:08.240 --> 01:24:18.800
+es un fotograma de un vídeo, ese vídeo fue totalmente procesado y a la derecha tienes
+
+01:24:18.800 --> 01:24:29.760
+una nube de puntos de la misma mesa, incluso esta nube de puntos obviamente expresada en un mundo
+
+01:24:29.760 --> 01:24:36.640
+3D virtual, el punto de vista de la cámara, vos lo pose, esta es una foto, pero está sacada un
+
+01:24:36.640 --> 01:24:41.680
+sistema que es interactivo que vos con el mouse, puedes rotarlo, entonces se ve la misma mesa,
+
+01:24:41.680 --> 01:24:47.320
+acá está la silla, la silla está acá, no está exactamente el mismo punto de vista de la foto,
+
+01:24:48.520 --> 01:24:55.680
+esto fue obtenido a partir de muchas fotos, no solo estas, esta es una cualquiera del conjunto de
+
+01:24:55.680 --> 01:25:05.560
+fotos y estos sobresitos que están acá azules, hay una verdad acá, no son sobres, son pirámides,
+
+01:25:05.560 --> 01:25:10.920
+acá se ve mejor, pues sean más de costaditos, son pirámides de bajas de rectangular, que representan
+
+01:25:10.920 --> 01:25:21.100
+la cámara, la puntita de la pirámide es el centro de la cámara y el rectángulo es el plano
+
+01:25:21.100 --> 01:25:27.140
+de la imagen a una distancia arbitraria, solamente para la notación, para mostrarte, pero el rectángulo
+
+01:25:27.140 --> 01:25:36.660
+representa la relación de aspecto de la imagen y esta, este de acá está verde porque es lo que sería
+
+01:25:36.660 --> 01:25:41.900
+la cámara actual y es la que saco la foto que estamos viendo en el negro acá a la izquierda,
+
+01:25:41.900 --> 01:25:50.180
+recuerden la jerga, es una sola cámara que se mueve, pero en la jerga cada foto es una cámara,
+
+01:25:50.180 --> 01:25:57.060
+porque acá a foto le corresponde una pose, la cámara se movió, entonces se dice que son
+
+01:25:57.060 --> 01:26:02.420
+varias cámaras, pues vos en memoria vas a generar un objeto distinto para cada uno con su
+
+01:26:02.420 --> 01:26:07.260
+propio pose y la visualización de cada uno, etcétera, bueno, entonces vos acá tenés una
+
+01:26:07.260 --> 01:26:15.020
+reconstrucción 3D a partir de una filmación, esta, esta es una reconstrucción semidenza,
+
+01:26:15.020 --> 01:26:20.060
+como ven los bordes están reconstruidos, después de muchos espacios vacíos que se ven en blanco,
+
+01:26:20.060 --> 01:26:26.900
+pero más o menos se puede reconocer lo que sobre este tema tenemos muchísimo para ver,
+
+01:26:27.900 --> 01:26:34.020
+bueno, lo parece que no me acuerdo si lo ultimada positivo, vamos a ver, de esta
+
+01:26:34.020 --> 01:26:45.110
+presentación, estuve de determinar la transformación egeométrica, una de las cosas más relevante,
+
+01:26:45.110 --> 01:26:51.430
+surge de las ecuaciones, pero digamos mejor si se los digo, es la imposibilidad de escalas,
+
+01:26:51.430 --> 01:26:57.710
+también vos tenés una foto, acá tenés una foto de un salón, salón pinta que es antiguo,
+
+01:26:57.710 --> 01:27:04.150
+pero capa que hay una su casa tiene eso, vive así que eso es yo, porque bueno, bueno,
+
+01:27:04.150 --> 01:27:10.350
+en rigor a partir de las fotogues no puedes saber si es un salón de verdad o es una casa de
+
+01:27:10.350 --> 01:27:18.750
+muñecas, digamos, volves a casa de la foto de cerca de una hormiga y es una hormiga gigante,
+
+01:27:18.750 --> 01:27:27.030
+no una hormiga chiquitita, volves a casa de la foto de cerca, agote falta ese dato, no está en
+
+01:27:27.030 --> 01:27:34.110
+la imagen, vos podés suponerlo, o sea, vos podés obtener un dato adicional, por ejemplo,
+
+01:27:34.110 --> 01:27:38.910
+si a vos te dicen que no me acuerdo cómo se llama este mármol que está acá arriba de la
+
+01:27:38.910 --> 01:27:44.950
+tira nombre, arriba del lugar, también, si vos te dicen que de este punto, este punto
+
+01:27:44.950 --> 01:27:50.750
+hay dos metros, yo voy así para ver, esto es un paralogramos, o sea, las paredes de
+
+01:27:50.750 --> 01:27:59.870
+la 90 grados, vos podés empezar a dar la escala a todo, ahí tengo un tío que vendía un primo,
+
+01:27:59.870 --> 01:28:08.110
+que vendía monedas antiguas y la publicada en eBay hace muchos años, por la vendía toda
+
+01:28:08.110 --> 01:28:14.830
+en Europa, todos venidas, y las publicaciones eran una foto de la moneda con una rilla al lado,
+
+01:28:14.830 --> 01:28:18.790
+porque en la foto tenemos una imposibilidad de escala, o la foto va a poder andar de chicar,
+
+01:28:18.790 --> 01:28:25.070
+bueno, sabés de quita maño, no hay nada, cuando opones la rilla, si vos crees que la rilla
+
+01:28:25.070 --> 01:28:30.450
+está bien, y que el socio centímetro es verdad, bueno, entonces ahí te va a una noción de
+
+01:28:30.450 --> 01:28:37.190
+quita maño tiene, pero de la foto solo no contiene sin formación, o sea que hay una forma
+
+01:28:37.190 --> 01:28:45.510
+rara de punto de esta matemático, te está faltando una incógnita, entonces vos tu pose
+
+01:28:45.510 --> 01:28:51.270
+tiene ese grado libertad, porque puede trasladarse, puede rotar, pero hay un grado libertad,
+
+01:28:51.270 --> 01:28:56.510
+es medio raro, que nunca lo vas a poder determinar, no es uno específico, no es la coordenada
+
+01:28:56.510 --> 01:29:00.990
+de X de la posición, es un grado libertad del sistema de cuestiones, que tiene que ver con
+
+01:29:00.990 --> 01:29:08.110
+las calas de lo que vos estás viendo, también, bueno, sabéis si todo esto está expresado, si las
+
+01:29:08.110 --> 01:29:12.910
+traslaciones están expresadas en metros, centímetros en milímetros, o en que están expresados,
+
+01:29:12.910 --> 01:29:19.350
+bueno, yo ahora se lo dijo así en la nebulosa, cuando parezcan casos con ecuaciones o
+
+01:29:19.350 --> 01:29:25.310
+demás concretos, le voy a recordar el efecto práctico que tiene esto de no poder sacar
+
+01:29:25.310 --> 01:29:33.110
+la escala, bueno, esta foto es de una casa de muñecas, no es un lugar real, es de
+
+01:29:33.110 --> 01:29:38.070
+yo no sé, tiene un nombre, el arte de hacer casas de muñecas, así muy perdoso, para
+
+01:29:38.070 --> 01:29:44.310
+muñecas, es un arte bastante caro, que va a hacer todo escala con mucha perfección y
+
+01:29:44.310 --> 01:29:55.910
+efectivamente no tenés manera de desabarlo, bueno, si estas son ya positivas nuevas y no me
+
+01:29:55.910 --> 01:30:06.040
+acordaba donde venía acá, entonces yo le dije, cuando vos crees una posición, la opción por
+
+01:30:06.040 --> 01:30:11.080
+defecto es coronacartesianas, cuando crees sospresión, la rotación no sore bien, como
+
+01:30:11.080 --> 01:30:16.400
+ha salido, o sea, tiene mucha manera, de hecho cada uno le dije la que más le conviene,
+
+01:30:16.400 --> 01:30:24.560
+no ustedes porque no se toparon con el problema, pero empiezan a ver ventajas de aspecto sin
+
+01:30:24.560 --> 01:30:30.880
+sospechado, ¿viste? como la estabilidad numérica de la representación y cosas por éstilo,
+
+01:30:30.880 --> 01:30:36.920
+y le estiré una para que no pregunten básicamente, ok, ok, te estiré en las valles y
+
+01:30:38.920 --> 01:30:46.600
+entonces, yo hago mucho un capié en expresar la transformación de oclía, o sea, la pose con una
+
+01:30:46.600 --> 01:30:52.400
+matriz 4x4, pero es una transformación lineal con mucha redundancia, pues ahí se
+
+01:30:52.400 --> 01:30:56.960
+irá a libertad, pero la matriz tiene 16 elementos, o sea como me suelen 10 elementos,
+
+01:30:57.080 --> 01:31:02.000
+bueno por lo pronto la parte abajo es 0, 0, 0, 1, bueno te quedan dos elementos para
+
+01:31:02.000 --> 01:31:07.160
+ir solo 6 grados de libertad, se acuerdan que la materia de rotación, los nueve elementos no son
+
+01:31:07.160 --> 01:31:18.840
+9 grados de libertad, no son todos sabitrarios, bueno, entonces una manera usual es separar una
+
+01:31:18.840 --> 01:31:26.200
+expresar todo junto y la otra es expresar por separado la traslación y la rotación, también,
+
+01:31:26.200 --> 01:31:35.360
+acá eso le estiró nombres, pues no lo vamos a ver de apalos, de expresiones de pose, por ejemplo,
+
+01:31:35.360 --> 01:31:42.000
+los cuaderniones duales tienen 8 valores, los torsores tienen 6, 6 dimensiones y se acá no,
+
+01:31:42.000 --> 01:31:47.680
+los parámetros de rico ideales tienen 6 y hay uno que se llama Motors, no son los motores,
+
+01:31:47.680 --> 01:31:53.680
+es la misma palabra pero usada mal, concepto matemático, que tienen 8 dimensiones, ven que tienen
+
+01:31:54.160 --> 01:32:02.560
+boctenes 6 valores y 8, la redundancia le da digamos estabilidad numérica, bueno, entonces forma
+
+01:32:02.560 --> 01:32:07.800
+es específica a expresar una rotación, si yo existe quiero la posición en coronas cartesianas
+
+01:32:07.800 --> 01:32:15.200
+y listo la rotación, bueno una la materia de 3x3, obvio, que lo estuvimos viendo, hay una
+
+01:32:15.200 --> 01:32:22.480
+notación rodríguez, la van a usar, después se le voy a explicar bien, es un vector 3D y les digo
+
+01:32:22.480 --> 01:32:32.000
+lo que representa, la dirección del vector es el eje de giro y el módulo es el ángulos radianes,
+
+01:32:32.000 --> 01:32:38.600
+o sea que si es módulo p y epogirapí alrededor de ese eje, o sea está bueno lo que representa,
+
+01:32:38.600 --> 01:32:44.560
+es de cómo presa ese giro, lo que pasa es que pues como elemento matemático en la medida que
+
+01:32:44.560 --> 01:32:48.840
+vos querés combinarlo con otro giro y no puede, terminas convirtiendo toda matriz, combinar
+
+01:32:48.840 --> 01:32:54.120
+las matrices y después si querés volver a la notación rotríguez, bueno cuaterniones se usa
+
+01:32:54.120 --> 01:33:01.160
+mucho en videojuegos, la verdad que no sé si se usan, pero yo contiendo a creer que ahí puede
+
+01:33:01.160 --> 01:33:10.240
+haber una solución un poquito más avanzada, que es un vector de 4D, también, y ángulos de
+
+01:33:10.240 --> 01:33:17.920
+Eulera se usa, por ejemplo, para expresar la orientación en aviación, o sea, tengo un alumno
+
+01:33:17.920 --> 01:33:23.680
+que está tirando cohetes y usa lo mismo que se usan a viola en el role pitch y yo, pero bueno,
+
+01:33:23.680 --> 01:33:34.000
+nosotros no vamos a manejar con matrices de pose, los algoritmos que vamos a ver más adelante
+
+01:33:34.000 --> 01:33:40.600
+de OpenCV que devuelven la pose de un objeto respecto de la cámara partido en imagen, usan notación
+
+01:33:40.600 --> 01:33:51.160
+rotríguez, usan coronás, coordena cartesiana y notación rotríguez, y ya les digo, repito, en
+
+01:33:51.160 --> 01:34:01.840
+videojuegos para expresar la pose de los cuerpos en tu mundo 3D, suelen usar cuaterniones,
+
+01:34:01.840 --> 01:34:09.560
+también son raros de explicar, pero la cantidad para combinar una rotación, una rota de relación,
+
+01:34:09.560 --> 01:34:15.520
+con otra rota de relación, hacen menos operaciones que si tienes que andar multiplicando las matrices,
+
+01:34:15.520 --> 01:34:22.840
+también, de hecho, las matrices tienen mucho estabilidad en America, están buenas para explicar,
+
+01:34:22.840 --> 01:34:29.120
+pero después en la práctica, si buscas eficiencia vas a abandonar las matrices, porque claro, para
+
+01:34:29.120 --> 01:34:35.560
+6 grados libertados, todos son los matrices de 4x4 y 16 elementos, está haciendo mucho más trabajo
+
+01:34:35.560 --> 01:34:45.320
+que el necesario, bueno, ya me adelanté esta rotación rotríguez, listo, acá termina la pose,
+
+01:34:45.320 --> 01:35:01.370
+un segundo, pero bueno, volvemos entonces esa la homografía, digo, veníamos de acá, se
+
+01:35:01.370 --> 01:35:06.610
+acuerdan, la mesa de vixar y la vista senital, esto lo puedo interpretar, lo quiero que le
+
+01:35:06.610 --> 01:35:12.170
+interpreten de las dos maneras, una es, con una homografía, eso puede ser un warp y generar la vista
+
+01:35:12.170 --> 01:35:19.690
+al lado, pero me interesa, con la misma homografía, a mí me interesa que si yo detecto esta vola y tengo
+
+01:35:19.690 --> 01:35:25.490
+las coordenadas en píxeles en esta imagen, que me calculen las coordenadas en píxeles en otra imagen
+
+01:35:25.490 --> 01:35:34.770
+y si querés, más cerca del caso real, que me, es la misma si esta, que me calculen las coordenadas
+
+01:35:34.770 --> 01:35:40.170
+métricas en la mesa de vixar, que habría que, habría que establecer que por ahí el cero está
+
+01:35:40.170 --> 01:35:45.570
+acá, este es el hígriga, este es el híquilo que sea, ¿no? ¿Cuánto mía era mesa y ese tipo
+
+01:35:45.570 --> 01:35:53.490
+cosas? Pero en definitiva es eso, si un leo click el imagen para simplificar, o sea, o
+
+01:35:53.490 --> 01:36:00.850
+tener su sistema automático que te detecta, cada una era volas, que lo multiplicas el vector
+
+01:36:00.850 --> 01:36:09.760
+para una homografía y te da la coordenada métrica, te dice en metros, en donde está metros,
+
+01:36:09.760 --> 01:36:16.000
+centímetro lo que hubo, como hayas expresado todo, donde está la mesa vixar. Bueno, la homografía es esto,
+
+01:36:16.000 --> 01:36:24.800
+vamos a ver, habíamos dicho que la transformación afín en coordenadas homogéneas, tenía estos seis
+
+01:36:24.800 --> 01:36:32.520
+valores de acá arriba, donde tenía una summa tris de transformación, una columna de traslación y
+
+01:36:32.520 --> 01:36:40.200
+un cero cero uno. Bueno, cuando los valores de abajo no son cero cero cero, no son cero cero uno, esto
+
+01:36:40.200 --> 01:36:45.720
+desca a ser una transformación afín, también, y en nombre general es una homografía, o sea que la
+
+01:36:45.720 --> 01:36:52.040
+matriz de tres portes para usarme en coordenadas homogéneas, se llama homografía y de transformación afín es
+
+01:36:52.120 --> 01:36:59.120
+apenas un caso muy particular de la homografía. De hecho, estos valores de acá abajo, cuando son
+
+01:36:59.120 --> 01:37:06.760
+distinto de cero cero uno, es lo que le da el efecto de apaizado, este efecto de perspectiva,
+
+01:37:06.760 --> 01:37:13.400
+también, que no lo puede hacer con una transformación afín. Bueno, creo que se entiende una
+
+01:37:13.400 --> 01:37:19.200
+característica de la homografía, es que deja de estar normalizada, o sea, cuando vuelas multiplicas por
+
+01:37:19.200 --> 01:37:24.760
+valor normalizado el resultado no te va normalizada, o sea que después vas a tener que cuando
+
+01:37:24.760 --> 01:37:30.960
+va a ganar des homogéneasación, vas a tener que dividir por landa para terminar con los valores
+
+01:37:30.960 --> 01:37:40.410
+finales en 2D. Bueno, vamos acá, acá hay varios casos, yo te digo cómo uso la homografía, pero no
+
+01:37:40.410 --> 01:37:45.810
+te dije cómo le obtenes, también, no es una matriz que la tengas de construir a mano, es una
+
+01:37:45.810 --> 01:37:52.650
+matriz que, tenés que entender qué datos necesitas para que los algoritmos la construye, también,
+
+01:37:52.650 --> 01:37:57.930
+ya vamos a abordar ese punto, pues ahora tenés la homografía, mágicamente alguien de la
+
+01:37:57.930 --> 01:38:09.690
+yo, entonces bot tenés una cámara en un auto, está bien, y la homografía dice bot, la falto es
+
+01:38:09.690 --> 01:38:15.050
+mi plan horizontal que lo veo en perspectiva, y yo quiero verlo desde arriba, quiero generar una
+
+01:38:15.050 --> 01:38:20.090
+habitación ideal, está bien, para eso requiero la homografía, bueno, cuando instalas la cámara del
+
+01:38:20.090 --> 01:38:30.910
+auto y la perspectiva e fija, entonces bot, ahí podés calcular la homografía, la matriz H y ya
+
+01:38:30.910 --> 01:38:37.150
+dejar la metida en la cámara, la auto bandando y para acá a foto que vas sacando, podés hacer un
+
+01:38:37.150 --> 01:38:42.870
+warp y generar una habitación ideal que se toca abajo, de hecho esta la, la función se llama
+
+01:38:42.990 --> 01:38:49.390
+warp, warp perspectiva, le da la imagen, le da la homografía, hay un dato del tamaño que no sé
+
+01:38:49.390 --> 01:38:58.950
+si explicarlo yo ya, pero el tema es así, a ver, los voy a hacer unas preguntas, la primera es,
+
+01:38:58.950 --> 01:39:05.670
+qué son estos trenulos negros que están acá, o sea, esta imagen debajo es un warp del imagen de arriba,
+
+01:39:07.430 --> 01:39:11.870
+estos postecitos que se ven acá, son los saludos que están acá,
+
+01:39:13.750 --> 01:39:21.990
+también, qué son estos trenulos negros, está bien y digamos, yo sé que la ruta no termina acá,
+
+01:39:23.110 --> 01:39:30.750
+de hecho se ve mucho más de la ruta, o sea que esta homografía después se ve también que este
+
+01:39:30.750 --> 01:39:35.710
+ángulo podría continuar, yo podría haber hecho una imagen más grande y sacar un cacho más grande,
+
+01:39:35.710 --> 01:39:42.790
+cuanto, hasta cuánto puedo agrandar yo este imagen de acá abajo, teniendo en cuenta la imagen de
+
+01:39:42.790 --> 01:39:57.850
+arriba, ¿no? Bueno, primera más fácil son qué son esos trenulos negros, bueno, no están para
+
+01:39:57.850 --> 01:40:06.170
+preguntas, a ver, la falta de información, ¿cómo o no? Es como información que no existe por
+
+01:40:07.170 --> 01:40:14.810
+la cámara, la cámara no es, o sea, vos planteas una vista serita, al quilo verde de arriba,
+
+01:40:14.810 --> 01:40:22.290
+bueno, esta la parte que veo, esta no, está bien, entonces estípicamente se va a generar esto y el
+
+01:40:22.290 --> 01:40:29.050
+tema es, esto está el que decide, dice de qué tamaño lo quiere y como que lo corta acá,
+
+01:40:29.890 --> 01:40:37.450
+pero hasta cuánto más podía yo agrandar este imagen, bueno, esa es la respuesta, la ruta va, yo
+
+01:40:37.450 --> 01:40:43.570
+veo el horizonte, de hecho veo el cielo que está arriba el horizonte, o sea que en definitiva, o sea,
+
+01:40:43.570 --> 01:40:51.850
+yo la debajo la podría agrandar hasta el infinito y el infinito del imagen de abajo va a llegar
+
+01:40:51.850 --> 01:40:58.010
+hasta el horizonte, nunca va a ir más arriba a eso, entonces pasa que claro, cuanto más lejos,
+
+01:40:59.050 --> 01:41:04.330
+más pixelado se ve, porque hay cada menos píxeles, está bien, entonces este es el motivo no hay un
+
+01:41:04.330 --> 01:41:10.930
+tamaño natural o obvio, si yo transformo la imagen de color a monochromático el tamaño al mismo,
+
+01:41:10.930 --> 01:41:17.290
+está bien, si yo hago un resize y lo quiero checar la mitad, yo puedo asumir que el tamaño del
+
+01:41:17.290 --> 01:41:21.650
+imagen resultante quiero que sea la mitad, está bien, hago un escalamiento y que todo el tamaño se
+
+01:41:21.650 --> 01:41:27.690
+cale igual, está bien, pero cuando hago esto, esta transformación con otras favorías del paso
+
+01:41:27.690 --> 01:41:36.210
+lo mismo, no hay un tamaño resultante obvio y hipópodes específico, puede decir que mantenga
+
+01:41:36.210 --> 01:41:41.730
+el tamaño del imagen original, porque sí, o pues especificar cómo quiere que salga, ahí decís
+
+01:41:41.730 --> 01:41:50.610
+hasta donde va, bueno, esto es conceptualmente lo mismo, pero en vez de hacer un warp, ese warp es
+
+01:41:50.610 --> 01:41:55.650
+pesado, también, si bien vuelvo pues a ser y más o menos tiempo real, te funciona en tu computadora,
+
+01:41:55.650 --> 01:42:01.970
+si lo sé, es una rava repaí, no, ya no andan tiempo real, se valentos, está bien, no van a
+
+01:42:01.970 --> 01:42:08.250
+tomar más, tu computadora también va a ser medio, como se llama que no saca todos los cuadros por
+
+01:42:08.250 --> 01:42:14.930
+segundo, se te van a recordar un poquito, el tema es que la mayor de los casos vos no necesitas
+
+01:42:14.930 --> 01:42:21.690
+hacer un warp perspectiva de cada imagen, ahora lo que te interesa es trabajar con coordenada, claro,
+
+01:42:21.690 --> 01:42:26.210
+con coordenada, en main general, digamos, menos divertidos, menos superficial del tema,
+
+01:42:26.210 --> 01:42:34.690
+tiene que empezar a trabajar con habitores, pero lo que realmente al final de la edad interesa,
+
+01:42:34.690 --> 01:42:41.090
+o sea, yo para conducir mi robots, tengo que saber dónde está, si sé dónde está y a dónde quiere
+
+01:42:41.090 --> 01:42:46.250
+llegar le pueda dar órdenes de por lo que tiene que ir, esa es la clave de lo que estamos haciendo,
+
+01:42:46.250 --> 01:42:55.450
+y eso son coordenadas, entonces si yo quiero sacar, tengo la coordenada en la imagen en perspectiva y
+
+01:42:55.450 --> 01:43:01.330
+quiero convertirla a la coordenada métrica en la vista cenital, lo único de ese es multiplicado por
+
+01:43:01.330 --> 01:43:09.050
+hache, ya está, de hecho hay una función de OpenCV, perfecto del transform, donde voy a decir
+
+01:43:09.050 --> 01:43:13.410
+chevo, que eres convertir muchas coordenadas, imagínate, tienes toda la bola de vista,
+
+01:43:13.410 --> 01:43:21.810
+una verdad, todo junto es una matriz donde pones las coordenadas de toda la bola de vista y esta
+
+01:43:21.810 --> 01:43:27.890
+perspectiva de transform, la expande a coordenadas homogéneas, se agrega uno a cada uno, la multiplica por
+
+01:43:27.890 --> 01:43:35.730
+la homografía y después las de esos homogéneas y te nada de vuelta en 2D, te hace esa parte que arriba
+
+01:43:35.730 --> 01:43:39.890
+a este implicito, como que hay que hacerlo, no tiene que preparar a de X para que tenga 3
+
+01:43:39.890 --> 01:43:47.330
+mesiones y después tienen que de esos homogéneas, hay que ir prima, bueno, esto como una propaganda
+
+01:43:47.330 --> 01:43:58.820
+media forzada, les comenté, existe esta función, acá tengo entonces la vista cenital, la transformación
+
+01:43:58.820 --> 01:44:09.480
+hache, que te hace WordPerfective, de lo que está acá, esta raja blanca que se ve acá es la
+
+01:44:09.480 --> 01:44:16.040
+roda del auto, el auto está así, como deformado, lo que trata de hacer eso es que el plano se ve
+
+01:44:16.040 --> 01:44:20.240
+desde arriba, lo que no está en el plano se te va a deformar todo, lo que les había dicho antes,
+
+01:44:20.240 --> 01:44:28.360
+bueno, entonces cuando instalaste la cámara en tu auto, hiciste un procedimiento para
+
+01:44:28.360 --> 01:44:36.920
+terminar H, después mientras no va la cámara, H no va a cambiar, bien, se terminó a esto y voy
+
+01:44:36.920 --> 01:44:48.740
+a, ahora sí, lo bueno es que llegamos acá, usualmente yo llevo acá, les voy a pasar solamente
+
+01:44:48.740 --> 01:44:55.140
+las primeras positivas y la clase que viene es muy posiblemente retome, no retome donde
+
+01:44:55.140 --> 01:45:02.740
+llegue, sino que vuelva a este punto, también, en esta presentación voy a presentar todo el TP3
+
+01:45:06.340 --> 01:45:14.100
+la clase que viene y les voy a dar el enunciado, porque esto hace un ejemplo, después explica lo que
+
+01:45:14.100 --> 01:45:18.580
+hay que hacer en el TP3 lo va aplicando en día positivas desde la teoría de manera más genera,
+
+01:45:19.540 --> 01:45:30.260
+entonces ya les adelanto el TP3, voy a tener una cámara fija, imagínate que está mostrando
+
+01:45:30.260 --> 01:45:35.700
+el perspectivo a tu escritorio y ponerse un código corre, pues un código arruco, el que les
+
+01:45:35.700 --> 01:45:44.180
+resuelve más fácil imprimir, pone el papelito y en plano, arriba el escritorio y la idea es que vos
+
+01:45:44.180 --> 01:45:54.420
+lo muevas con el dedo y en pantalla puedas ver las coordenadas métricas de ese código, también
+
+01:45:54.420 --> 01:45:59.540
+que te diga en centímetros y que eso, milímetros, coordenadas que vos quieras, en tu sistema
+
+01:45:59.540 --> 01:46:08.500
+coordenadas que te diga dónde está, entonces lo, el TP está planteado para que sea el paso por paso
+
+01:46:08.500 --> 01:46:13.580
+de una manera más o menos llevadera y que logre simplemente hacerlo bastante rápido, yo creo que
+
+01:46:13.580 --> 01:46:16.600
+le tiras el nudo, está también en la nudo y creo que si le tiras a una
+
+01:46:16.600 --> 01:46:25.780
+LGPT y te lo dan resuelto, acá la cuestión no es, es como hayse en de algunos viajes, no es lo
+
+01:46:25.780 --> 01:46:31.260
+importante, no es el destino sino el viaje, lo importante es que vos entiendas y aprendas
+
+01:46:31.260 --> 01:46:40.580
+los conceptos de todo esto, porque en unas clases más nos duramos a volver al tema anterior que es
+
+01:46:40.580 --> 01:46:43.980
+clasificación y detección con Deep Learning y después vamos a volver a este tema que es
+
+01:46:43.980 --> 01:46:49.020
+la transferencia geométrica para temas más de 3D, estos sonografía que es en el plano,
+
+01:46:49.020 --> 01:46:56.540
+después vamos a seguir el plano y entender cómo funciona arregiamentada y cosas por el estilo y la
+
+01:46:56.540 --> 01:47:05.140
+visión robótica en general, entonces está bueno entender lo que está haciendo, no, no solamente
+
+01:47:05.140 --> 01:47:10.020
+tener resultado con la idea y decir mirada, es como que le encarguía alguien que me lo haga, me lo hizo y lo
+
+01:47:10.020 --> 01:47:18.420
+presento y eso en medio que no sé si es para nada, esto ya lo saben, bueno, entonces vistas en
+
+01:47:18.420 --> 01:47:29.700
+ital concretamente es una vista frontal, pero mi interés está en darle coordenas métricas a las
+
+01:47:29.700 --> 01:47:38.300
+cosas que se ven en perspectiva, acá tenon un cío general, sovió esto, ¿a qué instancia está la curva?
+
+01:47:38.300 --> 01:47:46.900
+Acá instancia están los laterales de la pista, este a falto termina, no tiene cordón, tiene tierra
+
+01:47:46.900 --> 01:47:54.280
+directamente, bueno cómo hago, a ver, con todo lo con todo lo que sabemos que falta una información
+
+01:47:54.280 --> 01:48:01.510
+de escala, pero cuando vos ponés la cámara en el auto, pues ya podés determinar los parámetros
+
+01:48:01.510 --> 01:48:07.150
+de la cámara y un montón de cosas para entender la escala y obtener la homografía que te convierte
+
+01:48:07.670 --> 01:48:14.870
+de coordenadas en píxeles en esta imagen a coordenadas métricas en tu sistema de referencia
+
+01:48:14.870 --> 01:48:21.790
+arbitrario, que en tu caso va a ser el plano que está viendo y vas a poner el cero, no sé dónde está el
+
+01:48:21.790 --> 01:48:26.990
+auto, está bien y decidir que para adelante va a ir y para el costado va a la equiso con vos
+
+01:48:26.990 --> 01:48:34.390
+quieras y en metros, entonces esa homografía por eso es un clic, elegís un píxel de esta imagen y
+
+01:48:34.390 --> 01:48:40.350
+te da las coordenadas métricas, eso lo que hace la homografía, ese es el problema es ser
+
+01:48:40.350 --> 01:48:46.510
+dado cosas, obtener la homografía y después aplicarla para darte las coordenadas métricas,
+
+01:48:46.510 --> 01:48:55.430
+ese es el objetivo del TP3, está bien, dije, TP3, no, el TP4, bueno, ese es el que viene
+
+01:48:55.430 --> 01:49:04.030
+ahora el TP3, que es este, bueno, estos son dos años distintos, también nos trabajo con un brazo
+
+01:49:04.030 --> 01:49:15.120
+robot que tenían que ver con detectar algo con una cámara, son metodetección diferentes, pero
+
+01:49:15.120 --> 01:49:19.600
+una vez que tenía la coordenada le tenía que pasar al robot, las coordenadas métricas de su sistema de
+
+01:49:19.600 --> 01:49:26.320
+referencia, donde el cero está para ver una mesa y el robot está para una mesa y ahí ahí donde está
+
+01:49:26.320 --> 01:49:33.600
+en la base el robot es el cero, entonces bueno, lo primero era identificar un sistema de referencia
+
+01:49:33.600 --> 01:49:43.000
+arbitrario que a la izquierda estaba dado por estos marcadores, si mal no recuerdo esto era
+
+01:49:43.000 --> 01:49:49.680
+interactivo, le hacías clic a los marcadores para relevar las coordenadas donde estaban y en el
+
+01:49:49.680 --> 01:49:56.840
+caso de la derecha el mundo que es lo mismo que va a ser TP3, he estado por un marcador fiduciario
+
+01:49:56.840 --> 01:50:03.700
+que se reconoce automáticamente, también, y no solamente pone donde está el cero y la
+
+01:50:03.700 --> 01:50:08.600
+orientación de los ejes, sino que le da escalas porque se conoce el tamaño de ese marcador en
+
+01:50:08.600 --> 01:50:12.600
+centímetros, entonces le da escalas a todo lo que te trece, de ahí se acaba de mover a gente era,
+
+01:50:15.760 --> 01:50:20.000
+bueno, insisto, algo así va a nacer en el trabajo, una por un código, es decir, esto lo quiero
+
+01:50:20.000 --> 01:50:25.920
+del marcador, quiero que la posición del código en este momento defina el sistema de referencia,
+
+01:50:26.000 --> 01:50:33.040
+toca su una tecla, calcula la homografía después puede mover el código, total la homografía no va a
+
+01:50:33.040 --> 01:50:39.880
+cambiar, bueno acá hicieron un sistema de la derecha y hicieron un sistema que detecta estas
+
+01:50:39.880 --> 01:50:48.000
+salandelas, sí, con contorno un poquito más evolucionado porque busca exactamente una
+
+01:50:48.000 --> 01:50:55.080
+una circunferencia, también, pero usa el mismo pipeline que ustedes usaron el TP2 en el, este en
+
+01:50:55.080 --> 01:50:59.800
+particular de la izquierda, que es que bien la derecha, es el verdadero, el de la izquierda
+
+01:50:59.800 --> 01:51:10.040
+detectaban con contornos, detectaban así digamos el caset, el caset VHS, el caset negro en un fondo
+
+01:51:10.040 --> 01:51:15.960
+blanco, en el muy muy parecido del pipeline de ustedes, buscamos el contorno, elegían el vari centro
+
+01:51:15.960 --> 01:51:22.120
+y decían bueno, ahí está, en rigor podían haber dicho, yo sé, la altura que tiene el caset,
+
+01:51:22.720 --> 01:51:27.600
+tengo que buscar cuál es la base, que va a ser la línea de izquierda y calcularlo así, pero bueno,
+
+01:51:27.600 --> 01:51:35.080
+le funcionaba porque el gripper del robot venía muy abierto, entonces cuando lo cerraba, se
+
+01:51:35.080 --> 01:51:39.520
+desplazaba un poquito el caset y lo agarraba bien, bueno, en este de la derecha es más complicado
+
+01:51:39.520 --> 01:51:44.720
+porque gripper lo imprimino con impresora 3D para que lo agarre desde dentro, entonces tenia que
+
+01:51:44.720 --> 01:51:51.120
+invocar con mucho precisión y andaba, este agarraba las visitas y las apirabas, este de la derecha
+
+01:51:51.120 --> 01:51:57.160
+interesante por el robot, un caso real es de una fábrica, donde fabrican estas arándelas,
+
+01:51:57.160 --> 01:52:03.240
+pero después hay un tipo que su trabajo es acomodarlas en colonitas y es el trabajo más tedioso
+
+01:52:03.240 --> 01:52:08.720
+de toda la planta, al punto que no es la función de uno sino que van rotando, 17 tocados, después
+
+01:52:09.720 --> 01:52:21.240
+su trabajo aburrísimo, entonces fue teléfono, trajo final de gigustrial, que usó visión artificial
+
+01:52:21.240 --> 01:52:29.120
+para informar el brazo robot y hacerlo, el tema es que hay un brazo robot era demasiado caro para
+
+01:52:29.120 --> 01:52:34.920
+que lo hagan de verdad en la planta, era un lindo trabajo final, tenia esa parte acá de mi
+
+01:52:34.920 --> 01:52:40.200
+cámara, estamos usando el brazo robot porque se ha estado en el laboratorio, el reward tendrías
+
+01:52:40.200 --> 01:52:47.040
+que haber usado algún otro tipo de manipulador 3D más accesible si lo fuera simplemente
+
+01:52:47.040 --> 01:52:55.280
+de verdad en la planta y que te lo pague alguien, pero bueno, se entiende el caso de uso de la visión
+
+01:52:55.280 --> 01:53:05.360
+artificial estuvo aplicado y os he resultado y es lo mismo que están haciendo ustedes. Hay un
+
+01:53:05.360 --> 01:53:13.520
+detallecido que los cuentos, las cámaras acá están casi, casi arriba, pero están exactamente
+
+01:53:13.520 --> 01:53:19.280
+bien desde arriba, está bien, pero incluso aunque la cámara estuviera puesta bien desde arriba,
+
+01:53:19.840 --> 01:53:28.960
+tenés una perfecta vista senital, nunca es perfecta, nunca a nivel de pixel, entonces siempre hay un
+
+01:53:28.960 --> 01:53:36.040
+proceso que se le onsea más registro donde se pone un patrón, que es como un código arú, con
+
+01:53:36.040 --> 01:53:40.200
+patrón de calibración, lo que sea, que te dice cuál es el sistema de referencia de manera visual,
+
+01:53:41.200 --> 01:53:50.120
+y se obtiene una homografía, quizás de homografía apenas te corriga, pero te corriga, esos
+
+01:53:50.120 --> 01:53:54.480
+pequeños pixels de diferencia que puede ver de los correjos de homografía, siempre usó su homografía.
+
+01:53:54.480 --> 01:53:59.400
+En el trajo práctico le voy a pedir una perfecta desajerada para que vean el poder de homografía,
+
+01:53:59.400 --> 01:54:05.760
+pero incluso cuando la cámara está como una vista senital natural, usas la homografía para
+
+01:54:05.760 --> 01:54:15.840
+terminar de corregir las imperfecciones. Bueno, entonces yo voy a terminar acá, entre ser planteo,
+
+01:54:15.840 --> 01:54:23.840
+es lo que le venía diciendo antes, haciendo clic en una, este es un planteo genérico, no
+
+01:54:23.840 --> 01:54:30.160
+de terapetresos, salen y se los voy a decir, te voy a pasar enunciado, haciendo clic en una
+
+01:54:30.760 --> 01:54:35.960
+en una de las vole de Viller, tenés que decirte en qué coordenadas en centímetros está,
+
+01:54:35.960 --> 01:54:43.040
+todo eso requiere, a ver releva una homografía, conocer la tamaño de todo una información,
+
+01:54:43.040 --> 01:54:50.800
+lo que se le conoce como estructura en la cámara, también, para poder tener esa homografía,
+
+01:54:50.800 --> 01:54:54.520
+una vez que tener una homografía es muy fácil, agarrar la cornea de pixel y lo multiplica por la
+
+01:54:54.520 --> 01:55:00.920
+homografía y te da la cornea de centímetros, ya está, está bien, entonces bueno, como va a
+
+01:55:00.920 --> 01:55:07.520
+venir en la depositiva siguiente, si, viene en varias depositivas, vos usas una homografía para
+
+01:55:07.520 --> 01:55:15.000
+hacer un warp de la imagen y generar esa vista senital y usas una distinta de la diferencia de la
+
+01:55:15.000 --> 01:55:22.840
+escala para que te las coordenadas en centímetros, porque la homografía que te genera la imagen, la imagen
+
+01:55:22.840 --> 01:55:28.320
+digital, la que te dice warp, es una homografía que te da coordenadas en píxeles, de la imagen de warp,
+
+01:55:28.320 --> 01:55:36.680
+también, y bueno, creemos rara vez sería mucha casualidad que vos querés que tu pixel me da un
+
+01:55:36.680 --> 01:55:43.760
+centímetro, no podría ser, perdíamos, está forzando dos cosas que naturalmente son escales
+
+01:55:43.760 --> 01:55:50.080
+diferentes, entonces va a tener dos homografías, la que genera la vista senital, que las es para un
+
+01:55:50.080 --> 01:55:56.600
+trabajo práctico, pero podrías no hacerla en la vida real, en la sistema final y otro que
+
+01:55:56.600 --> 01:56:02.240
+es el que te genera la coordenadas en centímetros, que si bien no se ve, él lo agarró en el interés.
+
+01:56:02.240 --> 01:56:10.960
+Bueno gente, yo terminamos terminando para acá, estoy por corta la grabación,
+
