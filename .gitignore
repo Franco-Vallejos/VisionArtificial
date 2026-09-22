@@ -12,3 +12,4 @@
 **/__MACOSX/
 **/.DS_Store
 tmp_*
+/tmp/
