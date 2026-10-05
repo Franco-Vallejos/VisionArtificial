@@ -1,0 +1,5 @@
+output/
+dataset_yolo/
+resultados/
+*.pt
+__pycache__/

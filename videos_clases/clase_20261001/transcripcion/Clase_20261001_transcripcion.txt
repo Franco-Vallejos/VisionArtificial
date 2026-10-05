@@ -1,0 +1,992 @@
+[00:00:02.060 - 00:00:09.380] por las dudas como siempre si ustedes notan es raro pero puede pasar por eso siempre digo si
+[00:00:09.380 - 00:00:17.900] ustedes notan que estoy repitiendo una presentación me aviso también yo les hablé de modelo de cámaras
+[00:00:17.900 - 00:00:23.340] recuerda que vimos las cámaras de gran angular o mi direccional que esas que tenian todas sabía
+[00:00:23.340 - 00:00:31.100] todo torcido todo culvado bueno vamos a seguir con eso pero ahora ya más en la profundidad
+[00:00:31.420 - 00:00:36.620] este fenómeno de instorsión delente es fácil desplicar tiene unas formulitas matemáticas que
+[00:00:36.620 - 00:00:44.060] afortunadamente no se falta entendarlas yo se lo desplica por arriba bueno no no tienen demasiado
+[00:00:44.060 - 00:00:48.620] a mi estéreo y viene tranquilo después el paso siguiente bueno vamos a tener en calibración de cámara
+[00:00:48.620 - 00:00:55.340] y hay un poquito más riguroso el tema bueno todo está viendo distorsión delente no confirmen
+[00:00:55.340 - 00:00:59.460] que lo que está viendo el título se llama distorsión delente y hay una cosa
+[00:01:01.700 - 00:01:10.420] las diapositivas así las géneres cuando parecía la yaja generativa que aparecía las
+[00:01:10.420 - 00:01:18.260] primeras versiones y que se yo entonces me empiraba para ilustrar hoy ya no tiene gracia de hecho hoy
+[00:01:18.260 - 00:01:24.380] ya tampoco puede hacer esto puede ser demasiado perfecto esto no se sabe qué no me acuerdo cuál era el
+[00:01:24.380 - 00:01:33.280] prompt pero salía en esta cosa rara este bueno bueno recordad el término de dos clases atrás
+[00:01:33.280 - 00:01:40.800] colineación es la transformación matemática que preserva las rectas está entonces un distorsión
+[00:01:40.800 - 00:01:47.280] es un apartamiento de una colineación ahí tengo estas fotos ya la vieron es una foto con el
+[00:01:47.280 - 00:01:54.080] gran angular porque gran angular tiene una distorsión adrede te dían necesaria para el objetivo que
+[00:01:54.080 - 00:02:04.040] busca pero me sirve para ilustrarlo ahora en realidad me interesan la distorsión indeseada que la
+[00:02:04.040 - 00:02:08.800] ilustración no está buena porque todo te motro la foto y no te das cuenta tenés que te tengo que
+[00:02:08.800 - 00:02:13.080] mostrar en algunos casos te voy a mostrar que esto tiene que ser una recta y esto un poquito
+[00:02:13.080 - 00:02:20.920] curvado y lo vas a aportar entonces para exagerar como ejemplo de imagen distorsionada voy a usar
+[00:02:20.920 - 00:02:25.200] ingresas que imágenes de gran angular pero no es eso lo que se ha encontrado en la práctica va a ser
+[00:02:25.200 - 00:02:32.000] más útil la distorsión porque interesa corregirlo bueno interesa cuando sea métrica o sea no interesa
+[00:02:32.000 - 00:02:37.000] cuando sea diplardin no interesa cuando querés reconocer una forma pero si lo querés hacer métrica
+[00:02:37.000 - 00:02:44.160] oposivamente tres de cómo lo que hicimos en el tp3 lo que hicimos ustedes yo no lo hice y si tenés
+[00:02:44.160 - 00:02:53.600] de si puedes antidistorsionado compensar la distorsión vas a tener una mejor precisión en la localización
+[00:02:53.600 - 00:03:00.200] también del de ese caso era el marcador fiduciario bueno el tema es que esta cuestión de la de la
+[00:03:00.200 - 00:03:05.200] antidistorsión y la calibración de la cámara se vuelve imprescindible para el siguiente nivel
+[00:03:05.200 - 00:03:13.600] de de localización tres de que es lo que voy a empezar después de esto en esta clase y que da
+[00:03:13.600 - 00:03:20.880] lugar al tp5 o sea yo estuve alternando lo que está haciendo ahora de entrenamiento para para
+[00:03:20.880 - 00:03:28.200] detección o es clasificación de detección es lo que hicieron el tp2 pero hecho con mi blernin también
+[00:03:28.200 - 00:03:34.080] entonces es perdón lo que hicieron si en el tp2 pero hecho con mi blerni estoy contando bien
+[00:03:34.080 - 00:03:42.560] es el tp4 el tp5 es de localización el tp3 y si no localización en 2d ahora vamos a ir a 3d
+[00:03:43.120 - 00:03:52.480] poquito más sofisticado y se requiere entender todo esto bueno entonces ustedes se acuerdan que
+[00:03:52.480 - 00:03:58.720] cada cámara tenía algunas particularidades respecto a la visión porque se la propia construcción
+[00:03:58.720 - 00:04:05.680] de la lente no vos colocas la lente y nadie está alineando al micrometer entonces el punto principal
+[00:04:05.680 - 00:04:11.280] no cae siempre de mismo lugar y hay varias cositas que son distintas en cada cámara por más que sea
+[00:04:11.280 - 00:04:21.080] el mismo modelo entonces la distorsión es particular de la lente también y para corregirlo se hace
+[00:04:21.080 - 00:04:27.560] algo que se llama anti distorsión van a ver que esto dentro de lo que es calibración de cámara
+[00:04:27.560 - 00:04:35.600] nosotros no calibramos la cámara nosotros medimos la cámara, medimos las imágenes, medimos la distorsión
+[00:04:35.600 - 00:04:43.520] para compensarla por software a eso se le llama anti distorsión también es una es un warp es
+[00:04:43.520 - 00:04:48.600] una transformación geométrica de la imagen que vamos a agarrar la imagen toda la torcida y generas
+[00:04:48.600 - 00:04:59.840] una colineación te queda toda derechita hay dos tipos de distorsión el que nos compete es
+[00:04:59.840 - 00:05:05.440] radial que es el que se presenta cada vez menos y yo se recuerden estudiando esta materia hace muchos
+[00:05:05.440 - 00:05:15.680] años en empezar en 2016 y es notable como las cámaras que ustedes usan que tienen sus notebooks en sus
+[00:05:15.680 - 00:05:24.640] celulares cada vez requieren menos esto o sea calibración requieren cada menos requiere compensar
+[00:05:24.640 - 00:05:32.480] la distorsión si vas a ser metrica fina tener que compensarla pero antes en las propias imágenes
+[00:05:32.480 - 00:05:37.840] acabas una foto mostraba si te da cuenta que sería torcido y eso es cada vez más difícil de ver
+[00:05:40.320 - 00:05:46.040] hay dos tipos de distorsión radial es el que interesa para el tipo de cámaras que estamos manejando
+[00:05:46.040 - 00:05:52.980] nosotros las comunes no estamos hablando de cámaras centrales no estamos hablando de copio
+[00:05:52.980 - 00:05:59.640] no estamos hablando de microscopio ni nada entonces ese es el efecto no ustedes imaginan el tabler
+[00:05:59.640 - 00:06:09.380] ajedrez ahí está sin distorsión y este que pasa cuando tenés distorsión radial si el coeficiente
+[00:06:09.380 - 00:06:15.660] es negativo o positivo también mucho no interesa pues no vamos a hablar de un coeficiente vamos a
+[00:06:15.660 - 00:06:20.980] tener varios coeficientes bueno el efecto que usualmente tenemos es este la distorsión radial
+[00:06:20.980 - 00:06:30.940] negativa no distorsión de barril porque se parece un barril la panza un barril también y la
+[00:06:30.940 - 00:06:39.740] otra la de la modón bueno estos son los fenómenos que usualmente están en las cámaras no tan
+[00:06:39.740 - 00:06:46.620] evidentes pero están y que se compensan con la antidistorsión bueno la fórmula es esta a ver si
+[00:06:46.620 - 00:06:58.780] se entiende primero de todo vos querés compensar la distorsión entonces se propone una fórmula
+[00:06:58.780 - 00:07:13.170] yo lo chamo serietailor no es en rigor una serietailor la xe está en expresador respecto del
+[00:07:13.170 - 00:07:19.570] punto principal entonces el punto principal que está en el medio el punto de alente es 0 y a
+[00:07:19.570 - 00:07:27.370] medida que te alejas no solamente cambian el xe y si no r aparece r que se va aumentando entonces
+[00:07:27.370 - 00:07:36.450] no importa en qué dirección te alejes fíjense que todo este coeficiente o perdón todo este
+[00:07:36.450 - 00:07:45.090] factor que está en el paréntesis está afectado por r y como la distorsión es simétrica acá
+[00:07:45.090 - 00:07:51.810] aquí acá donde ve usted tiene acá en este caso una por un porinomio orden 6 que solo tiene
+[00:07:51.810 - 00:07:58.930] coeficientes pares esta bueno lo del porinomio enseguida lo voy a explicar no es nada del otro
+[00:07:58.930 - 00:08:06.170] mundo pero por qué coeficientes es pares porque simétrico la distorsión es lo mismo para un lado
+[00:08:06.170 - 00:08:11.890] que va al otro entonces y con un porinomio solo que estoy haciendo es aproximando una función que
+[00:08:11.890 - 00:08:18.770] no sé cuál es o sea hay una función de distorsión que tiene x multiplicado por algo dependiente de r
+[00:08:19.530 - 00:08:24.410] que sabemos que es simétrico y que no sabemos cuál es entonces que dice a próxima lo con un
+[00:08:24.410 - 00:08:30.570] porinomio tan usualmente se usan que a unicados y este estamos después dijeron no pero quiero
+[00:08:30.570 - 00:08:38.130] aproximarlo más todavía bueno usa un porinomio orden 6 siga hasta que 3 después vino alguien
+[00:08:38.130 - 00:08:44.690] dijo che no me alcanza necesito más aproximación bueno usada c 4 casi en que 6 lo que pasa es que
+[00:08:44.690 - 00:08:52.730] hay un tema de sensibilidad le cambias un millonésimo al último al último coeficiente que está
+[00:08:52.730 - 00:08:59.610] multiplicado por el real a 12 y te cambia mucho la distorsión también entonces ya se vuelve
+[00:08:59.610 - 00:09:05.850] muy difícil de obtener esos parámetros y que funcionen bien pero entonces la aproximación
+[00:09:05.850 - 00:09:12.650] porinomica está bueno para coeficiente de orden bajo no en la práctica no sirve cuando
+[00:09:12.650 - 00:09:18.890] empezas a subir los exponentes también entonces básicamente lo que digo que es un ponenomio que
+[00:09:18.890 - 00:09:24.170] no tienen ninguna representación física ni de modelo ni nada sino que dice voy a aproximar
+[00:09:24.170 - 00:09:29.890] una función arbitraria que es la que tengo que medir y cuando tengo que expresar analíticamente
+[00:09:29.890 - 00:09:35.130] la expreso como un porinomio que eso va a ser mi aproximación todo esto se calcula automáticamente
+[00:09:35.770 - 00:09:43.450] listo entonces digamos el porinomio es una decisión arbitraria la función con la que se
+[00:09:43.450 - 00:09:51.770] dije aproximar bueno existe la distorsión tangencial que se entiende por este gráfico no es tan
+[00:09:51.770 - 00:09:58.650] común pero lo menciono así como en las constantes K eran la distorsión radial las constantes P
+[00:09:58.650 - 00:10:08.570] P1 y P2 son de la distorsión tangencial hace un efecto sirremolino cuando está en el centro está
+[00:10:08.570 - 00:10:17.210] todo bien y a medida que te alejaste de centro que el rey aumenta empieza a girarse y lo menciono por
+[00:10:17.210 - 00:10:29.530] que los coeficiente que tienen que pasar cuando van a usar la distorsión tienen incluido siempre P1
+[00:10:29.530 - 00:10:36.050] y P2 que van a aparecer y ser también pero están los lugares los van a ver entonces viene de acá
+[00:10:38.570 - 00:10:46.730] acá está fíjense esto K1 K2 P1 P2 K3 entiendo esta es la disposición que tiene OpenCV cuando
+[00:10:46.730 - 00:10:54.890] vuelve de cisco y cuando te piden con suficiente distorsión en ríbores esto acá abajo te pide un array y el
+[00:10:54.890 - 00:11:02.250] or los obviamente los los valores son posicionales tienen un sentido posicional el primer elemento el
+[00:11:02.250 - 00:11:10.010] elemento cero es la constante K1 distorsión K2 que vos sabe que son radiales P1 y P2 que sabe que son
+[00:11:10.010 - 00:11:19.370] tangenciales y luego admite que la raíz sea de cuatro elementos de cinco o de ocho elementos
+[00:11:19.370 - 00:11:26.330] esos son las tres logitudes que admite y como ves ahí esta cátriz que a cuatro casíquicas hay bueno
+[00:11:27.330 - 00:11:34.330] originalmente eran sólo cuatro y cuando ampliaron el modelo decidieron extenderles S3 por eso
+[00:11:34.330 - 00:11:42.330] este quedó separado K1 K2 P1 P2 en el medio y después K3 hasta acá seis después salió un modelo
+[00:11:42.330 - 00:11:55.650] mejor y el uso de 13 adelante se empezó a ganar bueno acá tenés acá volvemos con fotos
+[00:11:55.650 - 00:12:02.370] acá tenés arriba una cámara un poco vieja es difícil que ustedes tengan una imagen así esto no
+[00:12:02.370 - 00:12:06.570] es un gran angular pero es difícil que tengan una distorsión como esta tan notable como esta en las
+[00:12:06.570 - 00:12:13.450] cámaras que ustedes tienen si les saca foto al cuadriculado se ve esto donde se nota que están
+[00:12:13.450 - 00:12:19.370] torcidas las líneas si les sacas una foto tiene que seguir la misma cámara vas a la ruta y sacaste
+[00:12:20.350 - 00:12:26.730] entonces cuando la antidistorsionaje en el cuadriculado se nota que quedan rectas lograste la
+[00:12:26.730 - 00:12:33.690] coordinación en la cara en la imagen debajo tenés que empezar a buscar los bordesitos para
+[00:12:33.690 - 00:12:41.570] ver las diferencias entre la imagen del izquierdo y la derecha es más difícil es más más útil las
+[00:12:41.570 - 00:12:50.570] imágenes de arriba te demuestran que la diferencia existe en la debajo es más difícil fíjense
+[00:12:50.570 - 00:12:56.290] que acá el auto se ve entero y acá queda un poquito recortado hay un pequeño estiramiento pero
+[00:12:56.290 - 00:13:05.450] no es tan fácil ni evidente para el ojo de nudo darse cuenta que esta imagen debajo está
+[00:13:05.450 - 00:13:11.210] distorsionada lo voy a decir a revés vamos a dar la foto y si para mí está bien sacarle la foto
+[00:13:11.210 - 00:13:16.250] al cuadriculado y te vas a dar cuenta que no está bien entonces no es un tema intuitivo es un tema
+[00:13:16.250 - 00:13:24.450] que hay que hacerlo conme y todo acá hay más ejemplos estas también son cámaras más bien viejitas
+[00:13:24.450 - 00:13:31.850] esta perdón estas son son de gran angular por eso se nota pero vos puedes usar el warp de antidistorsion
+[00:13:31.850 - 00:13:37.530] para partir de esta imagen y obtener esta de la derecha también incluso en un gran angular
+[00:13:37.530 - 00:13:44.930] o en una o un indireccional también cualquiera también tenés que haber relevado esos
+[00:13:44.930 - 00:13:51.970] coeficientes yo no voy a mostrarles el modelo que se usa ni en un indireccional ni en gran angular
+[00:13:51.970 - 00:14:00.930] no hace falta que les muestre el modelo matemático tengo el tengo el paper de ahora que tiene que
+[00:14:00.930 - 00:14:09.810] interesa mucho el tema a mí me interesa a ustedes no pero pero explica por qué cuando salió
+[00:14:09.810 - 00:14:15.010] ese paper se dejaron de usar los coeficientes de que entre que 4 y 5 modelos que para gran angular
+[00:14:15.010 - 00:14:21.610] es mucho mejor y y produce las coordinaciones de abajo también esto es la antidistorsion boten
+[00:14:21.610 - 00:14:29.770] la imagen de arriba esto y si se genera este warp de abajo algo parecido pasaba con warp
+[00:14:29.770 - 00:14:36.610] perspectiva aparecían zonas negras también en warp perspectiva aparecían unos triángulos negros
+[00:14:36.610 - 00:14:42.730] porque vos que hacía la vista de vuelo de pájaro y claro la parte de abajo del imagen te queda
+[00:14:42.730 - 00:14:49.450] más angostítila parte de arriba se sancha bueno acá no mismo igual que warp perspectiva no sé si
+[00:14:49.450 - 00:14:54.090] si se acuerdan cuando usaron si ustedes quieren generar la imagen le tienen que indicar cuál es el
+[00:14:54.090 - 00:15:00.250] tamaño final bueno no está no está definido de hecho fíjense esto se tiene forma de esa
+[00:15:00.250 - 00:15:09.920] chéleche esta esta parte blanca que es amarilla en realidad está cortada esto sigue para allá
+[00:15:09.920 - 00:15:15.680] quien sea cuando y hasta según la los coeficientes de distorsión podría llegar a este infinito entonces
+[00:15:15.680 - 00:15:22.720] no hay manera de que automáticamente sepa donde cortara boten de que indicar que tamaño
+[00:15:22.720 - 00:15:30.160] que les obtener la antidistorsión con el en este warp no este cuando querés antiguas
+[00:15:30.160 - 00:15:39.160] solsión la imagen bueno para que sepan este bopo se aplica la antidistorsión ese es el perdón de
+[00:15:39.160 - 00:15:46.640] general el antistort es la función que aplica el warp la la imagen le da los coeficientes de
+[00:15:46.640 - 00:15:54.560] distorsión que de alguna manera conseguiste le vamos a ver la siguiente presentación y a partir
+[00:15:54.560 - 00:16:00.200] del imagen de arriba tiene el imagen de abajo y le hace tamaño que crees del imagen de salida ahora
+[00:16:00.200 - 00:16:08.200] similar a todo lo que le dije para la homografía el warp es para visualización también no es una
+[00:16:08.200 - 00:16:15.960] buena práctica hacer un warp y después operar con con algoritmos de división artificial sobre el
+[00:16:16.960 - 00:16:21.680] warp también vos deberías operar sobre el imagen original que es la información que vos mediste la
+[00:16:21.680 - 00:16:28.640] otra está calculada perdiste información genera esta información de nada también no está bueno
+[00:16:28.640 - 00:16:35.120] entonces lo que conmín usar cuando tenés es antidistorsionar las coordenadas de puntos discretos
+[00:16:35.120 - 00:16:40.520] entonces corregir coordenada a punto de escrito es muy rápido general el warp es lento si
+[00:16:40.520 - 00:16:44.440] vos tenés un bucle y tenés una computadora y tenés que estar generando un vídeo tiempo regal y que
+[00:16:44.440 - 00:16:53.480] es eso pensada vuelta es que realmente necesitas hacer warp bueno algo de eso a ver si se
+[00:16:53.480 - 00:17:03.360] está llegando acá y estoy cambiando de de presentación esto de distorsión les explique que es
+[00:17:03.880 - 00:17:07.200] dentro de calivación yo vamos a dar bueno calivación de cámara
+[00:17:08.160 - 00:17:15.980] yo busque calivación de cámara en google y me pareció esto también calivación de cámara como les
+[00:17:15.980 - 00:17:22.440] dije hace unos minutos este no es un tornillo que vos apretas o soltás en una cámara
+[00:17:22.440 - 00:17:29.320] vos no alteras la cámara vos me dices parámetros y cuando lo manperí en parámetros es agarrar
+[00:17:29.320 - 00:17:36.040] la imagen y buscas cosas en los písela y la imagen también buscas analizar la imagen que te
+[00:17:36.040 - 00:17:43.440] da la cámara nada más no vas a otros para a otros parámetros externos a la imagen
+[00:17:45.600 - 00:17:52.240] entonces lo que vos me dices con lo que vos me dices obtenés dos conjuntos parámetros
+[00:17:52.240 - 00:17:58.080] intrínsecos que se conocen como parámetros de cámara o como maltriz de cámara y eso
+[00:17:59.080 - 00:18:05.400] lo que acabamos de ver en la presentación es coeficiente de distorsión esos dos conjuntos
+[00:18:05.400 - 00:18:13.080] obtienen a través de un un único procedimiento conjunto o sea hace todo a la vez que si conoce
+[00:18:13.080 - 00:18:18.000] como calivación de cámara y eso es lo que yo les voy a explicar acá en qué consiste
+[00:18:19.000 - 00:18:27.960] está bueno pues obviamente la botanica calibrar la si vos necesitas algoritmos que usen estos
+[00:18:27.960 - 00:18:33.760] coeficientes en muchos usan los dos te piden los parámetros intrínsecos y los coeficientes distorsión
+[00:18:33.760 - 00:18:40.200] entonces botanés que calibrar la cámara con la que vas a obtener las imágenes que necesitas usar
+[00:18:40.200 - 00:18:49.920] con esos algoritmos alivinen que todo lo que viene después de esto la función pnp que se llama
+[00:18:49.920 - 00:18:56.280] si te pide parámetros de intrínseco y coeficiente distorsión está o sea que esto es necesario
+[00:18:56.280 - 00:19:00.720] no es simplemente una teoría en el aire de nacer para el tp5 bueno
+[00:19:02.240 - 00:19:08.520] entonces acá le centros con los patrónes de calibración que ya los habrán visto en algún lado
+[00:19:11.080 - 00:19:21.000] son en un momento eso les hablé de marcadores fiduciarios que están diseñados para ser fácilmente
+[00:19:21.000 - 00:19:30.680] reconocidos también incluso le mostré usar patrónes como esto como este de acá para la función
+[00:19:30.680 - 00:19:36.440] de marcadores fiduciarios para reconocer a dónde está también bueno patrónica elivación es
+[00:19:36.440 - 00:19:43.840] una imagen que está diseñada para ser reconocida eso significa que una función se ha implementado
+[00:19:43.840 - 00:19:52.400] que te reconoce ese patrón y está diseñada para darle información al proceso de calibración luego
+[00:19:53.160 - 00:19:58.120] como colateral resulta que está tan bueno que además lo puede usar como marcador
+[00:19:58.120 - 00:20:03.320] fiduciario lo que pasa es que los marcadores fiduciarios como el arruco son machiquititos
+[00:20:03.840 - 00:20:08.760] acá es como un papel demasiado grande con mucho detalle cuando puedo hacer algo más compacto
+[00:20:08.760 - 00:20:14.240] y te sirve igual o incluso mejor acá por ejemplo no codifica sin formación esto no tiene un ID
+[00:20:14.240 - 00:20:22.760] está pero bueno sirve pero el sub función es calenas cual es la idea detrás de este patrón de
+[00:20:22.760 - 00:20:30.040] cuadrícula primero hay un detector de vértices que se tocan también es decir cuando
+[00:20:30.040 - 00:20:34.120] tenés dos cuadros de negro que lo mismo que decir dos cuadros o blanco que se tocan por el vértice
+[00:20:34.120 - 00:20:41.280] en realidad lo que tenés son las cuatro cosas dos negritos blancos, hay un detector de ese tipo
+[00:20:41.280 - 00:20:47.680] de vértice acá al lado lo voy a saber anotado esta notación en colores no es casual es la notación
+[00:20:47.680 - 00:20:55.520] que hace open-cv una vez que lo detecto o desistale anotalo y te dibuja esa cosa de colores fíjense
+[00:20:55.520 - 00:21:03.140] que creo que ya se van a hacer dando cuenta fíjense que solo te marca los esquinas internas y no
+[00:21:03.140 - 00:21:08.960] agarras las de afuera porque lo que está buscando es esta llamada intersección también es como la
+[00:21:08.960 - 00:21:14.000] intersección de esta línea horizontal con esta línea vertical y acá no la tenés para acá tenés
+[00:21:14.000 - 00:21:23.840] la esquina también lo que detecta son estos estas esquinas internas bien entonces otra cosa
+[00:21:23.840 - 00:21:28.160] usted se encuentra que están todas alineadas forma un patrón entonces es bastante predecible su
+[00:21:28.160 - 00:21:38.080] localización y sale voy anticipando si vos detectas todas las puntas y hace ser análisis y notas
+[00:21:38.960 - 00:21:46.000] que no están no no forman una línea recta sino que están dijeramente curvas es porque la imagen
+[00:21:46.000 - 00:21:51.720] está distorsionada también esa es la información que usa pero de la usa si la usa de la manera matemática
+[00:21:52.040 - 00:21:56.960] que no se le voy a explicar pero mucho más simple junta un montón de visualizaciones de esta 60
+[00:21:57.960 - 00:22:05.560] de 60 con el patrón en distintos lugares de la imagen 60 fotos cada una tiene un montón de
+[00:22:05.560 - 00:22:12.680] coordenadas y mete todo en un sistema de ecuaciones gigantes y minimiza también minimiza el error y así
+[00:22:12.680 - 00:22:22.280] saca los coeficiente distorsión y el patrón y el mal de la madre de cámara bueno okey no me quiero
+[00:22:22.280 - 00:22:27.920] meter en eso sí quiero que entiendan qué tipo de información le estás dando vos acá le está
+[00:22:27.920 - 00:22:33.560] dando coordenadas de puntos que no van a estar alineados porque está porque la lente distorsiona pero
+[00:22:33.560 - 00:22:39.200] que la el agolismo sabe que debería estar alineado o sea que tiene que antes distorsionarlo de una manera que
+[00:22:39.200 - 00:22:48.280] todos esos queden bien alineados bien hay dos patrónes famosos este es el original luego surgió este
+[00:22:48.280 - 00:22:56.080] más moderno pero se ve que la gente siempre mio de arriba entonces le da fía que en primera debajo y acá
+[00:22:56.080 - 00:23:06.070] tenés ejemplos un detalle yo esto no me voy a cansar de repetirlo pero para que la información
+[00:23:06.950 - 00:23:14.190] digamos para vos estamos buscando una colinnación no o sea se asume que estas líneas son rectas para que
+[00:23:14.190 - 00:23:22.670] estas líneas sean verdaderamente rectas la hoja tiene que estar plana entonces acá esta sombrita esos
+[00:23:22.670 - 00:23:27.990] pechos a decir que los puntos los los circuitos están lejos estos circuitos de acá se ven de
+[00:23:27.990 - 00:23:31.190] colores lo que está colores la notación porque los círculos son negros como acá de la izquierda
+[00:23:31.190 - 00:23:37.950] este prefijate que tuvieron la precaución de la hoja pegar la concinta de coach en una tabla
+[00:23:37.950 - 00:23:46.070] también acá no se sabe pero también es plana tiene que ser plana porque si esta si la hoja tiene
+[00:23:46.070 - 00:23:54.470] una pancita y eso no es que hoy se hizo una pancita pasa siempre si descuidas el patrón de
+[00:23:54.470 - 00:24:02.710] calilación la hoja va a formar curvas y el sistema va a creer que es la lente la que está generando
+[00:24:02.710 - 00:24:09.030] esas curvas o sea que otra cosa va a terminar haciendo bueno se entiende el patrón tiene que ser
+[00:24:09.030 - 00:24:15.430] plano hay dos algoritmos uno que detecta el de arriba y otro detectado abajo de hecho son
+[00:24:15.430 - 00:24:21.350] algoritmos parametrizables porque el algoritmo volve decir es una sola función volveci qué tipo
+[00:24:21.350 - 00:24:27.750] de detección quieres hacer el de la bolita son el lajeres lajeres listo cuántos vértices vas a
+[00:24:27.750 - 00:24:32.350] detectar y eso es lo más ecañoso porque lo que te pregunta son la cantidad de estos vértices
+[00:24:32.350 - 00:24:39.950] internos también no lo cantidad de cuadrados que tenés se llama patrón ajedrez no es un talero
+[00:24:39.950 - 00:24:47.110] ajedrez no es de ocho por ocho de hecho conviene que sea de una cantidad para por una cantidad impar
+[00:24:47.110 - 00:24:54.390] usualmente con uno diferencia por ejemplo 6 por 7 también 5 por 6 eso es lo que conviene que sea
+[00:24:54.390 - 00:25:02.790] porque de esa manera no es simétrico o sea si vuelo a girar 180 grados no es el mismo patrón
+[00:25:02.790 - 00:25:08.870] si vos no tenés esa precaución que te dije cuando lo giras 180 grados las hacer el mismo patrón y
+[00:25:08.870 - 00:25:14.270] va a haber una una dualidad tipo no va a saber si está dentro el patrón así o girado 180 grados le
+[00:25:14.270 - 00:25:21.350] estás poniendo este le le le le están dando dos soluciones a sistemas cociones y eso no es bueno
+[00:25:21.350 - 00:25:31.910] de por si no puede funcionar puede fallar bien entonces el proceso de calibración te va a dar como
+[00:25:31.910 - 00:25:37.950] resultado la matriz de cámara y los coeficiente distorsión de la lente uno usualmente dice cuánto
+[00:25:37.950 - 00:25:42.830] proficiente mira caúnica dos es lo que estoy buscando no peúnica dos viene caúnica dos
+[00:25:42.830 - 00:25:47.670] pone peúnica dos vienen de hecho creo que esta cadres viene después de si no sigas buscando
+[00:25:47.670 - 00:25:55.650] proficiente porque va a ser para para complicarte la vida o sea para forzar con otros coeficiente este
+[00:25:55.650 - 00:26:03.050] va a cambiar lo el caúnica dos y cadres que bueno citas entonces típicamente sus
+[00:26:03.050 - 00:26:12.370] 50 60 100 fotos del patrón de calibración puestas en distintos lugares está lo que aplica
+[00:26:12.370 - 00:26:16.290] después es un solver lo que le dije se minimiza el error de todo el sistema de cocciones que
+[00:26:16.290 - 00:26:26.450] formuló con ese conjunto de 60 fotos y de montones de mediciones en cada foto no sé 42 7
+[00:26:26.450 - 00:26:34.690] por 7 del patrón son 42 coordenadas de xe y cada uno 82 valores que se toman
+[00:26:34.690 - 00:26:40.050] ocho y realmente son ocho y dos ecuaciones que se agregan por cada foto y botas tomando
+[00:26:40.050 - 00:26:45.930] 60 fotos eso lo que va a resolver el proceso de calibración el sistema de ecuaciones de no
+[00:26:45.930 - 00:26:51.850] hice la cuenta pero son no como aquí dice dije bien 500 este 500 o cinco menos eso me
+[00:26:51.850 - 00:27:00.930] perdí este ecuaciones bueno acá tengo un vídeo que le voy a arcia y me deja no lo voy a dejar
+[00:27:00.930 - 00:27:05.810] con la que se entiende bien es cortito yo quiero mostrar uno segundo este vídeo está
+[00:27:05.810 - 00:27:11.450] entrecortado porque en la época que se hizo el vídeo las computadores eran muy lentas
+[00:27:11.930 - 00:27:19.130] también y les costaba ir filmando y sacando y procesando el mismo tiempo lo que hicieron lo que
+[00:27:19.130 - 00:27:27.130] hizo esta gente es cada vez que detecta el patrón de calibración te lo anota cuando no lo anotas
+[00:27:27.130 - 00:27:34.570] porque no lo detectó y cada vez que ellos deciden tocando una tecla registrar es las coordenadas
+[00:27:34.570 - 00:27:46.460] ese patrón para sumarlo a su colección de a su colección de fotos para hacer las 60 fotos o la
+[00:27:46.460 - 00:27:53.580] que sean bueno acá en realidad está haciendo 15 por acá claramente dice 6 de 15 por ahí no lo
+[00:27:53.580 - 00:27:59.140] vean también yo lo mejor este van tomando bueno ese es el ejemplo que está desarrollado en open
+[00:27:59.140 - 00:28:04.420] se ve en el sitio también tiene vídeo todo y lo podemos usar para que voy a haber sin
+[00:28:04.420 - 00:28:11.940] encuentro rápido que no lo tengo no lo bris un vídeo es más corto no es completo
+[00:28:14.300 - 00:28:29.460] un segundo que para alumnos videos y este lo estoy abriendo acá pero quiero ver si
+[00:28:32.440 - 00:28:47.990] lo voy a ver un sombito estoy llegando este ahora vamos a compartir esta pestaña a ver si está
+[00:28:47.990 - 00:28:53.990] viendo acá también un vídeo esto es el cuatro de este pasado este también lo dice el proyecto
+[00:28:53.990 - 00:29:00.750] que el blogador de imágenes bien perfecto voy a pasar un personaje en el fondo blanco porque para
+[00:29:00.750 - 00:29:06.230] que tenga bien la capacidad de tomar el tablero lo voy a sacar el audio no sé si ustedes lo
+[00:29:06.230 - 00:29:12.270] escuchan creo que sí fíjense que interesante bueno aparte que hay un rallado en el fondo creo que
+[00:29:12.270 - 00:29:21.830] no molesta esto es algo que yo recomiendo la manera más práctica más que imprimir el patrón es
+[00:29:21.830 - 00:29:26.510] ponerlo en el celular o en un monitor porque el un monitor plano no van a usar un monitor curvo por
+[00:29:26.510 - 00:29:32.750] favor porque sí es un monitor plano ya te garantiza la planicidad el patrón que es una de las
+[00:29:32.750 - 00:29:37.790] factores de error más importante fíjense que cuando el patrón no se detecta completo no
+[00:29:37.790 - 00:29:43.550] tiene nota tiene que estar totalmente visible para que lo detecte también hay otras cuestiones en
+[00:29:43.550 - 00:29:49.970] el movimiento a ver si lo puedo usar es la imagen
+[00:29:51.970 - 00:30:02.370] en su unito que estoy tratando cuando vamos a ver es lo que pasa con cómo la cámara capta la
+[00:30:02.370 - 00:30:08.250] pantalla del celular bueno hay dos fenómenos este es uno o sea que ahí no va a captar el patrón
+[00:30:08.250 - 00:30:15.570] también y hay otro que tiene que ver con el brillo que de repente la parte blanca se agranda
+[00:30:15.570 - 00:30:21.530] como que brilla más y tapa la negra entonces los punts los las intersecciones no son perfectamente
+[00:30:21.530 - 00:30:28.050] determinables y tampoco te capta el patrón o sea a veces hay que bajarle brillo el celular o
+[00:30:28.050 - 00:30:32.610] algo por estilo para que funcione no voy a mostrar mucho más a ver si hay algo más interesante acá
+[00:30:32.610 - 00:30:37.850] este creo que sigue con lo mismo lo que está diciendo el vídeo que a más usted lo tiene disponible es
+[00:30:37.850 - 00:30:46.250] en el en el compartido lo que está diciendo que él va a buscar un montón de posiciones distintas
+[00:30:46.250 - 00:30:52.930] dan cuenta como le incline y lo pone acá y allá bueno eso es súper importante a ver me estoy
+[00:30:52.930 - 00:31:06.980] diciendo que quiero volver a la presentación me parece que tengo que volver a compartir no
+[00:31:06.980 - 00:31:20.790] que la libración de cámara estamos estamos acá tú vamos a pasar a la siente de positiva
+[00:31:22.990 - 00:31:28.550] bueno hay ejemplo de código de OpenCB está el propio github de lo que hicieron en cuatro de
+[00:31:28.550 - 00:31:33.270] este pasado no soy yo compañía de ustedes no sé si yo compañía de usted pero informáticos acá de
+[00:31:33.270 - 00:31:42.310] un LAN ese ese vídeo que que mostraba recién es el ejemplo la demostración de un calibrador web
+[00:31:42.310 - 00:31:49.390] que está muy più la tiene que bajarte el modo de github no quedó funcionando la URL donde
+[00:31:49.390 - 00:31:54.670] vos podías acceder directamente todo te lo bajas y lo abrir localmente pero se podría poner
+[00:31:54.670 - 00:32:06.550] web es es un sitio totalmente está alón o sea no requiere un servidor no hay backend y lo
+[00:32:06.550 - 00:32:11.350] podés claro al ser web lo puede salir en tu computadora y agarrar una cámara web o la cámara
+[00:32:11.350 - 00:32:15.150] de tu computadora o lo puede salir en celular para calibrar la cámara en celular eso es lo que tiene
+[00:32:15.150 - 00:32:21.830] de piola fíjense por las dudas para no confundir que en el vídeo él mostraba el patrón de
+[00:32:21.830 - 00:32:28.150] calibración en un celular también se entiende que él no estaba calibrando la cámara de ese celular
+[00:32:28.150 - 00:32:33.110] es celular usada para mostrar el calibración el patrón de calibración la cámara era la cámara
+[00:32:33.110 - 00:32:39.310] que observaba es la cámara que se está calibrando cuando cuando piensan así queda obvio pero si no les
+[00:32:39.310 - 00:32:48.830] queda les puede quedar las dudas bueno acá está el link del calibrador online quisieron el
+[00:32:48.830 - 00:32:54.990] repositorio de github y bueno es para para ir terminando no me acuerdo si queda otra
+[00:32:54.990 - 00:33:00.970] depositiva pero hay un un pay pero a mí me resultó muy interesante que agordo el tema de la
+[00:33:00.970 - 00:33:10.710] creación y dice mira con 19 tomas esto tomarlo con pinzas con 19 tomas vos podés hacer una
+[00:33:10.710 - 00:33:18.790] calibración óptima está de si uno es el mínimo y dice esto no sé si se entiende acá está el
+[00:33:18.790 - 00:33:25.750] patrón este es un modelo 3d el patrón y te dice cómo ir girando la cámara alrededor el patrón
+[00:33:25.750 - 00:33:29.670] el lo mismo tener la cámara fija e ir moviendo el patrón te guardo también para tomar
+[00:33:29.670 - 00:33:36.990] todas esas tomas pero esto es en un sentido también es el giro en un plano acá te está mostrando
+[00:33:36.990 - 00:33:41.670] en los dos planos o sea vuelvo a ser vuelvo a ser poner en el horizontal y después lo haces
+[00:33:41.670 - 00:33:48.230] el vertical está en concreto lo que está diciendo es que vos tenés que ser una fotocá una fotocá
+[00:33:48.230 - 00:33:56.470] una fotocá esta gente hizo un sistema interactivo lamentablemente no tenemos listo para usar a mano para
+[00:33:56.470 - 00:34:02.630] usar que una vez que sacar las primeras tres fotos te dice che sacado otra intermedia sacaceta sacaceta
+[00:34:02.630 - 00:34:10.750] saca un poco más ésta ésta ésta ésta y dice listo ya es óptimo si vos seguís sacando fotos en
+[00:34:10.750 - 00:34:17.950] este arco ya no aporta más información y después acá en la curva en el plana contrario o sea
+[00:34:17.950 - 00:34:25.230] la curva en el plana particular este y ya se va esta calibración interactiva que te minimiza la
+[00:34:25.230 - 00:34:30.670] cantidad de fotos y después te dice mirad tiene que sacar un ángulo de la pantalla sacar el
+[00:34:30.670 - 00:34:39.510] medio se poner esto sería poner el patrón de calibración en el medio de la pantalla y por lo menos en
+[00:34:39.510 - 00:34:48.790] los dos vertices superiores y con eso ya toma frontales y con eso tenés las tomas óptimas también
+[00:34:48.790 - 00:34:59.110] si la sacaste bien sacar más fotos no agrega no mejora la situación bueno listo terminó acá y entonces
+[00:35:01.140 - 00:35:07.540] antes de ser quiero ahita quiero caminar pa' esta ni compartirla me estoy reservando
+[00:35:08.740 - 00:35:20.580] estoy saliendo una no me equivocan cuesta y compartiendo pero dice que dice en problemas geométricos o
+[00:35:20.580 - 00:35:28.980] cámaras industriales problemas que me triunas ah gracias está bien me equivocan esta la que te quiero
+[00:35:28.980 - 00:35:36.900] presentar de repente me la mezclé yo solo este bueno cámaras industriales lo voy a saltear
+[00:35:42.900 - 00:35:50.020] pero en un segundo estoy recalculando no vamos a dar esta problemas geométricos
+[00:35:50.020 - 00:35:59.900] usualmente la salteaba pero hace un ratito encontré que va a ser mejor darlo si y me acabado me
+[00:35:59.900 - 00:36:04.060] está volviendo me está confundiendo este es del orden en que la tenía abierta yo es el orden que
+[00:36:04.060 - 00:36:11.580] he quedado así que bien bueno esta es una presionación muy light viene a abarcar otros tipos de
+[00:36:11.580 - 00:36:19.060] cabra también entonces cámaras industriales qué significa cuando vas a hacer un trabajo para
+[00:36:19.060 - 00:36:23.780] alguna empresa un lugar de algunos está acostumbrados a sacar cámaras cuando se orar o asaltando
+[00:36:23.780 - 00:36:27.700] mira qué lindo puede hacer se aumentación puede hacer esto pero cuando lo tenés que hacer que
+[00:36:27.700 - 00:36:33.940] produzca bueno en procesos industriales tenés cámaras hechas para eso y la cámara es la misma
+[00:36:33.940 - 00:36:39.820] le pongo a ver cuáles son las diferencias que puedes tener según cada caso pero lo primero que
+[00:36:39.820 - 00:36:47.020] observas es el montaje no es una cámara USB porque el corrector USB no es seguro es un corrector
+[00:36:47.020 - 00:36:52.540] que está hecho para que sea fácil de enchufar y por eso mismo no es algo para dejar una cámara
+[00:36:52.540 - 00:36:59.380] fija entonces vos tenés conectores como este que se enroscan y quedan bien firmes y adentro los
+[00:36:59.380 - 00:37:09.060] cables son los mismos que tienen USB está pero pero el corrector físico es diferente entonces tenés
+[00:37:09.060 - 00:37:14.180] donde enroscar lo donde tornallarlo donde fijar la cámara también no está hecho para que
+[00:37:14.180 - 00:37:20.420] las llaves en la mano sino pero que la la coloque es este fijo bueno si tienen o tienen sumi
+[00:37:20.420 - 00:37:25.180] foco fijos o son ajustables y lo puedes apretar con un tornillo eso lo se les había comentado
+[00:37:25.180 - 00:37:31.940] hace un par de clases hay una diversidad de velocidad de esos cantidades frames por segundos
+[00:37:31.940 - 00:37:38.220] también algunas aplicaciones industriales de inspección también había hecho de tener un ejemplo
+[00:37:38.220 - 00:37:42.980] no tengo olvidado más pero tengo un ejemplo de una fábrica de tuercas y pasaban por una
+[00:37:42.980 - 00:37:48.300] citita transportadora y en el momento que vuelaban porque se yo por el proceso era así pero pasamos
+[00:37:48.300 - 00:37:53.660] una tuerca atrás la otra una vez lo increíble y bueno que tenía hacer una cámara de muchos frames
+[00:37:53.660 - 00:38:02.140] por segundos que le podía sacar la foto exacta y que no sea la movida está a las a las tuercas
+[00:38:02.140 - 00:38:09.380] en la media que va pasando este bueno distintas las cosas es lo que vamos lo que voy a mostrar a
+[00:38:09.380 - 00:38:14.780] lo largo de esta presentación distintas variables pero primero cómo son los sistemas para
+[00:38:14.780 - 00:38:20.380] visionar artificial produce esas cosas con Python pero la visionar artificial se usa hace rato en
+[00:38:20.380 - 00:38:26.580] la industria este y cuando se compra se compra teniendo en cuenta muchas estas otras cosas que la
+[00:38:26.580 - 00:38:35.900] robusta es este la seguridad le he conexionado en el encableado no entonces hay un tipo de cámara
+[00:38:35.900 - 00:38:40.100] que se llama visionar artificial integrada que se pueden imaginar ustedes como una cámara como
+[00:38:40.100 - 00:38:45.700] una raza de repay adentro o con una cepeteronteliosa dentro el cepeterotío es medio limitado para
+[00:38:45.700 - 00:38:50.620] procesar la imagen por una cosa interno dio una raza de viva y cinco pero por una raza de repay
+[00:38:50.620 - 00:38:59.620] de una de las viejas fíjense que estas cámaras ahí tienen las fotos esta en particular esto que
+[00:38:59.620 - 00:39:04.660] este es un anillo de luz de este caso son leyes sin flarrojo porque se ve que es más decidir para
+[00:39:04.660 - 00:39:13.040] ver de noche está bueno iluminar alrededor de la lente porque la luz no le llega la lente y no
+[00:39:13.040 - 00:39:20.780] tenés sombras en una dirección específica fíjate es notable como las las cámaras no es que vienen
+[00:39:20.780 - 00:39:25.620] hechas para agarrar con la mano bien hechas para que leas un conexionado seguro de alimentación y
+[00:39:25.620 - 00:39:32.380] datos también estas en particular estas visiones y integradas están hechas para que vos la metas en
+[00:39:32.380 - 00:39:38.980] algún proceso automatizado y se tienen los algoritmos no son muchos tienen algunos pocos
+[00:39:38.980 - 00:39:46.020] algoritmos que se ha bien en integrado no es que vos se los cargas y los parametrizas entonces
+[00:39:46.020 - 00:39:52.500] vos puedes hacer algún tipo de vision artificial de infección porque es difícil puede detectar algunos
+[00:39:52.500 - 00:39:58.540] contornos pues lo que hiciste en el tp 2 es como que el pipeline ya viene incorporado y tiene
+[00:39:58.540 - 00:40:05.300] algunos pavis en algunas otras cosas bastante comunes y vos les he tirado los parámetros y eso
+[00:40:05.300 - 00:40:14.580] puede expresar un on-off para algún tipo de infección y ya está eso es lo que hace la cámara
+[00:40:14.580 - 00:40:19.820] de vision artificial muy robusta también pues la parametrizas no la programas y se viene toda
+[00:40:19.820 - 00:40:25.180] armadita lista para andar pero limitada lo que pueda hacer equipo de vision artificial a ver si
+[00:40:25.180 - 00:40:30.300] entiende esto es una flor de cámara y esta es una computador y industrial ya cuando hablamos
+[00:40:30.300 - 00:40:35.740] computador y industrial hablamos que es equivalente a una rara arriba de cuatro una cosa así hay de
+[00:40:35.740 - 00:40:44.100] todo no hay más potentes pero esto ya viene con el software metido adentro en una caja cerrada
+[00:40:44.100 - 00:40:51.660] cosa que bueno te lo puedas copiar esa un poco ver a la idea eso obviamente obviamente hay un
+[00:40:51.660 - 00:40:56.860] desfasaje entre lo que ustedes aprendan de vision artificial y lo que tenían en mente estos tipos
+[00:40:56.860 - 00:41:03.020] cuando diseñaron los productos porque hoy lo puedes hacer con mucha facilidad también igual todavía
+[00:41:03.020 - 00:41:08.420] hay gente que compra esto entonces lo podrías hacer vos y alojarlo en cualquier computador incluso
+[00:41:08.420 - 00:41:14.860] en cualquier computador industrial y te pone tu programa en Python y los ejecutas pero bueno esto
+[00:41:14.860 - 00:41:20.340] lo compras viene con algunos más potentes que los de las camaritas que es de vision integrada
+[00:41:21.060 - 00:41:28.700] y básicamente vos te conectas por LAN o por USB y lo configuras las activas los distintos los
+[00:41:28.700 - 00:41:33.860] distintos algoritmos que se vienen integrados y las desantar. Sistema de versión artificial eso
+[00:41:33.860 - 00:41:40.660] viene en un servidor en la red entonces simplemente las cámaras le mandan por red las fotos y lo que
+[00:41:40.660 - 00:41:46.140] tienen estos servidores tiene una aplicación de usuario de configuración donde vuelve a decir que
+[00:41:46.140 - 00:41:52.700] en este caso estás configurando que le haga testévala fotos y que vea si la estiqueta está bien
+[00:41:52.700 - 00:41:59.420] puesta que detecte el código QR que está acá abajo que haya una inspección de si la tapa está
+[00:41:59.420 - 00:42:06.380] bien colocada y además te muestra en la pantalla del usuario V si se ponen rojo en verdad si chequeo
+[00:42:06.380 - 00:42:13.260] está bien si está más al y que se yo todo eso se entiende hay un sistema que se desarrolla como
+[00:42:13.260 - 00:42:18.920] producto hay toda una parametrización local que puede ser el tipo que te lo vende viene y te
+[00:42:18.920 - 00:42:27.900] sabe de visual artificial como saben ustedes menos que ustedes pero sabe y te lo pone en funcionamiento
+[00:42:27.900 - 00:42:34.060] para el tipo de infección específico que vos querés que se esté de los frasquitos estos y
+[00:42:34.060 - 00:42:40.100] después un operador simplemente puede chequear en esa en esa imagen el funcionamiento es lo que
+[00:42:40.100 - 00:42:46.620] ustedes harían, eso haría un problema en Python y se lo darían al usuario para el usuario vea la
+[00:42:46.620 - 00:42:52.620] pantalla de las contrataciones y sepa si anda bien o nada mal eso no van a dar modificando el código
+[00:42:52.620 - 00:42:57.620] Python, está bien, bueno todo esto he hecho con un sistema cerrado donde bueno le puedes cambiar
+[00:42:57.620 - 00:43:00.940] el algoritmo, después cambiar nada, tienes que hablar con el proveedor para que te lo haga una
+[00:43:00.940 - 00:43:08.420] corred y que se yo, está bien, bueno visual artificial en la nube, bueno te estás relacionado con el
+[00:43:08.420 - 00:43:12.940] mundo del uso 4.0 pero no me voy a meter mucho con eso pues ustedes no están tan familiarizados,
+[00:43:14.180 - 00:43:19.940] hay un montón de proveedores, hoy el que ganan de hablar en Google Cloud, pero bueno hay de
+[00:43:19.940 - 00:43:28.400] todo, hace muchos años mi hermano trabaja en Mercado Libre en la parte de infraestructura y estaba
+[00:43:28.400 - 00:43:36.340] buscando estuvo en la etapa en que miraron todo a tercera hora, bueno miraron todos cerrados sus
+[00:43:37.300 - 00:43:41.500] centros, cerraron a su manera así, pues un proceso de muchos años no se si terminaron de cerrarlos,
+[00:43:41.500 - 00:43:48.620] pero miraron a la nube, entonces me contaba como se me tió en ese tema, me contaba que
+[00:43:48.620 - 00:44:01.420] enviante, esto es una nueva vieja o de repente perejompan está buscando un sistema de nube que cuente
+[00:44:01.420 - 00:44:09.820] vacas, en imágenes de dron, o sea la imagen de dron, modelo de detección de vacas vista desde
+[00:44:09.820 - 00:44:18.660] arriba, vista cenital, y la uniga que tenía eso en Google Cloud, o sea no importa cuál tenía
+[00:44:18.660 - 00:44:24.020] cuál era más barato o cuál tenía la tensa, lo que sea, el único que tenía ese modelo que necesitaba era
+[00:44:24.020 - 00:44:30.900] Google Cloud, lo más no lo tenía, entonces cismo, cuando no hay opción no hay decisión, justo en
+[00:44:30.900 - 00:44:38.900] tema visual y en tema de Deep Learning, Google gana, hoy en particular son los cheque, pero en
+[00:44:38.900 - 00:44:44.500] 2016 me imagino que si buscas los sistemas de cuente vacas desde la aire, va a haber mucha oferta,
+[00:44:44.500 - 00:44:51.140] también, este es, pues, igual no hay que suponer así tan libremente, hay que ir y chequear,
+[00:44:51.140 - 00:44:58.980] porque por ahí resulta que no es un problema tan demandado y no está tan disponible, tan libre,
+[00:44:59.860 - 00:45:07.060] bueno, listo, paso a la siguiente, vamos ahora, volvemos a lo que son las cámaras, recién hablamos
+[00:45:07.060 - 00:45:11.180] de sistema de visión artificial, le dije, hay camaritas que traen su propio sistema integrado,
+[00:45:11.180 - 00:45:15.980] hay sistémitas que vienen en las rasitas cerradas donde bueno enchufan la cámara, hay otro que son
+[00:45:15.980 - 00:45:21.540] más un servidor y es parecido a lo que ustedes hacen, pero lo venden como servidor y después tenés
+[00:45:21.540 - 00:45:26.500] en la nube, bueno, ahora las cámaras propiedades de dicho, cámara, este es una de las más
+[00:45:26.820 - 00:45:32.900] más relevantes, pues, a ver, las cámaras que ustedes usan son RGB, son coloros, o sea, 13
+[00:45:32.900 - 00:45:38.260] espectros, el espectro es el rojo de verde y el azul, cuando se habla de cámaras espectrales,
+[00:45:39.620 - 00:45:46.020] estamos hablando de abarcar otros espectros que pueden, usualmente, son diferentes al de
+[00:45:47.540 - 00:45:54.580] la luz visible, pero entonces cuando voy a esos cámaras espectrales, todavía tenés una
+[00:45:54.900 - 00:46:00.060] inespecificación, qué espectros, o sea, cuántos iguales, de la variedad es infinita,
+[00:46:00.060 - 00:46:05.220] luego pasa que hay ciertos espectros que tienen un interés particular bien definido,
+[00:46:05.220 - 00:46:11.780] un interés general que está bien definido, por ejemplo hay cámaras que sirven para
+[00:46:11.780 - 00:46:16.220] ver el endice verde, el crecimiento de las cosas hechas, así que es yo, entonces estos
+[00:46:16.220 - 00:46:22.580] espectros que necesitas para calcular el endice verde, se encuentran en muchas cámaras espectrales,
+[00:46:23.540 - 00:46:31.340] pero bueno, así como una cámara de RGB tiene un canal en cada pixel para uno para el
+[00:46:31.340 - 00:46:37.700] rojo, otro para el verde y otro para el azul, en cada canal, cada espectro, se genera un imagen
+[00:46:37.700 - 00:46:45.620] monochromática, cuando vos tenés una cámara espectral, primero, está viendo otros espectros que son
+[00:46:45.620 - 00:46:51.900] distintos que le RGB, digamos que puede ser en bandas de que fuera de la luz visible, bandas
+[00:46:51.900 - 00:46:58.540] que nosotros no vemos, pero si yo lo quiero ver, yo agarró un espectro y voy a tener un imagen
+[00:46:58.540 - 00:47:05.140] monochromática, que te va a estar mostrando algo que no cuyo imagen original no vine de luz visible,
+[00:47:05.140 - 00:47:11.180] o sea, por sí es una imagen artificial, pues lo estoy cambiando a una banda para que sea visible,
+[00:47:12.180 - 00:47:21.620] pero cuando yo tengo más espectros, tengo nueve espectros, claro, la visualización, yo estoy
+[00:47:21.620 - 00:47:26.780] acostumbrado a usar tres espectros super puestos que son en el RGB, entonces voy a agarrar tres
+[00:47:26.780 - 00:47:33.020] imágenes monochromáticas, tres espectros y la ponés una como rojo verde azul y generas la imagen
+[00:47:33.020 - 00:47:37.620] ahí y la mano del izquierda, y después agarras otros tres espectros y generas la almedio y agarrar
+[00:47:37.620 - 00:47:42.780] los últimos tres que vean la derecha, lo que estamos viendo acá son tres imágenes que corresponden a
+[00:47:42.780 - 00:47:47.380] nueve espectros y los tres super puestos, podréis tener nueve imágenes monochromáticas,
+[00:47:48.380 - 00:47:54.540] o sea que la representación que es rara con colores, a ver, los colores vienen nada más de
+[00:47:54.540 - 00:47:59.980] querer ver varios espectros en el imagen, compa que no te ocupe tanto el lugar, también,
+[00:47:59.980 - 00:48:05.260] pues si no lo verías monochromático, uno independe del otro, después tenés que, perdón,
+[00:48:05.260 - 00:48:11.100] voy y vengo con la, después tenés que interpretar que significa que haga color, también, porque por lo
+[00:48:11.100 - 00:48:19.820] pronto el amarillo es porque está el espectro rojo y el verde simultáneo, andás a ver si
+[00:48:19.820 - 00:48:26.580] eso tiene o no un significado particular, pues tiene que aprender a leer qué combinación de
+[00:48:26.580 - 00:48:33.420] colores generan eso que estás viendo, acá, esto acá que es rojo con algo de azul, por eso se
+[00:48:33.420 - 00:48:41.740] ve, se ve asidila, bueno, así no es difícil, pero tenés que empezar a acodificarlos con los
+[00:48:41.740 - 00:48:46.380] colores que estás viendo para que te sirva la imagen, también, y al final todo depende de qué
+[00:48:46.380 - 00:48:53.820] significa cada espectro, que no, yo acá no lo sé, bueno, entonces las cámaras espectrales
+[00:48:53.820 - 00:49:00.020] producen imágenes monochromáticas, acá botenés con un tinte azul, lo que tenés es una
+[00:49:00.140 - 00:49:08.020] rayos x, eso es una banda que está por arriba a la luz visible, botenés, se lean hombres a las
+[00:49:08.020 - 00:49:11.500] bandas, no hay que darle mucha bolilla, pero por lo pronto infra rojo, o sea lo que está por debajo del
+[00:49:11.500 - 00:49:16.260] color rojo, son bandas inferiores a las luz visibles y hay un montón, y otra violeta se lea
+[00:49:16.260 - 00:49:21.340] que está por arriba, o sea el azul, que sea que más arriba, después nunca les conté, pero
+[00:49:21.340 - 00:49:29.460] justo en el, en el límite se vuelve violeta, por un fenómeno del ojo, por arriba del violeta,
+[00:49:29.460 - 00:49:35.660] hay un montón, una es rayos x, por ejemplo, fíjate, son nombres que se le dan a las frecuencias
+[00:49:35.660 - 00:49:40.380] por motivos históricos, no hay que darle mucha bolilla a los nombres, son todas frecuencias
+[00:49:40.380 - 00:49:47.100] superiores, porque yo te digo rayos x y tenés de petahertz a exahertz, o sea que es una banda de
+[00:49:47.100 - 00:49:52.860] mil veces a frecuencias increíblemente altas, entonces no basta con decir rayos x,
+[00:49:52.860 - 00:49:57.820] si a rayos x hay que frecuencias, son muy distintas, también, lo mismo en travioleta va a los
+[00:49:57.820 - 00:50:04.580] terahertz a los petahertz, es enorme la banda, bueno, con los infrarorojos pasa lo mismo,
+[00:50:04.580 - 00:50:09.220] infrarorojo cercano, infrarorojo lejano, más que ahora de cerca de mi lejano, cheque frecuencias,
+[00:50:09.220 - 00:50:18.860] dice, yo quiero ver esto que está acá, este tipo, este es su imagen, nocturna, está bien, y esta
+[00:50:18.860 - 00:50:23.860] es de infrarorojo, de hecho este es infrarorojo cercano, es de infrarorojo lejano, ya no
+[00:50:23.860 - 00:50:30.100] voy a explicar, esta de acá al lado es una imagen iluminada con infrarojo, las cámaras de seguridad
+[00:50:30.100 - 00:50:36.820] en vez de escender una luz visible, iluminan con una luz infraroja y tiene una cámara que
+[00:50:36.820 - 00:50:43.300] capta en esa banda, y se ve esto de acá, ahora si usted va a hacer algo que es más difícil que
+[00:50:43.300 - 00:50:50.140] su infrarorojo más lejano, de menor frecuencia, llegas a las bandas de emisión de calor,
+[00:50:50.860 - 00:50:57.100] los cuerpos por tener una temperatura emite en una radiación típicamente infraroja, si se calienta
+[00:50:57.100 - 00:51:02.140] mucho lo empezás a ver, y ahí ves las llamas por ejemplo, o el metal al rojo vivo, porque hay que
+[00:51:02.140 - 00:51:06.980] suelen recordarme en memoria, pero hay con su una determinada temperatura, hay una relación
+[00:51:06.980 - 00:51:15.780] directa entre la temperatura y la luz visible, la luz que genera, se llama radioso de corponegros,
+[00:51:17.580 - 00:51:23.660] este bien, y es proporcionado, entonces vos con un infrarojo lejano que capta la temperatura del
+[00:51:23.660 - 00:51:32.140] cuerpo humano o está en esa banda, ves a este tipo que está radiando la radiación infraroja,
+[00:51:32.140 - 00:51:40.140] la captas, y no importa que esté escondido entre las plantas, porque las plantas no están emanando
+[00:51:40.140 - 00:51:46.380] ese calor, bueno creo que se entendieron, son dos infrarojos muy distintos, no basta con que
+[00:51:46.380 - 00:51:51.220] siempre el rojo tiene que saber qué lo que está buscando, esto es lo más difícil, acabo
+[00:51:51.220 - 00:51:57.580] voy a saber, más allá que le da un tono de color que se ayuda, son 25 fotos de una cámara
+[00:51:57.580 - 00:52:05.540] espectral que tiene 25 espectros, son fotos monocromáticas, y acá es donde viene la cosa más rara,
+[00:52:05.540 - 00:52:14.380] yo no vieron físicas, creo que no vieron radiaciones nada de eso, pero quiero explicar esto,
+[00:52:15.380 - 00:52:25.220] esto es acá, ven estos puntos rojos, acá hay dos cosas, también hay unos puntos rojos que te
+[00:52:25.220 - 00:52:32.940] dicen, no hay dos cosas, que la pregunta es de dónde saben esos puntos rojos, cuántos puntos
+[00:52:32.940 - 00:52:37.840] rojos hay, ustedes son lento para responder así que les voy a responder directamente, hay 25
+[00:52:37.840 - 00:52:44.920] puntos, no los conte, corresponde uno a cada imagen, o sea, esta información, esta función,
+[00:52:44.920 - 00:52:55.080] también, es un espectro, es un espectro de señal, es de un solo pixel, se va a agarrar
+[00:52:55.080 - 00:53:02.280] el pixel 00 y esta son la información del pixel 00 de la 25 imagenes, entonces gracias a lo
+[00:53:02.400 - 00:53:12.520] 25 espectros, vos podés generar esta forma, esta espectro de radiación, a partir de analizar
+[00:53:12.520 - 00:53:17.400] ese espectro de radiación, vos podés saber a qué temperatura está, y acá donde viene una de
+[00:53:17.400 - 00:53:23.080] vos súper importante para que las depositivas que vienen ahora más adelante, la temperatura no depende
+[00:53:23.080 - 00:53:28.960] de la amplitud, no depende de que toda esta cosa roja esté más, todo más arriba, todo más abajo,
+[00:53:28.960 - 00:53:36.490] depende de dónde está el pico, está bien, si esto está más arriba porque te llega más cantidad
+[00:53:36.490 - 00:53:42.010] de radiación, si está más abajo porque te llega a poca radiación, pero la temperatura depende
+[00:53:42.010 - 00:53:46.730] de la posición del pico, o sea que en los dos casos, vos podés determinar qué temperatura,
+[00:53:46.730 - 00:53:51.530] la temperatura lo mismo a los dos casos, está bien, a ver, determinar qué temperatura, bueno, esto
+[00:53:51.530 - 00:53:57.490] es muy espectral, son de estas bandas, si vos elegís, la banda adecuada, vas a poder medir temperatura,
+[00:53:57.490 - 00:54:02.650] hay montones de aplicaciones, acá hay una que claramente es de mi temperatura, sí, para
+[00:54:02.650 - 00:54:10.850] detectar incendios, o sea, vos podés la cámara mirándole a tu casa y si está toda aprendida
+[00:54:10.850 - 00:54:16.090] fuego, va a poder detectar los píxeles que corresponde en el fuego, está bien, fíjate que no sé
+[00:54:16.090 - 00:54:21.770] qué es mi la cámara también, me llevamos que te da cuenta que se estaba produciendo, pero la cámara
+[00:54:21.770 - 00:54:27.050] también te ayuda, la cámara que detecta en temperatura acá está lo que te estaba diciendo,
+[00:54:27.930 - 00:54:34.650] este tipo se puso un nylon y en la cámara infrarroja que mi de temperatura es muy
+[00:54:34.650 - 00:54:40.810] espectral, que mi de temperatura te lo está detectando, y fíjate que por más que esté atenuado,
+[00:54:40.810 - 00:54:47.910] se da cuenta que tiene más temperatura acá y menos acá, y más acá, eso es porque hace una
+[00:54:47.910 - 00:54:54.770] análisis espectral de cada píxel, bueno ese tipo análisis se hace no necesariamente con
+[00:54:54.770 - 00:55:00.290] 25 espectros, poco tenés varios espectros y puede calcular lo que se llama índice verde, se usa
+[00:55:00.290 - 00:55:05.050] mucho en imágenes satélites de escultivo, porque vos sacas una foto normal y bebe verde,
+[00:55:05.050 - 00:55:09.850] pero con el índice verde que se analiza de infrarrojo, se usa unas cuentas que haces
+[00:55:09.850 - 00:55:16.170] con dos bandas infrarrojo, puede saber si tiene agua o le falta agua, súper importante,
+[00:55:16.170 - 00:55:20.050] puede estar verde y se está secando o puede estar verde y está revidentemente creciendo,
+[00:55:20.450 - 00:55:29.210] bueno esto es una cámara térmica, es exactamente lo que le dije antes, es una cámara
+[00:55:29.210 - 00:55:39.490] multiespectral, cuyos espectros se apuntan a determinar todo píxel por píxel todo el
+[00:55:39.490 - 00:55:48.730] espectro de esa localización para poder calcular la temperatura, después vos generás artificialmente
+[00:55:48.730 - 00:55:54.890] una escala de colores, mayor temperatura rojo, menor temperatura azul, recuerden todas las
+[00:55:54.890 - 00:56:00.730] imágenes que te van a ver, van a ser falsas en el sentido de que requieren un procesamiento
+[00:56:00.730 - 00:56:07.730] intermedio, nada de lo que vos veis, de lo que vos obtenes de un espectro no visible se podría
+[00:56:07.730 - 00:56:14.370] ver para poder verlo, tiene que ser falsos, una radiografía es una imagen que falsa en ese sentido
+[00:56:14.370 - 00:56:20.050] porque te corrió el espectro, hay un espectro que es invisible si los rayos X y vos lo
+[00:56:20.050 - 00:56:25.170] estás viendo en blanco y negro, bueno creo que se entiende las cámaras térmicas son bastante
+[00:56:25.170 - 00:56:31.810] complejas por lo que te dije obtienen el espectro de cada píxel, son cada las también, están
+[00:56:31.810 - 00:56:40.250] buenísimas, si usan no lo tengo acá, a ver si lo tengo, no lo puse, vos inpeccionas tableros
+[00:56:40.250 - 00:56:45.290] eléctricos, abrir un tablero industrial, tablero de tu casa tiene tres llaves pero digamos un
+[00:56:45.290 - 00:56:54.090] tablero industrial tiene muchas, los abrir, mirás y te salta si tiene alta temperatura es porque hay un
+[00:56:54.090 - 00:57:00.530] cable que se está cortando y algo que está muy mal pero digamos te evita desarmar todo el tablero
+[00:57:00.530 - 00:57:06.050] va más difícil y buscan buscando esos puntos de temperatura, acabos mirás una torre, no hace falta
+[00:57:06.050 - 00:57:12.290] subirte para ver la temperatura que tiene, bueno no tengo ni idea si esto que se está mostrando en
+[00:57:12.290 - 00:57:18.530] este en este imagen térmica está bien o está mal, yo me imagino que como todo está en
+[00:57:18.530 - 00:57:25.010] el mismo color debe estar bien y que se aparece algún punto mucho más brillante porque esa parte
+[00:57:25.010 - 00:57:30.690] está o roja, se podría roja me imagino por las cámaras de colores, esto estaría mal, bueno,
+[00:57:30.690 - 00:57:37.730] finalmente vamos a, no, finalmente no, vamos ahora a las imágenes sintéticas, yo decamos cámaras
+[00:57:37.730 - 00:57:44.610] sintéticas porque la forma en que obtienen no es luz lo que obtienen, no necesariamente y las
+[00:57:44.610 - 00:57:54.090] imágenes se generan artificialmente, ecografías tomografías, voy a saltar, ecografías es ultra sonido
+[00:57:54.090 - 00:58:03.250] ni siquiera es luz, los voy a contar muy rápido, es un, capas que ustedes usaron en sistemas operativos,
+[00:58:03.250 - 00:58:09.490] usaron un detector de distancia con el transonido, bueno eso pero hecho con más precisión, se tiene
+[00:58:09.490 - 00:58:14.690] un parlante y un micrófono que apunta en la misma dirección y están muy muy concentrados,
+[00:58:15.410 - 00:58:22.930] manda una línea recta el ultra sonido y el micrófono capta el eco, también entonces
+[00:58:22.930 - 00:58:28.890] vos mandas un pulcito pero el eco es más largo porque eso rebotó en distintos lugares, también
+[00:58:28.890 - 00:58:35.330] no son rebotes discreto, es un continuo, cuando está apuntando a la panza y después hace un
+[00:58:35.330 - 00:58:41.730] warp para generar esta imagen, porque ahora lo que te sigan son escán radiales en cada dirección y
+[00:58:42.050 - 00:58:50.610] sabes que corresponde a una apertura del eco grafo de lo que sea 30 grados 45 grados,
+[00:58:50.610 - 00:58:56.850] entonces le haces un warp de manera tal que vos tenés escalamétrica, vos sabes que hay una
+[00:58:56.850 - 00:59:03.090] escala que te lleva de la distancia píxeles se transforman milímetros, no quiero ensayarlas
+[00:59:03.090 - 00:59:08.690] a leer una ecografía pero bueno vamos, vamos a, cuando le doy esta clase de ingenieros biomedicos,
+[00:59:08.690 - 00:59:15.650] acá le digo bastante más tiempo, bueno el eco dopler, además por efecto dopler mide velocidades
+[00:59:15.650 - 00:59:24.610] y te lo pueden mostrar con colores, acá es la manera de tomarme mediciones, bien, lo que no
+[00:59:24.610 - 00:59:30.350] me parece me lo saltía ante lo de por arriba, una carrera que no tuvimos una gana,
+[00:59:30.350 - 00:59:37.850] capaz que me lo saltía y no me di cuenta, una ecografía, una tomografía, una tomografía y una
+[00:59:37.850 - 00:59:45.690] resonancia magnética nuclear, son imágenes generadas artificialmente, la radiación es de otra manera,
+[00:59:45.690 - 00:59:51.610] hace hace un montón de lecturas y después se reconstruye, de hecho, una tomografía y una
+[00:59:51.610 - 00:59:59.730] a ver, hay una, la manera en que se usa, se le dice tomógrafo al que tiene ratio X,
+[01:00:00.290 - 01:00:09.650] resonancia magnética al que usa resonancia magnética, los dos son tomógrafos, uno es un tomografo
+[01:00:09.650 - 01:00:16.290] R, yo sé X y el otro es un tomografo de resonancia magnética nuclear, usan distintos sensores, distintas
+[01:00:16.290 - 01:00:21.730] magnitudes físicas para hacer las mediciones pero la geometría es la misma y la reconstrucción es la
+[01:00:21.730 - 01:00:27.330] misma y es volumética, también entonces volo que hace después es las secciones y generas imágenes,
+[01:00:27.330 - 01:00:31.410] pero básicamente una que tiene la información de volumen puede generar las imágenes con el corte
+[01:00:31.410 - 01:00:41.650] en el plano que vos quieras, eso es entonces tomógrafos, cámaras de profundidad, son cámaras 3D,
+[01:00:41.650 - 01:00:50.170] se llaman RGB de, la D es de depth de profundidad y ahora voy a explicar qué, acá básicamente esta es la
+[01:00:50.170 - 01:00:58.330] una foto común que saca con el RGB y la D, de genera esto, es una imagen que mide distancias para
+[01:00:58.330 - 01:01:03.690] cada pixel, es una resolución bastante menor a la a la otra, de hecho está hecho con una camarita
+[01:01:03.690 - 01:01:10.690] que está ligeramente desplazada, también pero bueno, se trata de que tenga el mismo punto de vista y
+[01:01:10.690 - 01:01:18.930] cuando se visualiza se usa esto, lo azul está cerca y lo rojo está lejos, eso se llama mapa de
+[01:01:18.930 - 01:01:26.850] profundidad, está bien, bueno, a veces puedes interpretar, lo voy a explicar más en otra
+[01:01:26.850 - 01:01:34.290] presentación a que sea que viene, como funciona el algoritmo, la triangulación, el cálculo de
+[01:01:34.290 - 01:01:39.570] profundidad, cómo es la cámara, cómo es el hardware, bueno, vos tenés una cámara de RGB,
+[01:01:39.570 - 01:01:45.330] después tenés una cámara que en este caso es infrarroja y de este lado tenés un proyecto de
+[01:01:45.330 - 01:01:50.610] infrarroja y es muy importante que estén separados, ahora van a ver por qué, la idea es que esto genera
+[01:01:50.610 - 01:01:56.810] un patrón infrarrojo, imagínate que es un cuadrículado, puede ser cualquier patrón, imagínate que es un
+[01:01:56.810 - 01:02:05.370] cuadrículado y esto lo observa, pero al observarlo desplazado, como el cuadrículado proyecta de una
+[01:02:05.370 - 01:02:11.610] cena 3D, al observarlo desplazado lo va a sacar deformado y ahí va a descubrir cuál es la profundidad
+[01:02:11.610 - 01:02:19.210] de la cena 3D, eso se trata, bueno, para la AG es el nombre del juego que estén desplazados, acá tenés
+[01:02:19.210 - 01:02:24.970] un ejemplo, este es un ejemplo virtual, este es una foto real, hecho con luz, en modo de caso de la
+[01:02:24.970 - 01:02:35.250] server, fíjense que esto, esto tira una matriz de puntos, pero el que sacó la foto tiene la cámara
+[01:02:35.250 - 01:02:43.730] desplazada del origen, del rasolacer, entonces o ves, como que cuando vuelo lo miras de costraito, se notan
+[01:02:43.730 - 01:02:50.770] esta materia de puntos, forman estas líneas y a partir de esta geometría, sabiendo que esto está
+[01:02:50.770 - 01:02:57.210] proyectado con una materia de puntos toda homogénea, vos puedes obtener la profundidad, entonces hay
+[01:02:57.210 - 01:03:03.250] algunos ejemplo más, esto te pone en evidencia el fenómeno, todo esto con los visibles, en la práctica se usa
+[01:03:03.250 - 01:03:12.250] infrarrojo, por lo tanto bueno lo va a saber, pero vos tenés una regilla proyectada, tenés dos casos,
+[01:03:12.250 - 01:03:18.170] una regilla fina, al izquierdo y una regilla gruesa a la derecha, cuando vos lo miras de costado, eso es
+[01:03:18.170 - 01:03:25.170] paralaje, lo miras de otro punto de vista, en vez de ver las líneas perfectamente paralelas, ves esto y
+[01:03:25.170 - 01:03:29.690] siguiendo, si quieres seguir las líneas negras o seguir las líneas blancas, también las líneas
+[01:03:29.810 - 01:03:38.810] iluminadas, siguiendo las curvaturas, eso te da, te está hablando de la profundidad de la imagen y así es
+[01:03:38.810 - 01:03:46.650] como se obtiene, bueno acá tenés otro ejemplo, proyectas la regilla vertical, este es el objeto y así
+[01:03:46.650 - 01:03:52.970] como se ve costado y siguiendo las curvaturas de las líneas, saca la profundidad, bueno, en realidad va a
+[01:03:52.970 - 01:03:58.130] caer lo que está el lado, es más ilustrativo, pero hay un montón de patrones, es más fácil de explicar
+[01:03:58.130 - 01:04:04.570] algo, una grilla o con una regilla, pero hay patrones que parecen aleatorios, está bien, no son aleatorios,
+[01:04:04.570 - 01:04:10.650] el propio algoritmo sabe dónde deberían estar, donde los encuentran y con eso saca la profundidad, se
+[01:04:10.650 - 01:04:16.210] disama luz estructurada porque su estructura, su patrón, es conocida de manos por el algoritmo
+[01:04:16.210 - 01:04:23.690] que por la cámara que va a observar, bien, acá terminamos, espero que esté todo bien porque que
+[01:04:23.690 - 01:04:30.690] esté tranquilo porque creo que les estoy tirando información, pero no se cansan porque lo
+[01:04:30.690 - 01:04:37.250] lo que estoy haciendo es pensar demasiado, esto va a cambiar, pero la mayor parte del cambio va a
+[01:04:37.250 - 01:04:43.370] quedar para clase que viene, así que y están tranquilos, pero el majeometrico, esta es una
+[01:04:43.370 - 01:04:48.610] introducción a lo que se viene y lo que vamos a desarrollar en lo que queda la clase de hoy y
+[01:04:48.890 - 01:04:57.610] durante la clase que viene y que da es el puntapiet para el TP5, los que le presento ahora
+[01:04:57.610 - 01:05:08.080] aborda mucho más de lo que van a hacer en el TP5, alécio dentro de unas semanas, alécio les
+[01:05:08.080 - 01:05:14.200] va a dar algunas clases sobre este tema, hay un problema, se llaman así problemas porque después
+[01:05:14.200 - 01:05:18.960] cada algoritmo es una solución particular para el problema general, de cuando se le dice
+[01:05:18.960 - 01:05:28.800] un problema porque es el planteo, está solucionado, la estructura a partir de movimiento, creo que no
+[01:05:28.800 - 01:05:35.720] se lo dije, a mí me ha se ruido porque esto lo mencioné en otra clase hace poco, estructura
+[01:05:35.720 - 01:05:43.160] a partir de movimiento es un concepto que viene de la biología y se refiere a la capacidad que
+[01:05:43.280 - 01:05:47.800] tiene un animal, pero una persona también, así que vamos a dar la capacidad que tenés voz
+[01:05:47.800 - 01:05:56.960] de entrar en una casa, caminar y estar ubicado, o sea, voz en ningún momento estás viendo el plano
+[01:05:56.960 - 01:06:02.180] entedo, pero en tu cabeza lo hiciste, mira yo te he por la puerta, fui por el pasillo,
+[01:06:02.180 - 01:06:06.760] salvo que te distrayas y te pierdas, no, pero fui por el pasillo de la derecha y está en la
+[01:06:06.760 - 01:06:11.600] habitación, listo, quiero volver, sé por lo que te volver, yo me hice una idea, por ahí la
+[01:06:11.600 - 01:06:15.680] primera vez te perdiste, pero después que lo recorriste muchas veces, voz la un lamb, la
+[01:06:15.680 - 01:06:21.360] conoces de memoria y te caminaste por todos lados, no hace falta que haya visto un plano completo
+[01:06:21.360 - 01:06:26.960] y te lo memorices, voz de voz caminando por un lamb y sabes dónde estás y tu visión es
+[01:06:26.960 - 01:06:34.120] parcial, pero sabes dónde estás, a ese concepto se lo llama estructura a partir de movimiento,
+[01:06:34.120 - 01:06:40.960] estructura es un nombre que no se de dónde viene pero se usa mucho en visión artificial, se refiere
+[01:06:40.960 - 01:06:47.120] a lo que nosotros vamos a hacer, está en 9 puntos, está bien, a lo localización de todo y a
+[01:06:47.120 - 01:06:52.600] partir de movimiento es porque no lo ves todo de una sola vez, sino que vos vas caminando y va
+[01:06:52.600 - 01:07:00.420] juntando imágenes como de un vídeo y te vas armando todo ese mundo 3D, está bien, acá
+[01:07:00.420 - 01:07:09.360] tienes un ejemplo de cómo se genera, puede generar una 9 puntos a partir de varias fotos,
+[01:07:09.360 - 01:07:14.840] en que este son cuatro fotos, el ejemplo te lo está concentrado para un punto, lo mismo
+[01:07:14.840 - 01:07:23.280] ocurre para todos los puntos que ves acá, re construcción 3D es una de las aplicaciones del
+[01:07:23.280 - 01:07:30.780] sfm, la más usada es el recorristo con la cámara, mirarlo de frente, caminar un poquitito y
+[01:07:30.780 - 01:07:37.240] vas a poder reconstruir esta 9 puntos, acá hay otra reconstrucción de ensas se llama a partir de
+[01:07:37.560 - 01:07:45.880] fijate, las pirámides azules que están dibujadas representan poses de cámara, o sea que alguien
+[01:07:45.880 - 01:07:52.480] filmó, cada fotograma del vídeo es una pose de cámara, porque se estaba moviendo el tipo,
+[01:07:52.480 - 01:07:59.240] filmó de una vuelta alrededor de este escritorio y a partir de todo ese conjunto pudo generar eso.
+[01:07:59.240 - 01:08:08.800] Bueno, los marcadores fiduciarios sirven como anglavisual, se llama marcados fiduciarios,
+[01:08:08.800 - 01:08:17.480] cuán justamente cuando representan una localización conocida, es un mojón, entonces,
+[01:08:17.480 - 01:08:24.080] una de las aplicaciones que tienen los marcadores fiduciarios en robótica, en visión artificial,
+[01:08:24.080 - 01:08:33.440] cuando aplica de robótica es que el sistema o el roto, al ver un marcador fiduciario pueda
+[01:08:33.440 - 01:08:39.560] determinar dónde está, usualmente no es que esté perdido, sino que el tipo sabe que está por
+[01:08:39.560 - 01:08:46.760] acá y el marcador le da precisión en su localización, se lo llama en ese sentido funciona como anglavisual.
+[01:08:47.760 - 01:08:54.720] Entonces, el problema del visual play recognition es el problema, usted vieron el video que le
+[01:08:54.720 - 01:08:58.960] mostré del celular, que ponía flechas en el piso, como en realidad aumentada, ahí te decía
+[01:08:58.960 - 01:09:05.840] cuál es el camino, está bien, el tipo iba caminando y digamos, el celular se da cuenta, aquí
+[01:09:05.840 - 01:09:13.540] estaba avanzando en ese camino, eso es visual play recognition, más específicamente es cuando vos
+[01:09:13.540 - 01:09:22.660] agarras una foto y te dice, ¿a vuestras acá? Bueno, esta foto no sé, pinta que no es en un lamp,
+[01:09:22.660 - 01:09:29.700] pero si vos es el, te me tengo que aprender el nombre de este lugar para poder decir, si
+[01:09:29.700 - 01:09:35.900] vos ves una foto del coliseo romano o si, ok, estás en el coliseo romano, estás en Roma,
+[01:09:35.900 - 01:09:40.940] estás ahí a ver del coliseo, si conocen mejor vas a por decir que venía está justo, bueno,
+[01:09:41.460 - 01:09:52.100] eso es reconocimiento de lugares, a partir de imágenes, ahora vos puedo reconocer el lugar y
+[01:09:52.100 - 01:10:00.380] puedes estimar exactamente dónde estás y puedes saber en qué pose, o sea que podrías agarrar un
+[01:10:00.380 - 01:10:06.780] mapa 3D y decir, vos está viendo el coliseo desde acá, son como tres problemas distintos,
+[01:10:06.780 - 01:10:14.380] son distintas precisiones del mismo problema, bueno, otro de los temas que tienen que ver con
+[01:10:14.380 - 01:10:21.740] estos problemas geometricos 3D es el derrea aumentada, el reguardo se va un problema,
+[01:10:21.740 - 01:10:25.700] tiene un montón de soluciones y yo le voy a explicar cómo se se realmente hace el día,
+[01:10:28.180 - 01:10:34.020] qué requiere entender la escena 3D que está viendo para entender dónde está el piso, por
+[01:10:34.020 - 01:10:41.140] ejemplo, y meter el Pokémon ahí, desde dónde lo están mirando también, la reguamentada tiene que
+[01:10:41.140 - 01:10:50.540] ver, tiene todo que ver con una interacción en tiempo real, o sea, como ves la cámara y lo que
+[01:10:50.540 - 01:10:55.340] vos agregaste a la escena, que en este caso están agregando un sison, tiene que quedar como si
+[01:10:55.340 - 01:11:01.460] tuviera aquí puesto en la escena y el poste móvez y tiene que girar a cómo girar toda la escena,
+[01:11:02.340 - 01:11:14.220] bueno, no me acrocito terminando acá, odometría visual, es un tema de ver, no estoy ya tengo más,
+[01:11:14.220 - 01:11:20.780] odometría visual significa, o sea, odometría, el odometro en el auto se cuenta kilómetros,
+[01:11:20.780 - 01:11:27.020] o sea que cómo saber el auto cuánto avance por el GPS, no, por el giro de la rueda, punto,
+[01:11:27.900 - 01:11:36.020] cuánto kilómetros hizo el auto, no mira GPS, odometría visual significa que a partir del vídeo,
+[01:11:36.020 - 01:11:46.020] del flujo de vídeo, del feed, no, del, pues puedas ver cuánto avanceaste, hay un tema de
+[01:11:46.020 - 01:11:51.420] llamadrifting, bueno, va a ser muy preciso, ¿cuánto avanceaste hacia dónde avanceaste la
+[01:11:51.420 - 01:11:57.300] dirección, lo que pasa que va acumulando error, pero en el corto, en los cortos trayectos,
+[01:11:57.300 - 01:12:02.260] voy a existir, te moviste 10 metros, puedo después cuando te muevas 100 metros, no vas a hacer
+[01:12:02.260 - 01:12:08.100] si son 100 o 100 metros, entonces el error se va acumulando, pero cuando te mueve 10 metros,
+[01:12:08.100 - 01:12:16.740] tu error está entre 10 o 11 metros, no está en graga, bueno, eso se le llama cinemática el vídeo,
+[01:12:16.740 - 01:12:22.900] vos a partir de en este caso te está ilustrando puntos que se mueve vuestras avanzando y se mueve
+[01:12:22.900 - 01:12:26.860] entonces lo vamos a ver ya para el final de la materia, porque como no vamos a hacer trajo
+[01:12:26.860 - 01:12:34.140] práctico de esto, lo estoy dejando para después, bueno visual inertial odometría es lo que usó
+[01:12:34.140 - 01:12:38.500] ese sistema de localización y seguimiento de flechas que le mostré, este que les contaba,
+[01:12:38.500 - 01:12:41.860] corre aumentada, que llevas corre el pasillo y te mostré a las flechitas sures en el piso,
+[01:12:42.660 - 01:12:50.020] usa el vídeo y eso, odometría está disponible en arcor, en Android, bueno, ahí fonduele
+[01:12:50.020 - 01:12:55.380] tener su equivalente, tiene su equivalente, lo mejor como se llama, pero además está disponible
+[01:12:55.380 - 01:13:04.980] viva una API web, no lo tengo en lo todo acá, no, web xr, acá está, web xr, xr es de
+[01:13:04.980 - 01:13:11.500] reglamentada, reglamentadas, vos tenés acceso a que te diga chedón de esta al piso,
+[01:13:11.500 - 01:13:18.300] en que distancia, vos pasa por colocar cosas en el piso para hacer una reglamentada y si te
+[01:13:18.300 - 01:13:23.100] mueves te va a decir cómo cambió tu postura respecto a la coordenada que positiva el piso.
+[01:13:24.780 - 01:13:30.300] Viso del lame es un tema súper interesante, el ISO son los expertos en esto, uno de los
+[01:13:30.300 - 01:13:36.900] trabajos finales va a abrir uno, dos van a venir por este lado, viso del lame tiene es muy
+[01:13:36.900 - 01:13:48.380] derrotica, es parecido al sfm, pero el objetivo no es generar un modelo 3d, el objetivo es que el
+[01:13:48.380 - 01:13:55.300] robot o lo que sea que esté usando esto se localice, que sea una especie gps también y que le diga
+[01:13:55.300 - 01:14:01.900] dónde estás en ese mapa, entonces no necesita una reconstrucción densa, necesita, de hecho,
+[01:14:01.900 - 01:14:07.140] como tiene que ser en tiempo real y tiene que ser liviano, cuantos menos puntos tengan, mientras
+[01:14:07.140 - 01:14:11.900] le sirva para localizarse ya está, de hecho este vídeo lo puse porque más o menos se ve la
+[01:14:11.900 - 01:14:18.200] reconstrucción, un bicio del lame tiene menos puntos que esto que se ve acá, ahora sí,
+[01:14:19.500 - 01:14:25.280] termine con esto, si usted tiene alguna pregunta como siempre le pueden hacer yo en este momento
+[01:14:25.280 - 01:14:35.160] estoy buscando, estoy por abrir la siguiente diapositiva, ocho y veinte, no sé si es la
+[01:14:35.160 - 01:14:41.420] ante última o la última, vamos a ver cómo terminamos con esta, la idea sería dar dos, pero bueno,
+[01:14:41.420 - 01:14:50.840] ahora sí, nos metimos en un problema matemático, no, ya está resuelto, simplemente le voy a contar
+[01:14:50.840 - 01:14:58.520] cómo usar estas cosas, son dos presentaciones, la voy a dar esta, no estoy seguro que llegue a dar
+[01:14:58.520 - 01:15:06.800] la siguiente, esta presenta el algoritmo, que dato necesita que resultados detrás, la siguiente explica
+[01:15:06.800 - 01:15:15.320] casos de uso y es lo que empieza a explicar cómo van a ser el TP5, entonces ese problema se
+[01:15:15.400 - 01:15:23.440] llama perspectiva a partir de N puntos, PNP, así hay un montón de soluciones que siguieron
+[01:15:23.440 - 01:15:32.000] evolucionando, increíblemente las fórmulas definitivas de este problema, si hicieron creo que allá
+[01:15:32.000 - 01:15:39.400] por el 2007 o 2005, cuando uno dice cheste lo puedo haber hecho de escarte en 1640, no, recién
+[01:15:39.400 - 01:15:46.280] ahora se calcularon la forma definitiva y antes una década antes había aproximaciones, pero bueno,
+[01:15:46.280 - 01:15:53.560] es un problema que hoy afortunamente se está resuelto, ¿cuál es el problema? ¿Cuál es el problema?
+[01:15:54.600 - 01:16:05.440] obtener la pose de un objeto en un imagen, o sea que no estás compartiendo, me parece, gracias por
+[01:16:05.440 - 01:16:11.120] ver, mira, no me había dado cuenta, menos mal que me avisaste, más mal que te digiste cuenta,
+[01:16:11.120 - 01:16:22.060] porque si no, ahí estamos, también lo esto que dice perspectiva en points, confirméme, ya
+[01:16:22.060 - 01:16:28.540] supongo que sí, gracias, bueno, esto era solo esto que era la carátula y justo justo que me
+[01:16:28.540 - 01:16:33.220] avisaste, me daba que mejor que me haya sabido, a veces me pasó a estar por la mitad de la presentación,
+[01:16:33.220 - 01:16:42.220] bueno, para que sirve obtener la pose de un objeto en un imagen, ese es el título de la
+[01:16:42.220 - 01:16:49.620] diapositiva, en este caso, en el de arriba, yo estoy obteniendo la pose de eso que se llama
+[01:16:49.620 - 01:16:55.580] marcador charuco, son un código charuco, son un montón de marcadores fiduciarios tipo de
+[01:16:56.300 - 01:17:03.580] charuco, y si yo conozco la pose de eso, yo sé que pose está la mesa y puedo agarrar en
+[01:17:03.580 - 01:17:10.420] muñequito 3D, que es un coso verde ahí, no sé qué es, y colocarlo en la misma pose para ser
+[01:17:10.420 - 01:17:18.020] redomentada, también, las ideas pueden hacerlo en tiempo real, ya ágil, y pueden poner muñequito.
+[01:17:18.900 - 01:17:25.400] En el caso de abajo, tenés un montón de robotitos móviles que tienen uno de un código
+[01:17:25.400 - 01:17:30.820] aruco, pero si no está bien, lo que llega arriba es un cubo, acá se ve de costado, poquito de costado,
+[01:17:31.580 - 01:17:38.420] también, ese cubo tiene cuatro caras verticales, no cuentan las arriba de abajo y cada una tiene un
+[01:17:38.420 - 01:17:45.500] código aruco, distinto, también, entonces usted ya viene al TP4 que buscan código aruco,
+[01:17:45.980 - 01:17:50.340] o código QR, creo que se usa mucho mejor código de aruco, el QR es más común y es para otra
+[01:17:50.340 - 01:17:56.620] cosa, yo ya le dije, el QR puede codificar un texto, no nos interesa acá, el código
+[01:17:56.620 - 01:18:03.620] de arucos codifican un ID, que es lo único, sí, sí interesa, entonces al tener 4 por la cuestión
+[01:18:03.620 - 01:18:09.540] pragmática, si el robot gira, la parte adelante la deja de ver, pero el lo ves de costado, entonces
+[01:18:09.540 - 01:18:16.740] siempre va a saber uno de los cuatro códigos, son distintos de manera que vos ves el código,
+[01:18:16.740 - 01:18:21.620] saber qué robote, si se ve de qué lado lo estás viendo, compararte cuenta para qué lo va,
+[01:18:21.620 - 01:18:29.780] está bien, entonces estaría buenísimo si hay más de localizar en 2D, yo puedo saber por el
+[01:18:29.780 - 01:18:36.420] tamaño, por el tamaño relativo, ¿a qué instancia está? Está bien, de hecho como se llama
+[01:18:36.980 - 01:18:42.700] el cuadridad del trapesoide, que no es un cuadrado, pero estoy viendo ligeramente rotado, siempre
+[01:18:42.700 - 01:18:48.300] efectiva, si puedo ver en qué pose está, cómo está girado, acá instancia, dónde está localizando
+[01:18:48.300 - 01:18:55.620] 3D, pose, se grabe libertad, o sea, localista X y Z y orientación, bueno, eso se puede,
+[01:18:55.620 - 01:19:02.740] también, la otra que no esté ilutrado acá, es lo que se llama auto posicionamiento, yo me muevo
+[01:19:02.740 - 01:19:11.660] con la cámara y me encuentro con unos tomarcadores fiduciarios fijos y cuando lo veo, yo sé de
+[01:19:11.660 - 01:19:16.620] antemano, porque lo tengo en una tablita registrado, ¿a qué coordenada, qué posición corresponde de
+[01:19:16.620 - 01:19:23.100] ese marcador? Y entonces yo puedo deducir en qué posiciones estoy y yo, está bien viendo, claro,
+[01:19:23.100 - 01:19:27.700] si estoy más cerca o más lejos, tengo que darme cuenta para saber dónde estoy y yo exactamente,
+[01:19:28.340 - 01:19:39.900] bueno, para eso sirve y en la práctica lo vamos a nos vamos a concentrar en el uso de marcadores
+[01:19:39.900 - 01:19:45.940] fiduciarios, por ejemplo, Coyo Saruco, pero se pueden hacer de otra manera y se lo voy a mostrar.
+[01:19:47.540 - 01:19:54.460] El problema más general, el problema es para cualquier objeto 3D que tengas una manera de detectarlo
+[01:19:54.460 - 01:20:04.180] en la imagen, y ahora van a ver cómo es. Entonces, se lo voy a leer, porque es interesante la
+[01:20:04.180 - 01:20:08.180] manera en que está expresado, bueno, estás, un sistema de referencia al mundo para poder expresar
+[01:20:08.180 - 01:20:13.940] una posición 3D, está bien, ok, pero de la imagen obtenes coordenada a 2D nada más,
+[01:20:13.940 - 01:20:18.380] la imagen no tiene información de escalas, o sea que tampoco será que distancia está, o sea que
+[01:20:18.380 - 01:20:25.740] coorden a 2D, ves un pixel en una coordena XI en la imagen, pero no sabes a qué distancia está
+[01:20:25.740 - 01:20:28.780] como el problema de las estrellas, voy a ver las estrellas, pero no sabes qué distancia está,
+[01:20:28.780 - 01:20:36.900] ni lo vas a saber a la analizadora de imagen, es algo que las conozcas. Ahora, la posición de
+[01:20:36.900 - 01:20:44.940] un punto es un objeto 3D, la pose de un cuerpo rigido, como ya lo vimos, la pose es una posición y
+[01:20:44.940 - 01:20:52.220] una orientación, hay muchas maneras de expresar eso, una manera que nosotros vimos es con una
+[01:20:52.220 - 01:20:59.540] matriz de pose, un 4x4, que codifica una rotación 3D y la posición 3D, es una manera y varias
+[01:20:59.540 - 01:21:09.980] maneras, vimos las otras, una muy comunes, una posición 3D, XIZ y una orientación 3D expresada
+[01:21:09.980 - 01:21:17.860] en notación Rodríguez, que es una manera compacta, pues son 3 valores, bueno, creo que lo
+[01:21:17.860 - 01:21:25.780] vimos visto hace 2 o 3 clases, así que no lo voy a repetir ahora, si se falta a ver
+[01:21:25.780 - 01:21:32.020] la presentación y les muestro, porque la única que me interesa es que tengan en mente la matriz
+[01:21:32.020 - 01:21:37.900] 4x4, y lo que vamos a usar ahora es la notación Rodríguez, y nada más, después habéis
+[01:21:37.900 - 01:21:45.540] estado en cuaterneodones y hay cuaterneodones duales y motores y que no lo vamos a usar en la
+[01:21:45.540 - 01:21:55.260] materia, bueno, la distorsión delente te cambia la localización regal del pixel, también
+[01:21:55.260 - 01:21:59.660] vos tenés que antidistorsional, hay un poquito más, bueno, entonces ¿cómo es el problema?
+[01:22:00.380 - 01:22:09.420] el problema viene, el problema se plantea así, vos tenés una nube de puntos, poquito
+[01:22:09.420 - 01:22:17.580] puntos, pero de tu modelo, de tu modelo 3D y conoces las posiciones relativas, es decir,
+[01:22:17.580 - 01:22:26.580] vos tenés por ejemplo esta cajita, esta cajita acá y conoces los vértices, los 8 vértices,
+[01:22:27.580 - 01:22:33.300] vos elegís tu propio sistema de referencia, elegís en uno de los vértices del cero y conoces
+[01:22:33.300 - 01:22:43.050] y elegís esto, es como eje de tu sistema de referencia, esas aristas y ponen las coronadas de
+[01:22:43.050 - 01:22:47.290] todos los vértices en esa sistema de referencia, tenés de ese tú modelo 3D, también son 8 puntos,
+[01:22:47.290 - 01:22:53.530] tenés de... ahora vos los observás, acá hay ejemplo para 4 puntos, los puntos son M1, M2, M3, M4
+[01:22:54.250 - 01:23:00.010] en tu propio sistema de referencia 3D y vos lo cuando observás tenés las coronadas M
+[01:23:00.010 - 01:23:09.290] minúscula, 1, 2, 3, 4, 2D en píxeles en la imagen, entonces el problema es si conozco mi modelo
+[01:23:09.290 - 01:23:13.930] que es único, no cambia, cuerpo rígido está cargado, empezó el programa y yo ya sé las coronadas
+[01:23:13.930 - 01:23:22.410] 3D del cuerpo rígido, es un dato y en cada fotograma estoy calculando las coronadas 2D en píxeles
+[01:23:22.410 - 01:23:31.530] de esos puntos, tengo esas correspondencias, una correspondencia de punto 2D a punto 3D, con esa
+[01:23:31.530 - 01:23:39.930] información el problema pnp es como determino la pose de cuerpo rígido, o sea la pose de este
+[01:23:39.930 - 01:23:45.810] sistema de referencia respecto a la cámara, eso se prueba, eso es lo que hace un algoritmo pnp,
+[01:23:46.810 - 01:23:58.130] pero lo que tienes que dar es el modelo, los puntos M3D, M3D y los puntos detectados en imagen en 2D
+[01:23:58.130 - 01:24:02.610] los correspondientes, esto es lo que tienes que dar, bueno me siempre me olvido que tengo la
+[01:24:02.610 - 01:24:10.050] versión grande en esta depositiva, acá más de lo mismo, vos tenés en este sistema de referencia
+[01:24:10.050 - 01:24:17.490] WX del mundo, World, el mundo real, tenés un montón de puntitos que conoces sus coronadas 3D en ese
+[01:24:17.490 - 01:24:23.690] mundo, tenés las visualizaciones de la cámara y el resultado que vas a tener es la pose, acá hay
+[01:24:23.690 - 01:24:28.110] esa rotación y interrelación, de sistema de referencia del mundo respecto a la cámara o a
+[01:24:28.110 - 01:24:36.100] revés que lo mismo, también es mi información, hay que manejarlo, otro ejemplo de lo mismo por
+[01:24:36.100 - 01:24:41.120] si no les quedo claro, esto es un poquito más evidente, tiene un cubo alambre, o sea que se ven los
+[01:24:41.120 - 01:24:46.680] ocho vértices por más que si fuera una caja, no sé, sería un opaco, también vería solo 4,
+[01:24:46.680 - 01:24:55.640] entonces ves esta imagen de acá, nos interesan solamente los vértices, vos tenés un sistema que te detecta
+[01:24:55.640 - 01:25:00.440] estos vértices automáticamente, o vos vacíes y desexlica a mano, como quiera, perdé ese sistema
+[01:25:00.440 - 01:25:07.240] distra, una vez que tenés entonces identificado, tenés la información de las coronadas 2D, de la
+[01:25:07.240 - 01:25:13.160] proyección de los vértices, las tenés esas correspondencias, tengo el punto 3D y su proyección 12,
+[01:25:13.160 - 01:25:19.560] tengo 8 de esas correspondencias, esa es la información que le das, además de la información de
+[01:25:19.560 - 01:25:24.120] cagüresión de cámara, o sea, el agonismo PNP requiere la información de cagüresión de cámara,
+[01:25:24.120 - 01:25:30.720] sino no tiene manera de funcionar, o sea, sin información necesaria, no están implícita en
+[01:25:30.720 - 01:25:38.200] la imagen, la pregunta es para obtener una pose, ¿cuántas correspondencias necesitas? Esan
+[01:25:38.200 - 01:25:44.080] ese tipo de pregunta que sabemos hecho y básicamente en ecuaciones ser incógnitas, cada correspondencia
+[01:25:44.080 - 01:25:55.480] aporta 12 cuaciones a tus sistemas ecuaciones, ¿cuántas incógnitas tenés? La pose es un sistema de 6
+[01:25:55.480 - 01:26:02.560] incógnitas, o sea, una pose tiene 6 grados libertad, útipicamente nosotros las modes 3
+[01:26:02.560 - 01:26:12.440] coordenadas de posición y 3 de oritación, entonces tenés 6 incógnitas, o sea, el problema PNP
+[01:26:12.440 - 01:26:18.800] tiene que resolver 6 incógnitas, por lo tanto necesitas 6 ecuaciones, si cada correspondencia
+[01:26:18.920 - 01:26:27.440] te aporta 12 ecuaciones, 3 correspondencias es la cantidad mínima de correspondencias necesarias para
+[01:26:27.440 - 01:26:35.280] resolver el problema PNP y obtener la pose, está bien, acá está, esto vendría a ser tu cuerpo
+[01:26:35.280 - 01:26:44.490] rígido y estas son las coordenadas 2D en la imagen que te sacará con un celular, entonces ¿cuántas
+[01:26:44.490 - 01:26:50.330] correspondencias se necesitan? Minimo 3, pero igual que en una ecuación cuadratica, por
+[01:26:50.330 - 01:26:58.810] y no en el segundo orden, ¿de repente tenés 2 soluciones? Bueno, este problema tiene 4 soluciones
+[01:26:58.810 - 01:27:03.490] posibles, 3 correspondencias, tu sistema es completamente determinado, pero tiene 4 soluciones.
+[01:27:04.610 - 01:27:11.210] Entonces, típicamente si tenés correspondencia, si tenés más correspondencias, usa 4,
+[01:27:11.690 - 01:27:17.770] porque ahí la solución es única, sí, es redundante, que gracias a esta redundancia, se reduce a
+[01:27:17.770 - 01:27:24.570] una solución, yo para ser muy estricto, dice, mira, excepcionalmente hay 2 soluciones, pero son
+[01:27:24.570 - 01:27:32.970] casos, son singularidades a las que ustedes no van a llegar, entonces típicamente se tratan de
+[01:27:32.970 - 01:27:40.690] usar 4 correspondencias, o sea, tu modelo 3D tiene 4 vertices o 4 puntos directables,
+[01:27:41.770 - 01:27:47.810] y vos lo vas a observar y vas a tener 4 píxeres detectados y vas a hacer esas 4 correspondencias,
+[01:27:47.810 - 01:27:53.530] también, después hay otro que además de 4, cuando hablamos más de 4, no hablamos de 5, hablamos
+[01:27:53.530 - 01:28:01.050] de 100 o de 1000, ¿qué es este que está acá? Esto es un tema que todavía se les estoy deviendo,
+[01:28:01.050 - 01:28:07.410] es métodos robustos, cómo aprovechar un exceso de información, no para ser un sistema determinado
+[01:28:07.410 - 01:28:12.850] que la típica solución, sino para minimizar errores, o sea, es un problema distinto,
+[01:28:12.850 - 01:28:19.170] es de minimización, pero bueno, entonces, no vamos a manejar con otro correspondencia, aunque
+[01:28:19.170 - 01:28:26.610] sabemos que matemáticamente 3 es el mínimo, ¿qué es lo que obtengo tras la similirotación y
+[01:28:26.610 - 01:28:37.770] rotación, el algoritmo de OPSB me da traslación XE y la rotación o orientación 3D en notación
+[01:28:37.770 - 01:28:46.960] Rodrigues, entonces todo bien si ustedes van a usarlo en otro algoritmo que necesitan notación
+[01:28:46.960 - 01:28:51.680] Rodrigues, le pague agarrar a nuestro dato y se lo dan así como están, si ustedes necesitan hacer
+[01:28:51.680 - 01:28:56.360] alguna composición, alguna otra cosa, hay una función que convierte la notación Rodrigues en
+[01:28:56.360 - 01:29:07.720] una matriz de rotación 3D, si quisieran, podrían armar la matriz de pose, bueno, lo que ven acá
+[01:29:07.720 - 01:29:16.400] es alguien usó como marcador fiduciario o como objeto conocido a una matriz, a un patrón de
+[01:29:16.400 - 01:29:25.400] calivación, ¿por qué? Porque lo tenía mano, está bien, y decidió usar como cero este pixel
+[01:29:25.400 - 01:29:32.960] de acá, está coordenada, esta interesección de acá, y lo que está haciendo acá es dibujar un
+[01:29:32.960 - 01:29:40.280] cubo virtual encima de la imagen, ustedes no lo hicieron en el TP3 a esto, el TP3 ustedes localizaron
+[01:29:41.000 - 01:29:48.760] el cuadrado del marcador arruco o el QR, pero no el cubo y no podían hacerlo, porque no tenían
+[01:29:48.760 - 01:29:57.040] la información necesaria, acá sí, acá tengo la pose completa y por eso puedo salir del plano
+[01:29:57.040 - 01:30:00.840] donde está el marcador, se acuerdan antes de ustedes están limitados a trabajar en un plano con
+[01:30:00.840 - 01:30:09.480] homografía, a salir del plano y dibujar un cubo que se ve cubico en perspectiva, también tiene una
+[01:30:09.480 - 01:30:18.760] perspectiva real, porque tenés la calivación de la cámara y porque tenés la pose del objeto, bueno,
+[01:30:18.760 - 01:30:34.790] esto me lo voy a saltear, es información sobre abundante, vamos a ver el pipeline, cómo se trabaja
+[01:30:34.790 - 01:30:41.230] con esto, primero que necesita sante empezar, los datos de calivación de cámara, tuviste que calibrar
+[01:30:41.230 - 01:30:45.470] tu cámara, tenés la matriz en tríceca, lo confiente de distorsión, eso lo necesitan, los
+[01:30:45.470 - 01:30:52.430] crivís en tu código en principio y el modelo 3D va a escribir las coordenadas de todos los vértices 3D
+[01:30:52.430 - 01:31:00.210] que vas a machar con 2D y en el loop lo que vas a procesar frame por frame en el dentro de tu
+[01:31:00.210 - 01:31:07.550] wild, empieza la wild, empieza a hacer cámara, la cámara de red, el red empezó a obtener una cámara
+[01:31:08.110 - 01:31:13.630] en una una imagen, una imagen es, empezar a darle a la imagen es, tenés que tener el algoritmo que
+[01:31:13.630 - 01:31:21.350] detecte los puntos de tu modelo, ojo, no es trivial eso, yo quiero usar de mi como modelo en un
+[01:31:21.350 - 01:31:28.190] ocito de peluche, buenísimo, tenés el detector de ocito de peluche, no, entonces no te sirve o
+[01:31:28.190 - 01:31:35.630] acelo, no solo vamos a usar algo que ya te he hecho, que vos puedas detectar sus puntos,
+[01:31:35.630 - 01:31:39.750] es más, me gustaría, le voy a hacer la pregunta ahora y le voy a dar a una depositiva para que me
+[01:31:39.750 - 01:31:47.390] respondan, pero ¿qué pueden usar a ustedes? que ya tengan un detector que les tide, de hecho
+[01:31:47.390 - 01:31:53.590] dijimos que ideal son tener cuatro puntos, algo que tenga cuatro puntos con un detector que
+[01:31:53.590 - 01:32:00.870] lo detecte, ahí me responden, mientras yo sigo hablando, bueno, entonces una vez que tienen
+[01:32:00.870 - 01:32:06.650] ustedes atienen las correspondencias, o sea, tienen las coordenadas en el pixel y saben a qué
+[01:32:06.650 - 01:32:14.550] coordenada 3D corresponde, ejecutan el comando Sol PNP, que ahora van a ver es bastante más complejo
+[01:32:14.550 - 01:32:21.730] que esto que dice acá, y el resultado es la pose, rotación y orientación, y hay procesar la
+[01:32:21.730 - 01:32:26.130] rotación, que es un capítulo aparte, cómo anotas todo eso para que se ve el cubito entre
+[01:32:26.130 - 01:32:39.590] 3D y todo esto, bueno, esto, esto, esto que dice acá es el preámbulo, lo que vamos a ver con
+[01:32:39.590 - 01:32:45.990] más detalle en algunas depositivas, a ver si me equivoco, ya acá está, ojo, pobo, pobo descansar, no,
+[01:32:46.510 - 01:32:54.310] lo voy a ver en detalle en otra presentación, tengo otra presentación que dice cómo obtener pose
+[01:32:54.310 - 01:32:58.990] de marcadores QR-Rieruco, posea del patrón de calibración como lo que vieron recién acá está,
+[01:32:58.990 - 01:33:05.950] este pingüino ilustra realmente aumentada sobre un código QR, lo que estamos viendo de esta
+[01:33:05.950 - 01:33:11.670] presentación es cómo obtener la pose del código QR, después fijate cómo hacemos para dibujar el pingüino,
+[01:33:11.990 - 01:33:16.550] por lo pronto, una de las cosas más directas de dibujar un cubo, que son algunas líneas,
+[01:33:16.550 - 01:33:26.110] por las dudas de digo, yo tengo en GitHub, como al público, tengo hecho usando sol pnp,
+[01:33:26.110 - 01:33:35.110] un parameter en Python de re aumentada, que cuando detecta el código, te dibuja un moderito 3D
+[01:33:35.110 - 01:33:40.270] y hacer re aumentada así como está acá con un moderito 3D puesto, también creo que es un
+[01:33:40.270 - 01:33:47.350] atrito, no se agarró un modelo gratis en un lado y puse ese, vamos a ver el código QR, el código
+[01:33:47.350 - 01:33:56.510] QR-Rieruco y se te mueve el moderito, el re aumentada completa, bien, acá tenés, en este caso,
+[01:33:56.510 - 01:34:02.510] es la notación de que está detectando el patrón de calibración, pero si vos detectaste,
+[01:34:02.510 - 01:34:10.070] acá tenés el detector funcionando, tenés la información para obtener con sol pnp la pose de este
+[01:34:10.070 - 01:34:15.510] marcador y hacer lo que hizo el otro, que le dibujó un cubito encima. Este lo voy a explicar,
+[01:34:15.510 - 01:34:21.230] este es un nabero QR-Rieruco, es un ejemplo de cómo hacer una cosa física a medida,
+[01:34:21.230 - 01:34:26.510] va a ser un detector a medida de eso, y vos podés saber en qué posición está la punta,
+[01:34:26.510 - 01:34:33.630] que lo que interesa, en qué posición espacial está la punta de este nabero QR-Rieruco. En
+[01:34:33.710 - 01:34:41.190] cirugía, ese tipo está naseciado y esto va con la punta, toca el hueso, toca un botoncito y se
+[01:34:41.190 - 01:34:46.430] registra las colonadas 3D donde tocó el hueso, y así va tocando distintas punta de hueso y se va
+[01:34:46.430 - 01:34:52.110] formando una nueva punta de cómo está el hueso, pues básicamente como que tiene una parte del hueso,
+[01:34:52.110 - 01:34:58.990] tiene que atornizar la otra parte, la hierro, la de fierra, entonces lo tiene que definir, tiene que
+[01:34:58.990 - 01:35:06.470] ver bien el niñado, bueno y finalmente en la otra presentación vamos a dedicar a ver cómo hago
+[01:35:06.470 - 01:35:13.630] lo que se llama pose sin marcador, no sos a marcador, pero usa salgo, genérico, que está conocido
+[01:35:13.630 - 01:35:20.550] ante mano, que acá es una imagen, también, el imagen ahí tiene la imagen de un libro, pues una caja,
+[01:35:20.550 - 01:35:35.180] no puede ser la cualquiera, bueno, SolPNP tiene 4 comandos SolP3P es el de solución mínima con
+[01:35:35.180 - 01:35:43.260] solo 3 correspondencias, pero nosotros no lo vamos a ver, vamos a el de 4, SolPNP con 4 o más
+[01:35:43.260 - 01:35:48.340] correspondencias, hace una minimización de errores, pues los a 4 o 5 o 6 o 100, las que vos quieras,
+[01:35:48.340 - 01:35:58.420] este te vuelve una solución, si tiene varias soluciones te vuelve una, para, yo esto no se
+[01:35:58.420 - 01:36:03.620] explico porque lo van a usar sino para no confundirse las cuando las buscan, el genérico es para algunos
+[01:36:03.620 - 01:36:08.900] casos donde vos querés analizar toda la solución es que te da, no es de interés de ustedes y media
+[01:36:08.900 - 01:36:20.150] todo sepan que existe, y el ransack va a tener sentido cuando veamos ransack, bueno,
+[01:36:20.150 - 01:36:28.670] vos agarras, este SolPNP uno de los argumentos, es que hay el gorismo que vais a usar, entonces
+[01:36:28.670 - 01:36:34.630] tenés todos estos, yo no me respondieron la pregunta, ¿no?, de qué es lo que ustedes pueden detectar,
+[01:36:34.630 - 01:36:45.910] que les pueden detectar 4 puntos, bueno, que le ento que es difícil, contira usón como dice,
+[01:36:45.910 - 01:36:50.190] no, pero bien, si yo vi, vamos a ser un alucco, vamos a un marcador de eso, tiene el detector,
+[01:36:50.190 - 01:36:57.390] ponen el alucco punto detect, te da los 4 puntos, la masa es cuáles son, pues no te da 4 puntos
+[01:36:57.390 - 01:37:03.910] cuáles quieras, te da ordenados, entonces vos sabes cuáles son las coordenadas del el elucco,
+[01:37:03.910 - 01:37:13.550] ahora decidimos, ahora resulta que hay, acá esto es relevante, hay un algoritmo para modelos
+[01:37:13.550 - 01:37:24.630] planos, entonces yo digo para, si son modelos 3D, está bien que sean planos, si, de hecho si
+[01:37:24.630 - 01:37:29.790] yo te da estoy hablando de 3 puntos, 3 puntos forman un triángulo, siempre van a formar un plano,
+[01:37:29.790 - 01:37:34.670] no hay manera de que 3 puntos formen otra cosa que no sea un plano, también, lo que pasa
+[01:37:34.670 - 01:37:43.070] cuando te vas a más de 4 puntos, pueden estar con plana de eso, o no, el PNP no te exige que
+[01:37:43.070 - 01:37:48.870] estén en el mismo plano, ahora nosotros vamos a el alucco, conveniendo de umentes son 4 puntos
+[01:37:48.870 - 01:37:57.030] al mismo plano, entonces hay un algoritmo que se especializa en que tu modelo es plano,
+[01:37:57.030 - 01:38:03.790] tu 4 coordenadas se están en el mismo plano, entonces es más suficiente y tiene más precisión
+[01:38:03.790 - 01:38:14.510] a la hora de detectar, asumiendo esa característica, adivinen que hacen IPP Square, se especializa en 4
+[01:38:14.510 - 01:38:20.910] puntos de un cuadrado, obviamente en un plano, y ese es el que usa para el alucco y el QR, entonces
+[01:38:21.630 - 01:38:27.830] debería no usar ustedes de P5, es el IPP Square, el que va a usar, también, te has especializado,
+[01:38:27.830 - 01:38:34.590] es más suficiente y más preciso, porque aprovecha la característica particulares, matemáticas
+[01:38:34.590 - 01:38:41.550] de que tengan esos 4 puntos en el plano, entonces hay varios, no los voy a mencionar, me los
+[01:38:41.550 - 01:38:46.150] conozco a todos, pero no lo voy a mencionar para no llenar la cabeza madre lo que tiene, acá
+[01:38:46.150 - 01:38:55.150] tengo un ejemplo de código, esto es una línea, una línea, se llama SolPNP, puntos del objeto es
+[01:38:55.150 - 01:39:02.750] una raíz con un montón de pequeños vectores 3D, una matriz, es una raíz de punto 3D,
+[01:39:02.750 - 01:39:10.190] ahora vamos a hacer como serían los puntos 3D de un código cuadrado, en la positiva siente,
+[01:39:10.750 - 01:39:17.390] después tenés los puntos 2D del imagen correspondiente, o sea que si vos tenés 4, acá tenés 4,
+[01:39:17.390 - 01:39:24.030] en el mismo orden, se corresponden el primero de esto con el primero de estos otros,
+[01:39:24.030 - 01:39:29.630] también el primero de los checkpoints con el primero de imespoint, y ahí tenés las correspondencias 3D2D,
+[01:39:31.150 - 01:39:37.310] miró que te pide acá, matriz de cámara, que es una matriz 3D, 3x3, co-eficiente y torsión que
+[01:39:37.310 - 01:39:42.590] ustedes vieron cada uno, cada dos, peo, uno, peo, dos, cada tres, así como se los dio la calibración
+[01:39:42.590 - 01:39:53.590] de cámara, los tiene que meter ahí, y en flags que algoritmo varuzada, también, el algoritmo por
+[01:39:53.590 - 01:40:00.870] defecto, eso en algoritmo más antiguo, de hecho es el peor de todos, pero que tiene la característica
+[01:40:00.870 - 01:40:05.590] que se adapta prácticamente a todas las situaciones, a que de 3 puntos, a que sea un cuadrado, a que sea
+[01:40:05.590 - 01:40:12.870] así, que sea toda la situación, entonces claro, si no sabes, el algoritmo por defecto anda, si sabes
+[01:40:12.870 - 01:40:19.870] elegí una especializada que va a andar mejor, en caso de ustedes van a usar IPP, IPP, SQL, entonces la
+[01:40:19.870 - 01:40:25.590] constante que indica el algoritmo, si se llama Cb, punto sol, PNP, Undercore, IPP, Undercore SQL,
+[01:40:26.550 - 01:40:36.190] bueno, el resultado, bueno Red Vales, el status, si, anduvo no, anduvo por sí, a ver, si, si no, si no
+[01:40:36.190 - 01:40:40.910] se corresponden o pasa algo, te tira, no hay que decir error en la función, te dice no dio
+[01:40:40.910 - 01:40:49.550] resultado, pero usted va a sumer que da, Rbeck y Tbeck estralación, son X y Z, Rbeck es rotación,
+[01:40:50.070 - 01:40:58.790] pregunta, ¿cómo sabe en qué posición está, a qué distancia está, cómo se sabe si la
+[01:40:58.790 - 01:41:05.310] distancia está en milímetros, centímetros, empulgadas, hay una idea, si hago te dar la localización
+[01:41:05.310 - 01:41:11.110] 3D de un objeto respecto de la cámara, ¿cómo sabe en qué unidad es, o mejor dicho cómo
+[01:41:11.110 - 01:41:17.390] sabes vos, en qué unidad es está? Voy a una pregunta que tira a llevarse a algunos, la logra
+[01:41:17.390 - 01:41:25.750] responder, ahora enseguida se la responda, bueno, me estás faltando algo acá, no tengo
+[01:41:25.750 - 01:41:35.270] la otra cosa, no le ponés el tamaño del código, o algo así, a ver, a ver, expandí un poco más
+[01:41:35.270 - 01:41:42.270] porque se que vendría el tamaño del lado del código arruco, si ponés de 97 milímetros, ahí
+[01:41:42.270 - 01:41:48.190] ya tenés la referencia, a donde, a donde, vamos a suponer que tu código arruco es de 100 milímetros,
+[01:41:48.190 - 01:42:00.350] de lado, ¿dónde estás diciendo, dónde estás poniendo esos 100 milímetros, en la, yo creo que
+[01:42:00.350 - 01:42:07.270] está bien lo que estás pensando, para que los otros entiendan, serían en lo del mundo, no
+[01:42:07.270 - 01:42:13.030] de la cámara, digamos, no sé cómo explicarlo bien, pero, no, pero con centrate en estos argumentos,
+[01:42:13.030 - 01:42:21.620] a donde va eso que vos es que acaba de decir? Object points. Sí, señor, cuando vos es un
+[01:42:21.620 - 01:42:27.740] object point, la coordenada dice 100, la unidad que se es usado parece 100, es la que va a usar para
+[01:42:27.740 - 01:42:33.340] el resultado. Si son 100 milímetros, el resultado va a estar en milímetros, si son 100 centímetros,
+[01:42:33.340 - 01:42:40.260] el resultado está en 100 milímetros y así, así que está perfecto, perdón, si vos, en vez de 100
+[01:42:40.260 - 01:42:46.060] milímetros ponés 10 centímetros, lo he resultado, va a ser el número 10, ese más chico, pero
+[01:42:46.060 - 01:42:51.460] que se vea que está en 100 milímetros, no es milímetros, esa es la idea, ese es el conocer las
+[01:42:51.460 - 01:42:57.660] coordenadas absolutas del objeto de antemano, es lo que dirá escala a todo esto.
+[01:42:57.660 - 01:43:02.980] Cheare, si no me contendo, uno me responde la pregunta, es la primera vez que me responde la pregunta
+[01:43:02.980 - 01:43:09.020] de esta, vamos mejorando. Bien, vamos mejorando, vamos compensando de alguna otra clase que tuvieron
+[01:43:09.020 - 01:43:12.860] un medio flojo, o bueno, vale si, está curada, esto está terminando, vamos a la notación
+[01:43:12.860 - 01:43:17.460] 3D, esto se lo dejo para que lo vean en otro momento, se estoy viendo a reloj, me cuenta
+[01:43:17.460 - 01:43:23.660] que no voy a apuerte, que apa, que sí, voy a intentar, acá el título dice a notación
+[01:43:23.660 - 01:43:30.500] de un cubo y en la imagen hay 24 cubos a notar 2, por las dudas, esto es un charuco, son
+[01:43:30.500 - 01:43:36.140] montónico, digo, se harucos, hay un loop, no, no es este loop que está escrito a la derecha,
+[01:43:36.140 - 01:43:43.020] es la izquierda, vos tenés que, cuando vos detectas arucos, te va a devolver 24 arucos, 24
+[01:43:43.020 - 01:43:48.060] detecciones, para cada detección te va a devolver cada uno de los vértices, a cada uno
+[01:43:48.060 - 01:43:53.260] le vas a aplicar sol PNP y después a cada uno si quieres le notas el cubo que acá están,
+[01:43:53.260 - 01:44:02.900] la notación rojo, también. ¿Cuál es la idea? Hay una función, una vez que vos tenés
+[01:44:02.900 - 01:44:10.660] la pose, tenés la rotación, no os tenés perdón, sí, la posición o trasladación y la
+[01:44:10.660 - 01:44:20.620] orientación, hay una función para agarrar un punto 3D del objeto y que te calcule en
+[01:44:20.620 - 01:44:27.900] qué pixel se vería, también, entonces claro, si vos tenés las coronadas del código
+[01:44:27.900 - 01:44:33.340] peruco, te va a responder las coronadas de estos pixels, pero eso es vos ya lo sabes,
+[01:44:33.340 - 01:44:39.060] pues es lo que usaste para hacer el sol PNP, pero si vos suele el código de aruco te inventás
+[01:44:39.060 - 01:44:44.380] las coronadas de un cubo, de un cubo, que son esta cuadro que están en el aire, está bien,
+[01:44:44.380 - 01:44:50.340] vos vas a usar esa función y te va a decir en qué coronada 2D de imagen están esos
+[01:44:50.340 - 01:45:00.700] verdices y después trasar las rayas, los cementos, rectos y rojos, se entiende? Bueno, así,
+[01:45:00.700 - 01:45:05.140] acá nos dice mucho más, también, dice solo eso, que es raro que en la de opositiva no tengo
+[01:45:05.140 - 01:45:09.740] la función, seguramente parece en la siguiente presentación. Bueno, miren lo que voy a hacer
+[01:45:09.740 - 01:45:19.260] ahora es abrir la siguiente presentación y darla muy rápido, si me parece que no sirvió,
+[01:45:19.260 - 01:45:26.700] pues yo creo que va a servir, si me parece que no sirvió la veo de vuelta la que hace que
+[01:45:26.700 - 01:45:41.610] viene. Ustedes en el TP5 van a obtener la pose 3D de un marcador, también de un marcador
+[01:45:41.610 - 01:45:48.770] aruco, o si quieren QR pero consiguen su aruco es mejor, acá le voy a hablar de cómo obtener
+[01:45:48.770 - 01:45:54.090] la pose de marcador de varios tipos, marcadores, más allá de el aruco, también, cosa que
+[01:45:54.090 - 01:46:04.250] puedo pasar bastante rápido, usando sorPNP, obviamente, entonces esto que dice acá del Paiplián
+[01:46:04.250 - 01:46:09.050] es lo mismo que vemos antes, detectar los puntos, lo machas con tu objeto y aplicas PNP,
+[01:46:09.050 - 01:46:16.850] ahí tienes la pose. Entonces, código QR, aplicas, QRDTectorDTect, te da las 4 coronadas
+[01:46:16.850 - 01:46:22.010] y ya tener los datos para, van, ahí acá viene esto es lo que necesitaban saber, ¿cuál es
+[01:46:22.010 - 01:46:29.770] tu objeto 3D? Ok, objeto 3D de código QR tiene un cero, primero es servidario pero después
+[01:46:29.770 - 01:46:36.410] resulta que no es servidario, el cero lo ponemos en el medio, el lado es L, que como
+[01:46:36.410 - 01:46:42.330] bien dijeron recién pueden ser 100 milímetros, bueno me dijeron 97 milímetros, si el cero
+[01:46:42.330 - 01:46:51.850] está acá, la coordenada 3D, este es el plano Z, Z igual el cero, la coordenada 3D es menos
+[01:46:51.850 - 01:46:59.450] el es sobre dos, menos el es sobre dos cero, se entendió, o sea, si el lado de 100 esto
+[01:46:59.450 - 01:47:06.010] va a ser menos 50, menos 50 cero, es una coordenada 3D, acá dice 50, menos 50 cero, lo que
+[01:47:06.010 - 01:47:15.370] va a cambiar es el signo, resulta que el método PNP y PPSCuer exige que el cero está
+[01:47:15.370 - 01:47:20.970] en el medio del cuadrado y que las coordenadas se están expresadas exactamente así, también
+[01:47:20.970 - 01:47:25.010] no se va a sacar la mitad al lado y va a ser componer con signos más y menos, de hecho
+[01:47:25.010 - 01:47:33.050] usa eso para simplificar después su algoritmo y hacer todo, así que así es como vos definís
+[01:47:33.050 - 01:47:39.890] las coordenadas de los vertices tu objeto 3D, que es tu código, se te cuére o arruco,
+[01:47:39.890 - 01:47:44.810] vos definís eso, lo metes en tu código, lo metiste con una reyla, lo imprimiste, lo metiste
+[01:47:44.810 - 01:47:50.290] con una reyla, tiene 100 milímetros, ya está, bueno las correspondencias está enumerada
+[01:47:50.290 - 01:47:55.930] a vos sabes cuál se corresponde con cuál no vas a tener el problema, y este es el código,
+[01:47:55.930 - 01:48:00.850] muy fácil, ¿cómo hace un marcador arruco? de vuelta, estoy mostrando un montón de marcadores
+[01:48:00.850 - 01:48:09.090] arruco, lo mismo que antes, está bien, lo que pasa es que el arruco detector asume que
+[01:48:09.090 - 01:48:14.970] es multimarcador, cuando pones de iter markers, te devuelve un array con un montón de
+[01:48:14.970 - 01:48:24.770] con un montón de esquinas, cada elemento tiene 4 esquinas, bueno, entonces vos puedes ir
+[01:48:24.770 - 01:48:29.930] haciendo sor PNP con cada uno de esos, exactamente la misma manera que lo harías con un arruco,
+[01:48:30.930 - 01:48:39.170] cuére, pose de un patrón de calibración, en vez de tener 4 acá tenés mucho más, también,
+[01:48:39.170 - 01:48:43.490] bueno, primero que el patrón de calibración no es único, o vas a decir de cuánto por cuánto,
+[01:48:43.490 - 01:48:48.970] este creo que tiene 6 por 7, tiene 42 puntos, vos te vas a generar, primero no vas a escribir
+[01:48:48.970 - 01:48:55.250] a mano, bueno hoy, hoy capaz que lo escribís por que usas la idea, pero yo me cierra el bucle para
+[01:48:55.250 - 01:49:03.490] calcular las coordenadas voces, este punto acá es el 0 y este lado mide, no sé cuánto mide,
+[01:49:03.490 - 01:49:10.770] mide 5 centímetros, bueno, 0, 5, 10, 10, 20 y así, también, le das que las coordenadas
+[01:49:10.770 - 01:49:18.450] X y te haces un bucle doble que tiene las coordenadas X y Y, general, los 42, las coordenadas de tu
+[01:49:18.450 - 01:49:26.810] cuére por rígido, todos coplanar el, el coordenadas 7 es igual a 0, eso fijo en el setup, después
+[01:49:26.810 - 01:49:32.050] cuando vas a igual, vas a hacer, ¿qué vas a hacer? vas a aplicar el don de está,
+[01:49:33.250 - 01:49:41.290] fine chessboard corners, le tenés que dar la imagen monochromática, no en gris y le vas a decir que
+[01:49:41.290 - 01:49:47.130] tu patrón es de 6 por 7 y te va a devolver las 42 esquinas cuando las detectan, también,
+[01:49:48.450 - 01:49:53.770] lo que tiene el patrón de calibración que lo demás no tiene, tiene esto, corner sub-pix, te hace
+[01:49:53.770 - 01:50:00.450] una mejora en la precisión y las coordenadas en vez de ser en píxeles, que son números enteros,
+[01:50:00.450 - 01:50:06.130] te las da con decimales, porque es trapor la intersección de las líneas, por eso es un patrón
+[01:50:06.130 - 01:50:12.330] de calibración, básicamente, y tenés más precisión en las coordenadas y por lo tanto, más precisión
+[01:50:12.330 - 01:50:22.150] en la pose, también, obviamente, sol pnp, bueno, vas a usar el ipp-scwer, porque acá son 42
+[01:50:22.150 - 01:50:28.130] puntos, lo que están, no son cuatro, también, te usas sol pnp, epnp, es el que tengo elegido acá
+[01:50:28.130 - 01:50:36.530] cual te conviene y te da la pose con mucho más precisión que nosotros, bien, detector ad hoc es
+[01:50:36.530 - 01:50:44.550] arbitrario, ¿qué necesitas algo que lo detecte? también, esto es medio filósofico, a mí siempre
+[01:50:44.550 - 01:50:49.850] me interesó, este es la abordadora, el famoso el cuadro, y tiene una característica muy especial,
+[01:50:49.850 - 01:50:55.810] esto es un comentario que los cuché a Dalí que a mí me quedó, me quedó grabado, dice que lo genial
+[01:50:55.810 - 01:51:03.090] que tiene esto es que todo apunta a donde está mirando la típica, que es la mano, todo apunta a la
+[01:51:03.090 - 01:51:09.810] aguja, y la aguja no está en el cuadro, no se ve, la aguja está atrás del dedo, o sea, vos sabés
+[01:51:09.810 - 01:51:14.890] que está bordando, sabés que tiene una aguja en el dedo, pero la aguja no está, también, bueno,
+[01:51:14.890 - 01:51:21.730] los detectores tienen eso, vos vas a detectar una coordenada, no tiene por qué haber algo concreto en
+[01:51:21.730 - 01:51:30.770] esa coordenada, también, adivina cómo detectas el centro de la pelota verde, no hay un puntito
+[01:51:31.250 - 01:51:36.210] especial en el centro, la potencia tiene que detectar la circunferencia y después cálculas
+[01:51:36.210 - 01:51:43.170] el centro, también, esa es la idea, entonces cuando vos tenés un detector como este, compuérate un
+[01:51:43.170 - 01:51:51.850] navegador quirúrgico, esto es más complejo, pero estos son LEDs con capuchón esférico, para
+[01:51:51.850 - 01:51:57.250] que no haya un punto sino que toda la fera se detecte, y da un detector que busca la circunferencia y
+[01:51:57.370 - 01:52:04.410] luego cálcula el centro, entonces detecta con muy buena precisión, este es una foto de baja
+[01:52:04.410 - 01:52:10.370] resolución, porque es una foto hecha por la gente que lo vende y la gente que lo vende no te quiere
+[01:52:10.370 - 01:52:15.170] mostrar demasiado detalle de técnico de lo que está haciendo, entonces son vídeos, pasas medio
+[01:52:15.170 - 01:52:20.010] rápido, no, te los muestran más o menos, de hecho está pixelado porque eso tuvo que ampliar
+[01:52:21.010 - 01:52:29.250] el fotograma para mostrar con detalle que es, no se termina a ver, acá arriba, esto es un plano,
+[01:52:29.250 - 01:52:36.570] justo se ve de costado, pero es una armadura metálica para que sea rige y no se deforme y nunca
+[01:52:36.570 - 01:52:43.770] te cambien las posiciones relativas, de los cuatro puntos que se está detectado que forman un
+[01:52:43.770 - 01:52:52.530] rombo ahí, que se conoce en las coordenadas de los cuatro puntos, ahora en tu objeto vamos a detectar
+[01:52:52.530 - 01:52:57.690] estos cuatro puntos, pero vas a calcular la coordenada de este vertice de acá, también que es el
+[01:52:57.690 - 01:53:03.730] que interesa, esto tiene pilas porque se iluminen con infrarrojo, tiene un botoncito para chequear,
+[01:53:03.730 - 01:53:12.090] tiene una conexión inelámbrica con el sistema, vamos a obtener las coordenadas de esto,
+[01:53:12.090 - 01:53:18.650] del cuerpo y el cuerpo estas coordenadas tienen el cero puesto acá, entonces cuando voy a detectar la
+[01:53:18.650 - 01:53:24.170] pose te da la coordenada exacta de la punta y si queréis la orientación del labor britiquilógico,
+[01:53:24.170 - 01:53:33.640] bueno, vos, estos circuitos son balizas y vos puedes inventarte la baliza que quieras,
+[01:53:33.640 - 01:53:37.920] esto está hecho con hía, como le dije hoy, en la época que la hía era media boba y generaba
+[01:53:37.920 - 01:53:45.440] imágenes muy raras, este le pedí baliza así, y soy eso que no se entiende que son,
+[01:53:45.440 - 01:53:55.000] también, unos motores, no sé qué sería eso, el tema es que vos inventaste tu baliza y tenés
+[01:53:55.000 - 01:53:59.120] que inventar tu algoritmo para detectar la baliza que inventaste, entonces tenés que entender el tema,
+[01:53:59.120 - 01:54:04.600] esto es tipo con el nuevo biográfico, si hicieron su detector de bolitas y vos puedes usar lo que
+[01:54:04.600 - 01:54:10.840] vos quieras, pero tenés que ser caro del detectarlos, otra cosa, las que te mostré recién son
+[01:54:10.840 - 01:54:18.280] intermitentes y con esa intermitencia informan en la id de cada una, o sea que vos no ves cuatro bolitas
+[01:54:18.280 - 01:54:24.120] si no sabes cuál es cuál, tenés una id por la intermitencia, esto es en un video, tenés
+[01:54:24.120 - 01:54:29.280] una id que permite saber cuál es cuál y hacer las correspondencias, podrías usar color
+[01:54:29.280 - 01:54:35.480] distinto también, bueno, finalmente pose ese marcador, tiene que ver con key points que es una clase
+[01:54:35.480 - 01:54:41.080] que las estoy postergando, si me da el tiempo la doy la clase que viene si no la otra,
+[01:54:43.480 - 01:54:48.880] si yo tengo una superficie que tenga textura, no sirve si todo blanco, si tiene una textura,
+[01:54:48.880 - 01:54:58.200] yo puedo reconocer esta textura en este lugar de acá y si tengo, también entonces yo conozco
+[01:54:58.520 - 01:55:06.360] por la referencia, las localizaciones de mi cuerpo rígido 3D, conozco, la locación 2D y ese 3D
+[01:55:06.360 - 01:55:14.560] va a la 0 y como los pude reconocer en este montón de cosas acá, tengo las correspondencias 2D 3D,
+[01:55:14.560 - 01:55:25.360] puedo aplicar PNP con muchas correspondencias, incluso acá se usa uno robusto porque hay una correspondencia
+[01:55:25.360 - 01:55:31.280] que claramente para nosotros, claramente no va, pero en el conjunto datos no lo sabéis distinguir,
+[01:55:31.280 - 01:55:37.960] digamos, el que es robusto dice che, esta no encaja con el resto y la descarta, se da cuenta
+[01:55:37.960 - 01:55:43.560] mientras se está procesando, bien, todo eso tema pendiente ver, pero esto se llama pose sin marcador,
+[01:55:43.560 - 01:55:48.680] lo sé con machío de key points, un tema que tengo pendiente quizás, llegue la clase que viene,
+[01:55:48.680 - 01:55:54.440] o marcador virtual, agarrar cualquier imagen y decir este va a ser mi marcador la registraza,
+[01:55:54.440 - 01:56:01.320] sacar la foto, entonces obtener la pose de esa imagen que vos sacaste, bueno me pasé un minuto,
+[01:56:01.320 - 01:56:08.120] pero sigue bien, ahí estamos, bueno gente, espero que estén vivos todavía,
+[01:56:08.120 - 01:56:13.290] te puedo cortar la versión, listo.
