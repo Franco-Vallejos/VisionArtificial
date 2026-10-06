@@ -2,4 +2,6 @@ output/
 dataset_yolo/
 resultados/
 *.pt
+*.zip
+*.cache
 __pycache__/

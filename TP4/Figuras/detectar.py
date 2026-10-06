@@ -5,7 +5,7 @@ from ultralytics import YOLO
 
 
 RAIZ = Path(__file__).resolve().parent
-ARCHIVO_MODELO = RAIZ / "resultados" / "figuras_yolo26n" / "weights" / "best.pt"
+ARCHIVO_MODELO = RAIZ / "resultados" / "figuras_yolov8n" / "weights" / "best.pt"
 CAMARA_WEB_INDEX = 0
 CONFIANZA = 0.40
 TAMANIO_IMAGEN = 320
@@ -20,16 +20,24 @@ def main():
         raise SystemExit(f"No existe el modelo entrenado: {ARCHIVO_MODELO}")
 
     modelo = YOLO(str(ARCHIVO_MODELO))
-    resultados = modelo.predict(source=CAMARA_WEB_INDEX, conf=CONFIANZA, imgsz=TAMANIO_IMAGEN, stream=True, verbose=False)
+    camara = cv2.VideoCapture(CAMARA_WEB_INDEX)
+    if not camara.isOpened():
+        raise SystemExit(f"No se pudo abrir la camara con indice {CAMARA_WEB_INDEX}")
 
-    for resultado in resultados:
-        frame_anotado = resultado.plot()
-        cv2.imshow(VENTANA, frame_anotado)
-        tecla = cv2.waitKey(1) & 0xFF
-        if tecla in (TECLA_ESCAPE, TECLA_SALIR):
-            break
+    try:
+        while True:
+            cuadro_disponible, frame = camara.read()
+            if not cuadro_disponible:
+                raise SystemExit("La camara dejo de entregar imagenes")
 
-    cv2.destroyAllWindows()
+            resultado = modelo.predict(source=frame, conf=CONFIANZA, imgsz=TAMANIO_IMAGEN, verbose=False)[0]
+            cv2.imshow(VENTANA, resultado.plot())
+            tecla = cv2.waitKey(1) & 0xFF
+            if tecla in (TECLA_ESCAPE, TECLA_SALIR):
+                break
+    finally:
+        camara.release()
+        cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
