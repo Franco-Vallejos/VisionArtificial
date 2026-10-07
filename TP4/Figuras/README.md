@@ -1,6 +1,6 @@
 # TP4 - Deteccion de figuras con YOLOv8
 
-Este proyecto entrena un detector Ultralytics YOLOv8 para reconocer figuras geometricas dibujadas a mano. Las clases actuales son `Rectangle`, `Square` y `Triangle`.
+Este proyecto entrena un detector Ultralytics YOLOv8 para reconocer figuras geometricas dibujadas a mano. Las clases actuales son `Circle`, `Rectangle`, `Square` y `Triangle`.
 
 ## Dependencias
 
@@ -29,13 +29,14 @@ Figuras/
   dataset_original/
 ```
 
-- `train`: 225 imagenes para ajustar los pesos.
-- `valid`: 27 imagenes para medir el modelo durante el entrenamiento.
-- `test`: 27 imagenes reservadas para la evaluacion final.
+- `train`: 271 imagenes para ajustar los pesos.
+- `valid`: 32 imagenes para medir el modelo durante el entrenamiento.
+- `test`: 33 imagenes reservadas para la evaluacion final.
 - `dataset_original`: conserva las fotografias originales para auditoria y trazabilidad.
-- `data.yaml`: define las rutas y las tres clases del dataset.
+- `auditoria_dataset`: contiene copias de cuadrados y rectangulos ambiguos para su revision.
+- `data.yaml`: define las rutas y las cuatro clases de la version 5 del dataset.
 
-Cada archivo de `labels` tiene el mismo nombre base que su imagen. El primer valor de cada anotacion es el identificador de clase: `0` para `Rectangle`, `1` para `Square` y `2` para `Triangle`. Cada fila contiene una caja YOLO con centro `x`, centro `y`, ancho y alto normalizados entre 0 y 1. Los poligonos exportados por Roboflow fueron convertidos a sus cajas envolventes para mantener todo el dataset en un unico formato de deteccion.
+Cada archivo de `labels` tiene el mismo nombre base que su imagen. El primer valor de cada anotacion es el identificador de clase: `0` para `Circle`, `1` para `Rectangle`, `2` para `Square` y `3` para `Triangle`. Cada fila contiene una caja YOLO con centro `x`, centro `y`, ancho y alto normalizados entre 0 y 1. Los poligonos exportados por Roboflow fueron convertidos a sus cajas envolventes para mantener todo el dataset en un unico formato de deteccion.
 
 Los archivos `README.dataset.txt` y `README.roboflow.txt` conservan los metadatos de la exportacion de Roboflow.
 
