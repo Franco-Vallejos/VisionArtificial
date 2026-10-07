@@ -33,7 +33,6 @@ Figuras/
 - `valid`: 32 imagenes para medir el modelo durante el entrenamiento.
 - `test`: 33 imagenes reservadas para la evaluacion final.
 - `dataset_original`: conserva las fotografias originales para auditoria y trazabilidad.
-- `auditoria_dataset`: contiene copias de cuadrados y rectangulos ambiguos para su revision.
 - `data.yaml`: define las rutas y las cuatro clases de la version 5 del dataset.
 
 Cada archivo de `labels` tiene el mismo nombre base que su imagen. El primer valor de cada anotacion es el identificador de clase: `0` para `Circle`, `1` para `Rectangle`, `2` para `Square` y `3` para `Triangle`. Cada fila contiene una caja YOLO con centro `x`, centro `y`, ancho y alto normalizados entre 0 y 1. Los poligonos exportados por Roboflow fueron convertidos a sus cajas envolventes para mantener todo el dataset en un unico formato de deteccion.
