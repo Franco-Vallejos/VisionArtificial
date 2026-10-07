@@ -7,8 +7,8 @@ Archivos relacionados:
 - Código: [`aruco_tp3_clase.py`](./aruco_tp3_clase.py)
 - Marcador ArUco: [`aruco_4x4_50_id0_100mm.png`](./aruco_4x4_50_id0_100mm.png)
 - PDF para imprimir: [`aruco_4x4_50_id0_100mm_A4.pdf`](../output/pdf/aruco_4x4_50_id0_100mm_A4.pdf)
-- Resumen del 10/09: [`Resumen_clase_20260910.md`](../videos_clases/clase_20260910/Resumen_clase_20260910.md)
-- Resumen del 17/09: [`Resumen_clase_20260917.md`](../videos_clases/clase_20260917/Resumen_clase_20260917.md)
+- Resumen del 10/09: [`README.md`](../videos_clases/clase_20260910/README.md)
+- Resumen del 17/09: [`README.md`](../videos_clases/clase_20260917/README.md)
 
 ## 1. ¿Qué hace el programa?
 
