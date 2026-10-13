@@ -55,9 +55,9 @@ while True:  # Bucle principal
     key = cv.waitKey(33)  # Espera una tecla ~33 ms
     if key>=0:  # Si se presionó algo
         key = chr(key)  # Código -> carácter
-        print(key)  # Muestra la tecla
         match key:  # Según la tecla
             case ' ':  # Espacio: capturar
+                print("Intentando capturar el tablero...")  # Confirma que se recibió la tecla espacio
                 # Repite la detección en alta resolución y la registra
                 imGray = cv.cvtColor(im, cv.COLOR_BGR2GRAY)  # Cuadro completo en gris
                 ret, precisionCorners = cv.findChessboardCorners(imGray, chessBoard, None)  # Detecta en resolución completa
@@ -71,9 +71,14 @@ while True:  # Bucle principal
                     cv.drawChessboardCorners(imBlack, chessBoard, corners, ret)  # Dibuja la nueva captura
                     cv.imshow("Detecciones", imBlack)  # Muestra el acumulado
 
-                    print(len(imgPoints), "pictures taken")  # Cuenta de capturas
+                    print("Captura guardada.", len(imgPoints), "capturas validas.")  # Confirma y cuenta las capturas
+                else:  # Si el patrón no fue encontrado
+                    print("Tablero no detectado. Captura descartada.")  # Informa por qué no se guardó la imagen
 
             case 'c':  # c: calibrar
+                if len(imgPoints) == 0:  # Evita calibrar sin observaciones válidas
+                    print("No hay capturas validas. Presione espacio con el tablero visible.")  # Indica cómo continuar
+                    continue  # Vuelve al bucle de cámara
                 # Calibra
                 ret, K, distCoef, rvecs, tvecs = cv.calibrateCamera(objPoints, imgPoints, im.shape[:2][::-1], None, None, flags=cv.CALIB_ZERO_TANGENT_DIST)  # Calcula K y distorsión (tangencial fija en 0)
 

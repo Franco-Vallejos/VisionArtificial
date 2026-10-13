@@ -1,0 +1,2443 @@
+# Transcripcion de la clase 08/10/2026
+
+Fuente: `Clase Visión Artificial-20261008_192457-Grabación de la reunión.mp4`
+
+**00:00:04.340 - 00:00:14.940**  
+bueno acá dice que inicio entonces estamos, esta detenida la la transcripción. Bueno,
+
+**00:00:14.940 - 00:00:22.800**  
+lo que voy a hacer ahora es empezar a abordar algunos temas variados que ya no corresponden
+
+**00:00:22.800 - 00:00:27.520**  
+a los trajos prácticos mandatorios que nosotros le encargamos, sino que los pueden
+
+**00:00:27.520 - 00:00:32.480**  
+pirar para un posible proyecto final. Ay, no sé, yo tengo una lista de 10 proyectos
+
+**00:00:32.480 - 00:00:36.540**  
+finales, pueden ser tranquilamente uno para cada grupo, uno de ellos es reconocimiento
+
+**00:00:36.540 - 00:00:41.460**  
+facial también, por eso hoy el tema acá después voy a dar otra tema que le depende
+
+**00:00:41.460 - 00:00:47.620**  
+los que les toquen, este les puede servir. En particular a Lesio les va a dar dos clases
+
+**00:00:47.620 - 00:00:57.320**  
+de estructura partida movimiento, coma, visual en visual eslam, ¿no? Bueno, vos cualquier cosa
+
+**00:00:57.320 - 00:01:03.600**  
+a Lesio me corregís. Bueno, no no no no te sientas orgullo. No tanto, no tanto, pero sí
+
+**00:01:03.600 - 00:01:11.320**  
+vamos a ver estructura a partir de movimiento, nerf y gaussian splats. Ah, claro, buenísimo,
+
+**00:01:11.320 - 00:01:17.600**  
+no, eso es súper interesante. Así que me he olvidado de eso, lo más importante. Así que
+
+**00:01:17.600 - 00:01:26.080**  
+bueno, empez vamos, esta presentación, esta va a ser la presentación principal de la clase
+
+**00:01:26.080 - 00:01:29.980**  
+de hoy, pero no me va a llevar hasta el final de la clase, después voy a arrancar con
+
+**00:01:29.980 - 00:01:38.240**  
+otro tema totalmente distinto. Este es una presentación muy interesante, a la larga bastante
+
+**00:01:38.240 - 00:01:45.840**  
+sencilla a esta altura de la materia, esto es otro bordaje que va agarrando, esto tranquilamente
+
+**00:01:45.840 - 00:01:53.960**  
+podría de hecho fue alguna vez un trajo práctico, trajo práctico de reconocimiento facial,
+
+**00:01:53.960 - 00:02:00.240**  
+específicamente, yo ya dejé de hacer la cuenta, pero siempre hay algún grupo interesado
+
+**00:02:00.240 - 00:02:08.840**  
+en reconocimiento facial, entonces yo lo doy y lo voy actualizando. De hecho, esta, la presentación
+
+**00:02:08.840 - 00:02:14.600**  
+es bastante, tiene sus varios años, pero siempre estoy legalizando, tengo una actualización
+
+**00:02:14.600 - 00:02:20.760**  
+de este cuatro veces, traje con los últimos novedades. Es como todo el concepto general
+
+**00:02:20.760 - 00:02:25.760**  
+ya nos cambia, entonces la gran parte de la presentación que de igual, y no me interesa
+
+**00:02:25.760 - 00:02:32.480**  
+andar haciendo una actualización cosmética, puramente cosmética. Bueno, vamos a ver
+
+**00:02:32.480 - 00:02:36.920**  
+de que se trata todo el mundo, entiende que reconocimiento facial, le que ponen la cara
+
+**00:02:36.920 - 00:02:43.720**  
+y que te diga que el nombre, una cosa así ¿no? Entonces, ¿qué se usa? ¿Cómo es el proceso?
+
+**00:02:43.720 - 00:02:49.280**  
+¿Cómo se encara esto? Primero de todo, tenés que en la cámara detectar, o sea, es un
+
+**00:02:49.280 - 00:02:53.360**  
+detector para que aparezca un cuadra ahí, entonces si acá está la cara, acá hay una
+
+**00:02:53.360 - 00:02:59.680**  
+cara, o hay dos caras, solo que sea, depende de la aplicación, tu requerimiento, pues
+
+**00:02:59.680 - 00:03:03.360**  
+he detectado varias caras, en un control de acceso, últimamente mira una cara, te podría
+
+**00:03:03.360 - 00:03:12.520**  
+haber varias. Entonces, una vez que tenés la cara, haces un recorte de ese box, de esa
+
+**00:03:12.520 - 00:03:19.240**  
+cajita, y te concentra en eso, usas eso como imagen, y extrae un descriptor, se acuerda
+
+**00:03:19.240 - 00:03:23.800**  
+que los llamamos embeddings, ¿no? Que era, era, pasa que esto lo hablamos en las primeras
+
+**00:03:23.800 - 00:03:30.240**  
+clases, es un sinónimo, depende de la disciplina, los llamas embeddings o los llamas descriptores,
+
+**00:03:30.240 - 00:03:35.960**  
+también, este, y tenés, no, no es como un invariante de Juno, no es que vos tenés que ponerte
+
+**00:03:35.960 - 00:03:40.360**  
+a calcularlo, sino que tenés una, una función, o sea, estrictamente es un modelo de
+
+**00:03:40.360 - 00:03:47.160**  
+Diplardin, que le da la imagen, y la salida es un vector, en este caso, se acostumbran
+
+**00:03:47.160 - 00:03:55.520**  
+a ser vectores de 128 dimensiones, de tipos Flute, también, o sea, 128 valores de puntos
+
+**00:03:55.520 - 00:04:02.280**  
+flotantes de 4 bytes cada uno, así que eso cuándo me da 512 bytes, trae este chiquitito,
+
+**00:04:02.280 - 00:04:06.440**  
+y finalmente, tenés que hacer reconocimiento, como son descriptores, o puedes entrenar un
+
+**00:04:06.440 - 00:04:16.840**  
+clasificador para hacer un reconocimiento, esta, ahí es donde yo que quiero señalar la coincidencia
+
+**00:04:16.840 - 00:04:22.200**  
+con el pipeline de clasificación que venimos usando desde el TPDOS, y de poco ya ha sido una
+
+**00:04:22.200 - 00:04:28.680**  
+diferencia, la coincidencia que hubo, esto en el TPDOS ustedes lo hicieron a mano, que era
+
+**00:04:28.680 - 00:04:34.160**  
+la idea, ¿no? Primero fueron a buscar los contornos, en vez de detectar caras, después
+
+**00:04:34.160 - 00:04:40.000**  
+que curaron a invaderte de jue, en vez de extraer a invadrins de caras, ¿no? y finalmente
+
+**00:04:40.000 - 00:04:47.000**  
+con entrenar a un clasificador para que te diga qué forma tiene, bueno, esa parte clasificador,
+
+**00:04:47.000 - 00:04:56.000**  
+es una manera, pero no es la manera principal usada en reconocimiento de caras, y cuando
+
+**00:04:56.000 - 00:05:02.320**  
+lleguemos a ese punto, eso va a quedar claro, ¿por qué? Bueno, ese proceso mínimo de 3 pasos
+
+**00:05:02.320 - 00:05:12.080**  
+solo amplio para cubrir el tema con más profundidad, ¿no? con algunos pasos adicionales,
+
+**00:05:12.080 - 00:05:17.320**  
+bueno, fíjate, el primero es la detección, ¿tabén? y cada uno de estos cinco pasos que
+
+**00:05:17.320 - 00:05:24.320**  
+le damos los voy a cubrir a lo largo de la presentación, primero es la detección, después
+
+**00:05:24.320 - 00:05:31.040**  
+vienen dos pasos insertados, ¿qué es el de landmarks faciales? Estas marcas faciales
+
+**00:05:31.040 - 00:05:40.800**  
+y usar los landmarks para hacer un alineamiento, porque resulta que los, en general, los
+
+**00:05:40.800 - 00:05:49.120**  
+extractores de embedding se están entrenados con data sets de caras verticales, también
+
+**00:05:49.120 - 00:05:56.520**  
+y no inclinadas. Entonces está bueno que si vos reconoces que una cara esté inclinada, rotarla
+
+**00:05:56.520 - 00:06:01.880**  
+y después se trae los embeddices, eso mejora la calidad del descriptor. Y finalmente
+
+**00:06:01.880 - 00:06:08.830**  
+el reconocimiento que es un problema de clasificación. Bueno, de dección de cara, ¿cómo suele
+
+**00:06:08.830 - 00:06:15.490**  
+pasar con estas imágenes? Esta es fake y lo que del ataque fake es el ancho de la línea
+
+**00:06:15.490 - 00:06:20.010**  
+amarilla de las cajitas que se va haciendo más fina cuando más lejos está, pues se dan
+
+**00:06:20.010 - 00:06:27.110**  
+cuenta que no funciona así, son anotaciones, el ancho debe ser el mismo en todas las
+
+**00:06:27.110 - 00:06:35.590**  
+cajitas. Bueno, aprovecho que cuento un poquito la historia, de la historia, lo que más
+
+**00:06:35.590 - 00:06:45.790**  
+me interesa por ustedes, de hecho me pasó. Viene un grupo y me dice no, estamos usando cascadas
+
+**00:06:45.790 - 00:06:53.870**  
+estejar. Está bien, lo busco a tener internet, lo encontraste todo bien, pero eso es anterior
+
+**00:06:53.870 - 00:07:00.710**  
+al diploma. Está recontra o soleto y después anda mal, pero es la parte. Bueno, bueno,
+
+**00:07:00.710 - 00:07:08.430**  
+entonces vamos a ver, este mismo pensé, o pensé que tiene, hoy tiene un lindo tutorial,
+
+**00:07:08.430 - 00:07:14.270**  
+o pensé 5, lanzó ahora justo antes que pise el patrimestre y tiene un lindo tutorial
+
+**00:07:14.270 - 00:07:20.150**  
+nuevo de detección de reconocimiento de cara, detección y reconocimiento de cara. No
+
+**00:07:20.150 - 00:07:25.250**  
+me fijé si sigue existiendo el tutorial viejo que usaba estas tecnologías antiguas,
+
+**00:07:25.250 - 00:07:34.630**  
+está bien, pero ¿por qué ahora van a ver la aparente contraición? Hay que entender que
+
+**00:07:34.630 - 00:07:39.710**  
+la detección de caras que hoy se hace con Diplarden y prácticamente no tiene sentido
+
+**00:07:39.710 - 00:07:45.070**  
+a lo otro manera, ya existía de antes del Diplarden. Acá hay una línea de tiempo en
+
+**00:07:45.070 - 00:07:52.990**  
+año 2000, Bayola Jones, ahí está Paul Bayola y Michael Jones, son dos apecidos. Bayola Jones
+
+**00:07:52.990 - 00:08:02.870**  
+inventaron un detector livienito, que en su momento se pudo meter adentro de las primeras
+
+**00:08:02.870 - 00:08:09.390**  
+cámaras de fotos digitales y luego de los celulares. Estaba bien. Era liviano, no era muy bueno,
+
+**00:08:09.390 - 00:08:13.390**  
+se confundía con cosas, no importa, pero la importaba que voy a sacar foto, apareciera
+
+**00:08:13.390 - 00:08:19.310**  
+cuadradito, eso ayudaba a enfocar, ayudó a un montón de cosas y se popularizó. También,
+
+**00:08:19.310 - 00:08:26.750**  
+en el 2005 salió algo mucho más confiable, pero más pesado. Por lo tanto, las máquinas
+
+**00:08:26.750 - 00:08:31.850**  
+de fotos y los celulares seguieron usando la versión liviana que total era una cistencia
+
+**00:08:31.850 - 00:08:38.510**  
+del usuario, o sea, no era un proceso totalmente automático. Pero si hubo necesitaba salvo
+
+**00:08:38.510 - 00:08:44.150**  
+más serio, no sé, para hacer tipo vigilancia o algo por estilo, que necesitaba detectar
+
+**00:08:44.150 - 00:08:52.910**  
+cara a cuadro por cuadro. Este histograma de grandes sovientados, H-O-G, H-O-G, es lo que
+
+**00:08:52.910 - 00:09:00.070**  
+se usaba y era el estado del arte. Hasta el adentro del Diplarden. Con el Diplarden, ahí
+
+**00:09:00.070 - 00:09:09.190**  
+te hablan, 2017 salió un detector de caras muy rápido y que prácticamente he hecho
+
+**00:09:09.190 - 00:09:16.710**  
+por tierra a todo lo existente. Obviamente, la Eurima de Bayora John será mucho más livianito
+
+**00:09:16.710 - 00:09:22.310**  
+que este detector de Diplarden, lo que pasa es que para 2017 el poder computacional
+
+**00:09:22.310 - 00:09:30.430**  
+de cualquier celular era bastante bueno y digamos, no podía ejecutar este detector.
+
+**00:09:30.430 - 00:09:36.710**  
+Entonces para que se entienda, ustedes pueden encontrar tutoriales o cosas en internet
+
+**00:09:36.710 - 00:09:43.350**  
+que hablan de los cosas antiguas. En qué caso consideraría yo un Bayora John, o en todo
+
+**00:09:43.350 - 00:09:51.870**  
+caso un H-O-G, y si tuviera que hacer algo en S-P32 y S-P-CAM, en S-P32 no puede, no
+
+**00:09:51.870 - 00:09:58.310**  
+tiene memoria para carar toda la imagen que te trae la cámara. Puede carar algunas líneas
+
+**00:09:58.310 - 00:10:06.870**  
+o algunos pedazos. Bueno, si necesitas hacer un producto, se hago algo muy especializado,
+
+**00:10:06.870 - 00:10:14.550**  
+pero si no usar todo Diplarden. Entonces, acá tenés el modelo, este es de 2000. Para
+
+**00:10:14.550 - 00:10:19.430**  
+el final de la presentación les voy a contar los modelos actuales. La colección de modelos
+
+**00:10:19.430 - 00:10:25.190**  
+actuales que incluso estuvo evolucionando en estos últimos dos años.
+
+**00:10:25.190 - 00:10:31.110**  
+Acá tenés algo un detector. Ustedes conocen los detectores, también, acá te detecta
+
+**00:10:31.110 - 00:10:41.090**  
+caras ya está. Bueno, en la parte de código me las voy salteando, pero de hecho, con la
+
+**00:10:41.090 - 00:10:49.770**  
+tecnología actual puede hacerlo con menos líneas de código todavía. Bueno, el lalmar
+
+**00:10:49.770 - 00:10:56.570**  
+faciales, esto lo voy a pasar rápido porque lo vieron con milla pipe en la primera clases.
+
+**00:10:56.570 - 00:11:01.490**  
+Esta, este en particular es una de los primeros lalmar faciales en ese momento está el biblioteca
+
+**00:11:01.490 - 00:11:09.090**  
+de Lib, cuando todavía no se habían impuestos. O sea, no estaba TensorFlow, no existía para
+
+**00:11:09.090 - 00:11:14.330**  
+el público, era interno de Google. No se habían impuesto Python, TensorFlow como los grandes
+
+**00:11:14.330 - 00:11:19.570**  
+frameworks, entonces tenías que estar dando biblioteca rara para usar estas cosas. Entonces,
+
+**00:11:19.570 - 00:11:24.450**  
+hoy tenés estos lalmar faciales, estos dibujitos que se ven acá, estos antiojos son
+
+**00:11:24.450 - 00:11:30.930**  
+realmente tan reconocen o tienen los puntitos de la cara, reconocen la pose y les meten los
+
+**00:11:30.930 - 00:11:38.770**  
+antiofos de encima. Esto está hecho con mía pipe. De hace varios años, pero ya se usa
+
+**00:11:38.770 - 00:11:44.570**  
+todo con biblioteca. Mía pipe, el de hoy tienen la versión de seis puntos y la versión
+
+**00:11:44.570 - 00:11:51.210**  
+de trecientos puntos, obviamente distintas performance. Ahora, ¿para qué lo querés vos? Si querés
+
+**00:11:51.210 - 00:11:55.930**  
+encerro de aumentada, la trecientos puntos está buenísimo, porque hasta poderso obtener
+
+**00:11:55.930 - 00:12:01.250**  
+una... Esta no es eso, la trecientos puntos se la mostrían en su momento, hasta pues obtener
+
+**00:12:01.250 - 00:12:05.050**  
+una máscara 3D de la cara de la de la persona.
+
+**00:12:05.050 - 00:12:14.290**  
+Entonces, ¿para qué usarías esto para el alineamiento? Y el alineamiento puede pensar
+
+**00:12:14.290 - 00:12:23.330**  
+lo mucha manera, pero la parte más fácil de toda es ver los ojos. Muy bien, acá está.
+
+**00:12:23.330 - 00:12:28.010**  
+Este, oh, y se me fue el nombre de este muchacho. Bueno, este tipo que escribió un montón
+
+**00:12:28.010 - 00:12:36.450**  
+de artículos, les escribió sobre esto, tiene un sitio de visión artificial muy bueno
+
+**00:12:36.450 - 00:12:43.890**  
+y escribió varias libros del tema. Tiene una maestría en visión artificial. Dice, mira,
+
+**00:12:43.890 - 00:12:51.490**  
+para venir, tiene que obtener los ojos, solamente los ojos. Estos puntos rojos, son los ojos
+
+**00:12:51.490 - 00:12:57.890**  
+dibujados, está tratando de anotar la posición de los ojos. Hoy usas el detector liviano,
+
+**00:12:57.890 - 00:13:04.650**  
+de los 6 puntos que te da, dos de ellos son los ojos. Y lo que te hice es mirar,
+
+**00:13:04.650 - 00:13:11.210**  
+voz a rotar la imagen para que esta línea verde quedó horizontal y la vas a escalar para
+
+**00:13:11.210 - 00:13:16.170**  
+que la separación de los ojos queden en dos colonadas predeterminadas. O sea, que el
+
+**00:13:16.170 - 00:13:21.410**  
+tipo dijo, yo había recortado la imagen de tantos píxeles por tantos píxeles y los ojos
+
+**00:13:21.410 - 00:13:27.730**  
+van a estar acá y acá. Está bien. Así es simple. Entonces, se hace una homografía. En este
+
+**00:13:27.730 - 00:13:36.730**  
+caso es menos una transformación a fin, específicamente una rotación, traslación escala. Y con
+
+**00:13:36.730 - 00:13:43.730**  
+eso, acá se nota esta línea de diagonal que se ve acá en la foto está más bien vertical.
+
+**00:13:43.730 - 00:13:52.570**  
+Entonces, le giró la cara y eso mejora mucho la extracción de embeddings del paso siguiente.
+
+**00:13:53.410 - 00:14:00.170**  
+Bueno, acá llegamos FaceNet. Fue el primer, el primer extracador de embeddings para
+
+**00:14:00.170 - 00:14:07.170**  
+reconocimiento facial, fue creado por Facebook. Bueno, hoy estoy medio rento para responder así que
+
+**00:14:07.170 - 00:14:12.170**  
+no les voy a hacer la pregunta, se le voy a decir directamente. Creo que bastante hoy que Facebook,
+
+**00:14:12.170 - 00:14:17.930**  
+especialmente en aquella época, tenía mucho interés en hacer reconocimiento facial porque ellos tenían
+
+**00:14:18.770 - 00:14:24.650**  
+toneladas de fotos de gente. La gente compartía sus fotos en Facebook todo lo que se
+
+**00:14:24.650 - 00:14:29.210**  
+haga con el celular, lo subía Facebook y todas las redes sociales. Era la red social, tenía
+
+**00:14:29.210 - 00:14:36.050**  
+todo ahí. Entonces, le interesaba empezar a reconocerlo. Bueno, una parte de entrenamiento en
+
+**00:14:36.050 - 00:14:44.650**  
+aquella época es que decía a vosos amigos de Pepito, mira, me ayudas a confirmar si pepito
+
+**00:14:44.650 - 00:14:50.970**  
+traen estas fotos, también, y vos lo ayudaba, le daba sin formación para su propio entrenamiento
+
+**00:14:50.970 - 00:14:56.330**  
+y de apuración. Le decía que si o que no, y después esa información se usaba para
+
+**00:14:56.330 - 00:15:05.530**  
+depurar el agorismo, de depurar el dataset. Bien, entonces esto que hizo, el embedding es un
+
+**00:15:05.530 - 00:15:13.330**  
+descriptor, son 128 valores que cumplen, te voy a recordar, primera clase, que cumple con
+
+**00:15:13.410 - 00:15:23.630**  
+este requerimiento de cuando vas a clasificar cada categoría, tiene todos sus factores, sus
+
+**00:15:23.630 - 00:15:29.350**  
+descriptores, amontonados y separados de otras categorías. Entonces, después el clasificador
+
+**00:15:29.350 - 00:15:40.550**  
+rápidamente distingue las regiones, esa es la idea de un embedding. Entonces, la pregunta es ¿cuáles
+
+**00:15:40.550 - 00:15:49.630**  
+son las categorías? Si vos crees generar, entrenar tu embedding, también entrenar un sistema
+
+**00:15:49.630 - 00:15:57.710**  
+que genera embedding, ¿cuáles son las categorías? A ver alguno que se anime a responder, aventura
+
+**00:15:57.710 - 00:16:17.530**  
+una respuesta, estamos. Y para persona profe puede ser de género. Bueno, no es esa la respuesta
+
+**00:16:17.530 - 00:16:22.570**  
+que estoy buscando, eso podría ser una categoría, vos podrías separar por edad, por ejemplo,
+
+**00:16:22.570 - 00:16:27.010**  
+¿no? Pero en este caso es más preciso, también tiene que ver con lo que está... No te digo
+
+**00:16:27.010 - 00:16:32.590**  
+a vos le digo a todos, a ver, ¿hay una... ¿para qué crees los embedding? ¿Qué es lo que
+
+**00:16:32.590 - 00:16:38.770**  
+crees distinguido? ¿Qué categorías crees distinguido? Yo cuando digo categorías para usar
+
+**00:16:38.770 - 00:16:46.250**  
+el nombre técnico, ¿no? Lo tiene que pensar la categoría desde lo que significa técnicamente
+
+**00:16:46.250 - 00:16:54.780**  
+en informática, ¿no? En el mundo ustedes. Bueno, a ver, ustedes quieren distinguir personas,
+
+**00:16:54.780 - 00:17:03.380**  
+individuos. Cada individuo es una categoría. Toda la foto que saca del mismo individuo es un
+
+**00:17:03.380 - 00:17:09.300**  
+conjunto, cada uno te tiene un embedding ligeramente distinto y la idea es que entre ellos sean todos
+
+**00:17:09.300 - 00:17:16.660**  
+parecidos. Está bien y cuando viene otra persona, esa persona genere otro mundo de caras,
+
+**00:17:16.660 - 00:17:24.820**  
+que sean parecidos, etc. distintas a las otras personas. Entonces, ponen y te has un dataset
+
+**00:17:24.820 - 00:17:33.660**  
+de mucha gente. Bueno, Facebook la tenía. Supongo que debe haber dataset públicos de esos. La verdad
+
+**00:17:33.660 - 00:17:43.900**  
+que no los busqué, pero a sumiría que hay más de uno. Entonces, FaceNet fue el primer modelo,
+
+**00:17:43.900 - 00:17:51.220**  
+que vos le ponías una imagen, como todos estos modelos, acá te dice, no es de OpenFace. Así
+
+**00:17:51.220 - 00:17:58.380**  
+es este. Imágenes de 96 píxeles por 96 píxeles. Las imágenes siempre son lo más chico posible,
+
+**00:17:58.380 - 00:18:04.300**  
+mientras no pierdas la información que querés ver. Si vos querés reconocer una persona con una foto
+
+**00:18:04.300 - 00:18:10.780**  
+carnet es suficiente. No tiene sentido meter un full HD por poner ahí, está bien. Ahora sí,
+
+**00:18:10.780 - 00:18:16.780**  
+poner 10 píxeles por 10 píxeles ya no, ahí no vas a reconocer a la persona. Entonces, vamos,
+
+**00:18:16.780 - 00:18:25.500**  
+se puede decir que es de 100 por 100 para aproximar. Este modelo se hizo público y todos los reconocedores
+
+**00:18:25.500 - 00:18:34.140**  
+de caras se hacían con este. Bueno, al poco tiempo no está en este depositivo. Bueno, al poco
+
+**00:18:34.140 - 00:18:41.980**  
+tiempo, 2018, salió ArcFace y luego salió otro, así que esto les voy a mostrar las tecnologías
+
+**00:18:41.980 - 00:18:47.860**  
+más modernas hacia el final de la presentación. Bueno, acá estoy explicando lo que es un embedding,
+
+**00:18:47.860 - 00:18:52.620**  
+usted ya lo saben, porque usted sabe lo que es un descriptor. También, la idea es que a Montone
+
+**00:18:52.620 - 00:19:01.260**  
+los embedding es un vector y lo que decía para la misma persona se dan cúmulos y distintas personas
+
+**00:19:01.260 - 00:19:08.500**  
+tienen cúmulos separados. Bien, me paso el código. Antes de ir a la última parte de reconocimiento,
+
+**00:19:08.500 - 00:19:15.460**  
+a que yo estoy acá metiendo una que no anticipé medio propósito, pensamos clastering.
+
+**00:19:17.860 - 00:19:24.660**  
+No sé si ustedes recuerdan clastering, eran el único tipo de Machine Learning que yo les mostré
+
+**00:19:25.180 - 00:19:32.660**  
+que no era supervisado. O sea, como vuelo a entrenar, no le decís que es. Bueno, resulta que
+
+**00:19:32.660 - 00:19:39.420**  
+clastering vuelo puedes aplicar para las caras, en realidad aplicar sobre los embedding. Entonces,
+
+**00:19:39.420 - 00:19:46.020**  
+¿qué va a ser clastering? No es un clasificador en el sentido de que no sabe quién es, pero te va a
+
+**00:19:46.020 - 00:19:51.980**  
+separar grupos. Entonces, pues tienes un montón de fotos y te van a decir, este conjunto de fotos
+
+**00:19:51.980 - 00:19:57.260**  
+es de una persona, de la misma persona. Y este otro conjunto de fotos es de otra misma persona,
+
+**00:19:57.260 - 00:20:06.980**  
+también bueno acá también sí, que es yo. Y así, va tirando, va tirando un desarrollo
+
+**00:20:06.980 - 00:20:15.500**  
+siempre el mismo ejemplo inventado que es fácil de entender, ¿no? Posten es una cámara de seguridad
+
+**00:20:15.500 - 00:20:22.540**  
+en lugar público. Bueno, conoce la identidad de toda la gente que pasa por ahí, pero vos puedes
+
+**00:20:22.540 - 00:20:29.540**  
+hacer un algoritmo que te diga, che, yo no sé quién es este tipo, pero lo vi miradiendo ayer de
+
+**00:20:29.540 - 00:20:35.540**  
+tarde, ayer de mañana, ante ayer de tarde, también, y lo estoy volviendo a ver, cuando el resto
+
+**00:20:35.540 - 00:20:41.260**  
+de la gente pasa y no la vuelvo a ver nunca va, este lo estoy viendo seguido. Entonces, ese
+
+**00:20:41.260 - 00:20:49.900**  
+tipo de cosas que vos puedes hacer con caras, en este caso con clástering, bien. Bueno,
+
+**00:20:49.900 - 00:20:57.220**  
+entonces vamos al reconocimiento, también. Si nosotros encaramos el reconocimiento de la manera
+
+**00:20:57.220 - 00:21:04.340**  
+que hicieron el TPO, lo que tiene que hacer es un clasificador, también, y después le voy a
+
+**00:21:04.340 - 00:21:09.660**  
+mostrar otras maneras, pero piense de en esto, tenés un montón de descriptores, ¿cómo
+
+**00:21:09.660 - 00:21:15.540**  
+tenés un clasificador? Bueno, estas varias fotos de cada individuo, obtener los embeddings de
+
+**00:21:15.540 - 00:21:20.460**  
+todas esas fotos para hacer el dataset con el que vas a entrenar, o sea, ustedes hicieron esos,
+
+**00:21:20.460 - 00:21:27.700**  
+agarraron varios jugados y les trajeron sus invariantes de jú, después agarraron varios triángulos
+
+**00:21:27.700 - 00:21:33.780**  
+y lo mismo, y varias otras tres y lo mismo, ¿no? Y entrenaron el clasificador supervisado diciendo para
+
+**00:21:33.860 - 00:21:42.780**  
+cada imanete de jú que forma era. Bueno, acabo vas a tener identidades, vas a tener varias fotos de cada
+
+**00:21:42.780 - 00:21:49.660**  
+persona, muchas personas, y para cada foto vas a decir quién es, ¿el quién es? Es un ID, ¿vale?
+
+**00:21:49.660 - 00:21:56.020**  
+vas a decir a un ID cualquiera, esa es la etiqueta, ahora es el nombre de la persona, para la máquina,
+
+**00:21:56.020 - 00:22:03.100**  
+es un número entero, y voy a tener un dicionario que diga el número 3, es fundamental. Bueno, esa es la manera
+
+**00:22:03.780 - 00:22:10.500**  
+en que uno abordaría el problema, ¿cuál es? ¿Cuál es el gran tema? Primero todo, ¿qué pasa cuando
+
+**00:22:10.500 - 00:22:19.140**  
+vos está haciendo control de acceso? También en un LAN, ¿y si sabes que se incrivió un alumno nuevo?
+
+**00:22:20.540 - 00:22:28.430**  
+¿Cómo procedes? A ver, deberías, bueno, deberías sacarle varias fotos, pero después tenés que
+
+**00:22:28.430 - 00:22:33.670**  
+volver a entrenar el clasificador completo. También, bueno, pues agregar una persona, tener que
+
+**00:22:33.670 - 00:22:44.270**  
+entrenar el clasificador completo. Por eso, por ese tema de que va a ir, va a ir apareciendo gente
+
+**00:22:44.270 - 00:22:51.550**  
+nueva y bueno, quería entrenar todo de nuevo, es que aparecen otros abordajes para el reconocimiento
+
+**00:22:51.550 - 00:23:00.350**  
+final y se llaman base de datos vectoriales. Bueno, ¿cómo funcionan? Funcionan con la otra manera
+
+**00:23:00.350 - 00:23:11.640**  
+que se habían enseñado de buscar descriptores, por distancia. Entonces, esto es así, vos no sacás 10
+
+**00:23:11.640 - 00:23:16.440**  
+fotos a cada persona, ¿de esa caso una o les sacás dos? Depende el método lo que te funcione.
+
+**00:23:16.440 - 00:23:22.560**  
+Vamos a suponer que sacas una sola. Esa foto de la guarda y decís este la identidad, no? El
+
+**00:23:22.560 - 00:23:32.630**  
+ID número 58 y le pone la identidad. Fúla nueva. Sacásele en bedings de esa foto y esa es tu
+
+**00:23:32.630 - 00:23:42.510**  
+referencia. Entonces, todos los embeddings que sean parecidos a ese, que sean más parecidos a ese
+
+**00:23:42.510 - 00:23:49.550**  
+que a otro, vuelvo a asociar con esa, con ese ID, con esa persona. De hecho, vas a definir una
+
+**00:23:49.550 - 00:24:00.110**  
+distancia máxima y ya está. Entonces, pone, tienes que entrenar un clasificador para poder reconocer
+
+**00:24:00.110 - 00:24:05.510**  
+a la persona. Lo que vos tenés que hacer es cada vez que una persona pasa y vos sacás la foto y
+
+**00:24:05.510 - 00:24:14.510**  
+sacás el embeddings, tenés que recorrer tu base de datos buscando a ver a cuál se parece más. Y por
+
+**00:24:14.510 - 00:24:20.030**  
+eso, digamos, para este tipo de problemas, existen las bases de datos vectoriales. Ya usted
+
+**00:24:20.030 - 00:24:27.270**  
+esconoce una base de datos SQL, una base de datos, ¿no? SQL, bueno, nada de una base de datos SQL
+
+**00:24:27.270 - 00:24:36.350**  
+que le vuelve a escribir, la instrucción SQL y la relación a tabla, sesor. Bueno, acá en la base
+
+**00:24:36.350 - 00:24:42.510**  
+de datos vectoriales está ordenada, está indexada, de una manera que cuando vuelves a diras un
+
+**00:24:42.510 - 00:24:53.330**  
+descriptor, el tipo es muy eficiente buscando el de menor distancia. Sé que sí, se entendió, pero
+
+**00:24:53.330 - 00:25:01.930**  
+se entendió lo que dije. También, entonces, existe algo, yo esto me parece que se lo mencioné muy
+
+**00:25:01.930 - 00:25:06.730**  
+por arriba en su momento cuando digo descriptores. Este es un tema que yo no estoy abordando en esta
+
+**00:25:06.730 - 00:25:17.570**  
+materia. Lo conozco bien, digamos, no tengo tiempo para meterme, que esto es una, hay una
+
+**00:25:17.570 - 00:25:27.130**  
+tuve una biblioteca, es algoritmos de aproximación para encontrar el vecino más cercano. El vecino
+
+**00:25:27.130 - 00:25:35.690**  
+más cercano es el descriptor de menor distancia, es eso. Y aproximado significa que para evitar la
+
+**00:25:35.690 - 00:25:41.610**  
+fuerza brutal y tener que comparar con la totalidad de las identidades que vos tenés, imagínate
+
+**00:25:41.610 - 00:25:47.570**  
+tras en un lamp, en ese 30 mil alumnos y cada uno que pasa, tenés que recorrerlos 70 mil y
+
+**00:25:47.570 - 00:25:58.610**  
+vivir cuál es cuál te da este menor distancia. La versión del aproximada es una versión estadística
+
+**00:25:59.610 - 00:26:07.130**  
+que te encuentra, te ordena la base de datos para que la búsqueda es como si fuera indexada, lo que
+
+**00:26:07.130 - 00:26:12.570**  
+pasa es que acá tenés muchas dimensiones más complicadas, para que la búsqueda sea más directa,
+
+**00:26:12.570 - 00:26:18.970**  
+o sea, se saltea, empieza con unas primeras comparaciones y se saltea grupos enteros porque se sabe
+
+**00:26:18.970 - 00:26:26.610**  
+que están alejados. Y entonces acelera frente a la fuerza brutal, pues no se va 20 veces más rápido.
+
+**00:26:28.610 - 00:26:33.090**  
+Se lo tiré muy por arriba, porque la verdad es que su tema que eso conozco un punto de no y no
+
+**00:26:33.090 - 00:26:40.410**  
+se lo se estuve explicando bien, pero existe eso, va a ser datos vectoriales para hacer esas
+
+**00:26:40.410 - 00:26:48.330**  
+búsquedas bien tener que entrenar el clasificador cada vez. Bueno, vamos a dar los modelos, los modelos,
+
+**00:26:48.330 - 00:26:55.530**  
+estos son los modelos que serán cuando opense de 5, o sea que salieron recién, acá está, junio
+
+**00:26:56.050 - 00:27:07.390**  
+2016. Junet es un detector y ajá, acá está el detector de Junet, la próxima de positiva, pero que
+
+**00:27:07.390 - 00:27:21.630**  
+vemos el extrator de enbating. De hecho, se usa así en la biblioteca o la clase Face Detector y
+
+**00:27:21.630 - 00:27:28.150**  
+llega en el que Junet punto direct, le ponen la imagen y te lo detecta, te detecta las caras,
+
+**00:27:28.150 - 00:27:36.470**  
+te vuelve cajitas y después acaba de irse detectas con Junet y usas ese Face para estar a los enbating,
+
+**00:27:36.470 - 00:27:43.670**  
+qué hace de que está acá, ese Face. Está bien, este es el 2021, no yo lo que les comenté
+
+**00:27:43.670 - 00:27:56.910**  
+es que FaceNet es 2015, ARKNet es 2018 y ese Face 2021, hasta hace poco pensé de recomendar
+
+**00:27:56.910 - 00:28:06.110**  
+ARKNet de 2018, ahora recomienda ese Face, la verdad que a esta altura en mi experiencia empiezan
+
+**00:28:06.110 - 00:28:12.790**  
+a ser muy parecidos, los más nuevos tienen menos frícciones, o sea que si tenés oportunidad,
+
+**00:28:12.790 - 00:28:18.350**  
+usa el más nuevo que va seguramente resolvió problemitas que tenían los anteriores, está bien,
+
+**00:28:18.350 - 00:28:24.790**  
+pero fíjate que es 2021 porque esto dejó de ser una disciplina en desarrollo y ya es una disciplina
+
+**00:28:24.790 - 00:28:32.550**  
+a madura, entonces si surge una versión de un extrator de enbating en el 2016, habría que
+
+**00:28:32.550 - 00:28:39.430**  
+ver bien qué ventaja tiene, porque posiblemente ya te diría que con ARKFACE, FaceNet andaba
+
+**00:28:39.550 - 00:28:46.230**  
+bien y con ARKFACE prácticamente habíamos llegado a lo máximo, supuestamente ese Face mejora un
+
+**00:28:46.230 - 00:28:56.710**  
+poquito más, este ahora fíjate, Face Recognizer SF que significa, ese Face fíjate los métodos que
+
+**00:28:56.710 - 00:29:05.150**  
+tienen, Align Crop, o sea vos recortas la cajita de la imagen original donde puede haber varias
+
+**00:29:05.150 - 00:29:11.710**  
+caras, se agarras una, lo ponés acá y le pedís que era Aline, te va a generar la imagen ya
+
+**00:29:11.710 - 00:29:20.990**  
+enderezada, en vez de tener que hacerlo vos con los LAN marx y todo eso, este tipo de especialización
+
+**00:29:21.990 - 00:29:30.110**  
+te viene a confirmar el pipeline de reconocimiento de caras, cuando todo el mundo lo hace exactamente así
+
+**00:29:30.110 - 00:29:36.230**  
+y esa es la manera de hacerlo, entonces ya empiezan a surgir los métodos, ya ha definido,
+
+**00:29:36.230 - 00:29:44.110**  
+puedo decir che, este es un wrapper, un envoltorio para un modelo de enbatings, dice si, pero ya que
+
+**00:29:44.110 - 00:29:50.510**  
+estamos te doy la dinamiento y te doy, bueno, Feature fíjate el nombre, no? Feature, descripción,
+
+**00:29:50.510 - 00:29:59.150**  
+Features y enbatings viene a ser todo lo mismo, es el método que te extrae, los 128, el Array
+
+**00:29:59.150 - 00:30:06.510**  
+es 128 valores, del imagen, que típicamente va a estar adiñada, así bueno, que no la dirías,
+
+**00:30:08.990 - 00:30:15.910**  
+y de paso te da el cálculo de distancia, ese cálculo de distancia es lo que vos usarías
+
+**00:30:15.910 - 00:30:23.230**  
+en una base de datos vectorial, por las dudas les cuento cuando vos tenés un sistema de reconocimiento
+
+**00:30:23.230 - 00:30:33.200**  
+para controlar acceso, tenés una camarita, hoy típicamente es una tabla que está puesto ahí,
+
+**00:30:33.200 - 00:30:39.480**  
+entonces en la pantalla te muestra lo que ve la cámara, te veo la voz mismo, te pone el cuadradito
+
+**00:30:39.480 - 00:30:45.200**  
+de la cajita que está reconocido la cara y demora un poquito más y te dice el nombre,
+
+**00:30:45.200 - 00:30:51.200**  
+entonces usted dice si no te reconoció, por ejemplo, vos cuando chiqués el nombre, puedes
+
+**00:30:51.200 - 00:30:54.800**  
+arte cuenta que te reconoció a vos, no sé qué nos seguimos con,
+
+**00:30:58.400 - 00:31:05.280**  
+estos sistemas hay dos maneras, el tipo tiene la cajita, genera o manda la imagen al backend
+
+**00:31:06.280 - 00:31:12.560**  
+o extrae los enbatings ahí y manda los enbatings al backend a la base de datos vectorial para que
+
+**00:31:12.560 - 00:31:19.960**  
+busque el machío, eso es lo que suele pasar, algunos depende del tamaño de la base de datos,
+
+**00:31:20.480 - 00:31:32.080**  
+voy a ciché, tengo 70 mil estudiantes, también con 128 floats cada cada persona, cada uno,
+
+**00:31:33.120 - 00:31:40.040**  
+cuánta memoria me ocupa y por eso no nos megas, que te entra en cualquier celular, en cualquier
+
+**00:31:40.040 - 00:31:47.520**  
+tabla, en cualquier lado, entonces si entra a veces los propios dispositivos de manera local para
+
+**00:31:47.520 - 00:31:53.840**  
+evitar la latencia se descargan la base de datos, hace una búsqueda local que supuestamente más
+
+**00:31:53.840 - 00:32:03.820**  
+rápida, si no no tiene sentido todo esto, y si no lo encuentra, entonces hace la búsqueda en el
+
+**00:32:03.820 - 00:32:12.140**  
+backend, porque el backend puede estar más actualizado, también, ahí hace un fold, ahí se cae,
+
+**00:32:12.660 - 00:32:20.380**  
+pero bueno eso son las técnicas más bien informáticas como para implementar un sistema de acceso por
+
+**00:32:20.380 - 00:32:27.290**  
+reconocimiento de cara, bueno les cuento, esto si se van a meter con el tema está bueno que
+
+**00:32:27.290 - 00:32:33.570**  
+conozcan los términos, siempre les digo, tienen que saber que Jog y Bayora Jones son técnicas muy
+
+**00:32:33.570 - 00:32:40.570**  
+antiguas, estas son de las 25, no son antiguas, son recontraval y asociar, yo reciente mostré de 2
+
+**00:32:40.570 - 00:32:51.170**  
+soluciones de OpenCV 5, si tenemos OpenCV 4 no están, pero en 2025 vos te, no en 1995, o sea,
+
+**00:32:52.210 - 00:33:00.050**  
+hoy también, pasa que antes de tener todo OpenCV también estaba siguiendo DeepFace, que es una biblioteca
+
+**00:33:00.050 - 00:33:08.450**  
+que no están a OpenCV, la vez de Jalazza parte, y es un front-end para varios modelos, por ejemplo,
+
+**00:33:08.450 - 00:33:14.250**  
+pues le voy a elegir ArcFace or FaceNet, que son las dos que te mencioné antes, y tenés otra
+
+**00:33:14.250 - 00:33:20.210**  
+más vieja, veje que Face de Deep son bastante más viejas, también, es multivacán en el sentido de que si
+
+**00:33:20.210 - 00:33:27.130**  
+tiene el backend de PayTorch, el Torch lo va a usar y si tenés el TensorFlow también lo va a usar,
+
+**00:33:27.130 - 00:33:35.490**  
+o sea, normalmente te van a dar, no vas a tener problemas, entonces vos cuando vas a reconocer,
+
+**00:33:35.490 - 00:33:42.970**  
+decir que un modelo que eres usar, es más fácil, imposible, tiene mucho más variedad, y finalmente,
+
+**00:33:46.890 - 00:33:58.960**  
+FaceAppy.js, esto es TensorFlow, si no me equivoco, es lo que más se usa, si lo tenés que hacer en
+
+**00:33:58.960 - 00:34:05.020**  
+JavaScript, porque lo vas a hacer para el navegador, lo vas a usar para asegurar lo que sea, y te
+
+**00:34:05.020 - 00:34:11.900**  
+hace esto, detection, alineamiento y envidiencias, exactamente todo lo que bonistas en una API de JavaScript,
+
+**00:34:11.900 - 00:34:19.540**  
+así que depende donde lo vas a implementar, tenés esta salte nativa, lo puedes tener de ya hecho
+
+**00:34:19.540 - 00:34:24.980**  
+no pence ver, lo puedes tener de una biblioteca de DeepFace, o para JavaScript, especialmente,
+
+**00:34:24.980 - 00:34:31.860**  
+FaceAppy, eso viene a representar el estado del arte, y después tenés otro a viejo, bueno,
+
+**00:34:31.860 - 00:34:38.180**  
+va a ser a teoriales, ya te lo dije, le puse estado de líneas acá, pero eso te lo hacen,
+
+**00:34:38.180 - 00:34:45.980**  
+la boca es por distancia, bueno, una cosita que no les mencioné acá,
+
+**00:34:45.980 - 00:34:53.700**  
+Junet, fíjense, acá está la documentación que pensé, está, acá hay un tutorial, son
+
+**00:34:53.700 - 00:35:00.620**  
+dos cosas distintas, documentaciones, la sintaxis de la función y que devuelve, el tutorial
+
+**00:35:00.620 - 00:35:10.100**  
+es código ejemplo de este, a ver, FaceDetection and Recognition, este tutorial te hace todo, también te
+
+**00:35:10.100 - 00:35:15.980**  
+lo da completo, lo único, creo que no tiene es la va a ser vectorial, que además yo tampoco te estoy
+
+**00:35:15.980 - 00:35:24.060**  
+diciendo como se usa, eso es más informática, no es división artificial, pero acá tenés el modelo
+
+**00:35:24.060 - 00:35:27.660**  
+para detección, porque cada vez que vos tenés que usar un modelo de DeepLardin, o pense bien,
+
+**00:35:27.660 - 00:35:33.980**  
+no trae modelos de DeepLardin, te lo facilita, pues tenés que ir a la página y descargarte los,
+
+**00:35:33.980 - 00:35:41.420**  
+entonces ahí tenés el link para de si va a usar Junet, descargar el modelo de Junet, si va a
+
+**00:35:41.420 - 00:35:47.900**  
+usar ese Face acuérdate, tenés que usar un detector y un escritor, los dos, acá está el modelo de
+
+**00:35:47.900 - 00:35:53.140**  
+ese Face para descargar, y lo mismo, si voy a decir no, voy a usar DeepFace, bueno, pero descargar
+
+**00:35:53.140 - 00:35:58.300**  
+el modelo que va a ser usar, o sea, porque DeepFace quiere usar a Garface, tenés que tener el
+
+**00:35:58.300 - 00:36:05.580**  
+descargador modelito de Face, o de FaceNet, o aquí otro que está acá, ¿de acuerdo? Bueno, listo,
+
+**00:36:05.580 - 00:36:15.330**  
+alguna pregunta, yo mientras voy preparando y voy abriendo las otras presentaciones,
+
+**00:36:15.330 - 00:37:08.100**  
+¿de un listo que quiero ver? Sí, no, no te va, un segundo que tengo que buscarlas, bueno,
+
+**00:37:08.660 - 00:37:23.420**  
+acá está, voy a compartir de vuelta, pantalla, introducción, bueno, tiene una pantalla roja,
+
+**00:37:23.420 - 00:37:28.820**  
+confirma que está viendo eso, también, esto es una, cuando tiene acá el iconito del pochoclo,
+
+**00:37:28.820 - 00:37:35.260**  
+que es una presentación pochoclera, está no tiene, no tiene mucho cabeza, es bien de introducción,
+
+**00:37:35.260 - 00:37:44.270**  
+confirma en medio y arranco, sí, hay alguien a hablar, bueno, supongo que me dijo que sí que
+
+**00:37:44.270 - 00:37:51.950**  
+le está viendo, escuché muy bajito, bueno, lo que le voy a contar acá es una, un conjunto de
+
+**00:37:51.950 - 00:38:00.990**  
+tecnologías que se desarrolló, una, emparantada con la otra, son como tres disciplinas, son 13
+
+**00:38:00.990 - 00:38:09.830**  
+especialidades o disciplinas distintas, pero que juntas, forman un caso de uso, entonces muchas
+
+**00:38:09.830 - 00:38:13.910**  
+de ellas cuando uno está desarrollando algo, está pensando en las otras dos, se llaman
+
+**00:38:13.910 - 00:38:21.550**  
+detección, descripción y macho de features o de características, o otra vez el nombre
+
+**00:38:21.550 - 00:38:28.830**  
+característica está en génerico, que no dice nada, en este contexto, en el detección de features,
+
+**00:38:28.830 - 00:38:37.150**  
+se refiere a puntos, entonces detecciones, tenés una imagen y detectar cosas, en este caso, bueno,
+
+**00:38:38.150 - 00:38:42.550**  
+descripción, ustedes saben lo que es un descripción, es abstracto, le voy a contar como funciona para
+
+**00:38:42.550 - 00:38:49.950**  
+este, en este caso, y esto es el macho, esta imagen de pudo aparecer, pero cuénteme, ¿qué le sugiere
+
+**00:38:49.950 - 00:38:58.390**  
+esta imagen de acá? Este ejercicio mental ya lo hicimos en la primer clase, con otra imagen,
+
+**00:38:58.390 - 00:39:14.260**  
+por las dudas, acá abajo el izquierda, esto es un cuadro de bango, pone a micrófono, así lo se escucha,
+
+**00:39:14.660 - 00:39:28.590**  
+no está machando los colores de la imagen, de la izquierda, la derecha.
+
+**00:39:28.590 - 00:39:35.350**  
+Sí señor, sí señor, es mucho más, no solamente los colores, pero básicamente está diciendo
+
+**00:39:35.350 - 00:39:41.830**  
+che, cosas que yo vivo en este imagen, las estoy contrando en este imagen, pero acá en chiquitito,
+
+**00:39:42.630 - 00:39:52.150**  
+entonces la coherencia visual de estas líneas rojas a nosotros nos da la sensación de que
+
+**00:39:52.150 - 00:40:00.550**  
+está encontrando bien la imagen, de todo modo la idea es la notación es para nosotros, la idea
+
+**00:40:00.550 - 00:40:06.950**  
+es que hay un reconocimiento automático, entonces eso se puede hacer, este cuadro lo encontré acá,
+
+**00:40:07.430 - 00:40:13.270**  
+bueno, entonces estamos buscando correspondencia, se les hizo una introducción a correspondencia,
+
+**00:40:13.270 - 00:40:19.430**  
+pudo correspondiente, lo vimos en veridad, bueno ahora con SolPNP hicimos correspondencia 3D2D,
+
+**00:40:19.430 - 00:40:27.710**  
+en este caso 2D2D, y parecido SolPNP estamos haciendo correspondencia de puntos,
+
+**00:40:27.710 - 00:40:35.150**  
+está puntos, una coordenada de quisi en una imagen, se corresponde con otra coordenada de quisi en
+
+**00:40:35.150 - 00:40:44.510**  
+otra imagen, correspondencia 2D2D, también acá tenés un caso, vos podés intuir que con estas
+
+**00:40:44.510 - 00:40:51.270**  
+correspondencias matemáticamente vos podés descubrir que una es la versión rotada de la otra,
+
+**00:40:55.270 - 00:41:00.550**  
+en esa correspondencia tenés la información de rotación, hay que ver cómo analizarlo, pero
+
+**00:41:01.110 - 00:41:06.190**  
+podés llegar, bueno acá es más de lo mismo, son mucho más correspondencias, en este caso las 2
+
+**00:41:06.190 - 00:41:12.950**  
+imágenes están superpuestas, hay una rotación escala, acá intuitivamente nosotros vemos una especie
+
+**00:41:12.950 - 00:41:20.270**  
+de espiralado, si bien son todas el cemento de rectas, forman ese efecto de espiral, que está diciendo
+
+**00:41:20.270 - 00:41:25.710**  
+es como que lo estoy rotando y alejando, o acercando, depende para que le he quedado lo estés viendo,
+
+**00:41:26.710 - 00:41:33.270**  
+bueno acá donde tenemos, fíjate vos, si yo puedo, a partir de una imagen de referencia,
+
+**00:41:33.270 - 00:41:40.350**  
+encontrar machivos con otra imagen, yo puedo decir che, es el mismo lugar, esto sería una cosa,
+
+**00:41:40.350 - 00:41:46.190**  
+de hecho se usa esto, se usó muchísimo, se sigue usando hay cosas mejores, pero esto es
+
+**00:41:46.190 - 00:41:56.190**  
+uso montón, acá tengo otra manera de hacer detección de objetos, ustedes hicieron el tp2
+
+**00:41:56.190 - 00:42:03.910**  
+detección con contornos, detectaran un contorno y después con el imágenes de jú, decían
+
+**00:42:03.910 - 00:42:10.550**  
+cuál es la forma, bueno sirvió para contornos, pero si hubo que ver, por ejemplo no sirvió para
+
+**00:42:10.590 - 00:42:17.710**  
+caras, porque la cara no la reconoce por el contorno, tiene que ver adentro, bueno, en este caso,
+
+**00:42:17.710 - 00:42:24.510**  
+acá te está haciendo este machéo, te permite a vos decir che, detecté a como se llama este
+
+**00:42:26.510 - 00:42:33.670**  
+amarlín, detecté amarlín en este lugar, este no es nimo, es el padre de nimo, bueno,
+
+**00:42:33.670 - 00:42:41.070**  
+otra cosa donde se usa, esta ilustración, te foto lo encontré, se entiende, stitching, hacia
+
+**00:42:41.070 - 00:42:48.670**  
+alineamiento entre imágenes, yo digo consecutivas cercanas para componer una sola panorámica,
+
+**00:42:48.670 - 00:42:56.870**  
+esa básicamente la superpone haciendo rototransaciones calas, alineando la para poder hacer una imagen
+
+**00:42:56.870 - 00:43:04.190**  
+conjunta, una completa, todas sonografías, más que rototransaciones calas, y finalmente esto
+
+**00:43:04.190 - 00:43:10.230**  
+que esa estructura es, acá hay varias cosas que yo aprovecho y los comento, en azul vos tenés
+
+**00:43:10.230 - 00:43:16.950**  
+amarillas y azules, o sea evidentemente esto ya pasó por un proceso que pudo evaluar cuál es
+
+**00:43:16.950 - 00:43:22.830**  
+también y cuál es es tan mal, por ejemplo esta azul que viene de acá abajo acá arriba, nosotros
+
+**00:43:22.830 - 00:43:26.830**  
+nos damos cuenta que está mal, lo bueno es que hay un proceso automático que te puede decir
+
+**00:43:26.830 - 00:43:32.390**  
+que esto es incorrente con el resto, los puntos están machados pueden ser parecidos entre sí,
+
+**00:43:32.390 - 00:43:41.390**  
+pero son dos puntos de localización diferentes, con esas líneas amarillas que representan los machados
+
+**00:43:41.390 - 00:43:46.990**  
+correctos, vos podés sacar lo que se llama estructura, entonces lo que de hecho estructura
+
+**00:43:46.990 - 00:43:54.710**  
+en el partido de movimiento, la técnica principal que genera nueve puntos usa eso, bueno acá
+
+**00:43:54.710 - 00:44:00.950**  
+tiene un ejemplo, este es un dibujito medio, este libro es famoso en Visual Artificial,
+
+**00:44:00.950 - 00:44:06.310**  
+lo pasa que todo es matemático, es muy de un sesor ley, está bueno si te quieres meter con
+
+**00:44:06.310 - 00:44:11.050**  
+esa profundidad de cosas ahí, ahí están las coordenadas homogéneas, están todas las
+
+**00:44:11.050 - 00:44:18.250**  
+matrices, la homografía empiezan por homografía y se van a cosas que ni menimias a dárselas,
+
+**00:44:18.250 - 00:44:25.250**  
+tengo las presentaciones ahí, pero no es menimo pasarlas, este libro famoso que se lo conoce
+
+**00:44:25.250 - 00:44:33.130**  
+como la Víbil y la Visual Artificial, bueno acá te dicen, escúchame, encontré, no están
+
+**00:44:33.130 - 00:44:39.090**  
+dibujadas acá lo machieron, pero encontré la tapa del libro acá y a partir de esto que
+
+**00:44:39.090 - 00:44:45.810**  
+encontraste, podés deducir qué homografía tiene, acá está media, no está exacta también,
+
+**00:44:45.810 - 00:44:53.210**  
+o sea que pues deducir en qué pose está el libro, bueno y creo que se acuerdan,
+
+**00:44:53.210 - 00:44:59.570**  
+yo le mostré el vídeo de Visual Artificial, se hace todo con macho de puntitos como estos,
+
+**00:45:00.570 - 00:45:08.210**  
+bueno entonces, voz acá pues sí hago detección de objetos, che el cuadro lo encontré
+
+**00:45:08.210 - 00:45:13.090**  
+acá y le pongo un recuadro azul diciendo acá detecté, este es un detector que no es con
+
+**00:45:13.090 - 00:45:21.050**  
+Deep Learning, hecho con macho de punto, no de fichos, reconocimiento de lugares,
+
+**00:45:21.050 - 00:45:25.530**  
+está repasando algo, y me estichin estos, otra imagen del mismo lugar de arriba,
+
+**00:45:26.050 - 00:45:31.690**  
+en rigor estos machos usaron para, este, este, este, este es cocer, para cocer estas dos
+
+**00:45:31.690 - 00:45:37.450**  
+imágenes, alinearlas y terminada haciendo la paranámica que por estos contornos te das cuenta
+
+**00:45:37.450 - 00:45:42.890**  
+que acá hay cuatro imágenes, estoy bien, este y finalmente lo que vimos la que se
+
+**00:45:42.890 - 00:45:51.610**  
+pasaba realmente 3D, también, bueno, ¿cuáles son las etapas? ¿Cómo es el pipeline para llegar al
+
+**00:45:52.570 - 00:45:58.370**  
+macho? Después vemos que hacemos con el macho, todo lo que ya llega es primero se detectan las
+
+**00:45:58.370 - 00:46:04.690**  
+características, localización, lo que te decía, localizas puntos, pues si cómo comparas un
+
+**00:46:04.690 - 00:46:10.850**  
+punto, no es que no comparase el punto, vamos a ver cómo funciona cada uno vos comparas una
+
+**00:46:10.850 - 00:46:14.770**  
+región y después se encontraras el punto que dice bueno, esta es la localización,
+
+**00:46:14.770 - 00:46:21.130**  
+también pero está comparando los píxeles al rededor, no solamente el único píxel de la
+
+**00:46:21.130 - 00:46:29.410**  
+coordenada, una vez que tienes el punto identificado, es 3 un descriptor, también la vamos a ver y
+
+**00:46:29.410 - 00:46:37.410**  
+una vez que tenés los descriptores, vos tenés 1000 puntos en un imagen, 100 puntos en un imagen,
+
+**00:46:37.410 - 00:46:43.410**  
+100 puntos en la otra y empecé a comparar la descripción del descriptor, hasta que decís este
+
+**00:46:43.410 - 00:46:50.570**  
+macho, con tal esta, con tal otro, eso son los, los está, obviamente cada una 3 partes tiene
+
+**00:46:50.570 - 00:46:58.330**  
+sus propios problemistas y soluciones, cada solución tiene sus características, ventajas y
+
+**00:46:58.330 - 00:47:04.730**  
+ventajas, y como todo un mundo especializado descubrí que las cosas no es tan simple como parecía,
+
+**00:47:05.290 - 00:47:13.930**  
+acá afortunadamente todo funciona, también, pero conviene conocer cada una de estos munditos,
+
+**00:47:13.930 - 00:47:20.730**  
+porque si lo haces así al obruto, te van a dar lentísimo, entonces si conoces ese mundito,
+
+**00:47:20.730 - 00:47:32.410**  
+ya sabes que ese es un problema que hay que resolver, entonces segundo, bien, acá estoy presentando
+
+**00:47:32.410 - 00:47:37.290**  
+la que dice detección de key points, key points features, entonces hay varios nombres, tal
+
+**00:47:37.290 - 00:47:42.050**  
+lo mismo, key points, ese nombre que lo damos a estos puntos, puntos claves, sería, o puntos
+
+**00:47:42.050 - 00:47:50.810**  
+singulares, vamos a ver, se llaman, ahí dice key points features, características, características,
+
+**00:47:50.810 - 00:47:56.130**  
+la traducción de features, saliencias o puntos singulares, tiene montores de nombres, depende
+
+**00:47:56.130 - 00:48:02.250**  
+de la bibliografía que usas, recuerden, el nombre key points, o pese a ver a todo el nombre key points
+
+**00:48:02.250 - 00:48:09.010**  
+que refiere un punto, está bueno, porque el nombre features, características es súper generico y
+
+**00:48:09.010 - 00:48:16.130**  
+de hecho lo usamos en cosas distintas, así que sepan que a la disciplina se la conocen como
+
+**00:48:16.130 - 00:48:22.970**  
+detección de features, toda la feature de detección, feature de detección se refiere a encontrar
+
+**00:48:22.970 - 00:48:31.490**  
+puntos, pero es mejor si hablamos de detección de key points, bueno acá la derecha,
+
+**00:48:31.490 - 00:48:36.250**  
+vez que los key points están marcados con un circulito, se entiende que el centro de circulito
+
+**00:48:36.250 - 00:48:44.410**  
+es el key points, en la izquierda hay círculos de distintos radios que están representando cosas
+
+**00:48:44.410 - 00:48:50.850**  
+distintas, en rigor está, es porque fueron detectados en distintos niveles de la pirámide,
+
+**00:48:50.850 - 00:48:59.770**  
+la pirámide parece que no se las mostre, así que vamos a saltarlo ahora que ya cuando les
+
+**00:48:59.770 - 00:49:09.410**  
+mostre pirámide en otra clase lo van a intentar, bueno, cuál es la idea de detectar un
+
+**00:49:09.410 - 00:49:15.650**  
+feature, qué es lo que está buscando cuando buscas un feature, está buscando algún punto que
+
+**00:49:16.450 - 00:49:26.130**  
+tenga la singularidad de poder ser encontrado en otra imagen de la misma escena, o sea el punto
+
+**00:49:26.130 - 00:49:33.010**  
+tiene que estar ligado a la escena, no a la imagen, o sea el punto no puede ser con la
+
+**00:49:33.010 - 00:49:39.530**  
+ciencia en ciencia, como la cámara y siempre hay una ciencia, en este caso, desde este punto
+
+**00:49:39.530 - 00:49:48.570**  
+de la guitarra acá, saco otra foto y lo tengo acá, lo detecté, lo detecté y amar los
+
+**00:49:48.570 - 00:49:54.290**  
+por reconocer, eso se lo llama saliencia visual, lo que no me sirve es un punto blanco de la
+
+**00:49:54.290 - 00:50:02.230**  
+pared blanca, este punto acá, nunca voy a saber a cuál se corresponde de todos los otros
+
+**00:50:02.230 - 00:50:07.130**  
+puntos blancos de la pared, está bien, y con esto me estoy adelantando, otra cosa que se
+
+**00:50:07.130 - 00:50:18.810**  
+espera es que la detección de estas saliencias se invariante a la escala, la rotación,
+
+**00:50:18.810 - 00:50:24.490**  
+especialmente los cambios de perspectiva, que es algo que no habíamos visto en el T-P2, no
+
+**00:50:24.490 - 00:50:31.930**  
+era un requerimiento, y a los cambios de iluminación, se está haciendo de noche, paso una
+
+**00:50:31.930 - 00:50:38.290**  
+nubo y se prendió la luz, lo que sea, que más o menos, ¿qué pasa cuando voy a detectar
+
+**00:50:38.290 - 00:50:43.770**  
+detectar caras? es muy concreto, si hay una cara, tiene que detectar, acá no, acá va
+
+**00:50:43.770 - 00:50:48.450**  
+detectar puntos, y lo peor de todo, bueno, no es que se lo peor, una característica que
+
+**00:50:48.450 - 00:50:54.170**  
+usted, solamente no preven, no va a detectar los puntos que vos crees que detecte, va a detectar
+
+**00:50:54.170 - 00:51:00.930**  
+los puntos que la algoritmo decide detectar, también, entonces vos traes algo, una hoja y
+
+**00:51:00.930 - 00:51:06.690**  
+dibujas unos puntos, bueno, no sé si va a detectar eso que vos dibujaste, porque no está
+
+**00:51:06.690 - 00:51:14.770**  
+hecho para detectar los puntos que vos dibujaste, ahora con qué criterios dan hechos, bueno,
+
+**00:51:14.770 - 00:51:18.970**  
+acá hay un código que te dice primero, preparas, creas el detector, en este caso se llama
+
+**00:51:18.970 - 00:51:26.490**  
+fast feature detector, le ajusta a algún parámetro, cada detector tiene su propio parámetros,
+
+**00:51:26.490 - 00:51:34.730**  
+el fast feature detector tiene algo que se llama un brael y de la catapueta 30, y finalmente
+
+**00:51:34.730 - 00:51:40.450**  
+todos tienen el método detect, es normal que trabajen sobre una imagen monochromática y
+
+**00:51:40.450 - 00:51:46.570**  
+no una imagen coloros, y por tema de deficiencia, no chequean la imagen, o sea, tengo que
+
+**00:51:46.570 - 00:51:50.970**  
+ocuparte de que sea monochromática, si la masa es color, te va a dar malo, te va a dar otra
+
+**00:51:50.970 - 00:51:56.370**  
+cosa, y finalmente acá en la última línea, tenés una función de anotación que se llama
+
+**00:51:56.370 - 00:52:06.530**  
+otro keypoints, que te dibujan estos circulitos guardes que ves acá en el imagen de arriba, bueno,
+
+**00:52:06.530 - 00:52:12.210**  
+esto se lo llama detección de esquinas, y ahora van a ver por qué se le da el nombre
+
+**00:52:12.210 - 00:52:19.470**  
+esquinas, sepan que no son solamente esquinas, porque esquinas, bueno, acá va a tener seis
+
+**00:52:19.470 - 00:52:29.230**  
+casos, ahí ve están habiliados, seis de AF, fíjense, vamos a agarrar un punto azul en el
+
+**00:52:29.230 - 00:52:37.230**  
+cielo azul, y que no es singular, no hay repetibilidad, cual va detectar cualquier cosa ahí, lo mismo
+
+**00:52:37.230 - 00:52:41.910**  
+cuando estás en un patrón que se repite, también esta es una grilla, esta parte de la
+
+**00:52:41.910 - 00:52:46.670**  
+edificio, es decir, acá no tenés puntos singulares que lo individualice, vas a detectar acá,
+
+**00:52:46.670 - 00:52:51.830**  
+lo ejecuta de vuelta, lo extensa en cualquier otro lado, y no lo vas, no te sirven, también,
+
+**00:52:51.830 - 00:52:57.230**  
+luego así che tengo un borde, una línea recta, vamos a agarrar un punto del borde, va a
+
+**00:52:57.230 - 00:53:02.130**  
+ver, puede ver la línea antera, pero si pocas un punto no lo vas a distinguir de los otros
+
+**00:53:02.130 - 00:53:07.870**  
+puntos del mismo orde, tampoco te sirve, cuando te sirve, y cuando estás en un vértice,
+
+**00:53:07.870 - 00:53:13.710**  
+está, lo que se llama una esquina, si es una esquina es un punto bien determinado, y tiene
+
+**00:53:13.710 - 00:53:21.070**  
+chances de que lo puedas reconocer en otras fotos del mismo edificio, bueno acá está dibujado
+
+**00:53:21.070 - 00:53:26.510**  
+lo mismo, esta foto no sirve, se le llama la región plana, esta foto de borde tampoco sirve,
+
+**00:53:26.510 - 00:53:31.110**  
+pero en la región de borde tampoco sirve para la que sirve es esta, la de la esquina,
+
+**00:53:31.110 - 00:53:41.110**  
+también, bueno, entonces con la idea de detectar esquinas, los agorimos y empezaron a detectar
+
+**00:53:41.110 - 00:53:47.870**  
+cosas que no son esquinas, pero que sin embargo te sirven para su propósito, entonces ya no importa
+
+**00:53:47.870 - 00:53:54.630**  
+si eso no es una esquina, lo importante es que el punto sea singular, está, y que lo puedas en
+
+**00:53:54.630 - 00:54:00.350**  
+distintas fotos de la misma cena, los puedas volver a detectar, recuerden que estamos detectando
+
+**00:54:00.350 - 00:54:05.190**  
+los puntos, las coordenadas, no les damos machiando con otra imagen, eso viene después,
+
+**00:54:05.190 - 00:54:12.120**  
+por ahora solamente estamos detectando coordenadas, bueno ¿qué es lo que detectas? Bueno, aparte
+
+**00:54:12.120 - 00:54:18.760**  
+de las coordenadas x y y la búsqueda se hace en versiones escaladas a chicadas que se llama
+
+**00:54:18.760 - 00:54:24.880**  
+pirámides de la misma imagen, entonces hay esquinas que no son evidentes en alta resolución,
+
+**00:54:24.880 - 00:54:33.720**  
+pero cuando vos hacha el imagen, ahí, ahí surge, entonces esa mano octabas, y finalmente algunos
+
+**00:54:33.720 - 00:54:39.000**  
+detectores evalúan y te informa del ángulo de orientación, como si está buscando una esquina,
+
+**00:54:39.000 - 00:54:44.600**  
+bueno para dónde apunta la esquina, esa es una interpretación de la orientación, es un dato
+
+**00:54:44.600 - 00:54:49.320**  
+éste, para dónde está apuntando la esquina, algunos tienen una evaluación de respuestas, o sea que
+
+**00:54:49.320 - 00:55:01.160**  
+están fuertes la esquina, que están punts, nada o lo que sea, o como lo evalúe el algoritmo, no
+
+**00:55:01.160 - 00:55:07.240**  
+se supone una respuesta más fuerte, es que el punto está mejor detectado, entre puntos similares
+
+**00:55:07.240 - 00:55:15.080**  
+que están cercanos y pasa preferida de mayor respuesta, bueno, entonces cómo funciona, recorre
+
+**00:55:15.080 - 00:55:21.160**  
+toda la imagen, pasa pixel por pixel y hace una evaluación en los alrededores de ese pixel,
+
+**00:55:21.160 - 00:55:30.160**  
+para descartar si n es o no es un key point, cada detector tiene su propia definición, su propio
+
+**00:55:30.160 - 00:55:38.680**  
+evaluación, que define que es o no es un key point, eso se busca usas distintos detectores y en
+
+**00:55:38.680 - 00:55:44.760**  
+la misma gente va a detectar distintas cantidades de key point en distintas localizaciones, bien,
+
+**00:55:46.480 - 00:55:52.400**  
+de qué depende la la performance, bueno, es eso, velocidad o carga computacional, hay detectores
+
+**00:55:52.400 - 00:55:59.720**  
+que son más rápidos y hay que acceder que tenés, velocidad o precisión, protectores muy livianos,
+
+**00:55:59.720 - 00:56:06.720**  
+muy rápido, pero bueno, pasas dos imágenes parecidas y los key point que detectan no están en los
+
+**00:56:06.720 - 00:56:14.720**  
+mismos lugares, también si pasas los aplicas en un video, vas a ver que los puntos papadean y cuando
+
+**00:56:14.720 - 00:56:21.120**  
+voces un detector un poco más pesado, más robusto, vos pasas un video y los puntos aparecen fijo
+
+**00:56:21.120 - 00:56:26.280**  
+se lesena, también, los detectó una vez y lo evuelve detectar en el siguiente cuadro, en el
+
+**00:56:26.280 - 00:56:33.360**  
+siguiente cuadro por más que la escena vaya cambiando lemente, bueno, breve historia, esto es para la
+
+**00:56:33.360 - 00:56:42.840**  
+prehistoria para saber solamente de qué tienen que huir, 1977, o sea, yo no se puedo explicar, 1977,
+
+**00:56:42.840 - 00:56:48.440**  
+no existían las cámaras digitales, creo que esto yo lo comenté una vez, habría algunos
+
+**00:56:48.440 - 00:56:53.960**  
+escanners, ningún imagen te entraba en la memoria de ninguna computadora, la pese no existía,
+
+**00:56:53.960 - 00:56:58.560**  
+no estaba hasta ahora, hablando de una, y sin embargo, ya estaban trabajando con Vision
+
+**00:56:58.560 - 00:57:04.320**  
+Revisual detectando esquinas, esta es una tecnología, este concepto es una de las tecnologías que viene
+
+**00:57:04.320 - 00:57:11.000**  
+de la época de la bordaje matemático y sobrevivió especialmente porque se juntó con las
+
+**00:57:11.000 - 00:57:16.520**  
+partes que siguen, que es la descripción y el macheo, sobrevivió hasta en otros días y está
+
+**00:57:16.520 - 00:57:20.600**  
+recontra vigente, también, los agonimos son mucho más, los de hoy son mucho más nuevos,
+
+**00:57:20.600 - 00:57:27.800**  
+entonces en el 1977, esto es lo raro, bueno, no solo tenías computar a más lentas, sino que
+
+**00:57:27.800 - 00:57:32.040**  
+los agonimos que se habían planteado en esa época, son mucho más pesados que los agonimos de
+
+**00:57:32.040 - 00:57:39.760**  
+hoy, hoy tenéis agonimos maliviano y máquina mucho más potente, entonces hoy es una risa
+
+**00:57:39.760 - 00:57:45.920**  
+o usar esto, son maliviano, funcionan mejor y encima de las máquinas de por sí son mucho más
+
+**00:57:45.920 - 00:57:51.320**  
+rápidas, pero bueno, fíjense que tampoco había tanta gente trabajando en esto, un tal
+
+**00:57:51.320 - 00:57:59.600**  
+moravec y su algo en 1977, en 1988, un sello después apareció Harry, que fue una mejora, y para
+
+**00:57:59.600 - 00:58:11.120**  
+darte una idea, boca en cada pixel del imagen, también, vos haces una análisis de una región
+
+**00:58:11.120 - 00:58:21.440**  
+del reedor y es intensidad, haces derivadas parciales de la intensidad de los píxeles en esa región,
+
+**00:58:21.440 - 00:58:33.800**  
+generas una matriz, la matriz M, está, cálculas, autovalores de M, te da el anda 1 y el anda 2 y te venís
+
+**00:58:33.800 - 00:58:42.720**  
+a este cuadro, te dice, quiero que entiendo en todo lo que hace, lo pesado que era lo que sigue siendo
+
+**00:58:42.720 - 00:58:50.000**  
+hoy, ejecutar, ejecutar esto, te dice, si anda 1 y anda 2 son muy bajos, es porque está
+
+**00:58:50.000 - 00:59:01.240**  
+en una región plana y no tenés un key points, está bien, si anda 2 es mucho mayor al anda 1, es
+
+**00:59:01.240 - 00:59:06.080**  
+porque tenés un borde, si arreves y anda 1 es mucho mayor que el anda 2, también tenés un
+
+**00:59:06.080 - 00:59:12.240**  
+borde, es otro tipo de borde, estoy bien, y para decir que es una esquina es porque el anda 1 y
+
+**00:59:12.240 - 00:59:21.360**  
+anda 2 son grandes, que no está en la región plana y son del mismo orden de magnitud, entonces
+
+**00:59:21.360 - 00:59:27.960**  
+se entras a esta tablita de gráfica esta zona para determinar con tus autovalores si lo que
+
+**00:59:27.960 - 00:59:36.560**  
+tenés es una esquina, está bien, fíjense, esto fue en 1988, 1994, 13 años después, si tomási
+
+**00:59:36.560 - 00:59:40.720**  
+dijieron che, el mismo gráfico de recién, pero vamos a hacerlo con rectas así verticales y
+
+**00:59:40.720 - 00:59:46.320**  
+entonces porque es mucho más fácil de chequear y funciona más bien igual, está bien, entonces
+
+**00:59:46.320 - 00:59:53.440**  
+la simplemente comparas con un landa mínimo y con eso determina rápidamente si estás en la región
+
+**00:59:53.440 - 01:00:02.360**  
+verde, bueno este good feature to track, como es de 1994, y televisión artificial empezó,
+
+**01:00:02.360 - 01:00:08.680**  
+bueno, opense que empezó en 1998, pero estamos hablando igual de su prestoria, cuando se
+
+**01:00:08.680 - 01:00:14.640**  
+incorporaron, esta era la que existía y es la más antigua de todas y todavía vas a encontrar
+
+**01:00:14.640 - 01:00:23.160**  
+algunos tutoriales que usan esto, funciona, van a dar bien, hay cosas mucho mejores, así que si
+
+**01:00:23.160 - 01:00:29.440**  
+del tutorial usa eso, date cuenta que está bastante viejito el día, está y era gratuito,
+
+**01:00:29.440 - 01:00:38.440**  
+2004 sería shift, mucho mejor, es más sofisticado del funcionamiento, no lo voy a explicar, este es
+
+**01:00:38.440 - 01:00:46.600**  
+es mucho mejor y se convirtió en el detector de referencia, en 2006, a ver si aparece acá, acá está,
+
+**01:00:47.320 - 01:00:53.640**  
+2002 señores pues, sería fast, viene de valor nombre le busca, ¿no? qué significa fast feature
+
+**01:00:53.640 - 01:01:00.640**  
+for accelerated segment test, porque sí le puso un nombre, le buscó un nombre que le de fast y
+
+**01:01:00.640 - 01:01:07.000**  
+quiero lo quiero bro que sea rápido, es rápido de verdad, entonces esto tipo, este tipo, bueno,
+
+**01:01:07.120 - 01:01:19.280**  
+todo rostan y drumón, abandonaron esta obsesión por la más temática, para propia del siglo 20 y
+
+**01:01:19.280 - 01:01:24.720**  
+generoche como vemos nosotros, y dijeron esto, agarraron una circunferencia, a ver si en
+
+**01:01:24.720 - 01:01:31.200**  
+jan que es una circunferencia pixelada, dijeron voy a valorar el punto P, voy a hacer una circunferencia
+
+**01:01:31.200 - 01:01:36.600**  
+alrededor y voy a comparar, son sólo 16 píxeles los que voy a trabajar, no voy a trabajar con
+
+**01:01:36.600 - 01:01:43.880**  
+todo un parche de 32 por del deo píxeles, que son 1.024 píxeles, voy a dejar el solo con 16, voy a
+
+**01:01:43.880 - 01:01:51.040**  
+comparar su intensidad, así es, hay tres estados más oscuro, más claro, o está similar en un ranko,
+
+**01:01:51.040 - 01:02:00.600**  
+a la intensidad del punto P, y después voy a ver si hago una circunferencia, en este caso si
+
+**01:02:00.600 - 01:02:06.760**  
+logro hacer tres cuartos o un porcentaje de circunferencia, en este caso son, dejan a ver
+
+**01:02:06.760 - 01:02:15.080**  
+creo que son 10 píxeles consecutivos que sean todos más claros o todos más oscuros, porque si es
+
+**01:02:15.080 - 01:02:22.760**  
+así, esto es una esquina, espero que eso si lo pescaron bien y si no, después lo piensan, y
+
+**01:02:22.760 - 01:02:28.900**  
+si no un test de sentido común, también un algoritmo de sentido común de cómo detecto yo
+
+**01:02:28.900 - 01:02:32.700**  
+que es una esquina, tiene que ser todo más claro o todo más oscuro, pero no cerrarse una
+
+**01:02:32.700 - 01:02:41.140**  
+circunferencia entera, pues yo tengo un punto suelto y eso no me sirve, este test volaba sigue volando
+
+**01:02:41.140 - 01:02:50.180**  
+y sigue siendo el detector preferido cuando tenés necesitas que sea liviano, bueno voy a
+
+**01:02:50.180 - 01:02:56.580**  
+saltar algunas cositas, en 2010 usaron un poquito de Machine Learning para mejorar y
+
+**01:02:56.580 - 01:03:02.060**  
+hacer unas implementaciones más rápidas, hoy todo lo que se llama Fast, no es el de 2006,
+
+**01:03:02.060 - 01:03:08.340**  
+es el 2010, no le cambiaron el nombre, cambiaron la implementación y listo, también, en esos años
+
+**01:03:09.860 - 01:03:18.220**  
+Agust, Brisk fueron como variantes, existen están disponibles, no se impusieron, Fast le ganó,
+
+**01:03:18.220 - 01:03:25.860**  
+de hecho no lograron superar en velocidad, por ahí mejoraron un poco la precisión y ahí se
+
+**01:03:25.860 - 01:03:30.540**  
+quedaron, bueno son variantes están disponibles y uno primero tiene que ser experiencia probándolas y
+
+**01:03:30.540 - 01:03:35.100**  
+comparándolas para darse cuenta con el conviene, también, pero están, pero si no te quedas en Fast,
+
+**01:03:35.100 - 01:03:43.380**  
+en 2013 acase lo menciono acá, porque acá hice otros varios detectores, para la cantarilla
+
+**01:03:43.380 - 01:03:55.220**  
+lanzó el mejor detector de todos, es el Roll Royce, pero no es rápido, primero,
+
+**01:03:55.220 - 01:04:00.220**  
+es el único que funciona con imágenes a color, usa la información a color, entonces se llama,
+
+**01:04:00.220 - 01:04:06.100**  
+se le dice más semántico, como que entiendo un poquito mejor y es buenísimo, arrecontra
+
+**01:04:06.100 - 01:04:11.500**  
+robusto lo que detecta, después del macho es impecable, acase de lo mejor que hay, salvo
+
+**01:04:11.500 - 01:04:18.540**  
+que requiera velocidad, superasif, supera a todos los proyectos, bueno para completitud hay
+
+**01:04:18.540 - 01:04:26.100**  
+Blop Detectors, desde el punto de vista de, no no buscan esquinas, buscan otra cosa, pero del
+
+**01:04:26.100 - 01:04:34.100**  
+punto de vista del uso es exactamente igual, está, Surf es un caso muy comentado, fue muy usado,
+
+**01:04:34.100 - 01:04:39.980**  
+está en OpenCV, pero después lo dejaron del lado porque no es de código abierto, no es licenciamit,
+
+**01:04:41.180 - 01:04:45.980**  
+la puedes usar gratis, pero si lo vas a usar comercialmente, te necesitas para, así que hace
+
+**01:04:45.980 - 01:04:54.100**  
+muchos años cuando surgieron muchos detectores gratuitos, a este lo sacaron de los tutoriales
+
+**01:04:54.100 - 01:04:59.500**  
+que había, y dijeron che y las tutoriales, usemos HIFT, no le hagamos publicidad a este, porque
+
+**01:04:59.500 - 01:05:06.380**  
+ya está, lo van a ir, está disponible, lo pueden usar, pero no lo recomiendo por lo que le dije
+
+**01:05:06.380 - 01:05:13.620**  
+a resial, a ver el día que vos te surgiré oportunidad de vender algo y te comienes tener experiencia
+
+**01:05:13.620 - 01:05:17.220**  
+con lo que es gratuito y no con lo que es pago, especialmente porque hoy lo que es gratuito es
+
+**01:05:17.220 - 01:05:24.500**  
+superior a ese que es pago, en su momento era lo mejor que había, acá se lo recontra supero,
+
+**01:05:24.500 - 01:05:33.140**  
+bueno, entonces detección de keypons con lo que dije es lo que mostrar recién no es Deep Learning,
+
+**01:05:34.140 - 01:05:42.000**  
+también es heurística, son algoritmos, bueno Deep Learning avanzó sobre la detección de keypons,
+
+**01:05:42.880 - 01:05:51.700**  
+también, entonces surgió algo que se llama Superpoint, este usa un modelo de Deep Learning,
+
+**01:05:51.700 - 01:06:02.060**  
+para acá, acá, este, describe qué es lo que hace, te genera un detector, un detector,
+
+**01:06:02.060 - 01:06:09.660**  
+que te da un score de keypons para cada piscina, te genera un mapa de calor, que te dice donde
+
+**01:06:09.660 - 01:06:14.460**  
+hay más chance de que sea un keypoint y cuáles no, voy a poder tener que recorrer a toda esa imagen
+
+**01:06:14.460 - 01:06:20.580**  
+para detectarlo los máximos locales y decir, estos son los keypoints, también, entonces,
+
+**01:06:20.580 - 01:06:28.420**  
+porque esa es la manera como trabaja Deep Learning, no puedes presar cualquier cosa, expreso un
+
+**01:06:28.420 - 01:06:35.780**  
+mapa de calor, entonces te marca puntitos y vos lo vas a recorrer por el criterio de que scoring
+
+**01:06:35.780 - 01:06:42.540**  
+mínimo requerís y ahí te quedas con los puntitos, son muy semánticos, son muy robustos,
+
+**01:06:42.540 - 01:06:48.380**  
+no son muy rápidos, a velocidad, el Deep Learning nunca le gana en velocidad a la heurística,
+
+**01:06:48.380 - 01:06:53.220**  
+porque pase a que Deep Learning resuelve problemas que la heurística no ha logrado resolver,
+
+**01:06:55.220 - 01:07:06.180**  
+bueno, a ver que la mayoría, esto ya se lo dije, sí, esto ya se lo dije, bueno, acá les
+
+**01:07:06.180 - 01:07:10.740**  
+presento el objeto keypoint y la propiedad que le mostraba, el resultado de un detector
+
+**01:07:10.740 - 01:07:19.140**  
+de keypoint es un, cada keypoint, se llama así el objeto, cada keypoint tiene estas propiedades,
+
+**01:07:20.020 - 01:07:28.860**  
+punto pt.x, punto pt.x, pt es de point, ¿no? Cordenadas xx, hay la propiedad angle octav size y
+
+**01:07:28.860 - 01:07:39.700**  
+response, son las coordenadas son obligatorias, las otras depende del detector, usualmente,
+
+**01:07:39.700 - 01:07:43.660**  
+todos te van a decir la octava, que es el nivel de la piel y en donde se encontró,
+
+**01:07:43.660 - 01:07:50.260**  
+algunos te tiran una angle de orientación, otros no, algunos te tiran una respuesta,
+
+**01:07:50.260 - 01:07:57.580**  
+otros no, algunos te tiran un tamaño, también, no tienen que ver que el detector
+
+**01:07:57.580 - 01:08:04.820**  
+lo usan a ver qué valor de esos te informa, bien, esto se va, la parte de anotación, bueno,
+
+**01:08:04.820 - 01:08:11.980**  
+el draw keypoints, o sea, un detector te vuelve una rai de keypoints, también, y draw keypoints le pasas
+
+**01:08:11.980 - 01:08:19.540**  
+el rai, le pasas la imagen y elegís este, qué tipo de anotación, también y qué color, entonces
+
+**01:08:19.540 - 01:08:23.220**  
+vos puedes tener una atación con circulitos muchiquititos, amarillo como está arriba,
+
+**01:08:23.220 - 01:08:30.820**  
+u otro que te hace un círculo de tamaño distinto según el nivel de pirámide en que encontro
+
+**01:08:30.820 - 01:08:40.980**  
+el keypoints, bien, se termino la detección, voy a pasar a la extracción, lo que voy a hacer ahora
+
+**01:08:40.980 - 01:08:49.220**  
+esta presentación, bueno, usted le queda la presentación, le queda la grabación, lo voy a pasar un
+
+**01:08:49.220 - 01:08:57.820**  
+poco más rápido, porque esta presentación es anterior a la que ustedes tuvieron la primera
+
+**01:08:57.820 - 01:09:04.260**  
+clase de dictados anteriores, digamos, cuando yo hice esto no existía la que te explica que es
+
+**01:09:04.260 - 01:09:09.740**  
+un descriptor, ustedes hoy ya saben lo que es un descriptor, entonces lo único que voy a decir es que
+
+**01:09:09.740 - 01:09:15.900**  
+la extracción de descriptores es una vez que te des el keypoints, vas con otro algoritmo, si quiero
+
+**01:09:15.900 - 01:09:26.630**  
+obtener un descriptor de la imagen, lo quiero extraer del imagen en esta coordenada, o sea, para
+
+**01:09:26.630 - 01:09:31.150**  
+acá el keypoint, le tienes que dar la coordenada y la imagen, o sea, el detector de equipo
+
+**01:09:31.150 - 01:09:35.210**  
+instuvo que recorrerle imagen para decirte dónde están los keypoints, el destrator de
+
+**01:09:35.210 - 01:09:39.750**  
+descriptores también tiene que recorrerle imagen, también, y qué es lo que va a describir,
+
+**01:09:39.750 - 01:09:45.990**  
+va a describir los alrededores, el parche se llama, va a agarrar un parche cuadrado,
+
+**01:09:45.990 - 01:09:55.910**  
+típicamente de más o menos 16 píxeles en X and Y, y va a extraer un vector, está, bueno,
+
+**01:09:55.910 - 01:10:01.630**  
+entonces, por ejemplo, orbes un método que voy a explicar después, que hace tiene la incorporar
+
+**01:10:01.630 - 01:10:06.190**  
+a dos cosas, el descriptor y el destrator, entonces hay un comando que se llama detecta en
+
+**01:10:06.190 - 01:10:13.030**  
+compute, detecta es detectar el keypoint, compute es extraer el descriptor, detecta en compute,
+
+**01:10:13.030 - 01:10:18.130**  
+hace todo junto y te devuelve los keypoints y los descriptores, de correpondientes, acá
+
+**01:10:18.130 - 01:10:25.150**  
+de alguna, para cada keypoint, tienes un descriptor, es un vector de NA menciones, típicamente
+
+**01:10:25.150 - 01:10:38.590**  
+el shift tiene 128 dimensiones de floats, pero hay algo, hay unos tipos de criptores que son
+
+**01:10:38.590 - 01:10:43.350**  
+binarios y hacen descriptores muy compactos, eso está buenísimo, lo voy a explicar ahora,
+
+**01:10:43.350 - 01:10:48.910**  
+este dentro, todo esto lo diga recién, bueno, ¿qué se busca del descriptor? y bueno,
+
+**01:10:48.910 - 01:10:52.630**  
+que tenga en varianas, o sea, que si se rota, escala, iluminación, yo saben cómo
+
+**01:10:52.630 - 01:10:58.430**  
+hay, recuerden acá, parece la iluminación como invariante, que se genera el mismo descriptor,
+
+**01:10:58.430 - 01:11:04.310**  
+o sea, la imagen está un poquito más oscura, o sea, una nube de tapón sol, el descriptor
+
+**01:11:04.310 - 01:11:09.670**  
+sea lo más parecido a lo que se generaba antes, si yo roté la imagen, que siga apreciado
+
+**01:11:09.670 - 01:11:17.510**  
+de escrutar, bueno, entonces para obtener todo esto, habíamos explicado shift y surf era
+
+**01:11:17.510 - 01:11:23.950**  
+del, como les dije, no era gratuito, entonces medio se lo bañó, shift obtiene un vector,
+
+**01:11:23.950 - 01:11:30.270**  
+shift obtiene un vector 128 floats, surf era más compacto, tenía unos 64 y era más robusto
+
+**01:11:30.270 - 01:11:36.510**  
+que el de arriba, y brief es algo, es un descriptor binario y quiero esto que explicar
+
+**01:11:36.510 - 01:11:42.030**  
+cómo funciona, así que enseguida, se lo voy a, esta es la parte de manera, ahí está
+
+**01:11:42.030 - 01:11:51.990**  
+tendo, los, la formalización del pipeline, de decir, tenés por un lado un detector, por
+
+**01:11:51.990 - 01:11:57.150**  
+otro lado un descriptor y por otro lado machéo, está algo que se fue dando con el tiempo,
+
+**01:11:57.150 - 01:12:07.350**  
+entonces muchos detectores se desarrollaban junto con sus descriptores, pero en algún momento
+
+**01:12:07.350 - 01:12:13.510**  
+faz, por ejemplo, desarrolló un detector y no un extractor de descriptores, también y
+
+**01:12:13.510 - 01:12:18.630**  
+algún otro desarrolló un extractor de descriptores y no un detector, también, entonces en algunos
+
+**01:12:18.630 - 01:12:24.390**  
+casos son intercambiables, pues usar un, un detector de uno y un descriptor del otro,
+
+**01:12:24.390 - 01:12:29.830**  
+en otros casos están íntimamente ligados como el caso de acase, acase te dice mira, si
+
+**01:12:29.830 - 01:12:34.750**  
+vas a usar el detector de acase, usar el descriptor de acase y viceversa, no no mezcle con
+
+**01:12:34.750 - 01:12:43.840**  
+el otro, porque están íntimamente ajustados y acoplados, si no te van a dar peor, bueno
+
+**01:12:43.840 - 01:12:48.640**  
+que es un descriptor binario, son un descriptor lo que le dije, se trae carácter estiches
+
+**01:12:48.640 - 01:12:53.920**  
+y que le expliquen cómo funciona, algunos usan hacer un planteo de ecuaciones diferenciales
+
+**01:12:54.480 - 01:13:01.080**  
+para buscar los invariantes, bastante cuando vivimos momentos, vieron como en los distintos
+
+**01:13:01.080 - 01:13:06.680**  
+momentos se metían las distintas invariancias por diseño, como se sía que sí invariante de la
+
+**01:13:06.680 - 01:13:12.840**  
+traslación, que sí invariante a la escala y finalmente los invariantes de jupas, que sí
+
+**01:13:12.840 - 01:13:18.400**  
+variante de rotación, bueno, los descriptores de estos puntos que narizan los parches de píxeles
+
+**01:13:18.400 - 01:13:23.400**  
+alrededor de un key point, también implementan cosas para darle invariasa,
+
+**01:13:23.680 - 01:13:30.960**  
+pero acá parece el descriptor binario, que patea el tablero nuevamente abandona el principio
+
+**01:13:30.960 - 01:13:37.560**  
+matemático, que dominaba la visión artificial de siglo XX y va por algo pragmático, entonces
+
+**01:13:37.560 - 01:13:45.000**  
+y lo que hace es increíble ver si lo tengo acá, acá está, brif, 2011, va a ir a edir, bueno,
+
+**01:13:45.000 - 01:13:51.840**  
+hace esto, lo que hice ahí, brif, le pusieron un nombre, brif significa breve, le pusieron un nombre
+
+**01:13:51.840 - 01:13:59.680**  
+para que las iniciales digan bref, medio irrelevante lo que significa las palabras que
+
+**01:13:59.680 - 01:14:08.400**  
+ligieron para el título, ¿cuál es la idea? Digieron, en vez de hacer 128 dimensiones y cada
+
+**01:14:08.400 - 01:14:14.920**  
+dimensiones un valor de punto flotante, porque después hay que hacer cuentas con todos esos números,
+
+**01:14:15.760 - 01:14:22.080**  
+cuando veamos macho van a ver cómo la cantidad de veces que vas a computar, hacer cuentas con un
+
+**01:14:22.080 - 01:14:30.080**  
+descriptor se multiplica y se va a millones de veces para macho de imágenes, entonces resulta
+
+**01:14:30.080 - 01:14:37.920**  
+relevante que hagas pocas cuentas, o que manejes pocos datos, bueno, acá donde parece brif, brif
+
+**01:14:37.920 - 01:14:43.360**  
+dijo me la no voy a hacer ninguna cuestión diferencial, no voy a hacer nada de nada, voy a hacer lo
+
+**01:14:43.360 - 01:14:53.720**  
+siguiente y le voy a explicar este, este imagen acá tan fea, llena de rayas, muy desprolijas,
+
+**01:14:54.920 - 01:15:03.560**  
+son segmentos, que conectan una coordenada con otra, eso es un parche de 32 x 32 píxeles y cada
+
+**01:15:03.560 - 01:15:10.240**  
+segmento te está diciendo, voy a comparar la intensidad de un píxel con la intensidad del otro,
+
+**01:15:10.240 - 01:15:15.400**  
+saca el segmento, te mostre a dos píxeles, está orientado, dice voy a comparar este píxel con
+
+**01:15:15.400 - 01:15:25.840**  
+este otro, esto te dice cuáles son las comparaciones, entonces cuantos segmentos hay 512, son las 512
+
+**01:15:25.840 - 01:15:35.360**  
+dimensiones, 512 segmentos, cada segmento hace una comparación y resultado es binario, te da mayor o
+
+**01:15:35.360 - 01:15:45.210**  
+no mayor, es decir, yo hago dos píxeles, estos son imágenes monochromáticas, bueno, de 0 a 25,
+
+**01:15:45.210 - 01:15:52.010**  
+las comparo y si el primero es mayor que el segundo, el resultado es un 1, binario,
+
+**01:15:52.010 - 01:15:58.450**  
+bit y si no es mayor el resultado es un 0, ya está, esa es la evaluación que hace, hace
+
+**01:15:58.450 - 01:16:06.890**  
+500 12 evaluaciones y tenés un descriptor, lo que pasa es que esos 500 bits son solo 64
+
+**01:16:06.890 - 01:16:17.010**  
+bytes, es super compacto y la manera de comparar un descriptor con otro y calcular su distancia es
+
+**01:16:17.010 - 01:16:24.090**  
+un equisoro, es una operación súper rápida, lo decían antes, un equisoro en popcorn,
+
+**01:16:24.090 - 01:16:32.570**  
+count son dos instrucciones de assembler, es más rápido que hacer un producto de dos
+
+**01:16:32.570 - 01:16:38.890**  
+números de puntos flotantes, el tema es que claro, comparar el descriptor de Swift, de 128
+
+**01:16:38.890 - 01:16:44.570**  
+números de puntos flotantes es súper recontradento comparado con esto, ahora la pregunta es esto
+
+**01:16:44.570 - 01:16:52.250**  
+cambio, esto sirve, dice mirar, sirve como descriptor para poder reconocer un parche, está bien,
+
+**01:16:52.250 - 01:16:58.450**  
+es muy robusto el cambio de iluminación porque yo pregunto si este píxeles más oscuro que el otro
+
+**01:16:59.170 - 01:17:06.290**  
+y si hay más iluminación o menos iluminación la respuesta de ver es ser la misma, no es que va
+
+**01:17:06.290 - 01:17:13.050**  
+a cambiar y el que era más oscuro ahora va a ser más claro, entonces tiene buena invariancia a
+
+**01:17:13.050 - 01:17:20.690**  
+la iluminación, dice pero no es invariante ni a la escala ni a la rotación, esto lo vamos a dejar
+
+**01:17:20.690 - 01:17:29.570**  
+porque después se resolvió, entonces infinitamente más rápido, no usa ninguna ecuación diferencial y
+
+**01:17:29.570 - 01:17:35.770**  
+nada raro, usa eso, y lo que hizo el paper que fue la gran innovación, aparte de introducir
+
+**01:17:35.770 - 01:17:41.330**  
+los descriptores binarios que fueron a gran innovación, dijo proveo un montón de patrones,
+
+**01:17:43.330 - 01:17:49.610**  
+patrones con segmentos largos que comparen puntos muy muy lejanos alejados de la dentro del mismo
+
+**01:17:49.610 - 01:17:59.850**  
+parche, provee comparaciones con píxeles cercanos dentro del parche, provee repetir el mismo píxel para
+
+**01:17:59.850 - 01:18:05.330**  
+distintas comparaciones, también bueno, hizo un montón de y provee patrones geométricos,
+
+**01:18:07.490 - 01:18:15.130**  
+el resultado es que si lo tiras segmentos al azar andaba raro, también entonces dice mira,
+
+**01:18:16.090 - 01:18:23.770**  
+pone al azar y vas a poder reconocer bien los puntos, son buenos descriptores para reconocer
+
+**01:18:23.770 - 01:18:30.810**  
+los puntos en distintas imágenes, también, eso fue una novedad, bueno o pensé ver,
+
+**01:18:30.810 - 01:18:36.290**  
+tiene cuando se generó al azar ya el patron quedó y la idea es que después duce siempre el mismo,
+
+**01:18:36.290 - 01:18:41.810**  
+se dó pensé ver bien con una distribución al azar, fija, pues no tiene sentido andar
+
+**01:18:42.770 - 01:18:48.010**  
+para un paper sí, pero para usarlo los diez sentidos, reconstruir el patrono de las veces,
+
+**01:18:48.010 - 01:18:56.530**  
+al año siguiente org, que es también brief orientado significa y org es un nombre forzado,
+
+**01:18:56.530 - 01:19:07.340**  
+también org, org, usa fast como detector, que es un detector muy rápido, brief como descriptor,
+
+**01:19:07.860 - 01:19:18.220**  
+que es un descriptor muy rápido, pero le hace dos modificaciones, perdón, vamos al orden que
+
+**01:19:18.220 - 01:19:26.220**  
+está escrito acá, al brief le ha sido modificaciones, vamos a empezar por el fast, primero, al detector
+
+**01:19:26.220 - 01:19:34.580**  
+de características le otorga la invariancia de la escala y ejecutando fast en varias versiones
+
+**01:19:34.580 - 01:19:39.940**  
+de la imagen pero reducida, o sea los ejecutos en la imagen, después chico un poco a la imagen,
+
+**01:19:39.940 - 01:19:44.500**  
+los ejecutos de vuelta, al chico de vuelta, al chico de vuelta y entonces lo que no detecté en
+
+**01:19:44.500 - 01:19:50.460**  
+la imagen grande lo detecto en la imagen chica, también, eso la invariancia de la escala, la
+
+**01:19:50.460 - 01:19:58.500**  
+invariancia en la rotación la logró haciendo lo que se llama brief rotado, que es el nombre brief
+
+**01:19:58.500 - 01:20:09.460**  
+orientado, primero es un test de dirección del key point, la idea es que ese key point, si giró
+
+**01:20:09.460 - 01:20:16.860**  
+la imagen ese key point va a dar el ángulo girado corrupamente y ese patrón de brief que
+
+**01:20:16.860 - 01:20:25.020**  
+mostró antes lo rota, entonces con eso logra invariancia a la rotación y funciona barro,
+
+**01:20:25.540 - 01:20:31.500**  
+y además esto sentió común, o sea la técnica como se aplica, no es de ecuaciones diferenciales y
+
+**01:20:31.500 - 01:20:40.780**  
+cosas de trabajante, está bien, es muy lógico lo que plantea y funciona, está bien, y finalmente
+
+**01:20:40.780 - 01:20:52.700**  
+uso machine learning para analizar si necesitaba 512 dimensiones, 512 comparaciones, porque dice
+
+**01:20:53.180 - 01:21:00.020**  
+las comparaciones de brief están hechas al azar y lo que dice el paper, pero todas
+
+**01:21:00.020 - 01:21:05.020**  
+aportan la misma información seguramente mucha redundancia, entonces uso machine learning para ir
+
+**01:21:05.020 - 01:21:13.020**  
+depurando la redundancia, ir reduciendo la cantidad de comparaciones y cambiando los pares de
+
+**01:21:13.020 - 01:21:19.460**  
+pixel que se comparan para que todos aporten, basta información relevante y lo redujo la mitad,
+
+**01:21:19.460 - 01:21:26.420**  
+256 dimensiones son solo 32, 32 bytes de descriptores, mucho más rápido que el brief original y
+
+**01:21:26.420 - 01:21:34.700**  
+encima invariante a la rotación y a la escala, es perfecto, y con usa fast detector brief orientado
+
+**01:21:34.700 - 01:21:42.500**  
+de descriptor es lo más rápido que hay, entonces si hubo crees velocidad or es la versión definitiva,
+
+**01:21:42.500 - 01:21:48.900**  
+y si vos no crees velocidad y crees otra cosa, o sea robustes, acase es la versión definitiva.
+
+**01:21:51.020 - 01:22:04.980**  
+Bueno así como vos podías detectar key points con deep learning, después de acase y después
+
+**01:22:04.980 - 01:22:09.540**  
+todo eso, encontramos en la área de deep learning, vino en la bordaje, en ninguno de los
+
+**01:22:09.540 - 01:22:21.460**  
+casos se logró más velocidad, pero sí se logró superar en robustes acase, también, tanto en la
+
+**01:22:21.460 - 01:22:30.660**  
+dirección de key points como en su descripción, el deep learning hace un entendimiento más profundo
+
+**01:22:30.660 - 01:22:39.540**  
+de la imagen, o sea de hecho puede reconocer que lo que hay es un perro, que sea, y entonces los key points
+
+**01:22:39.540 - 01:22:44.660**  
+tiene un sentido más semántico, más profundo son simplemente puntos en un parche, sino que empiezan
+
+**01:22:44.660 - 01:22:51.860**  
+a ver los puntos dentro del contexto general, también, saben que es tan digamos que en una parte
+
+**01:22:51.860 - 01:22:57.100**  
+es un ojo y que entonces en lo otro también tenden que ser un ojo, ese tipo de cosas es lo que
+
+**01:22:57.620 - 01:23:07.080**  
+lo que agrega deep learning, lo hace mucho más robustos. Bueno, finalmente acá también voy a empezar
+
+**01:23:07.080 - 01:23:11.420**  
+a pasar rápido, la distancia usted se le conté como se calcula la distancia, lo que aparece acá,
+
+**01:23:14.220 - 01:23:23.500**  
+es la distancia de jamming, que es cuando comparas dos escritores binarios, o sea técnicamente
+
+**01:23:23.500 - 01:23:27.900**  
+botanés el vector de escritor uno, el vector de escritor dos, haces un equisor bit a bit,
+
+**01:23:29.180 - 01:23:35.500**  
+population count es cuántos bits te da en uno y esa es la distancia, o sea cuánto, cuando
+
+**01:23:35.500 - 01:23:41.820**  
+vos haces el equisor, si los escritores son idénticos te da cero, también, solo los bit diferentes
+
+**01:23:41.820 - 01:23:47.820**  
+te va a dar en uno, el populillo count, o sea cuántos me dieron unos, o sea cuánto bit diferentes
+
+**01:23:47.820 - 01:23:54.860**  
+tienen los dos escritores, botanés de escritores de 256 bits, en estos casos la distancia va a de cero a
+
+**01:23:54.860 - 01:24:06.220**  
+256, ese es el resultado, los resultados posibles, la operación es súper rápida y vos busca que tengan
+
+**01:24:06.220 - 01:24:16.060**  
+o sea una distancia menor a 100 y con eso tenés de escritores alineados. Bueno, listo, terminó acá y
+
+**01:24:16.060 - 01:24:27.970**  
+voy a abordar por completitud el último tema que es este matching. Bueno, este tema de machío,
+
+**01:24:27.970 - 01:24:45.090**  
+de key points, se usa muchos lados, o sea ustedes cuando hicieron el TP3, tenía un detector de esquinas de un código,
+
+**01:24:45.810 - 01:24:53.250**  
+de un marcador fiduciario también, un código de código de arruco, pero ustedes pueden machiar
+
+**01:24:53.250 - 01:25:01.170**  
+prácticamente cualquier imagen, no necesitan un detector específico de código de arruco, voy a decir yo
+
+**01:25:01.170 - 01:25:09.330**  
+acá hago un detector de cuadro de van Gogh, yo voy a usar cualquier cosa, de hecho se los comente,
+
+**01:25:09.890 - 01:25:20.050**  
+cuando le dije el seguimiento sin marcadores, o sea sin marcadores predefinidos como tales,
+
+**01:25:20.050 - 01:25:27.810**  
+es esto, usar un imagen cualquiera como un marcador fiduciario. Bien, entonces listo, vamos a
+
+**01:25:27.810 - 01:25:34.610**  
+ver en qué consiste el machío, que es la etapa final de todo esto, es la etapa final del
+
+**01:25:34.690 - 01:25:42.690**  
+pipeline de machío, no, no voy a incluir acá la consistencia geométrica de esos machillos,
+
+**01:25:42.690 - 01:25:49.970**  
+vos puedes tener machillos equivocados en el medio, bueno, cuáles de día es vincular correspondencias y
+
+**01:25:49.970 - 01:25:56.850**  
+cuáles de día agarró un montón de key points de la primera imagen con sus descriptores, un montón de
+
+**01:25:56.850 - 01:26:04.770**  
+key points en la segunda imagen con sus otros descriptores y empiezo a buscar cuál es tiene el mismo
+
+**01:26:05.250 - 01:26:10.930**  
+descripto, o mejor dicho, descriptores parecidos, básicamente lo que tengo que calcular la distancia entre
+
+**01:26:10.930 - 01:26:18.450**  
+los dos que estoy comparando y lo que tiene una mínima distancia es porque está machado, corresponden
+
+**01:26:18.450 - 01:26:24.850**  
+a la misma correspondencia, bueno, en eso se trata, esto que parece que el descriptor está repetido,
+
+**01:26:25.970 - 01:26:32.530**  
+me lo cheque, hay un objeto de mach que se resulta, perdón, no le es el, la manera en que lo cara
+
+**01:26:32.530 - 01:26:39.290**  
+o pensé ver es que vos tenés esos dos conjuntos a dos imágenes, el machío no mira la imagen,
+
+**01:26:39.290 - 01:26:46.170**  
+voy a trajiste la información en los key points y en los descriptores, entonces el machío, bueno,
+
+**01:26:46.170 - 01:26:51.490**  
+le pasas suena, la imagen un, la imagen dos, le pasas key points uno y descriptores uno por un
+
+**01:26:51.490 - 01:26:58.050**  
+lado, key point dos y descriptores dos, no lo llamas un y dos, por motivos que no quiero abundan
+
+**01:26:58.050 - 01:27:05.970**  
+acá a uno se lo llama train y el otro se llama query y tiene sentido el train cuando vos tenés
+
+**01:27:05.970 - 01:27:12.650**  
+una imagen de referencia fija y la segunda la query es la que va cambiando en cada, no sé, en cada
+
+**01:27:12.650 - 01:27:19.850**  
+frame, ese es un caso de uso, hay otros donde vos estás reconstruido haciendo reconstrucción 3D donde
+
+**01:27:19.850 - 01:27:25.490**  
+estás a cada rato, estás agarrando dos frames que hay que ir ahí, la estás comparando, bueno,
+
+**01:27:25.490 - 01:27:36.050**  
+pero lo llaman train y query, entonces el resultado del proceso de machío se obtiene en un objeto
+
+**01:27:36.050 - 01:27:48.260**  
+que se llama de match, de match, está bien y que lo que te dice es compare todos los elementos,
+
+**01:27:48.260 - 01:27:56.220**  
+cuando digo elementos es key point con su descriptor del train, del array de train, del array de query,
+
+**01:27:57.220 - 01:28:05.300**  
+y me digo el índice del train con índice de query, consigue lo que es un machío y la distancia que
+
+**01:28:05.300 - 01:28:10.420**  
+le calculé es esta, comparo mucho más pero te dar lo resultado de los que quedaron los que
+
+**01:28:10.420 - 01:28:17.620**  
+tienen distancia mínima, bueno, a ver, si yo tengo 1000 descriptores en un imagen y 1000
+
+**01:28:17.620 - 01:28:27.880**  
+descriptores en la otra, hay una cosita que se la dije mal y lo voy a corregir pues está
+
+**01:28:27.880 - 01:28:35.360**  
+grabado, ustedes están dormidos, ni se enteraron, pero no tienen manera de enterarse, el machío
+
+**01:28:36.640 - 01:28:43.760**  
+compara descriptores, no le importan los key points, es importante, los key points van a ser
+
+**01:28:43.760 - 01:28:50.240**  
+necesarios para la notación, el machío mira solamente descriptores, entonces vuelve
+
+**01:28:50.960 - 01:28:59.560**  
+una array de descriptores en train y una array de descriptores en query y empieza a buscar y buscar
+
+**01:28:59.560 - 01:29:07.000**  
+los mínimas distancias, a hacer machío de mínimas distancias, no mira la conencia geométrica,
+
+**01:29:07.000 - 01:29:11.800**  
+no mira la coordenada de key point, solo mira la distancia de los descriptores,
+
+**01:29:11.800 - 01:29:18.840**  
+bueno, fuerza bruta, vos tenés 1000 descriptores en una imagen y 1000 descriptores en la otra,
+
+**01:29:18.840 - 01:29:24.880**  
+digo, nunca vas a tener la misma cantidad, no tienes por qué tener la misma cantidad, pero en
+
+**01:29:24.880 - 01:29:32.280**  
+ejemplo, dejamos 1000 y 1000, 1000, vos tenés que hacer un millón de comparaciones, pues tenés
+
+**01:29:32.280 - 01:29:40.320**  
+comparar todos con todos, y acá donde el machío, si no lo cuidas, dispara computacionalmente,
+
+**01:29:40.920 - 01:29:48.280**  
+acá comparación, es una medición de distancia, esa agarrara un vector, medir la distancia
+
+**01:29:48.280 - 01:29:55.560**  
+obligada con el otro vector, calcular ese valor, entonces si tu descriptor es un sift de 128
+
+**01:29:55.560 - 01:30:00.400**  
+valores de puntos flotantes, bueno, va a tener que restarlo con nosotros 120, y va a tomar
+
+**01:30:00.400 - 01:30:06.800**  
+cuadrado y después de que rescuadra va a sacar la distancia, tener una operación pesada que
+
+**01:30:06.920 - 01:30:13.920**  
+tiene que ser un millón de veces, si vos tenés descriptores binarios y ahí vas a estar agradecido,
+
+**01:30:13.920 - 01:30:17.960**  
+estar usando el binario, por ahí no están robusto como el otro, no están lindo, pero funciona,
+
+**01:30:17.960 - 01:30:25.000**  
+performa mucho más rápido, bueno entonces acá hay varias cosas, primero es, si preferís degradar
+
+**01:30:25.000 - 01:30:32.200**  
+el descriptor para darle más velocidad, y la otra es necesitas hacer un millón de comparaciones,
+
+**01:30:32.200 - 01:30:36.680**  
+o sea, ¿qué puedes hacer vos para reducir? Este es de abordada que se llama fuerza bruta y es el
+
+**01:30:36.680 - 01:30:43.800**  
+peor de todos, voy a comparar todo con todo, está bien, entonces aparece flan, otro acroanimo,
+
+**01:30:43.800 - 01:30:50.800**  
+fast library, for approximate nearest neighbor, yo le mencioné ahora con reconocimiento de caras
+
+**01:30:50.800 - 01:30:57.280**  
+hacia el final, lo de approximate nearest neighbor, nearest neighbor existo, es buscar la distancia más
+
+**01:30:57.280 - 01:31:04.480**  
+corta centredores de criptores, a eso se lo llama nearest neighbor, los vecinos más cercanos y
+
+**01:31:04.480 - 01:31:13.400**  
+la esta biblioteca son de aproximación, o sea, por un lado ordenan y hacen índices que logran
+
+**01:31:13.400 - 01:31:18.940**  
+reducir enormemente la cantidad de operaciones para encontrar el más rápido, y por
+
+**01:31:18.940 - 01:31:25.600**  
+lado usan bibliotecas que terminan de hacer edad, pero no te aseguran encontrar el más rápido,
+
+**01:31:25.600 - 01:31:32.160**  
+si te aseguran encontrar un vecino muy cercano, pero por ahí justo hay otro que está más cercano,
+
+**01:31:32.160 - 01:31:40.360**  
+pero incluso si la probabilidad es baja de que se equivoque, entonces no te va a dar perfecto,
+
+**01:31:40.360 - 01:31:48.800**  
+pero en la práctica de 20 veces más rápido, por lo tanto, si vos vas a apuntar a ser un machío y
+
+**01:31:48.800 - 01:31:55.760**  
+queréis salgo en tiempo real, usa flan, ni lo pienses, meté flan, y si queréis máxima velocidad
+
+**01:31:55.760 - 01:32:02.320**  
+usa flan para descriptores binarios que tienen un algoritmo que se merece eche y ya está, tener lo mejor
+
+**01:32:02.320 - 01:32:07.880**  
+de los dos puntos, esto es lo que me voy a saltar porque estamos sobre la hora, y la verdad que esto
+
+**01:32:07.880 - 01:32:18.040**  
+tiene interés más o menos, lo estoy pasando ver si me queda una diapositiva, esto,
+
+**01:32:18.040 - 01:32:28.080**  
+el que tenga que usar matchers después cualquier cosa, o me pregunta mío o averiguo un poquito,
+
+**01:32:28.080 - 01:32:37.200**  
+capaz que ni necesita los consertos que me saltié, bueno, acá hay una foto, la misma persona con
+
+**01:32:37.200 - 01:32:42.240**  
+2 vestidos distintos y dos peinados distintos y encontró machillos, vos claramente los machillos de la
+
+**01:32:42.240 - 01:32:50.600**  
+cara son los que mejor te sirven, lo del pelo no, entonces si, ¿cómo pudo hacer yo para aquí por
+
+**01:32:50.600 - 01:33:00.720**  
+geometría descartar o marcar, cuáles son los machillos equivocados? Acordate, el machillo solamente
+
+**01:33:00.720 - 01:33:04.920**  
+miró descriptores, si los descriptores son parecidos, te dicen estos son parecidos puntos,
+
+**01:33:04.920 - 01:33:10.560**  
+de hecho estos son los más parecidos y así como te juntó las correspondencias, ahora estamos en
+
+**01:33:10.560 - 01:33:15.320**  
+un nivel superior donde estamos mirando las coordenadas del equipo, esto es después del machillo,
+
+**01:33:19.800 - 01:33:26.040**  
+bueno, cuando los resultados del machillo hay algunas estrategias que son simples de entender,
+
+**01:33:26.040 - 01:33:37.000**  
+pero no son obviados, pues no te quedas simplemente con el mejor machillo, pues agrega un punto de
+
+**01:33:37.000 - 01:33:44.640**  
+un imagen, un equipo, un descriptor, lo vas a machar, no sé, contra todos los descriptores de la
+
+**01:33:44.640 - 01:33:50.680**  
+otra imagen, eso sería forza bruta, pero el ejemplo es entre el mejor, no te vas a quedar con
+
+**01:33:50.680 - 01:34:00.120**  
+el de distancia más corta solamente, vas a obtener también el segundo, la segunda mejor distancia que
+
+**01:34:00.120 - 01:34:06.720**  
+no es tan pequeña como la primera, es un poquito mayor, vas a tener y la estrategia es la siguiente,
+
+**01:34:07.560 - 01:34:15.640**  
+si la primera distancia es mucho menor que la segunda, entonces está seguro que hay una correspondencia y
+
+**01:34:15.640 - 01:34:23.160**  
+si la primera distancia es parecida a la segunda, entonces bueno, saber con cuál de los dos hay que
+
+**01:34:23.160 - 01:34:29.880**  
+hacer la correspondencia y los descartas, los sospechas que puede ser una blinder y los descartas,
+
+**01:34:30.600 - 01:34:37.480**  
+también, ese es un criterio que te reduce muchísimo, te ayuda mucho a reducir el aire, no es
+
+**01:34:37.480 - 01:34:43.840**  
+completo, hay otros métodos que llegan al caso lo podemos conversar y que tiene que ver con
+
+**01:34:43.840 - 01:34:53.160**  
+homografía, si vos sabes que es una homografía, entonces tenés métodos que calcula la homografía y
+
+**01:34:53.160 - 01:34:58.560**  
+te dicen cuáles son los que no encajan con todo eso, eso lo vamos a hacer con estimadores,
+
+**01:34:58.840 - 01:35:10.140**  
+métodos ramsac, bueno, acá tienes un método, también que busca coherencia espacial y te permite
+
+**01:35:10.140 - 01:35:22.040**  
+marcar un montón de machillos como aulayers, como equivocados, bueno, finalmente vamos a ir a esta
+
+**01:35:22.040 - 01:35:27.400**  
+para lograr, machillo, esto está más la presentación, no de descripción de equipo,
+
+**01:35:27.400 - 01:35:34.000**  
+no es machillo de escritores con deep learning, también, super glue, los que hicieron super
+
+**01:35:34.000 - 01:35:42.960**  
+point y hicieron super glue, tienen su detector de equipo, su propio manera de describirlos y
+
+**01:35:42.960 - 01:35:49.400**  
+es super glue lo que hace es machaglos, en la verdad que distinto es un poco más lento en la
+
+**01:35:49.400 - 01:35:54.680**  
+manera de expresar los equipos, pero es más semántico y el machillo es más dirigido, no va a
+
+**01:35:54.680 - 01:36:00.320**  
+comparar a todos con todos, sino que busca, va directamente a las cosas que son parecidas y son
+
+**01:36:00.320 - 01:36:06.000**  
+de la misma natura de esa, porque deep learning tiene un mejor entendimiento lo que pasa con la imagen,
+
+**01:36:06.000 - 01:36:12.720**  
+está, bueno, entonces hay un super glue y hay un light glue que sugió del mismo grupo de investigación
+
+**01:36:12.720 - 01:36:21.200**  
+como una mejora de performance, es lo que si vos querés explorar los resultados de con deep learning
+
+**01:36:21.200 - 01:36:29.480**  
+irías directo a probar light glue, bien, bueno, finalmente a notación, estas notaciones que son
+
+**01:36:29.480 - 01:36:36.000**  
+bastantes de típicas son muy particulares porque hay una única función que te hace todo y todo
+
+**01:36:36.000 - 01:36:43.120**  
+mundo usa esa función, entonces todos tienen la misma forma, la notación es esto,
+
+**01:36:43.120 - 01:36:48.480**  
+le tienen que pasar la dos imágenes, le tienen que pasar todos los equipos de una imagen y los
+
+**01:36:48.480 - 01:36:55.880**  
+equipos de la otra imagen y le tenéis que pasar los machillos que se hace a raíz de objetos de
+
+**01:36:55.880 - 01:37:03.040**  
+mach, para decir de qué color lo querés, bueno, le pasa todo eso y el resultado te compone las
+
+**01:37:03.040 - 01:37:11.400**  
+dos imágenes en una sola grande y te dibuja todos los machillos, acá tenéis las correspondencias
+
+**01:37:11.400 - 01:37:17.040**  
+de todo machillo pero en toda la correspondencia o machillo es lo mismo, acá tenéis dos colores porque
+
+**01:37:17.040 - 01:37:24.080**  
+lo dibujaste dos veces, le pasas las correspondencias verdes, le ciclo pinte de verde y después le pasas en
+
+**01:37:24.080 - 01:37:29.280**  
+otra segunda operación sobre la misma imagen las rojas, bueno, en este caso esa roja pasaba las rojas
+
+**01:37:29.280 - 01:37:34.360**  
+y después la verde porque la verde están dibujadas por arriba de las rojas, en este caso las rojas
+
+**01:37:34.360 - 01:37:40.520**  
+son los alayers, fíjate, este es el más evidente, este punto de acá lo encontró parecido a algo
+
+**01:37:40.520 - 01:37:46.840**  
+que no está cada en imagen y veis que no puede ser por cómo quedo inclinado, bien, terminó,
+
+**01:37:46.840 - 01:38:00.110**  
+21 o 02, excelente, bueno gente, he terminado medio a las apuras pero he terminado con la
+
+**01:38:00.110 - 01:38:08.270**  
+presentación, que le mostré hoy, le mostré un poquito folk club de estudio y algunos usos de
+
+**01:38:08.270 - 01:38:18.470**  
+argumentada y como lo que ustedes vieron de calcular la pose, se puede usar, se puso en la práctica
+
+**01:38:18.470 - 01:38:25.670**  
+código que está funcionando realmente a estas cosas y que tiene que ver con el tp5, el tp5 es un
+
+**01:38:25.670 - 01:38:32.110**  
+poco, tiene menos gustito porque para que sea más fácil vamos a lo mínimo que es tratar de
+
+**01:38:32.110 - 01:38:38.070**  
+graficar la pose pero si ustedes han vuelado la imaginación se dan cuenta que es la tecnología que
+
+**01:38:38.070 - 01:38:46.790**  
+les abre a el mundo 3d, hay un mundo 3d y de realidad aumentada, ya sea de como vimos en el
+
+**01:38:46.950 - 01:38:55.430**  
+pasado de la pose un robot para poder controlarlo también o como poder poner un muñequito 3d virtual
+
+**01:38:55.430 - 01:39:04.350**  
+encima de la imagen, eso fue la introducción del día de hoy, después vimos el reconocimiento de cara,
+
+**01:39:04.350 - 01:39:12.330**  
+el paíblan completo de reconocimiento de caro
+

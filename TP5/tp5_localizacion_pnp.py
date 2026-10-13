@@ -22,9 +22,10 @@ cam.set(cv.CAP_PROP_FRAME_HEIGHT, 480)  # Alto 480
 # [TP5] Pegar acá los valores que imprime calibrate.py al presionar 'c'.
 # Valores obtenidos con calibrate.py (patrón 9x6 impreso, 25 capturas).
 cameraMatrix = np.array(  # Matriz intrínseca K (fx, fy, cx, cy)
-    [[449.22, 0.0, 320.15],  # [TP5] fx, 0, cx  (calibrate.py, patrón 9x6 impreso, 25 capturas, 11/10)
-     [0.0, 458.83, 311.39],  # [TP5] 0, fy, cy
-     [0.0, 0.0, 1.0]], np.float32)  # Última fila fija
+    [[543.74,   0.0,   320.65], # [TP5] fx, 0, cx  (calibrate.py, patrón 9x6 impreso, 25 capturas, 11/10)
+    [  0.0,   543.82, 244.54],  # [TP5] 0, fy, cy
+    [  0.0,     0.0,     1.0  ]], np.float32) # Última fila fija
+
 distCoeffs = np.array([-0.08411395, 0.0761868, 0.0, 0.0, -0.0191586])  # [TP5] K1, K2, P1, P2, K3 (calibrate.py, 11/10)
 
 squareLength = 10  # cm, lado del marcador (medilo con regla); fija la unidad del mundo
@@ -67,6 +68,8 @@ while True:  # Bucle de localización en tiempo real
 
             Tqc = np.linalg.inv(Tcq)  # [TP5] Inversa: pose de la cámara expresada en el mundo (marcador)
             tqc = Tqc[:3, 3] / 100.0  # [TP5] Posición de la cámara, de cm a metros (unidad de Foxglove)
+            distancia_cm = np.linalg.norm(tqc) * 100.0  # Distancia recta entre la cámara y el centro del marcador
+            cv.putText(im, f"Distancia: {distancia_cm:.1f} cm", (10, 30), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv.LINE_AA)  # Muestra la distancia sobre el video
             rvecQc, _ = cv.Rodrigues(Tqc[:3, :3])  # [TP5] Rotación de la cámara como vector de Rodrigues
             ang = float(np.linalg.norm(rvecQc))  # [TP5] Ángulo de giro (norma del vector)
             if ang > 1e-9:  # [TP5] Si hay rotación
