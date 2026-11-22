@@ -1,0 +1,179 @@
+# Configuración única del proyecto. Las rutas son relativas a este archivo.
+semilla: 42                                   # misma semilla en random, numpy, torch, split y entrenamiento
+
+# --- Datos ---
+carpeta_zips: zips_entrenamiento                   # ZIPs seleccionados para esta corrida
+zip_dataset_base: datos/Dataset_Transito_YOLO.zip   # compatibilidad: se usa si no existe carpeta_zips
+carpeta_dataset_base: datos/publicos                # donde se descomprime el zip
+carpeta_datos_propios: datos/propios                # fotos nuevas etiquetadas (export YOLO de Label Studio / CVAT / Roboflow)
+carpeta_dataset_final: datos/dataset_final          # dataset dividido que usa el entrenamiento (se regenera)
+carpeta_reportes: reportes                          # EDA
+carpeta_experimentos: experimentos                  # v1_fecha, v2_fecha, ...
+
+clases:                     # clases finales; el orden define el id YOLO (0, 1, 2, ...)
+  - persona
+  - ciclista
+  - auto
+  - camion
+  - colectivo
+  - tren
+  - moto
+  - bicicleta
+  - semaforo_rojo
+  - semaforo_amarillo
+  - semaforo_verde
+  - semaforo_otro           # semáforo apagado, de costado o ilegible: si no existiera, el modelo aprendería que es "fondo"
+  - senal_transito
+  - senda_peatonal          # cruce peatonal marcado sobre la calzada
+  - paso_a_nivel            # intersección entre calle y vías ferroviarias
+  - barrera_ferroviaria     # barrera de paso a nivel, levantada o baja
+  - senal_ferroviaria       # cruz de San Andrés, luces y señales ferroviarias
+  - velocidad_20            # señal de velocidad máxima 20
+  - velocidad_40            # señal de velocidad máxima 40
+  - velocidad_60            # señal de velocidad máxima 60
+  - velocidad_80            # señal de velocidad máxima 80
+  - escuela                 # señal de zona escolar
+  - pare                    # señal de PARE
+  - contramano              # señal de contramano / prohibido el paso
+  - loma_burro              # señal de loma de burro
+
+mapeo_clases:              # nombre en la fuente -> clase final. Lo que no figura se descarta
+  persona: persona
+  ciclista: ciclista
+  auto: auto
+  camion: camion
+  colectivo: colectivo
+  tren: tren
+  moto: moto
+  bicicleta: bicicleta
+  semaforo_rojo: semaforo_rojo
+  semaforo_amarillo: semaforo_amarillo
+  semaforo_verde: semaforo_verde
+  semaforo_otro: semaforo_otro
+  senal_transito: senal_transito
+  senda_peatonal: senda_peatonal
+  paso_a_nivel: paso_a_nivel
+  barrera_ferroviaria: barrera_ferroviaria
+  senal_ferroviaria: senal_ferroviaria
+  velocidad_20: velocidad_20               # clases del ZIP generado por herramientas/convertir_mtsd.py
+  velocidad_40: velocidad_40
+  velocidad_60: velocidad_60
+  velocidad_80: velocidad_80
+  escuela: escuela
+  pare: pare
+  contramano: contramano
+  loma_burro: loma_burro
+  cruce_ferroviario: senal_ferroviaria     # unificada: cruz de San Andrés y señales de cruce son la misma clase
+  rojo: semaforo_rojo       # nombres posibles en las fotos propias etiquetadas a mano
+  amarillo: semaforo_amarillo
+  verde: semaforo_verde
+  senal: senal_transito
+  person: persona
+  pedestrian: persona
+  rider: ciclista
+  cyclist: ciclista
+  bicycle: bicicleta
+  bicycles: bicicleta
+  bike: bicicleta
+  car: auto
+  taxi: auto
+  taxis: auto
+  vehicle: auto
+  vehicles: auto
+  truck: camion
+  bus: colectivo
+  buses: colectivo
+  train: tren
+  motorbike: moto
+  motorcycle: moto
+  motorcycles: moto
+  motor: moto
+  traffic light: semaforo_otro
+  traffic lights: semaforo_otro
+  traffic sign: senal_transito
+  crosswalk: senda_peatonal
+  crosswalks: senda_peatonal
+  railroad-crossings: paso_a_nivel
+  railroad crossing: paso_a_nivel
+  road crossing: paso_a_nivel
+  railroad-crossing-down: barrera_ferroviaria
+  railroad crossing barrier: barrera_ferroviaria
+  railroad-sign: senal_ferroviaria
+  railroad sign: senal_ferroviaria
+  railroad-sign-light-off: senal_ferroviaria
+  railroad-sign-light-on: senal_ferroviaria
+  railway signal: senal_ferroviaria
+  "Citypersons - v9 2022-12-10 3-27pm": persona
+
+patrones_grupo:             # regex que sacan el video/clip del nombre: todo el grupo va al mismo split
+  - '^(lisa_.+?)--\d+$'     # lisa_dayClip3--00456 -> lisa_dayClip3
+  - '^(nuevo_.+?)_f\d+$'    # frames propios: nuevo_video01_f000123 -> nuevo_video01
+  - '^(.+?)_f\d{6}(?:_|$)'  # frames de herramientas/extraer_frames.py aunque Roboflow les agregue "_jpg.rf.xxx" o vengan en un ZIP
+  - '^(.*sint_\d{4})_\d{5}$'  # sintéticas: fuente3_sint_0042_00017 -> fuente3_sint_0042 (mismo fondo, mismo split)
+
+proporciones_split: {train: 0.70, val: 0.15, test: 0.15}
+sobremuestreo: {semaforo_amarillo: 3}   # cada imagen de train con amarillo aparece 3 veces
+umbral_desbalance: 0.10                  # clase con menos del 10% de la mayor = minoritaria
+ejemplos_eda: 16                         # imágenes de ejemplo en el EDA
+
+# --- Entrenamiento ---
+modelo_base: yolo26s.pt     # pesos preentrenados en COCO para detección
+epochs: 100                 # máximo de épocas (early stopping corta antes)
+batch: -1                  # Ultralytics elige automáticamente el batch según la VRAM disponible
+cache: disk                # cache en disco: acelera la carga sin ocupar los 16 GB de RAM
+batch_evaluacion: 8        # lote fijo y seguro para análisis, validación y test
+imgsz: 640                  # tamaño de entrada; más grande ayuda con semáforos lejanos, pero es más lento
+optimizador: SGD            # SGD explícito: con "auto" Ultralytics elige AdamW e ignora lr0
+lr0: 0.01                   # learning rate inicial (paso de actualización de los pesos)
+patience: 20                # early stopping: corta tras 20 épocas sin mejorar en val
+workers: 4                  # procesos que cargan imágenes; estable en Windows y suficiente para la GPU
+dispositivo: 0              # 0 = primera GPU (1 = segunda...). Poner cpu para correr sin GPU (muy lento)
+
+aumentos:                   # data augmentation de Ultralytics (solo train)
+  hsv_h: 0.0                # tono en 0: cambiar el tono podría convertir un rojo en otro color y romper la etiqueta
+  hsv_s: 0.5                # saturación: cambia la intensidad del color, no el color
+  hsv_v: 0.4                # brillo: simula día, sombra, contraluz
+  scale: 0.5                # escala: semáforos cerca y lejos
+  translate: 0.1            # desplazamiento
+  fliplr: 0.5               # espejo horizontal (las clases no distinguen flechas izquierda/derecha)
+  mosaic: 1.0               # mosaico de 4 imágenes: más objetos chicos y contextos variados
+
+# --- Evaluación ---
+umbral_confianza: 0.35      # confianza mínima en la demo y en el análisis de errores (elegirlo mirando el gráfico de val)
+umbral_confianza_validacion: 0.20  # segunda evaluación en val con confianza fija
+umbral_iou: 0.5             # superposición mínima para contar una detección como correcta
+umbrales_a_probar: [0.05, 0.1, 0.2, 0.3, 0.35, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+ejemplos_errores: 20        # imágenes guardadas por tipo de error
+exportar_onnx: true
+
+# --- Demo por lote ---
+carpeta_videos: videos                              # procesa todos los videos compatibles de esta carpeta
+carpeta_videos_procesados: videos_procesados       # guarda aquí cada MP4 con cajas, etiquetas, FPS y latencia
+media_precision: true       # FP16 en GPU (en CPU no tiene efecto)
+frames_calentamiento: 10    # los primeros frames no cuentan en la latencia
+colores_bgr:                # OpenCV usa BGR (azul, verde, rojo)
+  persona: [255, 120, 0]
+  ciclista: [255, 180, 0]
+  auto: [0, 180, 255]
+  camion: [0, 120, 255]
+  colectivo: [0, 255, 180]
+  tren: [120, 120, 255]
+  moto: [180, 0, 255]
+  bicicleta: [255, 0, 180]
+  semaforo_rojo: [0, 0, 255]
+  semaforo_amarillo: [0, 215, 255]
+  semaforo_verde: [0, 200, 0]
+  semaforo_otro: [180, 180, 180]
+  senal_transito: [255, 0, 255]
+  senda_peatonal: [255, 255, 255]
+  paso_a_nivel: [80, 80, 255]
+  barrera_ferroviaria: [0, 80, 255]
+  senal_ferroviaria: [180, 80, 255]
+  velocidad_20: [60, 60, 200]
+  velocidad_40: [60, 100, 220]
+  velocidad_60: [60, 140, 240]
+  velocidad_80: [60, 180, 255]
+  escuela: [0, 230, 230]
+  pare: [40, 40, 160]
+  contramano: [90, 0, 200]
+  loma_burro: [0, 160, 200]

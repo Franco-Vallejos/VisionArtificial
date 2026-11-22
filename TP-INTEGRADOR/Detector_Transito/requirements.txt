@@ -1,0 +1,4 @@
+# Instalar PyTorch con CUDA primero si se usa una GPU NVIDIA.
+ultralytics==8.4.173
+opencv-python==4.14.0.94
+onnx==1.23.2

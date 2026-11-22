@@ -1,0 +1,14 @@
+/datos/
+/Detector_Transito/datos/
+/Detector_Transito/experimentos/
+/Detector_Transito/modelos/
+/Detector_Transito/reportes/
+/Detector_Transito/videos/
+/Detector_Transito/videos_procesados/
+/Detector_Transito/runs/
+/Detector_Transito/weights/
+/Detector_Transito/zips_entrenamiento/
+*.pt
+*.onnx
+*.npy
+*.cache

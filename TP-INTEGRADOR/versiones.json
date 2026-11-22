@@ -1,0 +1,28 @@
+{
+  "v11": {
+    "corrida": "v11_2026-11-22_1531",
+    "dataset": "dataset_unificado_argentina_v11",
+    "fotos": 11039,
+    "particiones": {
+      "train": 7727,
+      "test": 1656,
+      "val": 1656
+    },
+    "pesos": "detector-transito-v11-best.pt",
+    "reportes": "detector-transito-v11-reportes.zip",
+    "informe_test": false
+  },
+  "v12": {
+    "corrida": "v12_2026-11-22_2000",
+    "dataset": "dataset_argentina_v11_chequeadas",
+    "fotos": 833,
+    "particiones": {
+      "test": 127,
+      "train": 581,
+      "val": 125
+    },
+    "pesos": "detector-transito-v12-best.pt",
+    "reportes": "detector-transito-v12-reportes.zip",
+    "informe_test": true
+  }
+}
